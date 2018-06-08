@@ -19,10 +19,10 @@ dta <- array(dim=c(n_obs,K))      #Empty array to hold all k's and n_obs
 ######## Fixing the probabilities of getting a specific response within a 4-level scale
 for(ii in 1:K){                        # iterate to fill BY ITEM
   if(ii %in% c(5,10,15)){                     # these are "strange" items
-    prob_vector <- c(.01,.29,.25,.1)           # with lower probabilities
+    prob_vector <- c(.1,.1,.4,.4)           # with lower probabilities
     prob_abnormal <- prob_vector
   }else{
-    prob_vector <- c(.4,.25,.2,.15) # 4 levels per item      #probabilities for 'regular' items
+    prob_vector <- c(.4,.4,.1,.1) # 4 levels per item      #probabilities for 'regular' items
     prob_normal <- prob_vector
   }
   dta[,ii] <- sample(c(1:4),size=n_obs,replace = T,prob = prob_vector)

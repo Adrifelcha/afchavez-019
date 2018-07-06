@@ -1,4 +1,4 @@
-setwd("D:/afchavez/Desktop/Adrifelcha_Work/Julio_2018/Diagnostico_EB/R/TTVs")
+setwd("D:/afchavez/Desktop/Adrifelcha_PsicometriaYEvaluacion/Diagnostico_EB/R/TTVs")
 dir()
 rm(list=ls())
 

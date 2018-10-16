@@ -1,0 +1,103 @@
+&INST
+Title= "Raw Data for DIF Chp.xls"
+; Excel file created or last modified: 12/18/2011 4:50:05 PM
+; Dash comma text naz oe
+;     Excel Cases processed = 74
+; Excel Variables processed = 13
+ITEM1 = 1 ; Starting column of item responses
+NI = 10 ; Number of items
+NAME1 = 12 ; Starting column for person label in data record
+NAMLEN = 5 ; Length of person label
+XWIDE = 1 ; Matches the widest data value observed
+; GROUPS = 0 ; Partial Credit model: in case items have different rating scales
+CODES = 12345 ; matches the data
+TOTALSCORE = Yes ; Include extreme responses in reported scores
+; Person Label variables: columns in label: columns in line
+@Gender = 1E1 ; $C12W1
+@Race = 3E4 ; $C14W2
+&END ; Item labels follow: columns in label
+Q1OE ; Item 1 : 1-1
+Q4OE ; Item 2 : 2-2
+Q7OE ; Item 3 : 3-3
+Q9OE ; Item 4 : 4-4
+Q10OE-RC ; Item 5 : 5-5
+Q11OE ; Item 6 : 6-6
+Q13OE-RC ; Item 7 : 7-7
+Q14OE ; Item 8 : 8-8
+Q15OE ; Item 9 : 9-9
+Q16OE ; Item 10 : 10-10
+END NAMES
+4444344444 F w
+2223324242 F w
+3235334234 M w
+3323233334 M h
+3435233444 M h
+2334232333 M h
+2443234342 F h
+3444344444 M aa
+4444434343 F aa
+3333333333 M aa
+3333333344 F aa
+2244444455 M as
+3334242234 M as
+3334333443 M as
+3444433433 F as
+4434343434 F w
+2425324434 F w
+3334333333 F w
+4434243443 F w
+2422244324 M h
+4334244332 M h
+3234344442 M h
+4334334344 M h
+3433423234 M h
+5344344444 F h
+4444234342 F aa
+3333432443 F aa
+2344244444 M aa
+5544252445 M aa
+4444344234 M aa
+3434442444 M aa
+4344445344 F aa
+4445253444 F aa
+3334234444 F as
+4344243444 F as
+3344233333 F as
+4244444344 F as
+3444444444 F as
+2445322443 F as
+4434443444 F as
+5445344444 F as
+4333343434 F as
+5334444444 M w
+4434334344 M w
+4444443334 M w
+4344444444 M w
+4445442442 M w
+4444351445 F h
+4334343444 M h
+3334234434 F h
+4433342344 F h
+4444344444 F h
+4434433443 F h
+4224322432 M h
+4434343445 M h
+4445445445 M aa
+4333232223 F aa
+5444334444 F aa
+4444444333 M aa
+4435444434 M aa
+4234334324 M aa
+4535545455 F aa
+4444344444 F aa
+4325444334 F aa
+4434243444 F aa
+4424244334 F as
+3334333344 F as
+4334335334 F as
+4444442454 F as
+4434444442 F as
+4434443444 F as
+4444444424 F as
+1545545544 M as
+3435335444 M as

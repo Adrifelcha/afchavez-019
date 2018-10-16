@@ -1,0 +1,10 @@
+Estimad@s
+
+Les dejo el link para la isntalación de R
+http://web.cs.ucla.edu/~gulzar/rstudio/index.html
+
+Y el tutorial en Rstudio
+http://web.cs.ucla.edu/~gulzar/rstudio/basic-tutorial.html
+
+Un curso breve de 2 días de Rstudio
+https://github.com/AmeliaMN/IntroToR

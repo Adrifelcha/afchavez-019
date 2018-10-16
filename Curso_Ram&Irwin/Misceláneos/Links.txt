@@ -1,0 +1,20 @@
+Tutorial sobre TAM
+http://www.edmeasurementsurveys.com/TAM/Tutorials/
+
+Psychometric Models and Methods
+https://cran.r-project.org/web/views/Psychometrics.html
+
+Referencias
+https://www.springer.com/us/book/9783319542041
+
+https://www.springer.com/us/book/9783319931753
+
+https://www.crcpress.com/Handbook-of-Educational-Measurement-and-Psychometrics-Using-R/Desjardins-Bulut/p/book/9781498770132
+
+https://www.amazon.com.mx/Response-Theory-Psychologists-Susan-Embretson/dp/0805828192
+
+https://www.amazon.com.mx/Theory-Practice-Item-Response/dp/1593858698/ref=pd_sim_14_1?_encoding=UTF8&pd_rd_i=1593858698&pd_rd_r=9e419271-94e1-11e8-b81f-fd4e0edbabeb&pd_rd_w=7kZ04&pd_rd_wg=9TZHI&pf_rd_i=desktop-dp-sims&pf_rd_m=AVDBXBAVVSXLQ&pf_rd_p=2281495917696745744&pf_rd_r=PE3P2GK7JS694PE6ZAXV&pf_rd_s=desktop-dp-sims&pf_rd_t=40701&psc=1&refRID=PE3P2GK7JS694PE6ZAXV
+
+https://www.amazon.com.mx/Psicometria-Psychometry-Maria-Rosario-Martinez/dp/8420664065/ref=sr_1_4?s=books&ie=UTF8&qid=1533055810&sr=1-4&keywords=psicometria
+
+https://www.amazon.com.mx/Medici%C3%B3n-ciencias-sociales-Francisco-Ponsoda-ebook/dp/B00PK20CR4/ref=sr_1_fkmr0_1?s=books&ie=UTF8&qid=1533055851&sr=1-1-fkmr0&keywords=psicometria+abad+ponsoda

@@ -1,8 +1,6 @@
 ##############################################
 ##############################################
 # Cronbach's alpha
-# Code by José Luis Baroja
-# Tuned and commented by Adriana
 rm(list=ls())
 ###############################################
 
@@ -19,10 +17,10 @@ dta <- array(dim=c(n_obs,K))      #Empty array to hold all k's and n_obs
 ######## Fixing the probabilities of getting a specific response within a 4-level scale
 for(ii in 1:K){                        # iterate to fill BY ITEM
   if(ii %in% c(5,10,15)){                     # these are "strange" items
-    prob_vector <- c(.1,.1,.4,.4)           # with lower probabilities
+    prob_vector <- c(.2,.25,.45,.1)           # with lower probabilities
     prob_abnormal <- prob_vector
   }else{
-    prob_vector <- c(.4,.4,.1,.1) # 4 levels per item      #probabilities for 'regular' items
+    prob_vector <- c(.1,.5,.25,.05)  #probabilities for 'regular' items
     prob_normal <- prob_vector
   }
   dta[,ii] <- sample(c(1:4),size=n_obs,replace = T,prob = prob_vector)
@@ -58,44 +56,5 @@ axis(1, c(0.65,1.88,3.1,4.25), c("1", "2", "3", "4"))
 library('psych')             #Library for personality, psychometric theory and experimental psychology
 
 # Cronbach's alpha from the package
-alpha_psych <- alpha(dta)    #We run a Cronbach's alpha on our data set (all responses)
-
-# Cronbach's alpha from scratch 1
-var_x <- var(scores)   #Variance of the total scores
-var_y <- apply(dta,MARGIN=2,FUN=var)  #Variance of the responses given by item
-                # MARGIN = 1 for rows ; 2 for columns ; c(1,2) for both
-alpha_oldschl_1 <- (K/(K-1))*(1-(sum(var_y)/var_x))       
-
-# Cronbach's alpha from scratch 2
-cor_mat <- cor(dta) # correlation matrix based on our data
-cov_mat <- cov(dta) # covariance matrix based on our data
-
-non_redundant_cor <- NULL   #Empty arrays to be filled with a for(){}
-non_redundant_cov <- NULL
-
-for(ci in 1:(nrow(cor_mat)-1)){       #For each row-1 in the cor_mat (a.k.a. Items-1)
-  #We will only take into consideration the Covariances and Correlations that are NOT redundant
-  #by taking just the values from one side of the diagonal
-  non_redundant_cor <- append(non_redundant_cor,       #We fill the non_redundant_cor object
-                              cor_mat[ci,(ci+1):K])    #With each element on one side of the main diagonal
-                               
-  non_redundant_cov <- append(non_redundant_cov,
-                              cov_mat[ci,(ci+1):K])
-}
-
-#We apply another 2 different formulas to get a Cronbach's alpha
-alpha_oldschl_2 <- (K*mean(non_redundant_cov))/(mean(var_y)+(K-1)*mean(non_redundant_cov))
-alpha_std_oldschl <- (K*mean(non_redundant_cor))/(1+(K-1)*mean(non_redundant_cor))
-
-########################################################
-# We print our results
-########################################################
-#We print all our computated alphas
-print(paste("(R) Raw alpha: ", round(alpha_psych$total$raw_alpha,5))) # "Normal" (?) alpha
-print(paste("(R) Standarized alpha; ", round(alpha_psych$total$std.alpha,5))) # Standarized alpha
-print(paste("Variance-based formula: ", round(alpha_oldschl_1,5)))
-print(paste("Covariance-based formula: ", round(alpha_oldschl_2,5)))
-print(paste("Correlation-based formula; ", round(alpha_std_oldschl,5)))
-##################################################################
-#R automatically generated output
+alpha_psych <- alpha(dta, check.keys=TRUE)    #We run a Cronbach's alpha on our data set (all responses)
 alpha_psych

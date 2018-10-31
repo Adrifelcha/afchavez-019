@@ -75,7 +75,7 @@ abline(v = 0.861); abline(h = (max(tabla.proba.4items$`Log (V)`)))
 
  # data <- read.csv("D1_scored.csv")# datos dicotómicos
  
-raw_resp <- read.csv("D1_resp.csv") # respuestas originales
+raw_resp <- read.csv("D:/afchavez/Desktop/Adrifelcha_PsicometriaYEvaluacion/Curso_Ram&Irwin/Sintaxis R/D1_resp.csv") # respuestas originales
 
 key <- c(1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1)
 

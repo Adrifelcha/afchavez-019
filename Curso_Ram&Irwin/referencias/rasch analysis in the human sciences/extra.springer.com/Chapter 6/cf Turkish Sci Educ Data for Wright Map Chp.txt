@@ -1,0 +1,103 @@
+&INST
+Title= "Turkish Sci Educ Data.xls"
+; Excel file created or last modified: 9/18/2011 7:09:22 AM
+; 2011_Boone
+;     Excel Cases processed = 75
+; Excel Variables processed = 16
+ITEM1 = 1 ; Starting column of item responses
+NI = 10 ; Number of items
+NAME1 = 12 ; Starting column for person label in data record
+NAMLEN = 3 ; Length of person label
+XWIDE = 1 ; Matches the widest data value observed
+; GROUPS = 0 ; Partial Credit model: in case items have different rating scales
+CODES = "01234" ; matches the data
+TOTALSCORE = Yes ; Include extreme responses in reported scores
+; Person Label variables: columns in label: columns in line
+@STID = 1E2 ; $C12W2
+&END ; Item labels follow: columns in label
+t2-Sci.LessonsAreFun; Item 1 : 1-1
+t6-IKikeSci.Lessons; Item 2 : 2-2
+t10-SchlShouldHaveMoreSciLessonsEachWeek; Item 3 : 3-3
+t13-SciLessonsDoNotBoreMe; Item 4 : 4-4
+t17-SciIsOneOfTheMostInterestingSchoolSubjects; Item 5 : 5-5
+t19-SciLessonsAreNotAWasteOfTime; Item 6 : 6-6
+t23-IReallyEnjoySciLessons; Item 7 : 7-7
+t26-TheMaterialCoveredInSciLessonsIsInteresting; Item 8 : 8-8
+t29-ILookForwardToSciLessons ; Item 9 : 9-9
+t31-IWouldNotEnjoySchoolMoreIfThereWereNoSciLessons; Item 10 : 10-10
+END NAMES
+0404240214  1
+0323331433  2
+1424140404  3
+1414131333  4
+0404040414  5
+1434141414  6
+2433232224  7
+1423141323  8
+1333132232  9
+0231022232 10
+3123332232 11
+0404040424 12
+2132312110 13
+1434141424 14
+1423141314 15
+0314240314 16
+0404040414 17
+0423141223 18
+1333132232 19
+0443142232 20
+2311132323 21
+1323141413 22
+1304040323 23
+1241232232 24
+0423231322 25
+1434141313 26
+1133043433 27
+0313141314 28
+1424141323 29
+2424440014 30
+1324240434 31
+0424140404 32
+0423140214 33
+1333141313 34
+4333041323 35
+0414040404 36
+0414040414 37
+1323141322 38
+1313141414 39
+1413141323 40
+0424140403 41
+0424140413 42
+1303231323 43
+2323141223 44
+2343343333 45
+0414040304 46
+04141414   47
+0413130314 48
+0313341314 49
+2333231232 50
+0404040404 51
+2323231323 52
+1323241423 53
+2233042314 54
+2213232420 55
+4042424042 56
+3132232113 57
+0420141324 58
+0414040403 59
+1303132312 60
+2222131343 61
+1313340334 62
+43023122 2 63
+1313141414 64
+1232343324 65
+ 323232322 66
+0404044433 67
+1414141311 68
+1323331313 69
+4040013330 70
+2212242232 71
+2333131323 72
+2222333233 73
+0404040414 74
+2242142234 75

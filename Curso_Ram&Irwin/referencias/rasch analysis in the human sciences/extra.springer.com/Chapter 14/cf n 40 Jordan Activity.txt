@@ -1,0 +1,62 @@
+ &INST
+Title= "n 40 Fall 2011 Excel Jordan Data for Activity.xls"
+ITEM1 = 1 ; Starting column of item responses
+NI = 8 ; Number of items
+NAME1 = 10 ; Starting column for person label in data record
+NAMLEN = 10 ; Length of person label
+XWIDE = 1 ; Matches the widest data value observed
+CODES = "12345 " ; matches the data
+TOTALSCORE = Yes ; Include extreme responses in reported scores
+@id = 1E2 ; $C10W2
+@gender = 4E4 ; $C13W1
+@gpa = 6E9 ; $C15W4
+&END ; Item labels follow: columns in label
+C1 I conduct the procedures for my investigation.
+C2 The investigation is NOT conducted by my teacher in front of the class.
+C3 I am actively participating in investigations as they are conducted
+C4 I have a role as investigations are conducted.
+D1 I determine which data to collect.
+D2 I take detailed notes during each investigation along with other data I collect.  
+D3 I understand why the data I am collecting is important.
+D4 I decide when data should be collected in an investigation
+END NAMES
+55554455  1 2  2.8
+55555454  2 2 2.45
+34343334  3 2 3.79
+45544544  4 2  3.7
+34455453  5 1 3.45
+54444433  6 2 2.88
+54454433  7 2  3.5
+54454554  8 2 3.33
+55443433  9 2 3.55
+45553455 10 2 3.26
+44545545 11 1  3.5
+44444444 12 1  2.6
+44444444 13 1 3.58
+45544555 14 2    3
+45243135 15 1 3.46
+43443434 16 1 2.67
+43544343 17 2 2.97
+15531342 18 1 3.75
+45544353 19 1 3.65
+45553333 20 2 3.38
+55352322 21 2 2.94
+44444332 22
+55545453 23 2 2.33
+45543343 24 1 3.21
+33323222 25 1  2.4
+44444444 26 2  3.1
+32333222 27 1 3.17
+55544353 28 1  2.9
+534542 4 29 2 2.86
+25444333 30 1 3.59
+42445435 31 1  2.3
+24313333 32 2 3.18
+43554355 33 2 2.94
+43454354 34 1  2.9
+41353143 35 1 3.75
+33344254 36 1  2.8
+35554543 37 2 2.61
+44444444 38 2 2.78
+44444444 39 2 2.97
+45454545 40 1 2.35

@@ -1,0 +1,95 @@
+; Group Project Data File for Facets
+Title = 
+Facets = 3		; three facets: judges, examinees, items
+Inter-rater = 1	; facet 1 (judges) is the rater facet
+Positive = 2	; examinees
+Non-centered = 1	; examinees and items are centered on 0 logits, judges are allowed to float
+Model = ?B,?B,?,R9	; judges, examinees and items produce ratings with maximum rating of 5.
+    ; A bias/interaction analysis, ?B,?B will report interactions between facets 1 and 2
+Labels =
+1,    ; name of first facet: judges
+78193=Newspaper A 
+78193=Newspaper A
+78193=Newspaper A
+78193=Newspaper A
+78193=Newspaper A
+84761=Newspaper B
+84761=Newspaper B
+84761=Newspaper B
+84761=Newspaper B
+84761=Newspaper B
+82290=Newspaper C
+82290=Newspaper C
+82290=Newspaper C
+82290=Newspaper C
+82290=Newspaper C
+98391=Newspaper D
+98391=Newspaper D
+98391=Newspaper D
+98391=Newspaper D
+98391=Newspaper D
+26902=Newspaper E
+26902=Newspaper E
+26902=Newspaper E
+26902=Newspaper E
+26902=Newspaper E
+*
+2, Teams   ; name of second facet: the teams
+ 1 =Big Maulers	        ; 
+ 2 =Mundane Unicorns		; 
+ 3 =Sharks      ; 
+ 4 =Digital Demons 		; 
+ 5 =Galactic Pride  		; 
+*
+3, Traits		; 
+ 1 = Overrall Offense 		; 
+ 2 = Overall Defence 		; 
+ 3 = Passing 		; 
+ 4 = Heading 		; 
+ 5 = Dribbling 
+ 6 = Shooting
+ 7 = Kicking
+ 8 = Moves
+ 9 = Trapping
+ 10 = Receiving
+ 11 = Control
+ 12 = Tactics
+ 13 = Fitness
+ 14 = Corner
+ 15 = Throw Ins
+ 16 = Goal Kick
+ 17 = Coaching
+ 18 = Overall Strength of Team
+ 19 = Homefield Advantage
+ 20 = Strength Away
+ 21 = Team Leadership
+ 22 = Striker
+ 23 = Goalkeeper
+ 24 = Forward
+*
+Data=
+78193,1,1-24,5,5,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+78193,2,1-24,4,5,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+78193,3,1-24,4,5,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+78193,4,1-24,5,5,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+78193,5,1-24,3,3,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+84761,1,1-24,X,2,2,2,2,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+84761,2,1-24,X,3,3,3,4,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+84761,3,1-24,X,2,1,1,2,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+84761,4,1-24,X,5,5,5,4,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+84761,5,1-24,X,1,1,1,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+82290,1,1-24,X,X,X,5,4,5,4,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+82290,2,1-24,X,X,X,4,3,5,5,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+82290,3,1-24,x,x,x,1,1,2,3,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+82290,4,1-24,X,X,X,5,5,5,3,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+82290,5,1-24,X,X,X,2,1,2,3,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+98391,1,1-24,X,X,X,X,X,5,4,4,5,5,5,4,X,X,X,X,X,X,X,X,X,X,X,X
+98391,2,1-24,X,X,X,X,X,5,5,4,3,5,4,4,X,X,X,X,X,X,X,X,X,X,X,X
+98391,3,1-24,X,X,X,X,X,5,5,4,4,5,4,2,X,X,X,X,X,X,X,X,X,X,X,X
+98391,4,1-24,X,X,X,X,X,4,5,4,3,3,3,3,4,4,5,4,5,X,X,X,X,X,X,X
+98391,5,1-24,X,X,X,X,X,X,X,X,X,X,3,1,1,1,1,1,1,X,X,X,X,X,X,X
+26902,1,1-24,X,X,X,X,X,X,X,X,X,X,5,4,4,4,4,3,4,X,X,X,X,X,X,X
+26902,2,1-24,X,X,X,X,X,X,X,X,X,X,4,4,4,4,4,3,4,X,X,X,X,X,X,X
+26902,3,1-24,X,X,X,X,X,X,X,X,X,X,2,1,1,2,2,2,1,X,X,X,X,X,X,X
+26902,4,1-24,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,5,5,4,4,5,4,4,2,3
+26902,5,1-24,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,1,1,2,1,1,2,2,1,3

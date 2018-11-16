@@ -11,25 +11,11 @@ Datos <- read.csv("Tarea1_Datos.csv")    #Datos a trabajar
 ############## Beta (IRT) vs Dificultad p (TTC)
 ###################################################
 P <- NULL
-B <- NULL
 Items <- c(1:12)
 
 for(a in 1:length(Items)){
 P[a] <- mean(Datos[,2+a])  
 }
-
-p1 <- mean(Datos$Item_1)
-p2 <- mean(Datos$Item_2)
-p3 <- mean(Datos$Item_3)
-p4 <- mean(Datos$Item_4)
-p5 <- mean(Datos$Item_5)
-p6 <- mean(Datos$Item_6)
-p7 <- mean(Datos$Item_7)
-p8 <- mean(Datos$Item_8)
-p9 <- mean(Datos$Item_9)
-p10 <- mean(Datos$Item_10)
-Dificultad_TCT <- c(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
-
 
 Datos$Id <- NULL
 Datos$Sexo <- NULL
@@ -45,6 +31,9 @@ rep<-cbind(rep_coef,b)
 rep <- subset(rep, select=5); round(rep,3)
 
 
+ Comparacion <- matrix(data=c(P,round(b, 3)),ncol=2)     
+ colnames(Comparacion) <- c("p", "Beta")
+ Comparacion
 
 
 

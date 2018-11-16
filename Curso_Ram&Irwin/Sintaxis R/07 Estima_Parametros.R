@@ -37,7 +37,7 @@ hist(person$theta.table$`Person Parameter`)
 
 # Marginal ML
 library(TAM)
-fit.MML <- TAM::tam.mml(resp=data)
+fit.MML <- TAM::tam.mml(resp=data, constraint = TRUE)
 wle1 <- TAM::tam.wle( mod1 ) # alternativa
 
 # Wright map

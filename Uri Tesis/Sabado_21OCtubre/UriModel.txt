@@ -1,0 +1,16 @@
+# Logistic psychophysical model for single subject with informative priors
+# and trial-level contamination
+      model{
+      # Data
+      for (trial in 1:nTrials){
+	y[trial] ~ dbern(theta[trial,z[trial]+1])      
+	z[trial] ~ dbern(phi)      
+	theta[trial,1] = 1/(1+exp(-(stimulus[trial]-standard-alpha)/beta))
+	theta[trial,2] ~ dbern(psi)
+       }
+      # Priors
+	phi ~ dunif(0,1)      
+	alpha ~ dnorm(0,1/50^2)
+	beta ~ dnorm(0,.1/100^2)T(0,)
+	psi ~ dunif(0,1)
+      }

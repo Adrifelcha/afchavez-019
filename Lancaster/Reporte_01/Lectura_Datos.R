@@ -9,7 +9,7 @@
 
 ####################################################
 #Cargamos librería de trabajo, las bases y los datos
-setwd("C:/Users/Adriana/Desktop/Adrifelcha_PsicometriaYEvaluacion/Lancaster/Reporte_01")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Lancaster/Reporte_01")
 
 Datos <- read.csv("Respuestas.csv")     #Archivo con las respuestas de los estudiantes
 Datos$NUMERO <- NULL
@@ -120,6 +120,44 @@ for(i in 1:length(seq(0,25,1))){
   }else{
     text(i+0.4, valor_label[i]+0.35, paste(valor_label[i]), cex=1.2, f=2)
   }}
+
+
+Second_FB <- Score_FB+26
+valor_label <- NULL
+hist(c(Score_FA,Second_FB),ann=F, breaks=seq(-0.1,50,1), axes=F, xlim=c(0,50), col="lightgoldenrod4", ylim=c(0,16),
+     panel.first = 
+       c(lines(c(0,1),c(1,1),lwd=2,lty=3, col="black"),lines(c(0,1),c(0.125,0.125),lwd=2,lty=3, col="black"),
+         lines(c(0,1),c(.25,.25),lwd=2,lty=3, col="black"),lines(c(0,1),c(.375,.375),lwd=2,lty=3, col="black"),
+         lines(c(0,1),c(.5,.5),lwd=2,lty=3, col="black"),lines(c(0,1),c(.625,.625),lwd=2,lty=3, col="black"),
+         lines(c(0,1),c(.75,.75),lwd=2,lty=3, col="black"),lines(c(0,1),c(.875,.875),lwd=2,lty=3, col="black")))
+lines(c(0.9,0.9),c(0,16),col='black', lty=4,lwd=2) 
+text(45.5, 15, "Forma 2", f=2, col="lightgoldenrod4", cex=2)
+text(5.5, 15, "Forma 1", f=2, col="lightgoldenrod3", cex=2)
+lines(c(25.9,25.9),c(0,16),col='black', lty=1,lwd=3) 
+lines(c(26.9,26.9),c(0,16),col='black', lty=4,lwd=2) 
+text(26.3,10, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
+lines(c(30.1,60),c(120,120),lty=1,lwd=4, col="lightgoldenrod2") 
+lines(c(30.1,0),c(120,120),lty=1,lwd=4, col="lightgoldenrod1") 
+text(6.5,11.5, paste("Respondieron la Forma A:"), f=2)
+text(6,11, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
+text(6,10, paste("Promedio: 16.14"), f=2)
+text(46,11.5, paste("Respondieron la Forma B:"), f=2)
+text(46,11, paste(length(which(is.na(Dicot[,45])==FALSE)), " estudiantes en total"), f=2)
+text(0.3,10, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
+text(46,10, paste("Promedio: 10.18"), f=2)
+mtext(side=1, text = "Puntuaciones", line=2.8, cex=1.3, f=2)
+mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
+mtext(side=3, text = "Puntuaciones - Formas A y B", line=1.5, cex=2, f=2)
+mtext(side=3, text = "(Todos los estudiantes)", line=0.5, cex=0.8, f=2)
+axis(2,at=seq(0,16,2),labels=seq(0,16,2),las=1, line=-1.2)
+axis(1,at=seq(0.4,51.4,1),labels=c(c(0:25),c(0:25)), line=-0.5, f=2)
+
+
+
+
+
+
+
 
 
 Completo <- 0
@@ -308,6 +346,39 @@ for(g in sort(unique(Datos$GRADO))){
   mtext(side=3, text = paste("(",g,"año)"), line=0.2, cex=1.2, f=2)
   axis(2,at=seq(0,11,1),labels=seq(0,11,1),las=1, line=-1.1)
   axis(1,at=c(0.4:50.4),labels=c(0:50), line=-0.5, f=2)
+  
+  Second_FB <- Score_FB+26
+  valor_label <- NULL
+  hist(c(Score_FA[Datos$GRADO==g],Second_FB[Datos$GRADO==g]),ann=F, breaks=seq(-0.1,50,1), axes=F, xlim=c(0,50), col="lightgoldenrod4", ylim=c(0,11),
+       panel.first = 
+         c(lines(c(0,1),c(1,1),lwd=2,lty=3, col="black"),lines(c(0,1),c(0.0909,0.0909),lwd=2,lty=3, col="black"),
+           lines(c(0,1),c(.1818,.1818),lwd=2,lty=3, col="black"),lines(c(0,1),c(.2727,.2727),lwd=2,lty=3, col="black"),
+           lines(c(0,1),c(.3636,.3636),lwd=2,lty=3, col="black"),lines(c(0,1),c(.4545,.4545),lwd=2,lty=3, col="black"),
+           lines(c(0,1),c(.5454,.5454),lwd=2,lty=3, col="black"),lines(c(0,1),c(.6363,.6363),lwd=2,lty=3, col="black"),
+           lines(c(0,1),c(.7272,.7272),lwd=2,lty=3, col="black"),lines(c(0,1),c(.8181,.8181),lwd=2,lty=3, col="black"),
+           lines(c(0,1),c(.909,.909),lwd=2,lty=3, col="black")))
+  lines(c(0.9,0.9),c(0,16),col='black', lty=4,lwd=2) 
+  text(45.5, 15, "Forma 2", f=2, col="lightgoldenrod4", cex=2)
+  text(5.5, 15, "Forma 1", f=2, col="lightgoldenrod3", cex=2)
+  lines(c(25.9,25.9),c(0,16),col='black', lty=1,lwd=3) 
+  lines(c(26.9,26.9),c(0,16),col='black', lty=4,lwd=2) 
+  text(26.3,5, paste(length(which(is.na(Dicot[(Datos$GRADO==g)==TRUE,40])==TRUE)), " estudiante(s) no asistieron"), srt=90, f=2)
+  lines(c(30.1,60),c(120,120),lty=1,lwd=4, col="lightgoldenrod2") 
+  lines(c(30.1,0),c(120,120),lty=1,lwd=4, col="lightgoldenrod1") 
+  text(6.5,8.8, paste("Respondieron la Forma A:"), f=2)
+  text(6,8.3, paste(length(which(is.na(Dicot[(Datos$GRADO==g)==TRUE,15])==FALSE)), " estudiantes de ",g ), f=2)
+  text(6,6.8, paste("Promedio: ",round(mean_B[w],2)), f=2)
+  text(46,8.8, paste("Respondieron la Forma B:"), f=2)
+  text(46,8.3, paste(length(which(is.na(Dicot[(Datos$GRADO==g)==TRUE,40])==FALSE)), " estudiantes de ",g ), f=2)
+  text(0.3,5, paste(length(which(is.na(Dicot[(Datos$GRADO==g)==TRUE,15])==TRUE)), " estudiante(s) no asistieron"), srt=90, f=2)
+  text(46,6.8, paste("Promedio: ",round(mean_B[w],2)), f=2)
+  mtext(side=1, text = "Puntuaciones", line=2.8, cex=1.3, f=2)
+  mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
+  mtext(side=3, text = "Puntuaciones - Formas A y B", line=1.5, cex=2, f=2)
+  mtext(side=3, text = paste("(",g,"año)"), line=0.2, cex=1.2, f=2)
+  axis(2,at=seq(0,11,1),labels=seq(0,11,1),las=1, line=-1.2)
+  axis(1,at=seq(0.4,51.4,1),labels=c(c(0:25),c(0:25)), line=-0.5, f=2)
+  
   
   Completo <- 0
   Total_Completo <- NULL

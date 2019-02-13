@@ -1,0 +1,12 @@
+La versión BETA del portal interactivo se aloja en :  https://adrifelcha.github.io/Adrifelcha/
+
+Se enfatiza que se trata de la versión EN DESARROLLO del portal en línea para visualizar los datos
+y resultados obtenidos en los diversos proyectos realizados por la RIMEDIE
+
+Este sitio comenzó a elaborarse el 9 de febrero, a raíz de que el Dr Guaner compartiera el código para
+la elaboración de Heatmaps (mismos que se pretende puedan ser consultados en línea en el portal)
+El texto introductorio fue recuperado de la versión actual de la infografía. 
+
+De momento, la página se encuentra alojada en mi repositorio personal de GitHub, en cuanto se abra un
+perfil de Organización en GitHub, se puede mudar a un repositorio a nombre de la RIMEDIE sin problema
+alguno :)

@@ -4,7 +4,7 @@
 ##########################################################################################
 rm(list=ls())
 library(foreign)
-setwd("C:/Users/Alejandro/Desktop/Replica Fel")
+setwd("C:/Users/sandra/Desktop/afchavez-019/RIMEDIE/Codigos_Guaner/Replica Fel")
 ##########################################################################################
 #leer aqui directamente
 m.dat.q<-read.table("m_dat_q0.txt",header = T)

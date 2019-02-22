@@ -2,8 +2,8 @@
 # Codigo Prueba Paquete CDM
 #############################################################
 rm(list=ls())                       #Limpiamos variables
-setwd("C:/Users/sandra/Desktop/afchavez-019/RIMEDIE/DINA Tutorial/Codigo")
-library(CDM)
+library("CDM")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/DINA Tutorial/Codigo")
 
 Datos <- read.table("m_dat_q0.txt",header = T)
 Respuestas <- read.table("m_dat_q0.txt",header = T)       #Archivo con matriz ParticipantexItem que señala con 0 y 1 los aciertos y errores
@@ -42,9 +42,16 @@ DINA_1 <- din(R_E1, Q_E1, skillclasses=NULL,
               wgt.overrelax=0, wgtest.overrelax=FALSE, param.history=FALSE,
               seed=125, progress=TRUE, guess.min=0, slip.min=0, guess.max=1, slip.max=1)
 
+d1 <- din(R_E1, q.matr = Q_E1, rule = "DINA",
+          conv.crit = 0.01, maxit = 500, progress = TRUE)
+
 write.csv(DINA_1$item, "E1_FEM_itemparameters.csv")
 write.csv(DINA_1$skill.patt, "E1_FEM_skilpatterns.csv")
 write.csv(data.frame(DINA_1$pattern), "E1_FEM_postpattern.csv",row.names = F)
+
+write.csv(d1$item, "e1_itempars_fem.csv")
+write.csv(d1$skill.patt, "e1_skilpatt_fem.csv")
+write.csv(data.frame(d1$pattern), "e1_fempostpattern.csv",row.names = F)
 
 DINA_2 <- din(R_E2, Q_E2, skillclasses=NULL,
               conv.crit=0.001, dev.crit=10^(-2), maxit=500,
@@ -55,9 +62,16 @@ DINA_2 <- din(R_E2, Q_E2, skillclasses=NULL,
               wgt.overrelax=0, wgtest.overrelax=FALSE, param.history=FALSE,
               seed=125, progress=TRUE, guess.min=0, slip.min=0, guess.max=1, slip.max=1)
 
+d2 <- din(R_E2, q.matr = Q_E2, rule = "DINA",
+          conv.crit = 0.01, maxit = 500, progress = TRUE)
+
 write.csv(DINA_2$item, "E2_MI_itemparameters.csv")
 write.csv(DINA_2$skill.patt, "E2_MI_skilpatterns.csv")
 write.csv(data.frame(DINA_2$pattern), "E2_MI_postpattern.csv",row.names = F)
+
+write.csv(d2$item, "e2_itempars_min.csv")
+write.csv(d2$skill.patt, "e2_skilpatt_min.csv")
+write.csv(data.frame(d2$pattern), "e2_minpostpattern.csv", row.names = F)
 
 
 DINA_3 <- din(R_E3, Q_E3, skillclasses=NULL,
@@ -72,6 +86,14 @@ DINA_3 <- din(R_E3, Q_E3, skillclasses=NULL,
 write.csv(DINA_3$item, "E3_SNPA_itemparameters.csv")
 write.csv(DINA_3$skill.patt, "E3_SNPA_skilpatterns.csv")
 write.csv(data.frame(DINA_3$pattern), "E3_SNPA_postpattern.csv",row.names = F)
+
+
+d3 <- din(R_E3, q.matr = Q_E3, rule = "DINA",
+          conv.crit = 0.01, maxit = 500, progress = TRUE)
+
+write.csv(d3$item, "e3_itempars_spa.csv")
+write.csv(d3$skill.patt, "e3_skilpatt_spa.csv")
+write.csv(data.frame(d3$pattern), "e3_spapostpattern.csv",row.names = F)
 
 ##########################
 DINA_1$skill.patt #El grado en que la MUESTRA domina cada habilidad

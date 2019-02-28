@@ -50,7 +50,7 @@ barplot(rev(skill_e2_Lancaster), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1),
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
+mtext(side=3, text = "Eje 2: Manejo de la Información", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Todos los estudiantes)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,10,1))){
@@ -86,7 +86,7 @@ barplot(rev(skill_e2_Sexto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), spa
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
+mtext(side=3, text = "Eje 2: Manejo de la Información", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Estudiantes de Sexto año)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,10,1))){
@@ -120,7 +120,7 @@ barplot(rev(skill_e2_Quinto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), sp
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
+mtext(side=3, text = "Eje 2: Manejo de la Información", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Estudiantes de Quinto año)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,10,1))){

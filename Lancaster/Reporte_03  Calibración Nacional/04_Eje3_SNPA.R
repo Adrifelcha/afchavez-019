@@ -16,32 +16,32 @@ Grupo_6B <- which(datos$ID_ENT=="6B")
 
 ############# Estimaciones NACIONALES por habilidad  ################################
 #####################################################################################
-skill_total <- read.csv("E2_MI_skilpatterns_Fel.csv")
-#skill_total <- read.csv("")
+#skill_total <- read.csv("E3_SNPA_skilpatterns_Fel.csv")
+skill_total <- read.csv("e3_skilpatt_spa_DINA-Guaner.csv")
 skill_nacional <- skill_total$skill.prob
 
 ############ Estimaciones por SUJETO
-pattern_individual <- read.csv("E2_MI_postpattern_Fel.csv")
-#pattern_individual <- read.csv("e2_minpostpattern_DINA-Guaner.csv")
-pattern_individual <- pattern_individual[,6:15]
+#pattern_individual <- read.csv("E3_SNPA_postpattern_Fel.csv")
+pattern_individual <- read.csv("e3_spapostpattern_DINA-Guaner.csv")
+pattern_individual <- pattern_individual[,6:18]
 
 ############ Estimación paramétrica del modelo
-parameter_estimation <- read.csv("E2_MI_itemparameters_Fel.csv")
-#parameter_estimation <- read.csv("e2_itempars_min_DINA-Guaner.csv")     #Just in case
+#parameter_estimation <- read.csv("E3_SNPA_itemparameters_Fel.csv")
+parameter_estimation <- read.csv("e3_itempars_spa_DINA-Guaner.csv")     #Just in case
 
 #####################################################################################
 
-skill_e2_Lancaster <- NULL
-for(attribute in 1:10){
-  skill_e2_Lancaster[attribute] <- mean(pattern_individual[Lancaster,attribute])
+skill_e3_Lancaster <- NULL
+for(attribute in 1:13){
+  skill_e3_Lancaster[attribute] <- mean(pattern_individual[Lancaster,attribute])
 }
 
 
-col_sk2 <- ifelse(skill_e2_Lancaster>0.5, "lightsalmon1", "lightsalmon4")
-q2 <- c("H201","H202","H203","H204","H205","H206","H207","H208","H209","H210")
-valor_label <- 10.6
-valor_dot <- 10.6
-barplot(rev(skill_e2_Lancaster), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk2),
+col_sk3 <- ifelse(skill_e3_Lancaster>0.5, "palegreen3", "palegreen4")
+q3 <- c("H301","H302","H303","H304","H305","H306","H307","H308","H309","H310","H311","H312", "H313")
+valor_label <- 13.9
+valor_dot <- 13.9
+barplot(rev(skill_e3_Lancaster), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk3),
         panel.first = 
           c(lines(c(0.1,0.1),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.2,0.2),c(0,1),lwd=1,lty=3, col="black"),
             lines(c(0.3,0.3),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.4,0.4),c(0,1),lwd=1,lty=3, col="black"),
@@ -50,15 +50,15 @@ barplot(rev(skill_e2_Lancaster), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1),
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
+mtext(side=3, text = "Eje 3: Sentido Numérico y Pensamiento Algebraico", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Todos los estudiantes)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
-for(i in 1:length(seq(1,10,1))){
-  text(0.04,valor_label, paste(q2[i]), f=2, cex=1.2)
-  col_comp <- ifelse(skill_e2_Lancaster[i]>skill_nacional[i], "darkblue", "darkred")
+for(i in 1:length(seq(1,13,1))){
+  text(0.04,valor_label, paste(q3[i]), f=2, cex=1.2)
+  col_comp <- ifelse(skill_e3_Lancaster[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
   text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e2_Lancaster[i]+.06,valor_label, paste(round(skill_e2_Lancaster[i],3)), f=2, cex=1.2)
+  text(skill_e3_Lancaster[i]+.06,valor_label, paste(round(skill_e3_Lancaster[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 
@@ -68,16 +68,16 @@ for(i in 1:length(seq(1,10,1))){
 
 
 
-skill_e2_Sexto <- NULL
-for(attribute in 1:10){
-  skill_e2_Sexto[attribute] <- mean(pattern_individual[Sexto,attribute])
+skill_e3_Sexto <- NULL
+for(attribute in 1:13){
+  skill_e3_Sexto[attribute] <- mean(pattern_individual[Sexto,attribute])
 }
 
-col_sk2 <- ifelse(skill_e2_Sexto>0.5, "lightsalmon1", "lightsalmon4")
-q2 <- c("H201","H202","H203","H204","H205","H206","H207","H208","H209","H210")
-valor_label <- 10.6
-valor_dot <- 10.6
-barplot(rev(skill_e2_Sexto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk2),
+col_sk3 <- ifelse(skill_e3_Sexto>0.5, "palegreen3", "palegreen4")
+q3 <- c("H301","H302","H303","H304","H305","H306","H307","H308","H309","H310","H311","H312", "H313")
+valor_label <- 13.9
+valor_dot <- 13.9
+barplot(rev(skill_e3_Sexto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk3),
         panel.first = 
           c(lines(c(0.1,0.1),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.2,0.2),c(0,1),lwd=1,lty=3, col="black"),
             lines(c(0.3,0.3),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.4,0.4),c(0,1),lwd=1,lty=3, col="black"),
@@ -86,15 +86,15 @@ barplot(rev(skill_e2_Sexto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), spa
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
-mtext(side=3, text = "(Estudiantes de Sexto año)", line=0.5, cex=1.1, f=2)
+mtext(side=3, text = "Eje 3: Sentido Numérico y Pensamiento Algebraico", line=1.5, cex=2, f=2)
+mtext(side=3, text = "(Estudiantes de Sexto)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
-for(i in 1:length(seq(1,10,1))){
-  text(0.04,valor_label, paste(q2[i]), f=2, cex=1.2)
-  col_comp <- ifelse(skill_e2_Sexto[i]>skill_nacional[i], "darkblue", "darkred")
+for(i in 1:length(seq(1,13,1))){
+  text(0.04,valor_label, paste(q3[i]), f=2, cex=1.2)
+  col_comp <- ifelse(skill_e3_Sexto[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
   text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e2_Sexto[i]+.06,valor_label, paste(round(skill_e2_Sexto[i],3)), f=2, cex=1.2)
+  text(skill_e3_Sexto[i]+.06,valor_label, paste(round(skill_e3_Sexto[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 
@@ -102,16 +102,16 @@ for(i in 1:length(seq(1,10,1))){
 
 
 
-skill_e2_Quinto <- NULL
-for(attribute in 1:10){
-  skill_e2_Quinto[attribute] <- mean(pattern_individual[Quinto,attribute])
+skill_e3_Quinto <- NULL
+for(attribute in 1:13){
+  skill_e3_Quinto[attribute] <- mean(pattern_individual[Quinto,attribute])
 }
 
-col_sk2 <- ifelse(skill_e2_Quinto>0.5, "lightsalmon1", "lightsalmon4")
-q2 <- c("H201","H202","H203","H204","H205","H206","H207","H208","H209","H210")
-valor_label <- 10.6
-valor_dot <- 10.6
-barplot(rev(skill_e2_Quinto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk2),
+col_sk3 <- ifelse(skill_e3_Quinto>0.5, "palegreen3", "palegreen4")
+q3 <- c("H301","H302","H303","H304","H305","H306","H307","H308","H309","H310","H311","H312", "H313")
+valor_label <- 13.9
+valor_dot <- 13.9
+barplot(rev(skill_e3_Quinto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), space=0.1, col=rev(col_sk3),
         panel.first = 
           c(lines(c(0.1,0.1),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.2,0.2),c(0,1),lwd=1,lty=3, col="black"),
             lines(c(0.3,0.3),c(0,1),lwd=1,lty=3, col="black"),lines(c(0.4,0.4),c(0,1),lwd=1,lty=3, col="black"),
@@ -120,15 +120,15 @@ barplot(rev(skill_e2_Quinto), horiz=TRUE, ann=FALSE, axes=FALSE, xlim=c(0,1), sp
             lines(c(0.9,0.9),c(0,1),lwd=1,lty=3, col="black"),lines(c(1,1),c(0,1),lwd=1,lty=3, col="black")))        
 mtext(side=1, text = "Dominio de la habilidad", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Habilidad", line=1, cex=1.8, f=2)
-mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
-mtext(side=3, text = "(Estudiantes de Quinto año)", line=0.5, cex=1.1, f=2)
+mtext(side=3, text = "Eje 3: Sentido Numérico y Pensamiento Algebraico", line=1.5, cex=2, f=2)
+mtext(side=3, text = "(Estudiantes de Quinto)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
-for(i in 1:length(seq(1,10,1))){
-  text(0.04,valor_label, paste(q2[i]), f=2, cex=1.2)
-  col_comp <- ifelse(skill_e2_Quinto[i]>skill_nacional[i], "darkblue", "darkred")
+for(i in 1:length(seq(1,13,1))){
+  text(0.04,valor_label, paste(q3[i]), f=2, cex=1.2)
+  col_comp <- ifelse(skill_e3_Quinto[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
   text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e2_Quinto[i]+.06,valor_label, paste(round(skill_e2_Quinto[i],3)), f=2, cex=1.2)
+  text(skill_e3_Quinto[i]+.06,valor_label, paste(round(skill_e3_Quinto[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 
@@ -138,22 +138,23 @@ for(i in 1:length(seq(1,10,1))){
 
 
 
-skill_e2_g5A <- NULL
-for(attribute in 1:10){
-  skill_e2_g5A[attribute] <- mean(pattern_individual[Grupo_5A,attribute])
+
+skill_e3_g5A <- NULL
+for(attribute in 1:13){
+  skill_e3_g5A[attribute] <- mean(pattern_individual[Grupo_5A,attribute])
 }
 
-skill_e2_g5B <- NULL
-for(attribute in 1:10){
-  skill_e2_g5B[attribute] <- mean(pattern_individual[Grupo_5B,attribute])
+skill_e3_g5B <- NULL
+for(attribute in 1:13){
+  skill_e3_g5B[attribute] <- mean(pattern_individual[Grupo_5B,attribute])
 }
 
-skill_e2_g6A <- NULL
-for(attribute in 1:10){
-  skill_e2_g6A[attribute] <- mean(pattern_individual[Grupo_6A,attribute])
+skill_e3_g6A <- NULL
+for(attribute in 1:13){
+  skill_e3_g6A[attribute] <- mean(pattern_individual[Grupo_6A,attribute])
 }
 
-skill_e2_g6B <- NULL
-for(attribute in 1:10){
-  skill_e2_g6B[attribute] <- mean(pattern_individual[Grupo_6B,attribute])
+skill_e3_g6B <- NULL
+for(attribute in 1:13){
+  skill_e3_g6B[attribute] <- mean(pattern_individual[Grupo_6B,attribute])
 }

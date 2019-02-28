@@ -16,20 +16,20 @@ Grupo_6B <- which(datos$ID_ENT=="6B")
 
 ############# Estimaciones NACIONALES por habilidad  ################################
 #####################################################################################
-#skill_total <- read.csv("E1_FEM_skilpatterns_Fel.csv")
-skill_total <- read.csv("e1_skilpatt_fem_DINA-Guaner.csv")
+skill_total <- read.csv("E1_FEM_skilpatterns_Fel.csv")
+#skill_total <- read.csv("e1_skilpatt_fem_DINA-Guaner.csv")
 skill_nacional <- skill_total$skill.prob
 skill_nacional <- skill_nacional[-8]     #Omitimos la información sobre el atributo 8, que ya no es evaluado al eliminar el item 22
 
 ############ Estimaciones por SUJETO
-#pattern_individual <- read.csv("E1_FEM_postpattern_Fel.csv")
-pattern_individual <- read.csv("e1_fempostpattern_DINA-Guaner.csv")
+pattern_individual <- read.csv("E1_FEM_postpattern_Fel.csv")
+#pattern_individual <- read.csv("e1_fempostpattern_DINA-Guaner.csv")
 pattern_individual$post.attr8 <- NULL   #Descartamos el atributo 8 porque al eliminar el item 22, dejó de ser evaluado por el test
 pattern_individual <- pattern_individual[,6:16]
 
 ############ Estimación paramétrica del modelo
-#parameter_estimation <- read.csv("E1_FEM_itemparameters_Fel.csv")
-parameter_estimation <- read.csv("e1_itempars_fem_DINA-Guaner.csv")     #Just in case
+parameter_estimation <- read.csv("E1_FEM_itemparameters_Fel.csv")
+#parameter_estimation <- read.csv("e1_itempars_fem_DINA-Guaner.csv")     #Just in case
 
 #####################################################################################
 
@@ -56,11 +56,11 @@ mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Todos los estudiantes)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,11,1))){
-  text(0.04,valor_label, paste(q1[i]), f=2, cex=1.2)
+  text(0.03,valor_label, paste(q1[i]), f=2, cex=1.2)
   col_comp <- ifelse(skill_e1_Lancaster[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
-  text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e1_Lancaster[i]+.06,valor_label, paste(round(skill_e1_Lancaster[i],3)), f=2, cex=1.2)
+  text(0.14,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
+  text(skill_e1_Lancaster[i]+.05,valor_label, paste(round(skill_e1_Lancaster[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 
@@ -92,11 +92,11 @@ mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Estudiantes de Sexto año)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,11,1))){
-  text(0.04,valor_label, paste(q1[i]), f=2, cex=1.2)
+  text(0.03,valor_label, paste(q1[i]), f=2, cex=1.2)
   col_comp <- ifelse(skill_e1_Sexto[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
-  text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e1_Sexto[i]+.06,valor_label, paste(round(skill_e1_Sexto[i],3)), f=2, cex=1.2)
+  text(0.14,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
+  text(skill_e1_Sexto[i]+.05,valor_label, paste(round(skill_e1_Sexto[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 
@@ -126,11 +126,11 @@ mtext(side=3, text = "Eje 1: Espacio, Forma y Medida", line=1.5, cex=2, f=2)
 mtext(side=3, text = "(Estudiantes de Quinto año)", line=0.5, cex=1.1, f=2)
 axis(1,at=seq(0,1,0.1),labels=seq(0,1,0.1), line=-0.5, f=2)
 for(i in 1:length(seq(1,11,1))){
-  text(0.04,valor_label, paste(q1[i]), f=2, cex=1.2)
+  text(0.03,valor_label, paste(q1[i]), f=2, cex=1.2)
   col_comp <- ifelse(skill_e1_Quinto[i]>skill_nacional[i], "darkblue", "darkred")
   points(skill_nacional[i],valor_dot, pch=3, cex=1.5, lwd=4, col=col_comp)
-  text(0.19,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
-  text(skill_e1_Quinto[i]+.06,valor_label, paste(round(skill_e1_Quinto[i],3)), f=2, cex=1.2)
+  text(0.14,valor_dot, paste("Media nacional: ", round(skill_nacional[i],3)), f=2, cex=0.8, col=col_comp)
+  text(skill_e1_Quinto[i]+.05,valor_label, paste(round(skill_e1_Quinto[i],3)), f=2, cex=1.2)
   valor_dot <- valor_dot - 1.1
   valor_label <- valor_label - 1.1}
 

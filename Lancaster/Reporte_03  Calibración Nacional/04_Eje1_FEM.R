@@ -16,20 +16,20 @@ Grupo_6B <- which(datos$ID_ENT=="6B")
 
 ############# Estimaciones NACIONALES por habilidad  ################################
 #####################################################################################
-skill_total <- read.csv("E1_FEM_skilpatterns_Fel.csv")
-#skill_total <- read.csv("e1_skilpatt_fem_DINA-Guaner.csv")
+#skill_total <- read.csv("E1_FEM_skilpatterns_Fel.csv")
+skill_total <- read.csv("e1_skilpatt_fem_DINA-Guaner.csv")
 skill_nacional <- skill_total$skill.prob
 skill_nacional <- skill_nacional[-8]     #Omitimos la información sobre el atributo 8, que ya no es evaluado al eliminar el item 22
 
 ############ Estimaciones por SUJETO
-pattern_individual <- read.csv("E1_FEM_postpattern_Fel.csv")
-#pattern_individual <- read.csv("e1_fempostpattern_DINA-Guaner.csv")
+#pattern_individual <- read.csv("E1_FEM_postpattern_Fel.csv")
+pattern_individual <- read.csv("e1_fempostpattern_DINA-Guaner.csv")
 pattern_individual$post.attr8 <- NULL   #Descartamos el atributo 8 porque al eliminar el item 22, dejó de ser evaluado por el test
 pattern_individual <- pattern_individual[,6:16]
 
 ############ Estimación paramétrica del modelo
-parameter_estimation <- read.csv("E1_FEM_itemparameters_Fel.csv")
-#parameter_estimation <- read.csv("e1_itempars_fem_DINA-Guaner.csv")     #Just in case
+#parameter_estimation <- read.csv("E1_FEM_itemparameters_Fel.csv")
+parameter_estimation <- read.csv("e1_itempars_fem_DINA-Guaner.csv")     #Just in case
 
 #####################################################################################
 

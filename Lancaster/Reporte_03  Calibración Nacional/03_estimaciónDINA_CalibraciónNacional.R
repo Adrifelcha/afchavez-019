@@ -1,21 +1,37 @@
 #############################################################
-# Codigo Prueba Paquete CDM
+# Codigo Para analizar los datos obtenidos por SCS
+# calibrando con la base nacional del ELSEN 2015
+# Codigo base elaborado por el Dr. Guaner Rojas Rojas
+# modificado por Adriana Felisa Chávez
+#
+#El item PMB02 se omite del análisis porque no fue bien aplicado
 #############################################################
 rm(list=ls())                       #Limpiamos variables
 library("CDM")
 setwd("C:/Users/Alejandro/Desktop/afchavez19/Lancaster/Reporte_03  Calibración Nacional")
 
+
+#Cargamos la base de ELSEN + 127 datos de Sandy SIN CONTAR el reactivo 22 (PMB02)
 datos <- read.csv("Datos_Nacionales_sin22_Sandy.csv")
 R_E1 <- datos[,c(c(1:8),c(26:33))]
 R_E2 <- datos[,c(c(9:14),c(34:38))]
 R_E3 <- datos[,c(c(15:25),c(39:49))]
 
-
+#Segmentamos la Matriz Q subida por el Dr. Guaner en tres sub-matrices Q
 qmat <- read.csv("MatrizQ_DrGuaner_sin22.csv")
 Q_E1 <- qmat[1:16,1:12] 
 Q_E2 <- qmat[17:27,1:10]
 Q_E3 <- qmat[28:49,1:13]
 
+
+#############################################
+# Se corren los modelos
+# Los objetos DINA con mayúsculas corresponden al código de Fel
+# Los objetos d1, d2 y d3 corresponden al codigo del Dr. Guaner
+# Por cada estimación se guardan:
+# Las estimaciones paramétricas (itemparameters)
+# El nivel de habilidad estimado para toda la muestra (skilpatterns)
+# Las estimaciones individuales (postpattern)
 
 DINA_1 <- din(R_E1, Q_E1, skillclasses=NULL,
               conv.crit=0.001, dev.crit=10^(-2), maxit=500,
@@ -28,6 +44,7 @@ DINA_1 <- din(R_E1, Q_E1, skillclasses=NULL,
 
 d1 <- din(R_E1, q.matr = Q_E1, rule = "DINA",
           conv.crit = 0.01, maxit = 500, progress = TRUE)
+
 
 write.csv(DINA_1$item, "E1_FEM_itemparameters_Fel.csv")
 write.csv(DINA_1$skill.patt, "E1_FEM_skilpatterns_Fel.csv")

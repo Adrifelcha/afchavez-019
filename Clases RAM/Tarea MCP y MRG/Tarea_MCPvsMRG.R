@@ -15,8 +15,10 @@
 # El archivo Tarea1 Datos.csv contiene datos de 1,500 sustentantes a un examen de matemáticas que consiste en 10 pre-
 #guntas, donde cada pregunta vale hasta un máximo de 3 puntos. Los datos son las puntuaciones de cada sustentante en
 #cada pregunta.
-setwd("C:/Users/sandra/Desktop/afchavez-019/Clases RAM/Tarea MCP y MRG")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Clases RAM/Tarea MCP y MRG")
 library("mirt")
+library("ggplot2")
+library("eRm")
 Datos <- read.csv("Tarea1_Datos.csv")
 #View(Datos)
 Respuestas <- Datos[,c(2:ncol(Datos))]
@@ -50,6 +52,34 @@ MRG_items
 plot(MRG, type = "trace", which.items = 1, par.settings = simpleTheme(lty = 1:4, lwd = 2),
      auto.key = list(points = FALSE, lines = TRUE, columns = 4))
       
+
+
+
+
+plot(MCP, type = 'trace', which.items = c(1), 
+     main = "Hola")
+#par(new=TRUE)
+#par(fig = c(grconvertX(c(1, 3), from="user", to="ndc"),
+#            grconvertY(c(50, 125), from="user", to="ndc")),
+#    mar = c(4,6,1,1),
+#    new = TRUE)
+par(fig= c(plot(MRG, add=TRUE, type = "trace", which.items = 1)),
+          mar = c(4,5,1,1),
+          new=TRUE)
+
+
+
+matplot(cbind(MRG,MCP), type = "trace", which.items = 1)
+
+
+
+
+plot(MRG, type = "trace", which.items = 1, par.settings = simpleTheme(lty = 1:4, lwd = 2),
+     auto.key = list(points = FALSE, lines = TRUE, columns = 4))
+plot(MCP, type = 'trace', which.items = 1, 
+     main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
+     auto.key=list(points=FALSE,lines=TRUE, columns=4))
+
 
 #Utiliza para ambos casos el método de máxima verosimilitud marginal con el supuesto de que los parámetros de las
 #personas se han extraído de una distribución normal con media 0 y varianza 1.

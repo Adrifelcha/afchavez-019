@@ -15,30 +15,28 @@
 # El archivo Tarea1 Datos.csv contiene datos de 1,500 sustentantes a un examen de matemáticas que consiste en 10 pre-
 #guntas, donde cada pregunta vale hasta un máximo de 3 puntos. Los datos son las puntuaciones de cada sustentante en
 #cada pregunta.
-setwd("C:/Users/Alejandro/Desktop/afchavez19/Clases RAM/Tarea MCP y MRG")
+
+setwd("C:/Users/sandra/Desktop/afchavez-019/Clases RAM/Tarea MCP y MRG")   # Directorio de trabajo
 library("mirt")
-library("ggplot2")
-library("eRm")
-Datos <- read.csv("Tarea1_Datos.csv")
-#View(Datos)
-Respuestas <- Datos[,c(2:ncol(Datos))]
+
+Datos <- read.csv("Tarea1_Datos.csv")     # CSV con los datos
+View(Datos)
+
+Respuestas <- Datos[,c(2:ncol(Datos))]    # Seleccionamos las columas que contienen las respuestas
 Respuestas <- na.omit(Respuestas)
-#View(Respuestas)
+View(Respuestas)
+
+
 #####################################################################################################################
 #####################################################################################################################
 #####################################################################################################################
-#####################################################################################################################
-#####################################################################################################################
-#####################################################################################################################
-#####################################################################################################################
-#####################################################################################################################
-# 1: 1. Obtén estimaciones de los parámetros de los ítems para
+# 1: 1. Obtén estimaciones de los parámetros de los ítems para:
 # -> El modelo de crédito parcial generalizado (Muraki, 1992) ajustado a estos datos;
 MCP <- mirt(data=Respuestas, model="Respuestas = 1-10", itemtype="Rasch", SE=TRUE, verbose=FALSE)
 MCP_coef <- coef(MCP, IRTpars=TRUE, simplify=TRUE)
 MCP_item_par <- as.data.frame(MCP_coef$items)
 
-plot(MCP, type = 'trace', which.items = c(3,4,1,2), 
+plot(MCP, type = 'trace', which.items = c(1:10), 
      main = "", par.settings = simpleTheme(lty=1:4,lwd=2),
      auto.key=list(points=FALSE,lines=TRUE, columns=4))
 

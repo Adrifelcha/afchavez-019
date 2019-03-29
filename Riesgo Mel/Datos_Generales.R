@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd("C:/Users/sandra/Desktop/afchavez-019/Riesgo Mel/Repositorio Datos Proyecto Riesgo")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Riesgo Mel/Repositorio Datos Proyecto Riesgo")
 Datos <- read.csv("BaseCompletaNumbers.csv")
 nrow(Datos)
 
@@ -50,9 +50,9 @@ pie(school, labels=c("Public (82.55%)", "Private (16.66%)", "Not studying (0.31%
 ### Looking for duplicates
 Duplicates <- NULL
 Testing <- NULL
-for(a in 1:ncol(Datos)){
-  for(b in 1:ncol(Datos)){
-  Duplicates[b] <- as.vector(table(Datos[a,]==Datos[b,]))[1]==0
+for(a in 1:nrow(Datos[,2:ncol(Datos)])){
+  for(b in 1:nrow(Datos[,2:ncol(Datos)])){
+  Duplicates[b] <- as.vector(table(Datos[a,2:ncol(Datos)]==Datos[b,2:ncol(Datos)]))[1]==0
   }
   Testing <- as.vector(table(Duplicates))[1]==0
   ifelse(Testing==TRUE, print(a), o<-2+3)

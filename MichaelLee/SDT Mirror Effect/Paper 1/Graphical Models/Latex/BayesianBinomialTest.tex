@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template graphical model %
+% Author: Tom Lodewyckx    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 0. Begin document
+%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[paperwidth=10.5in, paperheight=7in]{geometry}
+\usepackage{pst-all,pstricks,pst-tools}
+\usepackage{com.braju.graphicalmodels}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\catcode`\@=11%
+\pagestyle{empty}
+\begin{document}
+\TeXtoEPS
+\psset{unit=13mm,arrowscale=1.5}
+\SpecialCoor
+
+
+% 1. Grid
+%%%%%%%%%
+
+\begin{pspicture}(2,0)(12,10)
+%\showgrid
+
+
+% 2. Nodes
+%%%%%%%%%%
+
+
+\rput(3,8.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{GeneralTheta}}
+				\GM@label[offset=-3.5mm]{GeneralTheta}{\huge$\theta_{i}$}
+
+\rput(5.6,8.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{Delta}}
+				\GM@label[offset=-2.5mm]{Delta}{\huge$\delta_{i}$}
+
+
+
+       
+           
+\rput(3.5,6){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{tA}}
+           \GM@label[offset=-4mm]{tA}{\huge$\theta_{Ai}$}
+
+\rput(7,6){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{tB}}
+           \GM@label[offset=-4mm]{tB}{\huge$\theta_{Bi}$}
+
+
+        
+
+\rput(3.5,4){\GM@node[nodeSize=14mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{countsA}}
+           \GM@label[offset=-4.5mm]{countsA}{\huge$K_{Ai}$}       
+
+\rput(7,4){\GM@node[nodeSize=15mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{countsB}}
+           \GM@label[offset=-6mm]{countsB}{\huge$K_{Bi}$}    
+
+ 
+
+
+\rput(3.5,2){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{nA}}
+           \GM@label[offset=-3.5mm]{nA}{\huge$n_{A}$} 
+
+\rput(7,2){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{nB}}
+           \GM@label[offset=-3.5mm]{nB}{\huge$n_{B}$}    
+
+
+
+
+ 
+ 
+% 3. Arrows
+%%%%%%%%%%%
+
+\ncline[arrows=->]{GeneralTheta}{Delta}
+
+\ncline[arrows=->]{Delta}{tA}
+\ncline[arrows=->]{Delta}{tB}
+
+\ncline[arrows=->]{tA}{countsA}
+\ncline[arrows=->]{tB}{countsB}
+
+\ncline[arrows=->]{nA}{countsA}
+\ncline[arrows=->]{nB}{countsB}
+
+% 4. Plates
+%%%%%%%%%%%
+
+\rput(1.40, 0.7){\GM@plate[plateLabelPos=br]{8.2}{7.3}{\Large$i$ Trial (Signal or Noise)}}
+
+% 5. Model specification
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\epsilon_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
+
+%\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(1,1\bigr)$}
+
+%\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
+
+\rput(11.5,11){\pnode{equation}}\GM@label{equation}{\huge$\mu^D \sim \mathrm{Gaussian}(0,1)$}
+
+\rput(11.5,10){\pnode{equation}}\GM@label{equation}{\huge$\delta \sim \mathrm{Gaussian}(0,1)$}
+
+
+\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\mu^D_{A} \gets \mu+\frac{\delta}{2}$}
+
+\rput(11.5,7.5){\pnode{equation}}\GM@label{equation}{\huge$\mu^D_{B} \gets \mu-\frac{\delta}{2}$}
+
+\rput(11.5,6.5){\pnode{equation}}\GM@label{equation}{\huge$\lambda^D_{j}\sim \mathrm{Gamma}\bigl(.001,.001)$}
+
+
+\rput(11.5,5){\pnode{equation}}\GM@label{equation}{\huge$D_{ij}\sim \mathrm{Gaussian}\bigl(\mu^D_{j},\lambda^D_{j})$}
+
+\rput(11.5,4){\pnode{equation}}\GM@label{equation}{\huge$C_{ij}\sim \mathrm{Gaussian}(0,1)$}
+
+
+\rput(11.5,2.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^H_{ij}\gets \phi (\frac{1}{2}D_{ij}-C_{ij})$}
+
+\rput(11.5,1.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^F_{ij}\gets \phi (-\frac{1}{2}D_{ij}-C_{ij})$}
+
+
+\rput(11.5,0){\pnode{equation}}\GM@label{equation}{\huge$H_{ij}\sim \mathrm{Binomial}\bigl(\theta^H_{ij}, s)$}
+
+\rput(11.5,-1){\pnode{equation}}\GM@label{equation}{\huge$Fa_{ij}\sim \mathrm{Binomial}\bigl(\theta^F_{ij}, n)$}
+
+
+
+
+
+
+
+
+
+
+% 6. End document
+%%%%%%%%%%%%%%%%%
+
+\end{pspicture}
+\endTeXtoEPS
+\end{document}

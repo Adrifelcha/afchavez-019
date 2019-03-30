@@ -1,4 +1,4 @@
-setwd("C:/Users/sandra/Desktop/afchavez-019/JeanPiaget/Actividades")
+setwd("C:/Users/Adriana/Desktop/afchavez-019/JeanPiaget/Actividades")
 Datos <- read.csv("Datos_JP.csv")
 View(Datos)
 
@@ -22,8 +22,8 @@ text(1.9,table(Datos$RC2)[2]+5,paste(table(Datos$RC2)[2]), cex=1.5, f=2)
 axis(1,c(0.7,1.9), c("Error","Acierto"))
 barplot(as.vector(table(Datos$RC3)), ylim=c(0,70), col=c("mediumpurple4","mediumpurple1"),
         main="3) El sendero")
-text(0.7,table(Datos$RC3)[1]+5,paste(table(Datos$RC3)[1]), cex=1.5, f=2)
-text(1.9,table(Datos$RC3)[2]+5,paste(table(Datos$RC3)[2]), cex=1.5, f=2)
+text(0.7,table(Datos$RC3)[1]+3,paste(table(Datos$RC3)[1]), cex=1.5, f=2)
+text(1.9,table(Datos$RC3)[2]+3,paste(table(Datos$RC3)[2]), cex=1.5, f=2)
 axis(1,c(0.7,1.9), c("Error","Acierto"))
 
 
@@ -39,20 +39,20 @@ text(3.1,table(Total)[3]+5,paste(table(Total)[3]), cex=1.5, f=2)
 text(4.3,table(Total)[4]+5,paste(table(Total)[4]), cex=1.5, f=2)
 axis(1,c(0.7,1.9,3.1,4.3), c(0,1,2,3))
 
-Total_4A <- Total[Datos$Grupo==410]
-Total_4B <- Total[Datos$Grupo==420]
-Total_5 <- Total[Datos$Grupo==510]
-Total_6 <- Total[Datos$Grupo==610]
+Total_4A <- Total[Datos$Grupo=="410"]
+Total_4B <- Total[Datos$Grupo=="420"]
+Total_5 <- Total[Datos$Grupo=="510"]
+Total_6 <- Total[Datos$Grupo=="610"]
 
-Tab_Total_4A <- as.vector(table(Total[Datos$Grupo==410]))
-Tab_Total_4B <- as.vector(table(Total[Datos$Grupo==420]))
-Tab_Total_5 <- as.vector(table(Total[Datos$Grupo==510]))
-Tab_Total_6 <- as.vector(table(Total[Datos$Grupo==610]))
+Tab_Total_4A <- as.vector(table(Total_4A))
+Tab_Total_4B <- as.vector(table(Total_4B))
+Tab_Total_5 <- as.vector(table(Total_5))
+Tab_Total_6 <- as.vector(table(Total_6))
 
 TOTAL_porGrupo <- c(Tab_Total_4A[1], Tab_Total_4B[1], Tab_Total_5[1], Tab_Total_6[1],
                     Tab_Total_4A[2], Tab_Total_4B[2], Tab_Total_5[2], Tab_Total_6[2],
                     Tab_Total_4A[3], Tab_Total_4B[3], Tab_Total_5[3], Tab_Total_6[3],
-                    0, Tab_Total_4B[2], 0, Tab_Total_6[2])
+                    0, Tab_Total_4B[4], 0, Tab_Total_6[4])
 
 espacios <- as.vector(seq(0.7,18.7,1.2))
 barplot(TOTAL_porGrupo, main="Aciertos Totales por Grupo", ylim=c(0,20),
@@ -72,10 +72,16 @@ col_dots <- ifelse(Datos$Grupo=="410", col_dots<- "darkmagenta",
                            (ifelse(Datos$Grupo=="510", col_dots <- "chocolate3",
                                    (ifelse(Datos$Grupo=="610",col_dots <- "darkblue",a<-0.2)))))))
 plot(Datos$Numero.Elegido,Total, pch=16, ann=F, axes=F, main="NùmeroElegido_x_TotalAciertos",
-     col=col_dots)
+     col=col_dots, cex=2)
 legend(80,3, c("4A","4B","5to","6to"), lty=1, col=c("darkmagenta","chartreuse3","chocolate3","darkblue"), lwd=2)
 axis(2,c(0:3), c(0:3))
 axis(1,c(0:100), c(0:100))
+
+plot(Datos$Edad, Datos$Numero.Elegido,pch=16, cex=2,
+     col=col_dots)
+
+plot(Datos$Edad, Total,pch=16, cex=2,
+     col=col_dots)
 
 
 #Ganador4A

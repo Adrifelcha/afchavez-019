@@ -1,0 +1,18 @@
+
+model{
+
+mA_prior ~ dnorm(0,.001)
+mB_prior ~ dnorm(0,.001)
+delta_prior <- mB_prior-mA_prior
+
+mA ~ dnorm(0,.001)
+mB ~ dnorm(0,.001)
+delta <- mB-mA
+
+for(i in 1:n_obs){
+reA[i]~dnorm(mA,1)
+reB[i]~dnorm(mB,1)
+}
+
+}
+      

@@ -1,0 +1,39 @@
+
+model{
+  for (i in 1:k){
+  # Observed counts
+      h_A[i] ~ dbin(thetah_A[i],s)
+      fa_A[i] ~ dbin(thetaf_A[i],n)
+      h_B[i] ~ dbin(thetah_B[i],s)
+      fa_B[i] ~ dbin(thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      thetah_A[i] <- phi((d_A[i]/2)-c_A[i])
+      thetaf_A[i] <- phi((-d_A[i]/2)-c_A[i])
+      thetah_B[i] <- phi((d_B[i]/2)-c_B[i])
+      thetaf_B[i] <- phi((-d_B[i]/2)-c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      d_A[i] ~ dnorm(mud_A,lambdad_A)
+      c_A[i] ~ dnorm(muc_A,lambdac_A)
+      d_B[i] ~ dnorm(mud_B,lambdad_B)
+      c_B[i] ~ dnorm(muc_B,lambdac_B)
+      } 
+      #Priors
+      muc_A ~ dnorm(0,.001)
+      mud_A ~ dnorm(0,.001)
+      muc_B ~ dnorm(0,.001)
+      mud_B ~ dnorm(0,.001)
+      lambdac_A ~ dgamma(.001,.001)
+      lambdad_A ~ dgamma(.001,.001)
+      lambdac_B ~ dgamma(.001,.001)
+      lambdad_B ~ dgamma(.001,.001)
+      sigmac_A <- 1/sqrt(lambdac_A)
+      sigmad_A <- 1/sqrt(lambdad_A)
+      sigmac_B <- 1/sqrt(lambdac_B)
+      sigmad_B <- 1/sqrt(lambdad_B)
+      delta <- mud_A-mud_B
+
+mA_prior ~ dnorm(0,.001)
+mB_prior ~ dnorm(0,.001)
+delta_prior <- mB_prior-mA_prior}
+      

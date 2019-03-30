@@ -3,7 +3,7 @@
 # EXPERIMENTO 1 (Una Figura Ebbinghaus)
 ####################################
 
-setwd("C:/Users/sandra/Desktop/Adrifelcha/Tesis/Datos_CSVs/Datos_MirrExp_1Ebb")
+setwd("C:/Users/sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_1Ebb")
 rm(list=ls())
 dir()
 
@@ -148,33 +148,41 @@ for(archive in dir()){
 ##################################
 
 rm(list=ls())
-layout(matrix(1:2,ncol=1, byrow=TRUE))
+number <- 0
 for(archive in dir()){
+  number <- number+1
   jaime <- read.csv(archive)
   jaime$Ensayo <- as.character(jaime$Ensayo)
   cafe <- strsplit(as.character(jaime$Ensayo),split='-')
-
-  a <- c(1,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520,540,560,580,600,620,640)
   
-  
-  plot(jaime$ContadorH,type='o',pch=16, col='blue',ylim=c(0,320), xlab='', ylab="", axes=F, font.lab=2)
-  axis(1,at=a,labels=a)
+  layout(matrix(1:1,ncol=1))
+  plot(jaime$ContadorH,type='o',pch=16, col='blue',ylim=c(0,320),axes=F , xlab="", ylab="", font.lab=2, line.lab=1)
+  axis(1,at=seq(1,640,20),labels=seq(1,640,20))
   points(jaime$ContadorF,type='o', lty=3, pch=16, col='red')
   points(jaime$ContadorM,type='o', lty=3, pch=16, col='purple')
-  points(jaime$ContadorR,type='o', lty=3, pch=16, col='green')
-  text(30,300,paste("F.A."),cex=1,col='red',f=2)
-  text(30,230,paste("Omisiones"),cex=1,col='purple',f=2)
-  axis(2,at=160, labels="Frecuencia Acumulada", tck=0, line=-0.5, font=2)
-  text(30,160,paste("Rechazos"),cex=1,col='green',f=2)
+  points(jaime$ContadorR,type='o', lty=3, pch=16, col='chartreuse4')
+  text(30,300,paste("False Alarms"),cex=1,col='red',f=2)
+  text(30,230,paste("Misses"),cex=1,col='purple',f=2)
+  text(30,160,paste("Rejections"),cex=1,col='chartreuse4',f=2)
   text(30,90,paste("Hits"),cex=1,col='blue',f=2)
-  mtext(archive, 3, line=1, col='black', cex=3, font=2)
-  mtext(side=2, text = "Frecuencia Acumulada", line=1, cex=2)
+  mtext(paste("Participant No.", number, "; Experiment 1"), 3, line=1, col='black', cex=2, font=2)
+  mtext(side=2, text = "Cumulative frequencies", line=1, cex=2)
   
-  plot(jaime$outcome[1:640],type='o',pch=16, col='deepskyblue4',ylim=c(1,4),axes=F, ylab="", xlab="", font.lab=2 )
-  axis(1,at=a,labels=a)
-  axis(2,at=c(1,2,3,4), labels=c('FA', 'O', 'R', 'H'), font=1.5)
-  mtext(side=1, text = "Ensayos", line=2.5, cex=2)
-}
+  layout(matrix(1:2,ncol=1))
+  
+  plot(jaime$outcome[1:320],type='o',pch=16, col='deepskyblue4',ylim=c(1,4),axes=F , xlab="", ylab="", font.lab=2)
+  mtext(side=1, text = "Trials", line=2.5, cex=2)
+  axis(1,at=seq(1,320,5),labels=seq(1,320,5))
+  axis(2,at=c(1,2,3,4), labels=c('FA', 'M', 'R', 'H'),f=2)
+  mtext(paste("Participant No.", number, "; Experiment 1"), 3, line=1, col='black', cex=2, font=2)
+  mtext("Results obtained per trial", 3, line=0, col='black', cex=1.2, font=2)
+  
+  plot(jaime$outcome[321:640],type='o',pch=16, col='deepskyblue4',ylim=c(1,4),axes=F , xlab="", ylab="", font.lab=2)
+  mtext(side=1, text = "Trials", line=2.5, cex=2)
+  axis(1,at=seq(1,320,5),labels=seq(321,640,5))
+  axis(2,at=c(1,2,3,4), labels=c('FA', 'M', 'R', 'H'),f=2)
+  
+  print(archive)}
 
 ############################################
 ############################################

@@ -31,14 +31,14 @@
 %%%%%%%%%%
 
 
-\rput(3.5,8.2){\GM@node[nodeSize=15mm,
+\rput(3.5,11){\GM@node[nodeSize=15mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{GeneralTheta}}
-				\GM@label[offset=-3.5mm]{GeneralTheta}{\huge$\theta_{i}$}
+				\GM@label[offset=-3.5mm]{GeneralTheta}{\huge$\mu_{i}$}
 
-\rput(7,8.2){\GM@node[nodeSize=15mm,
+\rput(7,11){\GM@node[nodeSize=15mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
@@ -46,23 +46,51 @@
 				\GM@label[offset=-2.5mm]{Delta}{\huge$\delta_{i}$}
 
 
+\rput(3,8.5){\GM@node[nodeSize=17mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{MuA}}
+				\rput(3,8.5){\GM@node[nodeSize=14mm]{Q_small}}
+				\GM@label[offset=-3.5mm]{MuA}{\huge$\mu^A_{i}$}
+
+\rput(6.5,8.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{SigmaA}}
+				\GM@label[offset=-2.5mm]{SigmaA}{\huge$\sigma^A_{i}$}
+\rput(7.5,8.5){\GM@node[nodeSize=17mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{MuB}}
+				\rput(7.5,8.5){\GM@node[nodeSize=14mm]{Q_small}}
+				\GM@label[offset=-3.5mm]{MuB}{\huge$\mu^B_{i}$}
+
+\rput(9,8.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{SigmaB}}
+				\GM@label[offset=-2.5mm]{SigmaB}{\huge$\sigma^B_{i}$}
+
+
 
      
            
-\rput(3.5,6){\GM@node[nodeSize=17mm,
+\rput(3.5,6){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{tA}}
-					\rput(3.5,6){\GM@node[nodeSize=14mm]{Q_small}}
            \GM@label[offset=-4mm]{tA}{\huge$\theta^A_{i}$}
 
-\rput(7,6){\GM@node[nodeSize=17mm,
+\rput(7,6){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{tB}}
-					\rput(7,6){\GM@node[nodeSize=14mm]{Q_small}}
            \GM@label[offset=-4mm]{tB}{\huge$\theta^B_{i}$}
 
 
@@ -107,10 +135,16 @@
 % 3. Arrows
 %%%%%%%%%%%
 
-\ncline[arrows=->]{GeneralTheta}{tA}
-\ncline[arrows=->]{GeneralTheta}{tB}
-\ncline[arrows=->]{Delta}{tA}
-\ncline[arrows=->]{Delta}{tB}
+\ncline[arrows=->]{GeneralTheta}{MuA}
+\ncline[arrows=->]{GeneralTheta}{MuB}
+\ncline[arrows=->]{Delta}{MuA}
+\ncline[arrows=->]{Delta}{MuB}
+
+\ncline[arrows=->]{MuA}{tA}
+\ncline[arrows=->]{SigmaA}{tA}
+\ncline[arrows=->]{MuB}{tB}
+\ncline[arrows=->]{SigmaB}{tB}
+
 
 \ncline[arrows=->]{tA}{countsA}
 \ncline[arrows=->]{tB}{countsB}

@@ -121,7 +121,7 @@
 % 4. Plates
 %%%%%%%%%%%
 
-\rput(1.40, 0.7){\GM@plate[plateLabelPos=br]{8.2}{7.3}{\Large$i$ Stimuli (Signal or Noise)}}
+\rput(1.3, 0.7){\GM@plate[plateLabelPos=br]{8.2}{8.6}{\Large$i$ Stimuli (Signal or Noise)}}
 
 % 5. Model specification
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,26 +129,26 @@
 %\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\epsilon_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
 
 
-\rput(11.5,11){\pnode{equation}}\GM@label{equation}{\huge$\theta_{h} \sim \mathrm{Uniform}(0.5,1)$}
+\rput(11.5,10){\pnode{equation}}\GM@label{equation}{\huge$\theta_{h} \sim \mathrm{Uniform}(0.5,1)$}
 
-\rput(11.5,10){\pnode{equation}}\GM@label{equation}{\huge$\theta_{fa} \sim \mathrm{Uniform}(0,0.5)$}
+\rput(11.5,9){\pnode{equation}}\GM@label{equation}{\huge$\theta_{fa} \sim \mathrm{Uniform}(0,0.5)$}
 
-\rput(11.5,9){\pnode{equation}}\GM@label{equation}{\huge$\delta \sim \mathrm{Uniform}(0,0.5)$}
-
-
-\rput(11.5,7.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{h} \gets \theta_{i} + \frac{\delta}{2}$}
-
-\rput(11.5,6.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{h} \gets \theta_{i} - \frac{\delta}{2}$}
-
-\rput(11.5,5.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{fa} \gets \theta_{i} - \frac{\delta}{2}$}
-
-\rput(11.5,4.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{fa} \gets \theta_{i} + \frac{\delta}{2}$}
+\rput(11.5,8){\pnode{equation}}\GM@label{equation}{\huge$\delta \sim \mathrm{Uniform}(0,0.5)$}
 
 
+\rput(11.5,6.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{h} \gets \theta_{i} + \frac{\delta}{2}$}
 
-\rput(11.5,0){\pnode{equation}}\GM@label{equation}{\huge$K^A_{i}\sim \mathrm{Binomial}(\theta^A_{i}, n^A)$}
+\rput(11.5,5.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{h} \gets \theta_{i} - \frac{\delta}{2}$}
 
-\rput(11.5,-1){\pnode{equation}}\GM@label{equation}{\huge$Fa_{ij}\sim \mathrm{Binomial}(\theta^B_{i}, n^B)$}
+\rput(11.5,4.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{fa} \gets \theta_{i} - \frac{\delta}{2}$}
+
+\rput(11.5,3.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{fa} \gets \theta_{i} + \frac{\delta}{2}$}
+
+
+
+\rput(11.5,2){\pnode{equation}}\GM@label{equation}{\huge$K^A_{i}\sim \mathrm{Binomial}(\theta^A_{i}, n^A)$}
+
+\rput(11.5,1){\pnode{equation}}\GM@label{equation}{\huge$Fa_{ij}\sim \mathrm{Binomial}(\theta^B_{i}, n^B)$}
 
 
 

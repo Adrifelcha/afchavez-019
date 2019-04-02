@@ -3,7 +3,7 @@
 # EXPERIMENTO 2 (Dos Ebbinghaus)
 ####################################
 
-setwd("C:/Users/sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_2Ebb")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_2Ebb")
 rm(list=ls())
 dir()
 
@@ -174,12 +174,14 @@ for(archive in dir()){
 
 rm(list=ls())
 #layout(matrix(1:1,ncol=1))
+numero <- 0
 for(archive in dir()){
   
   jaime <- read.csv(archive)
   jaime$Ensayo <- as.character(jaime$Ensayo)
   cafe <- strsplit(as.character(jaime$Ensayo),split='-')
-
+  numero <- numero + 1
+  
   m <- c(1,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520,540,560,580,600,620,640)
   n <- c(1,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320)
   o <- c(321,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640)
@@ -188,14 +190,14 @@ for(archive in dir()){
   colp <- c('deepskyblue3','darkorchid3', 'green', 'red', 'orange')
 
 #Choice sola 640 ensayos
-  layout(matrix(1:1,ncol=1))
-  plot(jaime$choice[1:640],type='o',pch=16, col='dodgerblue',ylim=c(0,1),axes=F , ann=F, ylab='', xlab='', font.lab=2 )
-  axis(1,at=m,labels=m)
-  axis(2,at=0:1,labels=c("No","Sí"))
-  text(140,9.5,paste("1-160"),cex=1,col='darkorchid',f=2)
-  mtext(archive,3,cex=3, f=2, line=2)
-  mtext(side=1, text = "Ensayos 1 - 640", line=3, cex=2.4)
-  mtext(side=2, text = "Respuesta", line=1, cex=2.4)
+  #layout(matrix(1:1,ncol=1))
+  #plot(jaime$choice[1:640],type='o',pch=16, col='dodgerblue',ylim=c(0,1),axes=F , ann=F, ylab='', xlab='', font.lab=2 )
+  #axis(1,at=m,labels=m)
+  #axis(2,at=0:1,labels=c("No","Sí"))
+  #text(140,9.5,paste("1-160"),cex=1,col='darkorchid',f=2)
+  #mtext(archive,3,cex=3, f=2, line=2)
+  #mtext(side=1, text = "Ensayos 1 - 640", line=3, cex=2.4)
+  #mtext(side=2, text = "Respuesta", line=1, cex=2.4)
   
   
   
@@ -203,18 +205,19 @@ for(archive in dir()){
   layout(matrix(1:2,ncol=1))
   plot(jaime$choice[1:320],type='o',pch=16, col='dodgerblue',ylim=c(0,1),axes=F , ann=F, ylab='', xlab='', font.lab=2 )
   axis(1,at=n,labels=n)
-  axis(2,at=0:1,labels=c("No","Sí"))
+  axis(2,at=0:1,labels=c("No","Yes"))
   text(140,9.5,paste("1-160"),cex=1,col='darkorchid',f=2)
-  mtext(archive, 3, line=1, col='black', cex=3, font=2)
-  mtext(side=1, text = "Ensayos 1 - 320", line=3, cex=2.4)
-  mtext(side=2, text = "Respuesta", line=1, cex=2.4)
+  mtext(paste("Participant No.", numero, "; Experiment 2"), 3, line=1.5, col='black', cex=2, font=2)
+  mtext("Yes/No response given per trial", 3, line=0, col='black', cex=1.2, font=2)
+  mtext(side=1, text = "Trials", line=3, cex=1.6)
+  #mtext(side=2, text = "Respuesta", line=1, cex=2.4)
 
   plot(jaime$choice[321:640],type='o',pch=16, col='dodgerblue',ylim=c(0,1),axes=F , ann=F, ylab='', xlab='', font.lab=2 )
   axis(1,at=n,labels=o)
-  axis(2,at=0:1,labels=c("No","Sí"))
+  axis(2,at=0:1,labels=c("No","Yes"))
   text(140,9.5,paste("1-160"),cex=1,col='darkorchid',f=2)
-  mtext(side=1, text = "Ensayos 1 - 320", line=3, cex=2.4)
-  mtext(side=2, text = "Respuesta", line=1, cex=2.4)
+  mtext(side=1, text = "Trials", line=3, cex=1.6)
+  #mtext(side=2, text = "Respuesta", line=1, cex=2.4)
 
 
 ### Choice por FACIL DIFICIL
@@ -283,12 +286,14 @@ for(archive in dir()){
 ##########################################
 
 rm(list=ls())
+numero <- 0
 layout(matrix(1:2,ncol=1))
 for(archive in dir()){
   
   a <- c(1,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320)
   b <- c(321,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640)
   m <- c(1,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520,540,560,580,600,620,640)
+  numero <- numero + 1
   
   jaime <- read.csv(archive)
   jaime$Ensayo <- as.character(jaime$Ensayo)
@@ -297,17 +302,16 @@ for(archive in dir()){
   plot(jaime$Confidence[1:320],type='o',pch=16, col='hotpink3',ylim=c(1,6),axes=F , ylab='', xlab='', font.lab=2)
   axis(1,at=a,labels=a)
   axis(2,at=1:6,labels=c("1","2","3","4","5","6"))
-  text(140,9.5,paste("1-160"),cex=1,col='darkorchid',f=2)
-  mtext(archive, 3, line=1, col='black', cex=3, font=2)
-  mtext(side=1, text = "Ensayos 1 - 320", line=3, cex=2.4)
-  mtext(side=2, text = "Puntajes", line=2, cex=2)
+  mtext(paste("Participant No.", numero, "; Experiment 2"), 3, line=1, col='black', cex=2, font=2)
+  mtext("Confidence rating chosen per trial", 3, line=0, col='black', cex=1.2, font=2)
+  mtext(side=1, text = "Trials", line=3, cex=1.8)
+  mtext(side=2, text = "Rating", line=2, cex=1.8)
   
   plot(jaime$Confidence[321:640],type='o',pch=16, col='hotpink3',ylim=c(1,6), ylab='',xlab='', axes=F, font.lab=2 )
   axis(1,at=a,labels=b)
   axis(2,at=1:6,labels=c("1","2","3","4","5","6"))
-  text(140,8.5,paste("321-480"),cex=1,col='darkorchid2',f=2)
-  mtext(side=1, text = "Ensayos 321 - 640", line=3, cex=2.4)
-  mtext(side=2, text = "Puntajes", line=2, cex=2)
+  mtext(side=1, text = "Trials", line=3, cex=1.8)
+  mtext(side=2, text = "Rating", line=2, cex=1.8)
   }
 
 ######################

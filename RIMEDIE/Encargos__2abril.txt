@@ -1,0 +1,35 @@
+Dos pestañas:
+
+Servicios
+1 - Diagmóstico para estudantes (disabled)
+2 - Diagnóstico para docentes (disabled)
+3 - Diagnóstico para centros escolares (disabled)
+4 - Diagnósticos nacionales y estatales
+         - Que pase directo al visualizador en línea de resultados. 
+5 - Cursos y talleres (disabled)
+    5.1 En línea (disabled)
+    5.2 Presenciales (disabled) 
+6 - Asesorías (disabled)
+
+
+Proyectos y Publicaciones
+**Eliminar el último (Comunicación y trasferencia)
+1.- "Proyectos"  (disabled)
+1.1 - Análisis de resultados de diagnóstico cognitivo
+1.2 Desarrollo de instrumentos
+1.3 Desarrollo de materiales 
+
+Visualizador de resultados
+
+1-. El logo hay que atualizarlo 
+
+Que el boton de resultados sea desplegable Nacionales / Por entidad federativa / Por habilidad
+
+Reactivos muestra <- Colocar y señalar el hipervínculo donde se pueden descargar los reactivos liberados
+
+Resaltar el hipervínculo de Reactivos liberados en "Cómo se llevó a cabo"
+
+
+
+Agregar "Contraste del diagnóstico Nacional" como "Modelo Cognitivo"
+Agregar como imagen el diagrama de flujo del Reporte Breve

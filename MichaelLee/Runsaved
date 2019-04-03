@@ -1,0 +1,19 @@
+data <- c(tetaH_a,tetaH_b,tetaFA_a,tetaFA_b)
+
+datis <- tetaFA_a
+
+x_axis <- NULL
+y_axis <- as.vector(datis)
+
+
+numero <- 0
+x_axis <- NULL
+for(a in 1:ncol(datis)){
+  numero <- numero+1
+  a <- rep(numero, nrow(datis))
+  espacio_init <- ((numero-1) * nrow(datis)) + 1
+  espacio_fin <- numero * nrow(datis)
+  x_axis[espacio_init:espacio_fin] <- a
+}
+
+plot(x_axis, y_axis)

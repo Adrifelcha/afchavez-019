@@ -7,7 +7,7 @@
 # En este modelo se incluyen dos parámetros Mu_i y Delta que
 # inciden en las medias observadas por cada clase de estímulos
 ##############################################################
-setwd("C:/Users/sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data")
 rm(list=ls())
 dir()
 library(R2jags)
@@ -48,42 +48,34 @@ if (experimento == 2){
 ######################################
 write('
 model{
-      for (i in 1:k){
+for (i in 1:k){
       # Observed counts
       h_A[i] ~ dbin(thetah_A[i],s)
       fa_A[i] ~ dbin(thetaf_A[i],n)
       h_B[i] ~ dbin(thetah_B[i],s)
       fa_B[i] ~ dbin(thetaf_B[i],n)
       # Reparameterization Using Equal-Variance Gaussian SDT
-      thetah_A[i] <- phi((d_A[i]/2)-c_A[i])
-      thetaf_A[i] <- phi((-d_A[i]/2)-c_A[i])
-      thetah_B[i] <- phi((d_B[i]/2)-c_B[i])
-      thetaf_B[i] <- phi((-d_B[i]/2)-c_B[i])
+      thetah_A[i] <- phi((d_A[i]/2)-c[i])
+      thetaf_A[i] <- phi((-d_A[i]/2)-c[i])
+      thetah_B[i] <- phi((d_B[i]/2)-c[i])
+      thetaf_B[i] <- phi((-d_B[i]/2)-c[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
       d_A[i] ~ dnorm(mud_A,lambdad_A)
-      c_A[i] ~ dnorm(muc_A,lambdac_A)
+      c[i] ~ dnorm(0,1)
       d_B[i] ~ dnorm(mud_B,lambdad_B)
-      c_B[i] ~ dnorm(muc_B,lambdac_B)
       } 
       #Priors
-      muc_A ~ dnorm(0,.001)
-      mud_A ~ dnorm(0,.001)
-      muc_B ~ dnorm(0,.001)
-      mud_B ~ dnorm(0,.001)
-      lambdac_A ~ dgamma(.001,.001)
+      mud_A <- MuD + delta/2
+      mud_B <- MuD - delta/2
       lambdad_A ~ dgamma(.001,.001)
-      lambdac_B ~ dgamma(.001,.001)
       lambdad_B ~ dgamma(.001,.001)
-      sigmac_A <- 1/sqrt(lambdac_A)
       sigmad_A <- 1/sqrt(lambdad_A)
-      sigmac_B <- 1/sqrt(lambdac_B)
       sigmad_B <- 1/sqrt(lambdad_B)
-      delta <- mud_A-mud_B
-      
-      mA_prior ~ dnorm(0,.001)
-      mB_prior ~ dnorm(0,.001)
-      delta_prior <- mB_prior-mA_prior}
+      delta ~ dnorm(0,1)
+      MuD ~ dnorm(0,1)
+      delta_prior ~ dnorm(0,1)
+      MuD_prior ~ dnorm(0,1)}
       ','0-diff_dprime.bug')
 
 ######################################
@@ -96,14 +88,11 @@ data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")
 
 #Asignamos valores iniciales para las Cadenas de Markov
 myinits <- list(
-  list(d_A = rep(0,k), d_B = rep(0,k), c_A = rep(0,k), c_B = rep(0,k), muc_A = 0, 
-       lambdac_A = 1, muc_B = 0, lambdac_B = 1, mud_A = 0, lambdad_A = 1, 
-       mud_B = 0, lambdad_B = 1))
+  list(d_A = rep(0,k), d_B = rep(0,k), c = rep(0,k), lambdad_A = 1,  lambdad_B = 1, delta = 0, MuD = 0))
 
 # Identificamos los parámetros a inferir
-parameters <- c("c_A", "c_B", "d_A", "d_B", "thetah_A", "thetah_B", "thetaf_A", 
-                "thetaf_B", "muc_A", "muc_B", "mud_A", "mud_B", "sigmac_A", 
-                "sigmac_B", "sigmad_A", "sigmad_B", "delta")
+parameters <- c("c", "d_A", "d_B", "thetah_A", "thetah_B", "thetaf_A", "mud_A", "mud_B", 
+                "thetaf_B", "sigmad_A", "sigmad_B", "delta", "MuD", "delta_prior", "MuD_prior")
 
 niter <- 200000     #No. Iteraciones
 burnin <- 2000      #No.  de extracciones iniciales "quemadas"

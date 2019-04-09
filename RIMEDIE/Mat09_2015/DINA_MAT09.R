@@ -7,7 +7,7 @@
 #############################################################
 rm(list=ls())                       #
 library("CDM")
-setwd("C:/Users/Laboratorio 25/Desktop/afchavez-019/RIMEDIE/Mat09_2015")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015")
 
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Respuestas$ESCUELA <- NULL
@@ -36,23 +36,23 @@ e2 <- 0
 e3 <- 0
 
 for(i in 1:nrow(Qmat)){              
-  if(Qmat$Eje[i]=="1 - FEM"){
-    e1 <- e1 + 1
-    Eje1[e1] <- Qmat$Item[i]
+  if(Qmat$Eje[i]=="3 - FEM"){
+    e3 <- e3 + 1
+    Eje3[e3] <- Qmat$Item[i]
   }else{
     if(Qmat$Eje[i]=="2 - MI"){
       e2 <- e2+1
       Eje2[e2] <- Qmat$Item[i]
     }else{
-      e3 <- e3+1
-      Eje3[e3] <- Qmat$Item[i]
+      e1 <- e1+1
+      Eje1[e1] <- Qmat$Item[i]
     }}}
 Qmat$Item <- NULL
 Qmat$Cod_Ram <- NULL         #Se cancelan las columnas innecesarias de la MatrizQ
 Qmat$Eje <- NULL
-Q_E1 <- Qmat[Eje1,1:8]
-Q_E2 <- Qmat[Eje2,9:18]
-Q_E3 <- Qmat[Eje3,19:30]
+Q_E1 <- Qmat[Eje1,1:12]
+Q_E2 <- Qmat[Eje2,13:22]
+Q_E3 <- Qmat[Eje3,23:30]
 R_E1 <- Respuestas[,Eje1]
 R_E2 <- Respuestas[,Eje2]
 R_E3 <- Respuestas[,Eje3]

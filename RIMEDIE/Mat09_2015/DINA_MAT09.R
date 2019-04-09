@@ -7,7 +7,7 @@
 #############################################################
 rm(list=ls())                       #
 library("CDM")
-setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015")
+setwd("C:/Users/Laboratorio 25/Desktop/afchavez-019/RIMEDIE/Mat09_2015")
 
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Respuestas$ESCUELA <- NULL
@@ -76,13 +76,13 @@ DINA_1 <- din(R_E1, Q_E1, skillclasses=NULL,
 d1 <- din(R_E1, q.matr = Q_E1, rule = "DINA",
           conv.crit = 0.01, maxit = 500, progress = TRUE)
 
-write.csv(DINA_1$item, "E1_itemparameters_rig.csv")
-write.csv(DINA_1$skill.patt, "E1_skilpatterns_rig.csv")
-write.csv(data.frame(DINA_1$pattern), "E1_postpattern_rig.csv",row.names = F)
+write.csv(DINA_1$item, "E1SNPA_itemparameters_rig.csv")
+write.csv(DINA_1$skill.patt, "E1SNPA_skilpatterns_rig.csv")
+write.csv(data.frame(DINA_1$pattern), "E1SNPA_postpattern_rig.csv",row.names = F)
 
-write.csv(d1$item, "E1_itempars_lax.csv")
-write.csv(d1$skill.patt, "E1_skilpatt_lax.csv")
-write.csv(data.frame(d1$pattern), "E1_fempostpattern_lax.csv",row.names = F)
+write.csv(d1$item, "E1SNPA_itempars_lax.csv")
+write.csv(d1$skill.patt, "E1SNPA_skilpatt_lax.csv")
+write.csv(data.frame(d1$pattern), "E1SNPA_fempostpattern_lax.csv",row.names = F)
 
 
 
@@ -100,13 +100,13 @@ DINA_2 <- din(R_E2, Q_E2, skillclasses=NULL,
 d2 <- din(R_E2, q.matr = Q_E2, rule = "DINA",
           conv.crit = 0.01, maxit = 500, progress = TRUE)
 
-write.csv(DINA_2$item, "E2_itemparameters_rig.csv")
-write.csv(DINA_2$skill.patt, "E2_skilpatterns_rig.csv")
-write.csv(data.frame(DINA_2$pattern), "E2_postpattern_rig.csv",row.names = F)
+write.csv(DINA_2$item, "E2MI_itemparameters_rig.csv")
+write.csv(DINA_2$skill.patt, "E2MI_skilpatterns_rig.csv")
+write.csv(data.frame(DINA_2$pattern), "E2MI_postpattern_rig.csv",row.names = F)
 
-write.csv(d2$item, "E2_itempars_lax.csv")
-write.csv(d2$skill.patt, "E2_skilpatt_lax.csv")
-write.csv(data.frame(d2$pattern), "E2_minpostpattern_lax.csv", row.names = F)
+write.csv(d2$item, "E2MI_itempars_lax.csv")
+write.csv(d2$skill.patt, "E2MI_skilpatt_lax.csv")
+write.csv(data.frame(d2$pattern), "E2MI_minpostpattern_lax.csv", row.names = F)
 
 
 
@@ -120,16 +120,16 @@ DINA_3 <- din(R_E3, Q_E3, skillclasses=NULL,
               wgt.overrelax=0, wgtest.overrelax=FALSE, param.history=FALSE,
               seed=125, progress=TRUE, guess.min=0, slip.min=0, guess.max=1, slip.max=1)
 
-write.csv(DINA_3$item, "E3_itemparameters_rig.csv")
-write.csv(DINA_3$skill.patt, "E3_skilpatterns_rig.csv")
-write.csv(data.frame(DINA_3$pattern), "E3_postpattern_rig.csv",row.names = F)
+write.csv(DINA_3$item, "E3FEM_itemparameters_rig.csv")
+write.csv(DINA_3$skill.patt, "E3FEM_skilpatterns_rig.csv")
+write.csv(data.frame(DINA_3$pattern), "E3FEM_postpattern_rig.csv",row.names = F)
 
 #Modelo Laxo
 d3 <- din(R_E3, q.matr = Q_E3, rule = "DINA",
           conv.crit = 0.01, maxit = 500, progress = TRUE)
 
-write.csv(d3$item, "E3_itempars_lax.csv")
-write.csv(d3$skill.patt, "E3_skilpatt_lax.csv")
-write.csv(data.frame(d3$pattern), "E3_spapostpattern_lax.csv",row.names = F)
+write.csv(d3$item, "E3FEM_itempars_lax.csv")
+write.csv(d3$skill.patt, "E3FEM_skilpatt_lax.csv")
+write.csv(data.frame(d3$pattern), "E3FEM_spapostpattern_lax.csv",row.names = F)
 
 ##########################

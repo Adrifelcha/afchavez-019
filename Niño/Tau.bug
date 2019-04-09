@@ -1,0 +1,14 @@
+
+model{
+  for (i in 1:k){
+  # Observed counts
+    FrecG[i] ~ dbin(thetaG[i],r)
+    FrecP[i] ~ dbin(thetaP[i],r)
+  # Reparameterization Using Equal-Variance Gaussian SDT
+    thetaG[i] ~ dbeta(1,1)
+    thetaP[i] ~ dbeta(1,1)
+  #Differences on thetas
+      Tau[i] <- thetaG[i]/thetaP[i]
+      Gamma[i] <- thetaG[i]-thetaP[i]
+      }
+}

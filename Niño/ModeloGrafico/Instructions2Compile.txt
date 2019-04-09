@@ -1,0 +1,6 @@
+Instrucciones para compilar desde la consola
+cd (Directorio)
+
+1.- latex title.tex
+2.- dvips title.dvi
+3.- ps2pdf title.ps

@@ -1,0 +1,891 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=latex 2016.10.25)  8 APR 2019 13:57
+entering extended mode
+**./Modelo_JMN.tex
+(Modelo_JMN.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks\pst-all.sty"
+Package: pst-all 2008/01/01 the main pstricks tools
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks\pstricks.sty"
+Package: pstricks 2015/11/14 v0.62 LaTeX wrapper for `PSTricks' (RN,HV)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\dvips.def"
+File: dvips.def 2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\base\pstricks.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\pst-xkey.tex"
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+)
+\XKV@depth=\count90
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\base\pst-fp.tex"
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count91
+\pstFP@xia=\count92
+\pstFP@xib=\count93
+\pstFP@xfa=\count94
+\pstFP@xfb=\count95
+\pstFP@rega=\count96
+\pstFP@regb=\count97
+\pstFP@regs=\count98
+\pstFP@times=\count99
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen111
+\pgfutil@tempdimb=\dimen112
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.te
+x")) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.te
+x"
+\pgfkeys@tmptoks=\toks21
+)) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex"
+\pgf@x=\dimen113
+\pgf@xa=\dimen114
+\pgf@xb=\dimen115
+\pgf@xc=\dimen116
+\pgf@y=\dimen117
+\pgf@ya=\dimen118
+\pgf@yb=\dimen119
+\pgf@yc=\dimen120
+\c@pgf@counta=\count100
+\c@pgf@countb=\count101
+\c@pgf@countc=\count102
+\c@pgf@countd=\count103
+\pgfutil@tempcnta=\count104
+\pgfutil@tempcntb=\count105
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
+\pgfmath@dimen=\dimen121
+\pgfmath@count=\count106
+\pgfmath@box=\box26
+\pgfmath@toks=\toks22
+\pgfmath@stack@operand=\toks23
+\pgfmath@stack@operation=\toks24
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometr
+ic.code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code
+.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.
+code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarit
+hmetics.code.tex")))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count107
+))
+\pgffor@iter=\dimen122
+\pgffor@skip=\dimen123
+\pgffor@stack=\toks25
+\pgffor@toks=\toks26
+)
+\psLoopIndex=\count108
+
+`PSTricks' v2.68  <2016/06/09> (tvz)
+\pst@dima=\dimen124
+\pst@dimb=\dimen125
+\pst@dimc=\dimen126
+\pst@dimd=\dimen127
+\pst@dimg=\dimen128
+\pst@dimh=\dimen129
+\pst@dimm=\dimen130
+\pst@dimn=\dimen131
+\pst@dimo=\dimen132
+\pst@dimp=\dimen133
+\pst@hbox=\box27
+\pst@ibox=\box28
+\pst@boxg=\box29
+\pst@cnta=\count109
+\pst@cntb=\count110
+\pst@cntc=\count111
+\pst@cntd=\count112
+\pst@cntg=\count113
+\pst@cnth=\count114
+\pst@cntm=\count115
+\pst@cntn=\count116
+\pst@cnto=\count117
+\pst@cntp=\count118
+\@zero=\count119
+\pst@toks=\toks27
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\base\pstricks.con")
+\psunit=\dimen134
+\psxunit=\dimen135
+\psyunit=\dimen136
+\pst@C@@rType=\count120
+\pslinewidth=\dimen137
+\psk@startLW=\dimen138
+\psk@endLW=\dimen139
+\pst@customdefs=\toks28
+\pslinearc=\dimen140
+\pst@symbolStep=\dimen141
+\pst@symbolWidth=\dimen142
+\pst@symbolLinewidth=\dimen143
+\everypsbox=\toks29
+\psframesep=\dimen144
+\pslabelsep=\dimen145
+\sh@wgridXunit=\dimen146
+\sh@wgridYunit=\dimen147
+\pst@shift=\dimen148
+)
+File: pstricks.tex 2016/06/09 v2.68 `PSTricks' (tvz,hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\base\pst-fp.tex")
+File: pst-fp.tex 2016/06/09 v2.68 `PST-fp' (hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-plot\pst-plot.sty"
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\pst-xkey.sty"
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\multido\multido.sty"
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\multido\multido.tex"
+ v1.42, 2010/05/14 <tvz>
+\multido@count=\count121
+\multidocount=\count122
+\multido@stuff=\toks30
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-plot\pst-plot.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-tools\pst-tools.tex"
+`PST-tools' v0.05, 2014/05/12 (hv))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks-add\pstricks-add.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-node\pst-node.tex"
+ v1.36, 2016/04/24
+\psrow=\count123
+\pscol=\count124
+\psmatrixcnt=\count125
+\psrowsep=\skip43
+\pscolsep=\skip44
+\pst@args=\count126
+\num@pts=\count127
+\pst@argcnt=\count128
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-arrow\pst-arrow.tex"
+`pst-arrow' v0.01, 2016/09/01 (dr,hv)
+\pshooklength=\dimen149
+\pshookwidth=\dimen150
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-3d\pst-3d.tex"
+`PST-3d' v1.11, 2010/02/14 (tvz))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-math\pst-math.tex"
+`pst-math' v0.63 , (CJ,hv)) `pstricks-add' v3.82, 2016/09/01 (dr,hv)
+\psparallelogramsep=\dimen151
+\pst@cntC=\count129
+\chart@ColorIndex=\dimen152
+\chart@ColorStep=\dimen153
+\pst@chartHeight=\dimen154
+\pst@chartStackDepth=\dimen155
+\pst@chartStackWidth=\dimen156
+\chart@Toggle=\count130
+\psVectorCtr=\count131
+)
+ v1.75, 2016/05/18 (tvz,hv)
+\pstRadUnit=\dimen157
+\pstRadUnitInv=\dimen158
+\pst@linecnt=\count132
+\RCD@file=\read1
+\psxlabelsep=\dimen159
+\psylabelsep=\dimen160
+\psk@subticksize=\dimen161
+\pst@xticksizeA=\dimen162
+\pst@xticksizeB=\dimen163
+\pst@xticksizeC=\dimen164
+\pst@yticksizeA=\dimen165
+\pst@yticksizeB=\dimen166
+\pst@yticksizeC=\dimen167
+\@digitcounter=\count133
+\psk@llx=\dimen168
+\psk@lly=\dimen169
+\psk@urx=\dimen170
+\psk@ury=\dimen171
+\pst@xunit=\dimen172
+\pst@yunit=\dimen173
+)
+File: pst-plot.tex 2016/05/18 1.75 `pst-plot' (tvz,hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-node\pst-node.sty"
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-node\pst-node.tex")
+File: pst-node.tex 2016/05/18 1.75 `pst-node' (tvz,hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-tree\pst-tree.sty"
+Package: pst-tree 2009/01/25 package wrapper for pst-tree.tex
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-tree\pst-tree.tex"
+ v1.12, 2011/02/28(tvz,dg,hv)
+\pstree@rootbox=\box30
+\pstree@box=\box31
+\psnodecnt=\count134
+\pstreelevel=\count135
+\pstreecnt=\count136
+\pstree@cnt=\count137
+\pstree@stop=\count138
+)
+File: pst-tree.tex 2011/02/28 1.12 `pst-tree' (tvz,hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-grad\pst-grad.sty"
+Package: pst-grad 2004/07/15 package wrapper for pst-grad.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-grad\pst-grad.tex"
+`pst-grad' v1.06, 2006/11/27 (tvz,dg,hv))
+File: pst-grad.tex 2006/11/27 1.06 `pst-grad' (tvz)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-coil\pst-coil.sty"
+Package: pst-coil 2010/02/01 package wrapper for pst-coil.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-coil\pst-coil.tex"
+ v1.06, 2006/11/27
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-node\pst-node.tex"))
+File: pst-coil.tex 2015/05/13 v1.07 `PST-coil' (tvz,hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-text\pst-text.sty"
+Package: pst-text 2006/01/01 package wrapper for pst-text.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-text\pst-text.tex"
+ v1.00, 2006/11/05(tvz,hv))
+File: pst-text.tex 2006/11/05 1.00 `pst-text' (tvz)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-3d\pst-3d.sty"
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-3d\pst-3d.tex")
+File: pst-3d.tex 2006/11/05 v1.00 `PST-3d' (hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-eps\pst-eps.sty"
+Package: pst-eps 2005/05/20 package wrapper for pst-eps.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-eps\pst-eps.tex"
+ v1.00, 2006/11/04
+\pst@epsout=\write3
+\pst@tempout=\write4
+)
+File: pst-eps.tex 2006/11/04 1.00 `pst-eps' (tvz)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-fill\pst-fill.sty"
+Package: pst-fill 2005/09/13 package wrapper for pst-fill.tex (hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-fill\pst-fill.tex"
+`PST-Fill' v1.01, 2007/03/10 (tvz,dg,hv)
+\pst@fillbox=\box32
+)
+File: pst-fill.tex 2007/03/10 v1.01 `PST-fill' (tvz,dg)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks-add\pstricks-add.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pst-math\pst-math.sty"
+Package: pst-math 2014/07/30 package wrapper for PSTricks pst-math.tex
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pst-math\pst-math.tex")
+File: pst-math.tex 2007/03/10 v1.01 `PST-math' (hv)
+)
+Package: pstricks-add 2010/02/11 v. 0.14 package wrapper for pstricks-add.tex (
+hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks-add\pstricks-add.tex")
+File: pstricks-add.tex 2007/03/10 v1.01 `PSTricks-add' (hv)
+Package pstricks-add Info: Local config file pstricks-add.cfg used on input lin
+e 20.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks-add\pstricks-add.cfg"
+File: pstricks-add.cfg 2005/01/10 v0.1 addtional user stuff (hv)
+)))
+(com.braju.graphicalmodels.sty
+Package: com.braju.graphicalmodels 2000/10/26 PSTricks extensions by Henrik Ben
+gtsson <hb@maths.lth.se>
+ (com.braju.pstricks.sty
+Package: com.braju.pstricks 2000/12/03 PSTricks extensions by Henrik Bengtsson 
+<hb@maths.lth.se>
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count139
+\calc@Bcount=\count140
+\calc@Adimen=\dimen174
+\calc@Bdimen=\dimen175
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count141
+\calc@Cskip=\skip47
+)
+\pst@Thermometer@width=\skip48
+\pst@Thermometer@height=\skip49
+)
+\GM@x=\skip50
+\GM@y=\skip51
+\GM@xa=\skip52
+\GM@ya=\skip53
+\GM@xb=\skip54
+\GM@yb=\skip55
+\GM@xc=\skip56
+\GM@yc=\skip57
+\GM@dx=\skip58
+\GM@dy=\skip59
+\GM@dima=\skip60
+\GM@dimb=\skip61
+\GM@dimc=\skip62
+\c@GM@counta=\count142
+\c@GM@countb=\count143
+\c@GM@countc=\count144
+\GM@nodeSize=\skip63
+\GM@offset=\skip64
+\c@GM@observed=\count145
+\c@GM@query=\count146
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/06/28 v2.15d AMS math features
+\@mathmargin=\skip65
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks31
+\ex@=\dimen176
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen177
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count147
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count148
+\leftroot@=\count149
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count150
+\DOTSCASE@=\count151
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box33
+\strutbox@=\box34
+\big@size=\dimen178
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count152
+\c@MaxMatrixCols=\count153
+\dotsspace@=\muskip10
+\c@parentequation=\count154
+\dspbrk@lvl=\count155
+\tag@help=\toks32
+\row@=\count156
+\column@=\count157
+\maxfields@=\count158
+\andhelp@=\toks33
+\eqnshift@=\dimen179
+\alignsep@=\dimen180
+\tagshift@=\dimen181
+\tagwidth@=\dimen182
+\totwidth@=\dimen183
+\lineht@=\dimen184
+\@envbody=\toks34
+\multlinegap=\skip66
+\multlinetaggap=\skip67
+\mathdisplay@stack=\toks35
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks36
+\thm@bodyfont=\toks37
+\thm@headfont=\toks38
+\thm@notefont=\toks39
+\thm@headpunct=\toks40
+\thm@preskip=\skip68
+\thm@postskip=\skip69
+\thm@headsep=\skip70
+\dth@everypar=\toks41
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\mathabx\mathabx.sty"
+Package: mathabx 2003/07/29 v0.0 Non-standard LaTeX package mathabx
+\symmatha=\mathgroup6
+\symmathb=\mathgroup7
+\symmathx=\mathgroup8
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\mathabx\mathabx.dcl"
+LaTeX Font Info:    Redeclaring math symbol \cdotp on input line 25.
+LaTeX Font Info:    Redeclaring math symbol \times on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \div on input line 34.
+LaTeX Font Info:    Redeclaring math symbol \cdot on input line 35.
+LaTeX Font Info:    Redeclaring math symbol \circ on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \ast on input line 38.
+LaTeX Font Info:    Redeclaring math symbol \pm on input line 41.
+LaTeX Font Info:    Redeclaring math symbol \mp on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \ltimes on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \rtimes on input line 44.
+LaTeX Font Info:    Redeclaring math symbol \diamond on input line 45.
+LaTeX Font Info:    Redeclaring math symbol \bullet on input line 46.
+LaTeX Font Info:    Redeclaring math symbol \star on input line 47.
+LaTeX Font Info:    Redeclaring math symbol \amalg on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \dotplus on input line 58.
+LaTeX Font Info:    Redeclaring math symbol \square on input line 63.
+LaTeX Font Info:    Redeclaring math symbol \divideontimes on input line 71.
+LaTeX Font Info:    Redeclaring math symbol \bigstar on input line 75.
+LaTeX Font Info:    Redeclaring math symbol \equiv on input line 83.
+LaTeX Font Info:    Redeclaring math symbol \sim on input line 84.
+LaTeX Font Info:    Redeclaring math symbol \approx on input line 85.
+LaTeX Font Info:    Redeclaring math symbol \simeq on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \asymp on input line 89.
+LaTeX Font Info:    Redeclaring math symbol \nsim on input line 97.
+LaTeX Font Info:    Redeclaring math symbol \ncong on input line 100.
+LaTeX Font Info:    Redeclaring math symbol \risingdotseq on input line 118.
+LaTeX Font Info:    Redeclaring math symbol \fallingdotseq on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \circeq on input line 125.
+LaTeX Font Info:    Redeclaring math symbol \eqcirc on input line 126.
+LaTeX Font Info:    Redeclaring math symbol \triangleq on input line 127.
+LaTeX Font Info:    Redeclaring math symbol \neg on input line 134.
+LaTeX Font Info:    Redeclaring math symbol \ll on input line 136.
+LaTeX Font Info:    Redeclaring math symbol \gg on input line 137.
+LaTeX Font Info:    Redeclaring math symbol \vdash on input line 139.
+LaTeX Font Info:    Redeclaring math symbol \dashv on input line 140.
+LaTeX Font Info:    Redeclaring math symbol \nvdash on input line 141.
+LaTeX Font Info:    Redeclaring math symbol \vDash on input line 143.
+LaTeX Font Info:    Redeclaring math symbol \nvDash on input line 145.
+LaTeX Font Info:    Redeclaring math symbol \Vdash on input line 147.
+LaTeX Font Info:    Redeclaring math symbol \nVdash on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \flat on input line 158.
+LaTeX Font Info:    Redeclaring math symbol \natural on input line 159.
+LaTeX Font Info:    Redeclaring math symbol \sharp on input line 160.
+LaTeX Font Info:    Redeclaring math symbol \infty on input line 161.
+LaTeX Font Info:    Redeclaring math symbol \propto on input line 162.
+LaTeX Font Info:    Redeclaring math symbol \dagger on input line 163.
+LaTeX Font Info:    Redeclaring math symbol \ddagger on input line 164.
+LaTeX Font Info:    Redeclaring math symbol \between on input line 170.
+LaTeX Font Info:    Redeclaring math symbol \smile on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \frown on input line 172.
+LaTeX Font Info:    Redeclaring math symbol \leftthreetimes on input line 174.
+LaTeX Font Info:    Redeclaring math symbol \rightthreetimes on input line 175.
+
+LaTeX Font Info:    Redeclaring math symbol \pitchfork on input line 176.
+LaTeX Font Info:    Redeclaring math symbol \nVDash on input line 182.
+LaTeX Font Info:    Redeclaring math symbol \Vvdash on input line 184.
+LaTeX Font Info:    Redeclaring math symbol \therefore on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \because on input line 190.
+LaTeX Font Info:    Redeclaring math symbol \measuredangle on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \sphericalangle on input line 203.
+LaTeX Font Info:    Redeclaring math symbol \setminus on input line 218.
+LaTeX Font Info:    Redeclaring math symbol \mid on input line 222.
+LaTeX Font Info:    Redeclaring math symbol \forall on input line 279.
+LaTeX Font Info:    Redeclaring math symbol \complement on input line 280.
+LaTeX Font Info:    Redeclaring math symbol \partial on input line 281.
+LaTeX Font Info:    Redeclaring math symbol \exists on input line 284.
+LaTeX Font Info:    Redeclaring math symbol \nexists on input line 285.
+LaTeX Font Info:    Redeclaring math symbol \Finv on input line 286.
+LaTeX Font Info:    Redeclaring math symbol \Game on input line 287.
+LaTeX Font Info:    Redeclaring math symbol \emptyset on input line 288.
+LaTeX Font Info:    Redeclaring math symbol \top on input line 290.
+LaTeX Font Info:    Redeclaring math symbol \bot on input line 291.
+LaTeX Font Info:    Redeclaring math symbol \perp on input line 292.
+LaTeX Font Info:    Redeclaring math symbol \curlywedge on input line 296.
+LaTeX Font Info:    Redeclaring math symbol \curlyvee on input line 297.
+LaTeX Font Info:    Redeclaring math symbol \in on input line 299.
+LaTeX Font Info:    Redeclaring math symbol \owns on input line 300.
+LaTeX Font Info:    Redeclaring math symbol \cap on input line 312.
+LaTeX Font Info:    Redeclaring math symbol \cup on input line 313.
+LaTeX Font Info:    Redeclaring math symbol \uplus on input line 314.
+LaTeX Font Info:    Redeclaring math symbol \sqcap on input line 315.
+LaTeX Font Info:    Redeclaring math symbol \sqcup on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \wedge on input line 318.
+LaTeX Font Info:    Redeclaring math symbol \vee on input line 320.
+LaTeX Font Info:    Redeclaring math symbol \barwedge on input line 327.
+LaTeX Font Info:    Redeclaring math symbol \veebar on input line 328.
+LaTeX Font Info:    Redeclaring math symbol \doublebarwedge on input line 329.
+LaTeX Font Info:    Redeclaring math symbol \doublecap on input line 331.
+LaTeX Font Info:    Redeclaring math symbol \doublecup on input line 333.
+LaTeX Font Info:    Redeclaring math symbol \subset on input line 344.
+LaTeX Font Info:    Redeclaring math symbol \supset on input line 345.
+LaTeX Font Info:    Redeclaring math symbol \subseteq on input line 348.
+LaTeX Font Info:    Redeclaring math symbol \supseteq on input line 349.
+LaTeX Font Info:    Redeclaring math symbol \nsubseteq on input line 350.
+LaTeX Font Info:    Redeclaring math symbol \nsupseteq on input line 351.
+LaTeX Font Info:    Redeclaring math symbol \subsetneq on input line 352.
+LaTeX Font Info:    Redeclaring math symbol \supsetneq on input line 353.
+LaTeX Font Info:    Redeclaring math symbol \varsubsetneq on input line 354.
+LaTeX Font Info:    Redeclaring math symbol \varsupsetneq on input line 355.
+LaTeX Font Info:    Redeclaring math symbol \subseteqq on input line 357.
+LaTeX Font Info:    Redeclaring math symbol \supseteqq on input line 358.
+LaTeX Font Info:    Redeclaring math symbol \nsubseteqq on input line 359.
+LaTeX Font Info:    Redeclaring math symbol \nsupseteqq on input line 360.
+LaTeX Font Info:    Redeclaring math symbol \subsetneqq on input line 361.
+LaTeX Font Info:    Redeclaring math symbol \supsetneqq on input line 362.
+LaTeX Font Info:    Redeclaring math symbol \varsubsetneqq on input line 363.
+LaTeX Font Info:    Redeclaring math symbol \varsupsetneqq on input line 364.
+LaTeX Font Info:    Redeclaring math symbol \Subset on input line 366.
+LaTeX Font Info:    Redeclaring math symbol \Supset on input line 367.
+LaTeX Font Info:    Redeclaring math symbol \sqsubseteq on input line 380.
+LaTeX Font Info:    Redeclaring math symbol \sqsupseteq on input line 381.
+LaTeX Font Info:    Redeclaring math symbol \triangleleft on input line 407.
+LaTeX Font Info:    Redeclaring math symbol \vartriangleleft on input line 408.
+
+LaTeX Font Info:    Redeclaring math symbol \triangleright on input line 409.
+LaTeX Font Info:    Redeclaring math symbol \vartriangleright on input line 410
+.
+LaTeX Font Info:    Redeclaring math symbol \ntriangleleft on input line 411.
+LaTeX Font Info:    Redeclaring math symbol \ntriangleright on input line 412.
+LaTeX Font Info:    Redeclaring math symbol \trianglelefteq on input line 413.
+LaTeX Font Info:    Redeclaring math symbol \trianglerighteq on input line 414.
+
+LaTeX Font Info:    Redeclaring math symbol \ntrianglelefteq on input line 415.
+
+LaTeX Font Info:    Redeclaring math symbol \ntrianglerighteq on input line 416
+.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangledown on input line 42
+7.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleleft on input line 42
+8.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleright on input line 4
+29.
+LaTeX Font Info:    Redeclaring math symbol \nless on input line 437.
+LaTeX Font Info:    Redeclaring math symbol \ngtr on input line 438.
+LaTeX Font Info:    Redeclaring math symbol \leq on input line 439.
+LaTeX Font Info:    Redeclaring math symbol \geq on input line 441.
+LaTeX Font Info:    Redeclaring math symbol \nleq on input line 443.
+LaTeX Font Info:    Redeclaring math symbol \ngeq on input line 445.
+LaTeX Font Info:    Redeclaring math symbol \lneq on input line 451.
+LaTeX Font Info:    Redeclaring math symbol \gneq on input line 452.
+LaTeX Font Info:    Redeclaring math symbol \leqq on input line 453.
+LaTeX Font Info:    Redeclaring math symbol \geqq on input line 454.
+LaTeX Font Info:    Redeclaring math symbol \nleqq on input line 455.
+LaTeX Font Info:    Redeclaring math symbol \ngeqq on input line 456.
+LaTeX Font Info:    Redeclaring math symbol \lneqq on input line 457.
+LaTeX Font Info:    Redeclaring math symbol \gneqq on input line 458.
+LaTeX Font Info:    Redeclaring math symbol \lvertneqq on input line 459.
+LaTeX Font Info:    Redeclaring math symbol \gvertneqq on input line 460.
+LaTeX Font Info:    Redeclaring math symbol \eqslantless on input line 461.
+LaTeX Font Info:    Redeclaring math symbol \eqslantgtr on input line 462.
+LaTeX Font Info:    Redeclaring math symbol \lessgtr on input line 465.
+LaTeX Font Info:    Redeclaring math symbol \gtrless on input line 466.
+LaTeX Font Info:    Redeclaring math symbol \lesseqgtr on input line 467.
+LaTeX Font Info:    Redeclaring math symbol \gtreqless on input line 468.
+LaTeX Font Info:    Redeclaring math symbol \lesseqqgtr on input line 469.
+LaTeX Font Info:    Redeclaring math symbol \gtreqqless on input line 470.
+LaTeX Font Info:    Redeclaring math symbol \lesssim on input line 472.
+LaTeX Font Info:    Redeclaring math symbol \gtrsim on input line 473.
+LaTeX Font Info:    Redeclaring math symbol \lnsim on input line 476.
+LaTeX Font Info:    Redeclaring math symbol \gnsim on input line 477.
+LaTeX Font Info:    Redeclaring math symbol \lessapprox on input line 478.
+LaTeX Font Info:    Redeclaring math symbol \gtrapprox on input line 479.
+LaTeX Font Info:    Redeclaring math symbol \lnapprox on input line 482.
+LaTeX Font Info:    Redeclaring math symbol \gnapprox on input line 483.
+LaTeX Font Info:    Redeclaring math symbol \lessdot on input line 485.
+LaTeX Font Info:    Redeclaring math symbol \gtrdot on input line 486.
+LaTeX Font Info:    Redeclaring math symbol \lll on input line 488.
+LaTeX Font Info:    Redeclaring math symbol \ggg on input line 489.
+LaTeX Font Info:    Redeclaring math symbol \prec on input line 498.
+LaTeX Font Info:    Redeclaring math symbol \succ on input line 499.
+LaTeX Font Info:    Redeclaring math symbol \nprec on input line 500.
+LaTeX Font Info:    Redeclaring math symbol \nsucc on input line 501.
+LaTeX Font Info:    Redeclaring math symbol \preccurlyeq on input line 502.
+LaTeX Font Info:    Redeclaring math symbol \succcurlyeq on input line 503.
+LaTeX Font Info:    Redeclaring math symbol \preceq on input line 506.
+LaTeX Font Info:    Redeclaring math symbol \succeq on input line 507.
+LaTeX Font Info:    Redeclaring math symbol \npreceq on input line 508.
+LaTeX Font Info:    Redeclaring math symbol \nsucceq on input line 509.
+LaTeX Font Info:    Redeclaring math symbol \curlyeqprec on input line 512.
+LaTeX Font Info:    Redeclaring math symbol \curlyeqsucc on input line 513.
+LaTeX Font Info:    Redeclaring math symbol \precsim on input line 517.
+LaTeX Font Info:    Redeclaring math symbol \succsim on input line 518.
+LaTeX Font Info:    Redeclaring math symbol \precnsim on input line 521.
+LaTeX Font Info:    Redeclaring math symbol \succnsim on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \precapprox on input line 523.
+LaTeX Font Info:    Redeclaring math symbol \succapprox on input line 524.
+LaTeX Font Info:    Redeclaring math symbol \precnapprox on input line 527.
+LaTeX Font Info:    Redeclaring math symbol \succnapprox on input line 528.
+LaTeX Font Info:    Redeclaring math symbol \leftarrow on input line 540.
+LaTeX Font Info:    Redeclaring math symbol \rightarrow on input line 542.
+LaTeX Font Info:    Redeclaring math symbol \nwarrow on input line 546.
+LaTeX Font Info:    Redeclaring math symbol \nearrow on input line 547.
+LaTeX Font Info:    Redeclaring math symbol \swarrow on input line 548.
+LaTeX Font Info:    Redeclaring math symbol \searrow on input line 549.
+LaTeX Font Info:    Redeclaring math symbol \leftrightarrow on input line 550.
+LaTeX Font Info:    Redeclaring math symbol \nleftarrow on input line 552.
+LaTeX Font Info:    Redeclaring math symbol \nrightarrow on input line 553.
+LaTeX Font Info:    Redeclaring math symbol \nleftrightarrow on input line 554.
+
+LaTeX Font Info:    Redeclaring math symbol \mapstochar on input line 557.
+LaTeX Font Info:    Redeclaring math symbol \leftharpoonup on input line 560.
+LaTeX Font Info:    Redeclaring math symbol \rightharpoonup on input line 561.
+LaTeX Font Info:    Redeclaring math symbol \leftharpoondown on input line 562.
+
+LaTeX Font Info:    Redeclaring math symbol \rightharpoondown on input line 563
+.
+LaTeX Font Info:    Redeclaring math symbol \upharpoonleft on input line 564.
+LaTeX Font Info:    Redeclaring math symbol \downharpoonleft on input line 565.
+
+LaTeX Font Info:    Redeclaring math symbol \upharpoonright on input line 566.
+LaTeX Font Info:    Redeclaring math symbol \restriction on input line 567.
+LaTeX Font Info:    Redeclaring math symbol \downharpoonright on input line 568
+.
+LaTeX Font Info:    Redeclaring math symbol \leftrightharpoons on input line 56
+9.
+LaTeX Font Info:    Redeclaring math symbol \Leftarrow on input line 575.
+LaTeX Font Info:    Redeclaring math symbol \Rightarrow on input line 576.
+LaTeX Font Info:    Redeclaring math symbol \Leftrightarrow on input line 579.
+LaTeX Font Info:    Redeclaring math symbol \nLeftarrow on input line 581.
+LaTeX Font Info:    Redeclaring math symbol \nRightarrow on input line 582.
+LaTeX Font Info:    Redeclaring math symbol \nLeftrightarrow on input line 583.
+
+LaTeX Font Info:    Redeclaring math symbol \leftleftarrows on input line 593.
+LaTeX Font Info:    Redeclaring math symbol \rightrightarrows on input line 594
+.
+LaTeX Font Info:    Redeclaring math symbol \upuparrows on input line 595.
+LaTeX Font Info:    Redeclaring math symbol \downdownarrows on input line 596.
+LaTeX Font Info:    Redeclaring math symbol \leftrightarrows on input line 597.
+
+LaTeX Font Info:    Redeclaring math symbol \rightleftarrows on input line 598.
+
+LaTeX Font Info:    Redeclaring math symbol \rhook on input line 612.
+LaTeX Font Info:    Redeclaring math symbol \lhook on input line 613.
+LaTeX Font Info:    Redeclaring math symbol \diagup on input line 614.
+LaTeX Font Info:    Redeclaring math symbol \diagdown on input line 615.
+LaTeX Font Info:    Redeclaring math symbol \Lsh on input line 617.
+LaTeX Font Info:    Redeclaring math symbol \Rsh on input line 619.
+LaTeX Font Info:    Redeclaring math symbol \looparrowleft on input line 624.
+LaTeX Font Info:    Redeclaring math symbol \looparrowright on input line 626.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowleft on input line 631.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowright on input line 633.
+
+LaTeX Font Info:    Redeclaring math symbol \circlearrowleft on input line 641.
+
+LaTeX Font Info:    Redeclaring math symbol \circlearrowright on input line 642
+.
+LaTeX Font Info:    Redeclaring math symbol \rightsquigarrow on input line 645.
+
+LaTeX Font Info:    Redeclaring math symbol \leftrightsquigarrow on input line 
+646.
+LaTeX Font Info:    Redeclaring math symbol \oplus on input line 658.
+LaTeX Font Info:    Redeclaring math symbol \ominus on input line 659.
+LaTeX Font Info:    Redeclaring math symbol \otimes on input line 661.
+LaTeX Font Info:    Redeclaring math symbol \odot on input line 663.
+LaTeX Font Info:    Redeclaring math symbol \oslash on input line 675.
+LaTeX Font Info:    Redeclaring math symbol \boxplus on input line 683.
+LaTeX Font Info:    Redeclaring math symbol \boxminus on input line 684.
+LaTeX Font Info:    Redeclaring math symbol \boxtimes on input line 686.
+LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 688.
+\mayacnter=\count159
+\mayacnta=\count160
+\mayacntb=\count161
+\mayacntc=\count162
+\mayawidth=\dimen185
+LaTeX Font Info:    Redeclaring math symbol \intop on input line 753.
+LaTeX Font Info:    Redeclaring math symbol \ointop on input line 760.
+LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 842.
+LaTeX Info: Redefining \{ on input line 846.
+LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 848.
+LaTeX Info: Redefining \} on input line 852.
+LaTeX Font Info:    Redeclaring math delimiter \langle on input line 858.
+LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 859.
+LaTeX Font Info:    Redeclaring math delimiter \vert on input line 863.
+LaTeX Font Info:    Redeclaring math delimiter \Vert on input line 865.
+LaTeX Font Info:    Redeclaring math delimiter \uparrow on input line 868.
+LaTeX Font Info:    Redeclaring math delimiter \downarrow on input line 869.
+LaTeX Font Info:    Redeclaring math delimiter \updownarrow on input line 870.
+LaTeX Font Info:    Redeclaring math delimiter \Uparrow on input line 871.
+LaTeX Font Info:    Redeclaring math delimiter \Downarrow on input line 872.
+LaTeX Font Info:    Redeclaring math delimiter \Updownarrow on input line 873.
+LaTeX Font Info:    Redeclaring math delimiter \lgroup on input line 880.
+LaTeX Font Info:    Redeclaring math delimiter \rgroup on input line 881.
+LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 882.
+LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 883.
+LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 884.
+LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 885.
+LaTeX Font Info:    Redeclaring math symbol \braceld on input line 903.
+LaTeX Font Info:    Redeclaring math symbol \bracerd on input line 905.
+LaTeX Font Info:    Redeclaring math symbol \bracelu on input line 907.
+LaTeX Font Info:    Redeclaring math symbol \braceru on input line 909.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 944.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 946.
+))
+(Modelo_JMN.aux)
+\openout1 = `Modelo_JMN.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(108.4061pt, 505.88779pt, 108.40611pt)
+* v-part:(T,H,B)=(56.37115pt, 328.82706pt, 84.55678pt)
+* \paperwidth=722.7pt
+* \paperheight=469.75499pt
+* \textwidth=505.88779pt
+* \textheight=328.82706pt
+* \oddsidemargin=36.13611pt
+* \evensidemargin=36.13611pt
+* \topmargin=-52.89883pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 45.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 45.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+]
+PSTricks: Converting TeX box to EPS.
+          With dvips, use -E option.
+(Modelo_JMN.aux) ) 
+Here is how much of TeX's memory you used:
+ 11819 strings out of 493335
+ 202571 string characters out of 3139265
+ 324986 words of memory out of 3000000
+ 15135 multiletter control sequences out of 15000+200000
+ 14563 words of font info for 52 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 44i,9n,54p,689b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on Modelo_JMN.dvi (1 page, 19360 bytes).

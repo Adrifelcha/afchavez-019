@@ -1,0 +1,8 @@
+NOTA:
+
+Al construir la Matriz Q se utilizó la siguiente nomenclatura para
+identidficar cada uno de los Ejes:
+
+Eje 1: Sentido Numérico y Pensamiento Algebráico
+Eje 2: Manejo de la Información
+Eje 3: Forma, Espacio y Medida

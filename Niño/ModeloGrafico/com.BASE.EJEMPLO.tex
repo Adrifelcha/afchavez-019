@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template graphical model %
+% Author: Tom Lodewyckx    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 0. Begin document
+%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+%\ProvidesPackage{com.braju.graphicalmodels}
+\usepackage[paperwidth=10in, paperheight=6.5in]{geometry}
+\usepackage{pst-all}
+\usepackage{com.braju.graphicalmodels}
+\usepackage{com.braju.pstricks}
+\usepackage{pstricks-add}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,mathabx} % Math packages
+\catcode`\@=11%
+\pagestyle{empty}
+\begin{document}
+\TeXtoEPS
+\psset{unit=13mm,arrowscale=1.5}
+\SpecialCoor
+
+%%% SPECIAL NOTE: when compilling, do not use pdflatex, use latex to DVI 
+%%% IN Typeset Menu, click 'TeX and DVI' before compiling. 
+
+% 1. Grid
+%%%%%%%%%
+
+\begin{pspicture}(2,0)(15,9)
+%\showgrid
+
+
+% 2. Nodes
+%%%%%%%%%%
+    
+           
+\rput(2.2,4.8){\GM@node[nodeSize=13mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{alpha}}
+           \GM@label[offset=-3mm]{alpha}{\huge$\alpha_{i}$}
+           
+\rput(5.5,8.5){\GM@node[nodeSize=13mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{k}}
+           \GM@label[offset=-3mm]{k}{\huge$\kappa_{i}$}
+           
+           
+\rput(2.2,2.8){\GM@node[nodeSize=13mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{r}}
+           \GM@label[offset=-3mm]{r}{\huge$r_{i}$}
+
+\rput(8.75,6.8){\GM@node[nodeSize=12mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{d}}
+           \GM@label[offset=-2.5mm]{d}{\huge$d_{h}$}
+           
+\rput(8.75,5.2){\GM@node[nodeSize=12mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{a}}
+           \GM@label[offset=-2.5mm]{a}{\huge$a_{h}$}
+           
+\rput(8.75,3.8){\GM@node[nodeSize=12mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{p}}
+           \GM@label[offset=-2.5mm]{p}{\huge$p_{h}$}
+           
+
+\rput(5.5,6){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{v}}
+					\rput(5.5,6){\GM@node[nodeSize=12mm]{v_small}}
+           \GM@label[offset=-4mm]{v}{\huge$v_{ih}$}
+
+
+           
+\rput(5.5,3.8){\GM@node[nodeSize=16mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{theta}}
+					\rput(5.5,3.8){\GM@node[nodeSize=13mm]{theta_small}}
+           \GM@label[offset=-5mm]{theta}{\huge$\theta_{ih}$}
+           
+
+
+\rput(5.5,1.5){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{C}}
+           \GM@label[offset=-5mm]{C}{\huge$C_{ih}$}
+
+ 
+% 3. Arrows
+%%%%%%%%%%%
+\ncline[arrows=->]{alpha}{theta}
+\ncline[arrows=->]{d}{v}
+\ncline[arrows=->]{a}{v}
+\ncline[arrows=->]{k}{v}
+\ncline[arrows=->]{p}{theta}
+\ncline[arrows=->]{v}{theta}
+\ncline[arrows=->]{r}{theta}
+\ncline[arrows=->]{theta}{C}
+
+
+
+
+% 4. Plates
+%%%%%%%%%%%
+
+\rput(3.5,.6){\GM@plate[plateLabelPos=br]{6.2}{7}{\Large$h$ trials}}
+\rput(1.2,-.5){\GM@plate[plateLabelPos=br]{6.1}{10}{\Large$i$ participants}}
+
+% 5. Model specification
+%%%%%%%%%%%%%%%%%%%%%%%%
+%\rput(10,6.25){\pnode{equation}}\GM@label{equation}{\huge$\lambda_{[1:3]}\gets 1/ \sigma^2_{[1:3]}$}
+\rput(10,8){\pnode{equation}}\GM@label{equation}{\huge$\kappa_{i}\sim \mathrm{Uniform}\bigl(0,0.3\bigr)$}
+\rput(10,7){\pnode{equation}}\GM@label{equation}{\huge$\alpha_{i}\sim \mathrm{Uniform}\bigl(0,0.5\bigr)$}
+\rput(10,6){\pnode{equation}}\GM@label{equation}{\huge$v_{ih}\gets a_{h}/(1+\kappa_{i} d_{h})$}
+\rput(10,5){\pnode{equation}}\GM@label{equation}{\huge$r_{i}\sim \mathrm{Bernoulli}\bigl(0.5)$}
+\rput(10,2.8){\pnode{equation}}\GM@label{equation}{\huge$\theta_{ih}\gets
+\begin{cases}
+\alpha_{i}		& \mathrm{if}\:\: p_{h}> v_{ih}\:\: \& \:\: r_{i}=0 \\
+1-\alpha	_{i}	& \mathrm{if}\:\: p_{h}\leq v_{ih}\:\: \& \:\: r_{i}=0  \\ 
+0.5       & \mathrm{if} \:\: r_{i}=1
+\end{cases}$}
+\rput(10,0.5){\pnode{equation}}\GM@label{equation}{\huge$C_{ih}\sim \mathrm{Bernoulli}\bigl(\theta_{ih}\bigr)$}
+%\rput(10,2){\pnode{equation}}\GM@label{equation}{\huge$c_{i}\sim \mathrm{Bernoulli}\bigl(\proportion\bigr)$}
+%\rput(10,1){\pnode{equation}}\GM@label{equation}{\huge$proportion\sim \mathrm{Uniform}\bigl(0,1\bigr)$}
+
+% 6. End document
+%%%%%%%%%%%%%%%%%
+
+\end{pspicture}
+\endTeXtoEPS
+\end{document}

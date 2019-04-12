@@ -7,7 +7,7 @@
 #############################################################
 rm(list=ls())                       #
 library("CDM")
-setwd("C:/Users/Laboratorio 25/Desktop/afchavez-019/RIMEDIE/Mat09_2015")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015")
 
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Respuestas$ESCUELA <- NULL

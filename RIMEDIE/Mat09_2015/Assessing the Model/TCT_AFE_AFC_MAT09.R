@@ -5,7 +5,7 @@
 #############################################################
 rm(list=ls())
 library(psych)
-setwd("C:/Users/Sandra/Desktop/afchavez-019/RIMEDIE/Mat09_2015")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015")
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Respuestas[,1:12] <- NULL
 
@@ -26,6 +26,9 @@ D_E3 <- R_E3[complete.cases(R_E3),]
 ################################################################
 ################################################################
 ########################   I N D I C E S    D E     L A     TCT
+
+
+##################################################################
 #Distribución de puntajes totales alcanzados
 Total <- NULL
 for(i in 1:nrow(Datos)){
@@ -51,9 +54,7 @@ axis(1, seq(0.5,49.5,1), seq(1,50.1))
 axis(2, seq(0,1000,50), seq(0,1000,50))
 
 
-
-
-
+#####################################################################
 ### Indices de dificultad
 P <- NULL
 for(i in 1:ncol(Datos)){
@@ -79,8 +80,37 @@ axis(2, seq(0,16,1), seq(0,16,1))
 
 
 #############################################
+##
+#    Correlaciones      #####################
+##
 #############################################
-################### Alfas de Cronbach
+cor_dat <- cor(Datos)
+lowerCor(Datos)
+corPlot(Datos)   #Note all correlations are *almost* positive
+
+#Ordenamos las correlaciones en orden ascendente y descendiente
+ascendiente <- sort(lowerCor(Datos))
+descendiente <- sort(lowerCor(Datos), decreasing=TRUE)
+
+ascendiente[c(1,3,5,7,9)]   #Cinco correlaciones más BAJAS
+#-.003, -.002,   0.0003,    0.002,   0.004
+descendiente[c(51,53,55,57,59)]    #Cinco correlaiones más ALTAS
+#.251,    .246     .236     .229     .223
+
+library(corrplot)
+round(cor_dat,2)
+corrplot(cor_dat, type = "upper", order = "hclust",    #This is just a cool plot, which utility gets lost due to the 
+         tl.col = "black", tl.srt = 45)                            #very low levels of Correlation reflected in our data
+
+
+
+
+
+#############################################
+##
+#    ALFA DE CRONBACH      ##################
+##
+#############################################
 #Calculamos las alphas
 Cronbach_general <- alpha(Datos); Cronbach_general    
 # 0.82
@@ -91,7 +121,6 @@ Cronbach_Eje2 <- alpha(D_E2); Cronbach_Eje2
 Cronbach_Eje3 <- alpha(D_E3); Cronbach_Eje3
 # 0.54
 
-
 #library(psy)             # Aquí hay código con otro paquete, pero el resultado es el mismo
 #cronbach(Datos)          #      y el output es menos informativo
 #cronbach(D_E1)
@@ -99,15 +128,9 @@ Cronbach_Eje3 <- alpha(D_E3); Cronbach_Eje3
 #cronbach(D_E3)
 
 
-#Evaluamos las Correlaciones entre los items
-cor_dat <- cor(Datos)
-lowerCor(Datos)
-#View(cor_datos)
-corPlot(Datos)   #Note all correlations are positive
-
-
-#############################################
-##
+##########################################################
+##########################################################
+##########################################################
 # Primera revisión de la composición de los datos
 #
 # Análisis de Componentes Principales (ACP)
@@ -115,21 +138,28 @@ corPlot(Datos)   #Note all correlations are positive
 # VSS
 ##
 #############################################
-ACP <- prcomp(Datos)
+ACP <- prcomp(Datos, cor=TRUE)
 summary(ACP)
-screeplot(ACP)
+plot(ACP,type="lines", main="Principal Component Analysis - Screeplot")   #Line Screeplot
+screeplot(ACP)   #Bar screeplot
 #According to the Screeplot, 1 component seems to be good enough
 
 AP <- fa.parallel(Datos); AP
-#"Suggest that number of factors = 15 with 5 components
+#Suggest that number of factors = 18 with 5 components
 
 
 VSS <- vss(Datos);VSS
+#Velicer MAP criterion achieves a minimun with 1 factor
 #BIC achieves a minimum with 4 factors
 #BIC-Sample Size adjusted is reduced with 7 factors
 
 
-
+library(nFactors)
+ev <- eigen(cor(Datos)) # get eigenvalues
+ap <- parallel(subject=nrow(Datos),var=ncol(Datos),
+               rep=100,cent=.05)
+nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+plotnScree(nS)
 
 
 #############################################
@@ -140,6 +170,7 @@ VSS <- vss(Datos);VSS
 explore_1 <- factanal(Datos, factors = 1, method = "mle") 
 explore_2 <- factanal(Datos, factors = 2, method = "mle") 
 explore_3 <- factanal(Datos, factors = 3, method = "mle") 
+explore_3b <- factanal(Datos, factors = 3, rotation= "varimax") 
 explore_4 <- factanal(Datos, factors = 4, method = "mle") 
 explore_5 <- factanal(Datos, factors = 5, method = "mle")
 explore_6 <- factanal(Datos, factors = 6, method = "mle")

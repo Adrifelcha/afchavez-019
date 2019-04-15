@@ -5,7 +5,7 @@
 #############################################################
 rm(list=ls())
 library(psych)
-setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015")
+setwd("C:/Users/Sandra/Desktop/afchavez-019/RIMEDIE/Mat09_2015")
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Respuestas[,1:12] <- NULL
 
@@ -82,13 +82,13 @@ axis(2, seq(0,16,1), seq(0,16,1))
 #############################################
 ################### Alfas de Cronbach
 #Calculamos las alphas
-Cronbach_general <- alpha(Datos)    
+Cronbach_general <- alpha(Datos); Cronbach_general    
 # 0.82
-Cronbach_Eje1 <- alpha(D_E1)        
+Cronbach_Eje1 <- alpha(D_E1); Cronbach_Eje1        
 # 0.67
-Cronbach_Eje2 <- alpha(D_E2)        
+Cronbach_Eje2 <- alpha(D_E2); Cronbach_Eje2
 # 0.59
-Cronbach_Eje3 <- alpha(D_E3)        
+Cronbach_Eje3 <- alpha(D_E3); Cronbach_Eje3
 # 0.54
 
 
@@ -98,18 +98,55 @@ Cronbach_Eje3 <- alpha(D_E3)
 #cronbach(D_E2)
 #cronbach(D_E3)
 
-#############################################
-#############################################
-########## Análisis Factorial EXPLORATORIO
-# Common Factor Analysis
-library(GPArotation)
+
+#Evaluamos las Correlaciones entre los items
 cor_dat <- cor(Datos)
-View(cor_dat)
+lowerCor(Datos)
+#View(cor_datos)
+corPlot(Datos)   #Note all correlations are positive
 
-explore_1 <- fa(r = cor_dat, nfactors = 3, rotate = "oblimin", fm = "pa")
+
+#############################################
+##
+# Primera revisión de la composición de los datos
+#
+# Análisis de Componentes Principales (ACP)
+# Análisis Paralelo
+# VSS
+##
+#############################################
+ACP <- prcomp(Datos)
+summary(ACP)
+screeplot(ACP)
+#According to the Screeplot, 1 component seems to be good enough
+
+AP <- fa.parallel(Datos); AP
+#"Suggest that number of factors = 15 with 5 components
+
+
+VSS <- vss(Datos);VSS
+#BIC achieves a minimum with 4 factors
+#BIC-Sample Size adjusted is reduced with 7 factors
 
 
 
-library(Hmisc)
-library(GPArotation)
+
+
+#############################################
+##
+# Análisis Factorial 
+##
+#############################################
+explore_1 <- factanal(Datos, factors = 1, method = "mle") 
+explore_2 <- factanal(Datos, factors = 2, method = "mle") 
+explore_3 <- factanal(Datos, factors = 3, method = "mle") 
+explore_4 <- factanal(Datos, factors = 4, method = "mle") 
+explore_5 <- factanal(Datos, factors = 5, method = "mle")
+explore_6 <- factanal(Datos, factors = 6, method = "mle")
+explore_7 <- factanal(Datos, factors = 7, method = "mle")
+explore_8 <- factanal(Datos, factors = 8, method = "mle")
+explore_9 <- factanal(Datos, factors = 9, method = "mle")
+explore_10 <- factanal(Datos, factors = 10, method = "mle")
+explore_11 <- factanal(Datos, factors = 11, method = "mle")
+
 

@@ -7,15 +7,16 @@ for (i in 1:k){
       h_B[i] ~ dbin(thetah_B[i],s)
       fa_B[i] ~ dbin(thetaf_B[i],n)
       # Reparameterization Using Equal-Variance Gaussian SDT
-      thetah_A[i] <- phi((d_A[i]/2)-c[i])
-      thetaf_A[i] <- phi((-d_A[i]/2)-c[i])
-      thetah_B[i] <- phi((d_B[i]/2)-c[i])
-      thetaf_B[i] <- phi((-d_B[i]/2)-c[i])
+      thetah_A[i] <- phi((d_A[i]/2)-c_A[i])
+      thetaf_A[i] <- phi((-d_A[i]/2)-c_A[i])
+      thetah_B[i] <- phi((d_B[i]/2)-c_B[i])
+      thetaf_B[i] <- phi((-d_B[i]/2)-c_B[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
-      d_A[i] ~ dnorm(mud_A,lambdad_A)
-      c[i] ~ dnorm(0,1)
-      d_B[i] ~ dnorm(mud_B,lambdad_B)
+      d_A[i] ~ dnorm(mud_A,sigmad_A)
+      c_A[i] ~ dnorm(0,1)
+      c_B[i] ~ dnorm(0,1)
+      d_B[i] ~ dnorm(mud_B,sigmad_B)
       } 
       #Priors
       mud_A <- MuD + delta/2

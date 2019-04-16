@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template graphical model %
+% Author: Tom Lodewyckx    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 0. Begin document
+%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[paperwidth=10.5in, paperheight=7in]{geometry}
+\usepackage{pst-all,pstricks,pst-tools}
+\usepackage{com.braju.graphicalmodels}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\catcode`\@=11%
+\pagestyle{empty}
+\begin{document}
+\TeXtoEPS
+\psset{unit=13mm,arrowscale=1.5}
+\SpecialCoor
+
+
+% 1. Grid
+%%%%%%%%%
+
+\begin{pspicture}(2,0)(12,10)
+%\showgrid
+
+
+% 2. Nodes
+%%%%%%%%%%
+
+
+         
+           
+\rput(4.5,8.5){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{cA}}
+           \GM@label[offset=-4mm]{cA}{\huge$c^{ij}$}
+
+\rput(7.5,8.5){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{dA}}
+           \GM@label[offset=-4.5mm]{dA}{\huge$d_{ij}$}
+
+  
+
+
+\rput(4.5,6.2){\GM@node[nodeSize=17mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{TetaHA}}
+					\rput(4.5,6.2){\GM@node[nodeSize=14mm]{Q_small}}
+           \GM@label[offset=-4.5mm]{TetaHA}{\huge$\theta^h_{ij}$}
+\rput(7.5,6.2){\GM@node[nodeSize=17mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{TetaFAA}}
+					\rput(7.5,6.2){\GM@node[nodeSize=14mm]{Q_small}}
+           \GM@label[offset=-4.5mm]{TetaFAA}{\huge$\theta^f_{ij}$}
+
+
+
+
+\rput(2.2,6.2){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{TauH}}
+					\rput(2.2,6.2){\GM@node[nodeSize=12mm]{Q_small}}
+           \GM@label[offset=-4mm]{TauH}{\huge$\tau^h_{i}$}
+\rput(9.7,6.2){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{TauF}}
+					\rput(9.7,6.2){\GM@node[nodeSize=12mm]{Q_small}}
+           \GM@label[offset=-4mm]{TauF}{\huge$\tau^f_{i}$}
+
+
+
+
+\rput(4.5,4){\GM@node[nodeSize=14mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{hA}}
+           \GM@label[offset=-4.5mm]{hA}{\huge$y^h_{ij}$}       
+
+\rput(7.5,4){\GM@node[nodeSize=15mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{faA}}
+           \GM@label[offset=-4.5mm]{faA}{\huge$y^f_{ij}$}    
+
+
+\rput(7.5,0.5){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{N}}
+           \GM@label[offset=-2.5mm]{N}{\huge$n$}    
+
+\rput(4.5,0.5){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{S}}
+           \GM@label[offset=-2mm]{S}{\huge$s$} 
+
+
+
+ 
+ 
+% 3. Arrows
+%%%%%%%%%%%
+
+\ncline[arrows=->]{TetaFAA}{TauF}
+\ncline[arrows=->]{TetaHA}{TauH}
+
+
+
+\ncline[arrows=->]{cA}{TetaHA}
+\ncline[arrows=->]{cA}{TetaFAA}
+\ncline[arrows=->]{dA}{TetaHA}
+\ncline[arrows=->]{dA}{TetaFAA}
+
+\ncline[arrows=->]{cB}{TetaHB}
+\ncline[arrows=->]{cB}{TetaFAB}
+\ncline[arrows=->]{dB}{TetaHB}
+\ncline[arrows=->]{dB}{TetaFAB}
+
+
+
+\ncline[arrows=->]{TetaHA}{hA}
+\ncline[arrows=->]{TetaFAA}{faA}
+
+\ncline[arrows=->]{TetaHB}{hB}
+\ncline[arrows=->]{TetaFAB}{faB}
+
+
+
+\ncline[arrows=->]{N}{faA}
+\ncline[arrows=->]{N}{faB}
+
+\ncline[arrows=->]{S}{hA}
+\ncline[arrows=->]{S}{hB}
+% 4. Plates
+%%%%%%%%%%%
+
+\rput(1.2, 1.5){\GM@plate[plateLabelPos=br]{9.4}{9}{\Large$i$ Participant}}
+
+\rput(3.3, 2.3){\GM@plate[plateLabelPos=br]{5.5}{7.6}{\Large$j$ Condition}}
+
+% 5. Model specification
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\epsilon_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
+
+%\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(1,1\bigr)$}
+
+%\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
+
+\rput(11.5,9.5){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\sim \mathrm{Binomial} \theta^h_{ij}, s)$}
+
+\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\sim \mathrm{Binomial} \theta^f_{ij}, s)$}
+
+
+\rput(11.5,7){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
+
+\rput(11.5,6){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
+
+
+\rput(11.5,4.5){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}\bigl(0,1)$}
+
+\rput(11.5,3.5){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}\bigl(0,1)$}
+
+\rput(11.5,2){\pnode{equation}}\GM@label{equation}{\huge$\tau^h_{i}\gets \theta^h_{iA}-\theta^h_{iB}$}
+
+\rput(11.5,1){\pnode{equation}}\GM@label{equation}{\huge$\tau^f_{i}\gets \theta^f_{iB}-\theta^f_{iA}$}
+
+% 6. End document
+%%%%%%%%%%%%%%%%%
+
+\end{pspicture}
+\endTeXtoEPS
+\end{document}

@@ -15,32 +15,27 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 2
+experimento <- 1
 #####################################################
 
 if (experimento == 1) {
+  exp <- 1
   archive <-'Ex_1Ebb_TODOS.csv'      #Especificamos el nombre del archivo que contiene los datos
   datos <- read.csv(archive)         #Jalamos los datos del archivo
-  h_A <- datos$A_H       #Hits(A)
-  h_B <- datos$B_H       #Hits(B)
-  fa_A <- datos$A_FA     #FA(A)
-  fa_B <- datos$B_FA     #FA(B)
-  k <- 20     #Total Participantes
-  s <- 160    #Número de Ensayos con Señal
-  n <- 160    #Número de Ensayos con Ruido
 }
 if (experimento == 2){
+  exp <- 2
   archive <-'Ex_2Ebb_TODOS_Sin1.csv'  #Especificamos el nombre del archivo que contiene los datos
   datos <- read.csv(archive)          #Jalamos los datos
-  h_A <- datos$A_H       #H(A)
-  h_B <- datos$B_H       #H(B)
-  fa_A <- datos$A_FA     #FA(A)
-  fa_B <- datos$B_FA     #FA(B)
-  k <- 20     #Total de participantes
-  s <- 160    #Número de Ensayos con Señal
-  n <- 160    #Número de Ensayos con Ruido
 }
 
+h_A <- datos$A_H       #Hits(A)
+h_B <- datos$B_H       #Hits(B)
+fa_A <- datos$A_FA     #FA(A)
+fa_B <- datos$B_FA     #FA(B)
+k <- 20     #Total Participantes
+s <- 160    #Número de Ensayos con Señal
+n <- 160    #Número de Ensayos con Ruido
 
 ######################################
 ######################################
@@ -55,15 +50,16 @@ for (i in 1:k){
       h_B[i] ~ dbin(thetah_B[i],s)
       fa_B[i] ~ dbin(thetaf_B[i],n)
       # Reparameterization Using Equal-Variance Gaussian SDT
-      thetah_A[i] <- phi((d_A[i]/2)-c[i])
-      thetaf_A[i] <- phi((-d_A[i]/2)-c[i])
-      thetah_B[i] <- phi((d_B[i]/2)-c[i])
-      thetaf_B[i] <- phi((-d_B[i]/2)-c[i])
+      thetah_A[i] <- phi((d_A[i]/2)-c_A[i])
+      thetaf_A[i] <- phi((-d_A[i]/2)-c_A[i])
+      thetah_B[i] <- phi((d_B[i]/2)-c_B[i])
+      thetaf_B[i] <- phi((-d_B[i]/2)-c_B[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
-      d_A[i] ~ dnorm(mud_A,lambdad_A)
-      c[i] ~ dnorm(0,1)
-      d_B[i] ~ dnorm(mud_B,lambdad_B)
+      d_A[i] ~ dnorm(mud_A,sigmad_A)
+      c_A[i] ~ dnorm(0,1)
+      c_B[i] ~ dnorm(0,1)
+      d_B[i] ~ dnorm(mud_B,sigmad_B)
       } 
       #Priors
       mud_A <- MuD + delta/2
@@ -88,10 +84,11 @@ data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")
 
 #Asignamos valores iniciales para las Cadenas de Markov
 myinits <- list(
-  list(d_A = rep(0,k), d_B = rep(0,k), c = rep(0,k), lambdad_A = 1,  lambdad_B = 1, delta = 0, MuD = 0))
+  list(d_A = rep(0,k), d_B = rep(0,k), c_A = rep(1,k),c_B = rep(1,k), lambdad_A = 1,  lambdad_B = 1, 
+       delta = 0, MuD = 0))
 
 # Identificamos los parámetros a inferir
-parameters <- c("c", "d_A", "d_B", "thetah_A", "thetah_B", "thetaf_A", "mud_A", "mud_B", 
+parameters <- c("c_A", "c_B", "d_A", "d_B", "thetah_A", "thetah_B", "thetaf_A", "mud_A", "mud_B", 
                 "thetaf_B", "sigmad_A", "sigmad_B", "delta", "MuD", "delta_prior", "MuD_prior")
 
 niter <- 200000     #No. Iteraciones
@@ -124,9 +121,8 @@ tetaFA_b <- samples$BUGSoutput$sims.list$thetaf_B
 
 muDA <- samples$BUGSoutput$sims.list$mud_A
 muDB <- samples$BUGSoutput$sims.list$mud_B
-muCA <- samples$BUGSoutput$sims.list$muc_A
-muCB <- samples$BUGSoutput$sims.list$muc_B
 
+muD <- samples$BUGSoutput$sims.list$MuD
 Delta <- samples$BUGSoutput$sims.list$delta
 
 
@@ -271,122 +267,46 @@ par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5
 
 
 
-##########
-############################### Interaccion entre parametros
-######## Marginales y Densidad
-keep_ <- (1000)
-keep <- sample(niter, keep_)
-d.FA_a <- density(tetaFA_a)
-d.FA_b <- density(tetaFA_b)
-d.H_a <- density(tetaH_a)
-d.H_b <- density(tetaH_b)
-mu.Da <- density(muDA)
-mu.Db <- density(muDB)
-mu.Ca <- density(muCA)
-mu.Cb <- density(muCB)
-
-layout(matrix(c(1,2,3,0),2,2,byrow=T), width=c(2/3, 1/3), heights=c(2/3,1/3))
-#layout.show()
-
-if (experimento ==1)
-{
- # D' y C
-  
-  par(mar=c(0.7,1,3,0))
-  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experimento 1", cex.main=2, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
-  points(muDB[keep],muCB[keep], col="darkorchid3")
-  lines(c(0.2, 0.6),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
-  lines(c(0.2, 0.6),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
-  text(0.65, 0.9, labels="Estímulos A", offset=0, cex = 2, pos=4)
-  text(0.65, 0.7, labels="Estímulos B", offset=0, cex = 2, pos=4)
-  box(lty=1)
-  
-  par(mar=c(0.7,0.5,3,6))
-  plot(mu.Ca$y, mu.Ca$x, xlim=rev(c(0,5)),type='l', col="deepskyblue3", axes=F, xlab="", ylab="",ylim=c(-1,1), lwd=2)
-  lines(mu.Cb$y, mu.Cb$x, col="darkorchid3", lwd=2)
-  
-  axis(4)
-  mtext(expression(paste(mu, "C")), side=4,line=5, cex=1.5, font=2, las=0)
-  box(lty=1)
-  
-  par(mar=c(6,1,0,0))
-  plot(density(muDA),zero.line=F ,main="", col="deepskyblue3", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3), lwd=2)
-  lines(density(muDB), col="darkorchid3", lwd=2)
-  axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
-  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=1.5, font=2)
-  box(lty=1)
-}
-
-
-if (experimento ==2)
-{
-  # D' y C
-  
-  par(mar=c(0.7,1,3,0))
-  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experimento 2", cex.main=2, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
-  points(muDB[keep],muCB[keep], col="darkorchid3")
-  lines(c(0.2, 0.6),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
-  lines(c(0.2, 0.6),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
-  text(0.65, 0.9, labels="Estímulos A", offset=0, cex = 2, pos=4)
-  text(0.65, 0.7, labels="Estímulos B", offset=0, cex = 2, pos=4)
-  box(lty=1)
-  
-  par(mar=c(0.7,0.5,3,6))
-  plot(mu.Ca$y, mu.Ca$x, xlim=rev(c(0,6)),type='l', col="deepskyblue3", axes=F, xlab="", ylab="",ylim=c(-1,1), lwd=2)
-  lines(mu.Cb$y, mu.Cb$x, col="darkorchid3", lwd=2)
-  axis(4)
-  mtext(expression(paste(mu, "C")), side=4,line=5, cex=1.5, font=2, las=0)
-  box(lty=1)
-  
-  par(mar=c(6,1,0,0))
-  plot(density(muDA),zero.line=F ,main="", col="deepskyblue3", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3), lwd=2)
-  lines(density(muDB), col="darkorchid3", lwd=2)
-  axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
-  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=1.5, font=2)
-  box(lty=1)
-}
+######
 
 ############################
 ######### DIFFERENCES ON D'
-
 layout(matrix(1:1,ncol=1))
-if (experimento ==1)
-{
-  par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5,
-      font.lab = 2, cex.axis = 1.3, bty = "n", las=1)
-  
-  plot(density(Delta), col='blue4', main="Experimento 1", cex.main=2, lwd=3.5, ylab="", xlab="", axes=F, xlim=c(-0.5,2))
-  #text(1.5, 1.2, labels="Delta", offset=0, cex = 1, col='red', pos=4)
-  axis(1)
-  axis(2, labels=F, at=c(0,24))
-  mtext("Densidad de probabilidad", side=2, line=2, cex=2, las=0, font=2)
-  mtext("Delta", side=1, line=2.5, cex=2, font=2)
-  points(0,0.03032, pch=16, type='p', col='red', cex=1.5)
-}
 
-if (experimento ==2)
-{
+if(experimento == 1){
+  dot_x <- 0.03226}else{
+    dot_x <-0.01995232}
+
+
   par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5,
       font.lab = 2, cex.axis = 1.3, bty = "n", las=1)
   
-  plot(density(Delta), col='blue4', main="Experimento 2", cex.main=2, lwd=3.5, ylab="", xlab="", axes=F, xlim=c(-0.5,2))
-  lines(c(mean(Delta), mean(Delta)),c(0,2), col='red')
-#  text(1.5, 1.2, labels="Delta", offset=0, cex = 1, col='red', pos=4)
+  prior_delta <- rnorm((niter-burnin),0,1)
+  SavageDickey <- dnorm(0,0,1)/dnorm(0,mean(Delta),sd(Delta))
+  
+  layout(matrix(1:1,ncol=1))
+  plot(density(Delta), col='blue4', lwd=3.5, ann=F, axes=F, xlim=c(-0.5,2))
+  #lines(seq(-100,100,.05), dnorm(seq(-100,100,.05), 0,1), lwd=1, col="darkorchid3")
+  lines(density(prior_delta), lwd=1, col="red")
   axis(1)
-  axis(2, labels=F, at=c(0,24))
-  mtext("Densidad de probabilidad", side=2, line=2, cex=2, las=0, font=2)
-  mtext("Delta", side=1, line=2.5, cex=2, font=2)
-  points(0,0.007229, pch=16, type='p', col='red', cex=1.5)
-}
+  axis(2, line=.5)
+  mtext("Density", side=2, line=3.5, cex=1.5, las=0, font=1)
+  mtext("Delta", side=1, line=2.5, cex=2)
+  title("Bayes Factor for the prior and posterior densities of Delta", line=2.2, cex=2)
+  mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.5)
+  points(0,dot_x, pch=16, type='p', col='red', cex=1.5)
+  points(0,0.3989423, pch=16, type='p', col='red', cex=1.5)
+  lines(c(0,0), c(0.0403, 0.4003), lwd=1, col="red", lty=2)
+  legend(1.2,1.25, legend=c("Prior", "Posterior"),
+         col=c("red", "blue4"), lty=1, cex=1.2, lwd=2)
+  text(0,0.84,paste(round(SavageDickey,3)), f=2)  
+  text(0,0.9,paste("Bayes Factor"),f=2)
 
 
 
 ############################################
 ############ ROC CURVES
-
-
-############### ROC Curves
-
+############################################
 layout(matrix(1:1,ncol=1))
 
 hits_A <- c()
@@ -416,7 +336,88 @@ lines(hits_A,falarm_A,lwd=3,col='deepskyblue3')
 lines(hits_B,falarm_B,lwd=3,col='darkorchid3')
 lines(c(0.58, 0.68),c(0.3,0.3), lwd=3, lty=1, col="deepskyblue3")
 lines(c(0.58, 0.68),c(0.2,0.2), lwd=3, lty=1, col="darkorchid3")
-text(0.7, 0.3, labels="D' para A", offset=0, cex = 1.8, pos=4)
-text(0.7, 0.2, labels="D' para B", offset=0, cex = 1.8, pos=4)
-title('ROC por Clase de Estímulo en el Experimento 1')
-#mtext("Experimento 1",3,cex=1)
+text(0.7, 0.3, labels="Mean D' for stimuli A", offset=0, cex = 1.8, pos=4)
+text(0.7, 0.2, labels="Mean D' for stimuli B", offset=0, cex = 1.8, pos=4)
+title("ROC curve per class of stimuli (based on mean D')")
+mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.2)
+
+
+
+
+
+
+
+
+
+#######################################
+#  Density plots
+#######################################
+x_axis_a <- NULL
+y_axis_a <- NULL
+x_axis_b <- NULL
+y_axis_b <- NULL
+
+
+
+numero <- 0
+media_post_a <- NULL
+for(i in 1:ncol(d_a)){
+  numero <- numero+1
+  a <- sample(d_a[,i],1000)
+  espacio_init <- ((numero-1) * length(a)) + 1
+  espacio_fin <- numero * length(a)
+  y_axis_a[espacio_init:espacio_fin] <- a
+  media_post_a[i] <- mean(d_a[,i])
+}
+
+numero <- 0
+for(i in 1:ncol(d_a)){
+  numero <- numero+1
+  b <- rep(numero, 1000)
+  espacio_init <- ((numero-1) * length(b)) + 1
+  espacio_fin <- numero * length(b)
+  x_axis_a[espacio_init:espacio_fin] <- b
+}
+
+numero <- 0
+media_post_b <- NULL
+for(i in 1:ncol(d_b)){
+  numero <- numero+1
+  a <- sample(d_b[,i],1000)
+  espacio_init <- ((numero-1) * length(a)) + 1
+  espacio_fin <- numero * length(a)
+  y_axis_b[espacio_init:espacio_fin] <- a
+  media_post_b[i] <- mean(d_b[,i])
+}
+
+numero <- 0.5
+num <- 0
+for(i in 1:ncol(d_b)){
+  numero <- numero+1
+  num <- num+1
+  b <- rep(numero, 1000)
+  espacio_init <- ((num-1) * length(b)) + 1
+  espacio_fin <- num * length(b)
+  x_axis_b[espacio_init:espacio_fin] <- b
+}
+
+
+numero <- 0
+linea <- 1.75
+plot(x_axis_a, y_axis_a, ann=F, axes=F,cex=0.5, pch=1, col="deepskyblue3", ylim=c(0,6))
+points(x_axis_b, y_axis_b, col="darkorchid3", pch=1, cex=0.5)
+for(u in 1:20){
+  numero <- numero + 1
+  points(numero,media_post_a[u], col="black", pch=16, cex=1, type="p")
+  points(numero+.5,media_post_b[u], col="black", pch=16, cex=1, type="p")
+  lines(c(linea,linea),c(-0.3,6), lty=2)
+  linea <- linea+1
+  }
+mtext(side=2, text = "Density", line=2, cex=1.5, srt=90)
+mtext(side=1, text = "Participants", line=2.2, cex=1.5)
+mtext(side=3, paste("Experiment No.", exp), line=0.5, cex=1)
+axis(1,c(1.25:20.25),c(1:20))
+axis(2,seq(0,6,0.5),seq(0,6,0.5), line=-1)
+legend(4,5.5, legend=c("A stimuli", "B stimuli"),
+       col=c("deepskyblue3", "darkorchid3"), lty=1, cex=0.8)
+title("Posterior densities of d' estimates per participant", cex=2)

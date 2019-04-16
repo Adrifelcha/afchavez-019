@@ -2,12 +2,22 @@
 model{
   for (i in 1:k){
   # Observed counts
-    FrecG[i] ~ dbin(thetah_A[i],g)
-    FrecP[i] ~ dbin(thetaf_A[i],p)
-  # Reparameterization Using Equal-Variance Gaussian SDT
-    thetah_A[i] ~ dbeta(1,1)
-    thetaf_A[i] ~ dbeta(1,1)
-  #Differences on thetas
-      Tau_H[i] <- thetah_A[i]-thetaf_A[i]
-      }
-}
+    h_A[i] ~ dbin(thetah_A[i],s)
+    fa_A[i] ~ dbin(thetaf_A[i],n)
+    h_B[i] ~ dbin(thetah_B[i],s)
+    fa_B[i] ~ dbin(thetaf_B[i],n)
+    # Reparameterization Using Equal-Variance Gaussian SDT
+    thetah_A[i] <- phi(d_A[i]/2-c_A[i])
+    thetaf_A[i] <- phi(-d_A[i]/2-c_A[i])
+    thetah_B[i] <- phi(d_B[i]/2-c_B[i])
+    thetaf_B[i] <- phi(-d_B[i]/2-c_B[i])
+    # These Priors over Discriminability and Bias Correspond 
+    # to Uniform Priors over the Hit and False Alarm Rates
+    d_A[i] ~ dnorm(0,1)
+    c_A[i] ~ dnorm(0,1)
+    d_B[i] ~ dnorm(0,1)
+    c_B[i] ~ dnorm(0,1)
+    #Differences on dprime
+      Tau_H[i] <- thetah_A[i]-thetah_B[i]
+      Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
+  }}

@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=latex 2016.10.25)  17 APR 2019 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=latex 2016.10.25)  17 APR 2019 15:05
 entering extended mode
-**./BayesianBinomialTest_Hierarchichal.tex
-(BayesianBinomialTest_Hierarchichal.tex
+**./Delta_DiffD_Mu+-Delta.tex
+(Delta_DiffD_Mu+-Delta.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -518,8 +518,8 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip70
 \dth@everypar=\toks41
 )
-(BayesianBinomialTest_Hierarchichal.aux)
-\openout1 = `BayesianBinomialTest_Hierarchichal.aux'.
+(Delta_DiffD_Mu+-Delta.aux)
+\openout1 = `Delta_DiffD_Mu+-Delta.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -581,15 +581,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 PSTricks: Converting TeX box to EPS.
           With dvips, use -E option.
-(BayesianBinomialTest_Hierarchichal.aux) ) 
+(Delta_DiffD_Mu+-Delta.aux) ) 
 Here is how much of TeX's memory you used:
  11243 strings out of 493335
- 197084 string characters out of 3139265
- 349024 words of memory out of 3000000
+ 196954 string characters out of 3139265
+ 367331 words of memory out of 3000000
  14572 multiletter control sequences out of 15000+200000
  9330 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,7n,54p,713b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,7n,54p,700b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on BayesianBinomialTest_Hierarchichal.dvi (1 page, 41340 bytes).
-
+Output written on Delta_DiffD_Mu+-Delta.dvi (1 page, 59504 bytes).

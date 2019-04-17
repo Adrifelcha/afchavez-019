@@ -31,33 +31,29 @@
 %%%%%%%%%%
 
 
-\rput(7.3,11){\GM@node[nodeSize=15mm,
+
+\rput(2.8,8.7){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
-					]{Delta}}
-				\GM@label[offset=-2.4mm]{Delta}{\huge$\delta$}
+					]{muca}}
+           \GM@label[offset=-4mm]{muca}{\huge$\mu^c_{j}$}
 
-
-
-\rput(5.8,11){\GM@node[nodeSize=15mm,
+\rput(4.5,8.7){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
-					]{GeneralMu}}
-				\GM@label[offset=-3.5mm]{GeneralMu}{\huge$\mu^d$}
+					]{lamca}}
+           \GM@label[offset=-4.5mm]{lamca}{\huge$\sigma^c_{j}$}
 
-
-
-\rput(6.5,8.9){\GM@node[nodeSize=17mm,
+\rput(6.5,8.7){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{muda}}
-					\rput(6.5,8.9){\GM@node[nodeSize=14mm]{Q_small}}
            \GM@label[offset=-4mm]{muda}{\huge$\mu^d_{j}$}
 
-\rput(8,8.9){\GM@node[nodeSize=14mm,
+\rput(8,8.7){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
@@ -69,14 +65,14 @@
 
            
            
-\rput(3.5,6.8){\GM@node[nodeSize=14mm,
+\rput(3.5,6.5){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{cA}}
            \GM@label[offset=-4mm]{cA}{\huge$c_{ij}$}
 
-\rput(7,6.8){\GM@node[nodeSize=14mm,
+\rput(7,6.5){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
@@ -85,31 +81,31 @@
 
 
         
-\rput(3.5,4.7){\GM@node[nodeSize=17mm,
+\rput(3.5,4.2){\GM@node[nodeSize=17mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{TetaHA}}
-					\rput(3.5,4.7){\GM@node[nodeSize=14mm]{Q_small}}
+					\rput(3.5,4.2){\GM@node[nodeSize=14mm]{Q_small}}
            \GM@label[offset=-4.5mm]{TetaHA}{\huge$\theta^h_{ij}$}
-\rput(7,4.7){\GM@node[nodeSize=17mm,
+\rput(7,4.2){\GM@node[nodeSize=17mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{TetaFAA}}
-					\rput(7,4.7){\GM@node[nodeSize=14mm]{Q_small}}
+					\rput(7,4.2){\GM@node[nodeSize=14mm]{Q_small}}
            \GM@label[offset=-4.5mm]{TetaFAA}{\huge$\theta^f_{ij}$}
 
 
 
-\rput(3.5,2.7){\GM@node[nodeSize=14mm,
+\rput(3.5,2.2){\GM@node[nodeSize=14mm,
 					observed=true,
 					observedColor=lightgray,
 					query=true
 					]{hA}}
-           \GM@label[offset=-4mm]{hA}{\huge$y^h_{ij}$}       
+           \GM@label[offset=-4.5mm]{hA}{\huge$y^h_{ij}$}       
 
-\rput(7,2.7){\GM@node[nodeSize=15mm,
+\rput(7,2.2){\GM@node[nodeSize=15mm,
 					observed=true,
 					observedColor=lightgray,
 					query=true
@@ -141,11 +137,6 @@
 % 3. Arrows
 %%%%%%%%%%%
 
-\ncline[arrows=->]{GeneralMu}{muda}
-\ncline[arrows=->]{GeneralMu}{mudb}
-
-\ncline[arrows=->]{Delta}{muda}
-\ncline[arrows=->]{Delta}{mudb}
 
 
 \ncline[arrows=->]{muca}{cA}
@@ -182,9 +173,9 @@
 % 4. Plates
 %%%%%%%%%%%
 
-\rput(1.40, 0.7){\GM@plate[plateLabelPos=br]{8.2}{7.3}{\Large$i$ participants}}
+\rput(1.40, 0.7){\GM@plate[plateLabelPos=br]{8.2}{7.3}{\Large$i$ participant}}
 
-\rput(1.80, 1.3){\GM@plate[plateLabelPos=br]{7.4}{8.5}{\Large$j$ conditions}}
+\rput(1.80, 1.1){\GM@plate[plateLabelPos=br]{7.4}{8.5}{\Large$j$ condition}}
 
 % 5. Model specification
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,40 +186,24 @@
 
 %\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
 
-\rput(11.5,11){\pnode{equation}}\GM@label{equation}{\huge$\mu^d \sim \mathrm{Gaussian}(0,1)$}
+\rput(11.5,10){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\sim \mathrm{Binomial}\bigl(\theta^h_{ij}, s)$}
 
-\rput(11.5,10){\pnode{equation}}\GM@label{equation}{\huge$\delta \sim \mathrm{Gaussian}(0,1)$}
-
-
-\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{A} \gets \mu+\frac{\delta}{2}$}
-
-\rput(11.5,7.5){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{B} \gets \mu-\frac{\delta}{2}$}
-
-\rput(11.5,6.5){\pnode{equation}}\GM@label{equation}{\huge$\sigma^d_{j}\sim \mathrm{Uniform}(0,5)$}
+\rput(11.5,9){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\sim \mathrm{Binomial}\bigl(\theta^f_{ij}, n)$}
 
 
+\rput(11.5,7){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
 
-\rput(11.5,5){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}(\mu^d_{j},\sigma^d_{j})$}
-
-\rput(11.5,4){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}(0,1)$}
-
-
-\rput(11.5,2.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
-
-\rput(11.5,1.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
+\rput(11.5,6){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
 
 
-\rput(11.5,0){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\sim \mathrm{Binomial}(\theta^h_{ij}, s)$}
+\rput(11.5,4){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}\bigl(\mu^d_{j},\sigma^d_{j})$}
 
-\rput(11.5,-1){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\sim \mathrm{Binomial}(\theta^f_{ij}, n)$}
-
-
+\rput(11.5,3){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}\bigl(\mu^d_{j},\sigma^c_{j})$}
 
 
+\rput(11.5,1){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{j}, \mu^d_{j}\sim \mathrm{Gaussian}\bigl(0,2)$}
 
-
-
-
+\rput(11.5,0){\pnode{equation}}\GM@label{equation}{\huge$\sigma^c_{j}, \sigma^d_{j}\sim \mathrm{Gamma}\bigl(1,1)$}
 
 
 % 6. End document

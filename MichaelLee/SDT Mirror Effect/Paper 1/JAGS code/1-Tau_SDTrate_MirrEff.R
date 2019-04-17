@@ -13,7 +13,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 2
+experimento <- 1
 #####################################################
 
 if (experimento == 1)    #Una Figura de Ebbinghaus
@@ -380,9 +380,11 @@ if (experimento ==2)
 # Tau
 # Posteriores individuales para Tau por sujeto
 # ###################################################################################
-layout(matrix(1:2,ncol=1))
-prior_tau <- rnorm((niter-burnin),0,.15)
+layout(matrix(1:1,ncol=1))
+prior_tau <- rnorm((niter-burnin),0,.1)
+plot(density(prior_tau), main="Prior Tau ~ Normal(0,0.1)")
 
+layout(matrix(1:2,ncol=1))
 ####Un color diferente por sujeto
 coltaufa <- c('chocolate', 'chocolate1', 'chocolate2', 'chocolate3', 'chocolate4', 'firebrick4', 'coral1', 'coral2', 'coral3', 'coral4','darkgoldenrod', 'brown', 'brown4', 'darkgoldenrod3', 'darkgoldenrod4','darkorange','coral4', 'darkorange2', 'darkorange3', 'darkorange4', 'goldenrod3')
 coltauh <- c('darkolivegreen', 'darkolivegreen1', 'darkolivegreen2', 'darkolivegreen3', 'darkolivegreen4', 'darkseagreen', 'darkseagreen1', 'darkseagreen2', 'darkseagreen3', 'darkseagreen4','chartreuse4', 'chartreuse3', 'chartreuse2', 'aquamarine4', 'aquamarine3','aquamarine2','darkgreen', 'forestgreen', 'darkcyan', 'darkgoldenrod4', 'darkkhaki')
@@ -427,11 +429,25 @@ taucolh <- c('darkgreen','forestgreen','chartreuse3', 'darkgreen','forestgreen',
 
 
 
-plotear <- "Tau(Hits)"
-#datos <- "tau FA"
+#plotear <- "Tau(Hits)"
+plotear <- "Tau(FA)"
+
 
 layout(matrix(1:1,ncol=1))
 ifelse(plotear=="Tau(Hits)", datos <- tauH, datos <- tauF)
+if(experimento ==1){
+  if(plotear=="Tau(Hits)"){
+  Leg <- c(4.5,0.3)  
+  }else{
+    Leg <- c(3.5,0.35)  
+  }
+}else{
+    if(plotear=="Tau(Hits)"){
+      Leg <- c(3.5,0.53)  
+    }else{
+      Leg <- c(3.5,0.34)  
+    }
+}
 
 
 x_axis <- NULL
@@ -449,11 +465,11 @@ for(i in 1:ncol(datos)){
   espacio_fin <- numero * length(a)
   y_axis[espacio_init:espacio_fin] <- a
   media_post[i] <- mean(datos[,i])
-  Savage_Dickey_0[i] <- dnorm(0,0,0.15)/dnorm(0,mean(datos[,i]),sd(datos[,i]))
+  Savage_Dickey_0[i] <- dnorm(0,0,0.1)/dnorm(0,mean(datos[,i]),sd(datos[,i]))
     ifelse(Savage_Dickey_0[i] == 0, color_SD_0[i] <- "black",
          ifelse(Savage_Dickey_0[i] >= 1, color_SD_0[i] <- "cyan4",
                 color_SD_0[i]<- "darkgoldenrod2"))
-  Savage_Dickey_mean[i] <- dnorm(mean(datos[,i]),0,0.15)/dnorm(mean(datos[,i]),mean(datos[,i]),sd(datos[,i]))
+  Savage_Dickey_mean[i] <- dnorm(mean(datos[,i]),0,0.1)/dnorm(mean(datos[,i]),mean(datos[,i]),sd(datos[,i]))
   ifelse(Savage_Dickey_mean[i] == 0, color_SD_mean[i] <- "black",
          ifelse(Savage_Dickey_mean[i] >= 1, color_SD_mean[i] <- "cyan4",
                 color_SD_mean[i]<- "darkgoldenrod2"))
@@ -475,13 +491,14 @@ plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
 for(u in 1:20){
   numero <- numero + 1
   points(numero,0, col=color_SD_0[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = "Density", line=2.2, cex=1.5, srt=90)
+mtext(side=2, text = plotear, line=2.2, cex=1.5)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
-legend(3.5,0.54, legend=c("BF01 < 1", "BF01 => 1"),
+legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
        col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
 title(paste(plotear, "individual posterior densities; BF at 0"))
+mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 
 numero <- 0
@@ -489,14 +506,14 @@ plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
 for(u in 1:20){
   numero <- numero + 1
   points(numero,media_post[u], col=color_SD_mean[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = "Density", line=2.2, cex=1.5, srt=90)
+mtext(side=2, text = plotear, line=2.2, cex=1.5)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
-legend(3.5,0.53, legend=c("BF01 < 1", "BF01 => 1"),
+legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
        col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
 title(paste(plotear, "individual posterior densities; BF at mean value"))
-mtext(side=3, paste("Experiment No.", exp), line=0.5)
+mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 
 

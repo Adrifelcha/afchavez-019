@@ -10,7 +10,7 @@ dir()
 
 #####################################
 #####################################
-#     Evaluando/ GRaficando         #
+#     Plotting evidence for         #
 #        Mirror Effect              #
 #####################################
 #####################################
@@ -18,14 +18,14 @@ dir()
 
 
 #####################################
-####            HITS Y FALSAS ALARMAS
+####            HITS & FALSE ALARMS
 #####################################
-
-
 rm(list=ls())
-#layout(matrix(1:2,ncol=1))
+number <- 0
 for(archive in dir()){
+  number <- number + 1
   jaime <- read.csv(archive)
+  print(c(archive))
   fa <- NULL
   hits <- NULL
   conf <- NULL
@@ -33,100 +33,118 @@ for(archive in dir()){
     fa <- append(fa, sum(jaime$Falsas.alarmas[jaime$tipo==nce]=='True'))
     hits <- append(hits, sum(jaime$Hits[jaime$tipo==nce]=='True'))
     rate <- (fa+hits)/160
+    rate <- round(rate,3)
     total <- (fa+hits)
     print(c(nce,
-            fa[length(fa)],
-            hits[length(hits)],
-            rate[length(rate)],
-            total[length(total)]))}
+            'Tasa:', rate[length(rate)],
+            'Total:', total[length(total)]))
+  }
   
   barplot(total, main = "", xlab = "", ylab = "", font.lab=2, ylim = c(0, 160), axes = FALSE, col =c("dodgerblue4", "deeppink4", "deeppink3", "dodgerblue3"))
-  axis(1,at=c(0.72,1.9,3.1,4.3),labels=c("Fa(AN)", "Fa(BN)", "H(BS)", "H(AS)"), font=2)
-  axis(2,at=c(0, 20, 40, 60, 80, 100, 120, 140, 160),labels=c("0","20","40","60", "80", "100", "120", "140", "160"),las=1)
-  text(0.72,total[1]+6,paste(total[1]),cex=1.1,col='black',f=2)
-  text(1.9,total[2]+6,paste(total[2]),cex=1.1,col='black',f=2)
-  text(3.1,total[3]-6,paste(total[3]),cex=1.1,col='black',f=2)
-  text(4.3,total[4]-6,paste(total[4]),cex=1.1,col='black',f=2)
-  text(1.1, 100,paste('Hits & Falsas Alarmas'),cex=2,col='black',f=2)
-  mtext(archive,3,cex=3, line=1, f=2)
-  mtext(side=2, text = "Frecuencia Absoluta", line=2.2, cex=2)
-  }  
+  axis(1,at=c(0.72,1.9,3.1,4.3),labels=c("FA(AN)", "FA(BN)", "H(BS)", "H(AS)"), font=2)
+  axis(2,at=c(0, 20, 40, 60, 80, 100, 120, 140, 160),labels=c("0","20","40","60", "80", "100", "120", "140", "160"),las=1, line=-1.2)
+  text(0.72,total[1]+6,paste(total[1], "(",rate[1],")"),cex=1.1,col='black',f=2)
+  text(1.9,total[2]+6,paste(total[2], "(",rate[2],")"),cex=1.1,col='black',f=2)
+  text(3.1,total[3]-6,paste(total[3], "(",rate[3],")"),cex=1.1,col='black',f=2)
+  text(4.3,total[4]-6,paste(total[4], "(",rate[4],")"),cex=1.1,col='black',f=2)
+  text(1.1, 100,paste('Hits & False Alarms'),cex=1.5,col='black',f=2)
+  mtext(paste("Participant No.", number, "; Experiment 2"),3,cex=2, line=1, f=2)
+  mtext(side=2, text = "Absolute Frequency", line=2.2, cex=2)
+}  
+
+
 
 #####################################
 ####            Confidence Rating
 #####################################
-
 rm(list=ls())
-layout(matrix(1:1,ncol=1))
+number <- 0
+layout(matrix(1,ncol=1))
 for(archive in dir()){
+  number <- number + 1
   jaime <- read.csv(archive)
   
   C_AS <- NULL
   C_AN <- NULL
   C_BS <- NULL
   C_BN <- NULL
-  
   for(nce in sort(jaime$Estimulo)){
     C_AS <- sum(jaime$Confidence[jaime$tipo=='4 AS'])/160
     C_AN <- sum(jaime$Confidence[jaime$tipo=='1 AN'])/160
     C_BS <- sum(jaime$Confidence[jaime$tipo=='3 BS'])/160
     C_BN <- sum(jaime$Confidence[jaime$tipo=='2 BN'])/160
+    C_AS <- round(C_AS,3)
+    C_AN <- round(C_AN,3)
+    C_BS <- round(C_BS,3)
+    C_BN <- round(C_BN,3)
     Confidence <- c(C_AN, C_BN, C_BS, C_AS)
   }
-  
   print(c(archive))
   print(c(Confidence))
   
   barplot(Confidence,type='o',pch=16,col=c('lightpink', 'lightpink1', 'lightpink2', 'lightpink3'),ylim=c(0,6),axes=F , ylab="", xlab="", font.lab=2)
-  axis(1,at=c(0.8, 1.9, 3.1, 4.3),labels=c("R(AN)", "R(BN)", "R(BS)", "R(AS)"), font=2)
-  axis(2,at=c(0, 1, 2, 3, 4, 5, 6),labels=c("0","1", "2","3","4","5","6"),las=1)
-  text(0.8,C_AN+.5,paste(C_AN),cex=1,col='black',f=2)
-  text(1.9,C_BN+.5,paste(C_BN),cex=1,col='black',f=2)
-  text(3.1,C_BS-.6,paste(C_BS),cex=1,col='black',f=2)
-  text(4.3,C_AS-.5,paste(C_AS),cex=1,col='black',f=2)
-  mtext(archive,3,cex=3,f=2)
-  mtext(side=2, text = "Puntaje de Confianza promedio", line=2.2, cex=2)
+  axis(1,at=c(0.8,1.9,3.1,4.3),labels=c("R(AN)", "R(BN)", "R(BS)", "R(AS)"), font=2)
+  axis(2,at=c(0, 1, 2, 3, 4, 5, 6),labels=c("0","1", "2","3","4","5","6"),las=1, line=-0.8)
+  text(0.8,C_AN+.2,paste(C_AN),cex=1.4,col='black',f=2)
+  text(1.9,C_BN+.2,paste(C_BN),cex=1.4,col='black',f=2)
+  text(3.1,C_BS-.2,paste(C_BS),cex=1.4,col='black',f=2)
+  text(4.3,C_AS-.2,paste(C_AS),cex=1.4,col='black',f=2)
+  mtext(paste("Participant No.",number, "; Experiment 2"),3,cex=2,f=2)
+  mtext(side=2, text = "Mean Confidence Rating", line=2, cex=2)
 }
 
 
+#####################################
+#####################################
+#     Plotting patterns of          #
+#           Response               #
+#####################################
+#####################################
+#####################################
+
+
 #############################################
-####            Aciertos y Errores Por Ensayo
+####            Right and Wrong per trial
 #############################################
 rm(list=ls())
-layout(matrix(1:2,ncol=1, byrow=TRUE))  #Sin Registro Acumulativo
-#layout(matrix(1:3,ncol=1, byrow=TRUE)) # Con Resgistro Acumulativo
+number <- 0
 for(archive in dir()){
-  
+  number <- number + 1
   jaime <- read.csv(archive)
   jaime$Ensayo <- as.character(jaime$Ensayo)
   cafe <- strsplit(as.character(jaime$Ensayo),split='-')
   
+  
   a <- c(1,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520,540,560,580,600,620,640)
   b <- c(1,30,60,90,120,150,180,210,240,270,300,330,360,390,420,450,480,510,540,570,600,630)
   
-  #Frecuencia Acumulada
-  #plot(jaime$Aciertos,type='o',pch=16, col='green', lwd=.5, ylim=c(0,640), ylab="Frecuencia Acumulada",axes=F, line=2, xlab="Ensayo", font.lab=2)
-  #axis(1,at=a,labels=a)
-  #axis(2,at=b, labels=b, tck=0, line=-1.3, font=2)
-  #points(jaime$Errores,type='o', lty=1, lwd=.5, pch=16, col='red')
-  #mtext(archive,3,cex=1, f=2)
-  #text(70,500,paste('Aciertos'),cex=1,col='chartreuse4',f=2)
-  #text(70,400,paste('Errores'),cex=1,col='red',f=2)
- 
+  layout(matrix(1:1,ncol=1, byrow=TRUE))    
+  plot(jaime$Aciertos,type='o',pch=16, col='green', lwd=.5, ann=F, axes=F , ylab="Cumulative Frequency", 
+       font.lab=2, line=2, xlab='Trial', ylim=c(0,640))
+  axis(1,at=a,labels=a)
+  axis(2,at=b, labels=b, tck=0, line=-1.3)
+  points(jaime$Errores,type='o', lty=1, lwd=.5, pch=16, col='red')
+  text(70,500,paste('Right reponses'),cex=1,col='chartreuse4',f=2)
+  text(70,400,paste('Wrong responses'),cex=1,col='red',f=2)
+  text(630,jaime$Aciertos[640]+15,paste(jaime$Aciertos[640]),cex=1,col='chartreuse4',f=2)
+  text(630,jaime$Errores[640]+15,paste(jaime$Errores[640]),cex=1,col='red',f=2)
+  mtext(side=3,paste("Participant No.",number,"; Experiment 2"), line = -2, cex=2, f=2)
+  mtext(side=1, text = "Trial", line=2.5, cex=1.5)
+  mtext(side=2, text = "Cumulative Frequency", line=1.5, cex=1.5)
   
-  
+  layout(matrix(1:2,ncol=1, byrow=TRUE))  
   plot(jaime$Exito[1:320],type='o',pch=16, col='darkgreen',ylim=c(0,1),axes=F , ann = F )
   axis(1,at=1:320,labels=c(1:320))
-  axis(2,at=c(0,1), labels=c('Error', 'Acierto'), f=2)
-  mtext(side=1, text = "Ensayos 1-320", line=2.5, cex=2)
-  mtext(archive,3,cex=3, f=2, line=1)   #Comentar SI se incluye Registro Acumulativo
+  axis(2,at=c(0,1), labels=c('Wrong', 'Right'), font=2, line=-1)
+  mtext(side=1, text = "Trials 1-320", line=2.5, cex=1.5)
+  mtext(paste("Participant No.",number,"; Experiment 2"),3,cex=2, f=2, line=1)  
+  
   
   plot(jaime$Exito[321:640],type='o',pch=16, col='darkgreen',ylim=c(0,1),axes=F , ann = F )
   axis(1,at=1:320,labels=c(321:640))
-  axis(2,at=c(0,1), labels=c('Error', 'Acierto'), f=2)
-  mtext(side=1, text = "Ensayos 321-640", line=2.5, cex=2)}
-
-
+  axis(2,at=c(0,1), labels=c('Wrong', 'Right'), font=2, line=-1)
+  mtext(side=1, text = "Trials 321-640", line=2.5, cex=1.5)
+}
 #############################################
 ####                   Contadores por Ensayo
 #############################################

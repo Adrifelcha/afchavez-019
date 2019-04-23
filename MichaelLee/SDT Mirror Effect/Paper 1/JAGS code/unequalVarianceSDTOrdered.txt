@@ -1,0 +1,46 @@
+# Unequal variance SDT model of confidence recognition for LifePlans (LP) LTC
+# Predictive people hierarchical across ages
+model{
+  # DATA
+  for (p in 1:nPeople){
+    # Delayed Recognition task (Task = 5)
+    for (k in 1:nItems){
+      y[p, 5, k] ~ dcat(thetaRecognition[p, 1:nLikert, k])
+	    # Target words
+	    thetaRecognition[p, 1, k] = phi(tau[p]*(k[p, 1]) - dPrime[p])                                       # probabilty respond "1" for target word k
+	    thetaRecognition[p, 2, k] = phi(tau[p]*(k[p, 2]) - dPrime[p]) - phi(tau[p]*(k[p, 1]) - dPrime[p])   # probabilty respond "2" for target word k
+	    thetaRecognition[p, 3, k] = phi(tau[p]*(k[p, 3]) - dPrime[p]) - phi(tau[p]*(k[p, 2]) - dPrime[p])   # probabilty respond "3" for target word k
+	    thetaRecognition[p, 4, k] = phi(tau[p]*(k[p, 4]) - dPrime[p]) - phi(tau[p]*(k[p, 3]) - dPrime[p])   # probabilty respond "4" for target word k
+	    thetaRecognition[p, 5, k] = 1 - phi(tau[p]*(k[p, 4]) - dPrime[p])                                   # probabilty respond "5" for target word k
+    }
+	  # Foil words
+    for (f in 1:10){ #f Foils
+    	yf[p, f] ~ dcat(thetaFoil[p, 1:nLikert, f])
+		  thetaFoil[p, 1, f] = phi(1/tau[p]*(k[p, 1]))                           # probabilty respond "1" for foil word f
+		  thetaFoil[p, 2, f] = phi(1/tau[p]*(k[p, 2])) - phi(tau[p]*(k[p, 1]))   # probabilty respond "2" for foil word f
+		  thetaFoil[p, 3, f] = phi(1/tau[p]*(k[p, 3])) - phi(tau[p]*(k[p, 2]))   # probabilty respond "3" for foil word f
+		  thetaFoil[p, 4, f] = phi(1/tau[p]*(k[p, 4])) - phi(tau[p]*(k[p, 3]))   # probabilty respond "4" for foil word f
+		  thetaFoil[p, 5, f] = 1 - phi(tau[p]*(k[p, 4]))                         # probabilty respond "5" for foil word f
+	  }
+  }
+
+  # PARAMETERS
+  # dprime and tau
+  for (p in 1:nPeople){
+    dPrime[p] ~ dnorm(mudPrime, 1/sigmadPrime^2)T(0,)
+    tau[p] ~ dnorm(muTau, 1/sigmaTau^2)T(0,)
+    for (x in 1:(nLikert-1)){
+      kTmp[p, x] ~ dnorm(2, 1/(2)^2)T(0,)
+    }
+    k[p, 1:(nLikert-1)] = sort(kTmp[p, 1:(nLikert-1)])
+  }
+  # priors and predictive people
+    mudPrime ~ dunif(0, 1)
+    sigmadPrime ~ dunif(0, 1)T(0, )
+    muTau ~ dunif(0, 1)
+    sigmaTau ~ dunif(0, 1)T(0, )
+    # predictive
+    dPrimepred ~ dnorm(mudPrime, 1/sigmadPrime^2)T(0, )
+    taupred ~ dnorm(muTau, 1/sigmaTau^2)T(0, )
+  }
+}

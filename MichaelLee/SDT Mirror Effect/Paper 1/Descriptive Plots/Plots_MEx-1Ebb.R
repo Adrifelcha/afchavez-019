@@ -3,7 +3,7 @@
 # 2019 Re-do
 # EXPERIMENTO 1 (Una Figura Ebbinghaus)
 ####################################
-setwd("C:/Users/Sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_1Ebb")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_1Ebb")
 rm(list=ls())
 dir()
 

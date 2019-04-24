@@ -3,7 +3,7 @@
 # EXPERIMENTO 2 (Dos Ebbinghaus)
 ####################################
 
-setwd("C:/Users/Sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_2Ebb")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data/Datos_MirrExp_2Ebb")
 rm(list=ls())
 dir()
 

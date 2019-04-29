@@ -1,0 +1,4 @@
+1.- Conservar los argumentos utilizados por el Dr Guaner para PLANEA 06
+
+2.- Calcular GoF con modelo DINO y comparar el ajuste 
+     - Se espera que sea menor en DINA

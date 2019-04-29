@@ -73,7 +73,7 @@ dina_1 <- din(R_E1, q.matr = Q_E1, rule = "DINA",
 
 write.csv(dino_1$item, "E1SNPA_itemparameters_NO.csv")
 write.csv(dino_1$skill.patt, "E1SNPA_skilpatterns_NO.csv")
-write.csv(dino.frame(dino_1$pattern), "E1SNPA_postpattern_NO.csv",row.names = F)
+write.csv(data.frame(dino_1$pattern), "E1SNPA_postpattern_NO.csv",row.names = F)
 
 write.csv(dina_1$item, "E1SNPA_itempars_NA.csv")
 write.csv(dina_1$skill.patt, "E1SNPA_skilpatt_NA.csv")

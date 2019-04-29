@@ -40,34 +40,16 @@ Cronbach_Eje3 <- alpha(D_E3); Cronbach_Eje3
 ##########################################################
 ##########################################################
 ##########################################################
-# Primera revisión de la composición de los datos
-# Análisis de Componentes Principales (ACP)
-# Análisis Paralelo
-#############################################
-ACP <- prcomp(Datos, cor=TRUE)
-summary(ACP)
-plot(ACP,type="lines", main="Principal Component Analysis - Screeplot")   #Line Screeplot
-screeplot(ACP)   #Bar screeplot
-#According to the Screeplot, 1 component seems to be good enough
-
-AP <- fa.parallel(Datos); AP
-#Suggest that number of factors = 18 with 5 components
-
-
-#############################################
 # Análisis Factorial 
 #############################################
 Eje_1_1 <- factanal(D_E1, factors = 1, method = "mle") ; Eje_1_1 #SMB09
 Eje_1_2 <- factanal(D_E1, factors = 2, method = "mle") ; Eje_1_2
-Eje_1_3 <- factanal(D_E1, factors = 3, method = "mle") ; Eje_1_3
 
 Eje_2_1 <- factanal(D_E2, factors = 1, method = "mle") ; Eje_2_1 #SMB22 y 24
 Eje_2_2 <- factanal(D_E2, factors = 2, method = "mle") ; Eje_2_2
-Eje_2_3 <- factanal(D_E2, factors = 3, method = "mle") ; Eje_2_3
 
 Eje_3_1 <- factanal(D_E3, factors = 1, method = "mle") ; Eje_3_1 #SMB17 y 15
 Eje_3_2 <- factanal(D_E3, factors = 2, method = "mle") ; Eje_3_2
-Eje_3_3 <- factanal(D_E3, factors = 3, method = "mle") ; Eje_3_3
 
 
 #############################################################

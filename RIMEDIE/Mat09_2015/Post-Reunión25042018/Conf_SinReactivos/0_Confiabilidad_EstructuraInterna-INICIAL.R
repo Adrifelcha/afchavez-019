@@ -51,6 +51,7 @@ Eje_2_2 <- factanal(D_E2, factors = 2, method = "mle") ; Eje_2_2
 Eje_3_1 <- factanal(D_E3, factors = 1, method = "mle") ; Eje_3_1 #SMB17 y 15
 Eje_3_2 <- factanal(D_E3, factors = 2, method = "mle") ; Eje_3_2
 
+Exploratorio <- factanal(Datos, factors = 3, method = "mle") ; Exploratorio
 
 #############################################################
 # Ajustamos y quitamos los reactivos que cargaron bajo para 

@@ -112,13 +112,17 @@ corrplot(cor_dat, type = "upper", order = "hclust",    #This is just a cool plot
 ##
 #############################################
 #Calculamos las alphas
-Cronbach_general <- alpha(Datos); Cronbach_general    
+Cronbach_general <- alpha(Datos); Cronbach_general
+write.csv(Cronbach_general$total,"Cronbach_Gral.csv")
 # 0.82
-Cronbach_Eje1 <- alpha(D_E1); Cronbach_Eje1        
+Cronbach_Eje1 <- alpha(D_E1); Cronbach_Eje1
+write.csv(Cronbach_Eje1$total,"Cronbach_Eje1.csv")
 # 0.67
 Cronbach_Eje2 <- alpha(D_E2); Cronbach_Eje2
+write.csv(Cronbach_Eje2$total,"Cronbach_Eje2.csv")
 # 0.59
 Cronbach_Eje3 <- alpha(D_E3); Cronbach_Eje3
+write.csv(Cronbach_Eje3$total,"Cronbach_Eje3.csv")
 # 0.54
 
 #library(psy)             # Aquí hay código con otro paquete, pero el resultado es el mismo

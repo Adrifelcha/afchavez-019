@@ -7,7 +7,7 @@
 #############################################################
 rm(list=ls())                       #
 library("CDM")
-setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015/Post-Reunión25042018/DINA_Estimaciones")
+setwd("C:/Users/Laboratorio 25/Desktop/afchavez-019/RIMEDIE/Mat09_2015/Post-Reunión25042018/DINA_Estimaciones")
 
 
 Respuestas <- read.csv("PLANEA.09.2015_IDENT_ITEMS_ajustado.csv")
@@ -91,3 +91,10 @@ write.csv(d3$skill.patt, "E3FEM_skilpatt_lax.csv")
 write.csv(data.frame(d3$pattern), "E3FEM_spapostpattern_lax.csv",row.names = F)
 
 ##########################
+
+AICs <- c(d1$AIC, d2$AIC, d3$AIC); AICs
+BICs <- c(d1$BIC, d2$BIC, d3$BIC); BICs
+
+GOF <- data.frame(cbind(c(1:3), AICs, BICs))
+colnames(GOF) <- c("Eje", "AIC", "BIC")
+write.csv(GOF, "GoF_DINA_aj.csv")

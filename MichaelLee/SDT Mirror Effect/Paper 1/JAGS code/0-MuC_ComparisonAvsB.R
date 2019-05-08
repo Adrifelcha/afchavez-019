@@ -228,7 +228,7 @@ par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5
 prior_delta <- rnorm((niter-burnin),0,0.7)
 dot_prior <- max(density(prior_delta)$y)
 dot_x <- max(density(Delta)$y[which(density(Delta)$x<0.01&density(Delta)$x>-0.01)])
-SavageDickey <- dnorm(0,0,0.7)/dot_x
+SavageDickey <- dot_prior/dot_x
 
 
 layout(matrix(1:1,ncol=1))
@@ -244,17 +244,18 @@ mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.5)
 points(0,dot_x, pch=16, type='p', col='red', cex=1.5)
 points(0,dot_prior, pch=16, type='p', col='red', cex=1.5)
 lines(c(0,0), c(dot_x, dot_prior), lwd=1, col="red", lty=2)
-legend(1.2,1.25, legend=c("Prior", "Posterior"),
+legend(1,1.25, legend=c("Prior at Delta 0", "Posterior at Delta 0"),
        col=c("red", "blue4"), lty=1, cex=1.2, lwd=2)
-text(0,0.84,paste(round(SavageDickey,3)), f=2)  
-text(0,0.9,paste("Bayes Factor"),f=2)
+text(0.5,2.8,paste(round(SavageDickey,3)), f=2)  
+text(0.5,2.9,paste("Bayes Factor"),f=2)
 
 
 
 
-dot_prior <- density(prior_delta)$y[which(density(prior_delta)$x==density(Delta)$x[which(max(density(Delta)$y))])]
 dot_x <- max(density(Delta)$y)
-SavageDickey <- dnorm(0,0,0.7)/dnorm(0,mean(Delta),sd(Delta))
+max_x <- density(Delta)$x[which(density(Delta)$y==max(density(Delta)$y))]
+dot_prior <- density(prior_delta)$y[which(density(prior_delta)$x>(max_x-.01)&density(prior_delta)$x<(max_x+.01))[1]]
+SavageDickey <- dot_prior/dot_x
 
 layout(matrix(1:1,ncol=1))
 plot(density(Delta), col='blue4', lwd=3.5, ann=F, axes=F, xlim=c(-0.5,2))
@@ -266,13 +267,13 @@ mtext("Density", side=2, line=3.5, cex=1.5, las=0, font=1)
 mtext("Delta", side=1, line=2.5, cex=2)
 title("Bayes Factor for the prior and posterior densities of Delta", line=2.2, cex=2)
 mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.5)
-points(0,dot_x, pch=16, type='p', col='red', cex=1.5)
-points(0,dot_prior, pch=16, type='p', col='red', cex=1.5)
-lines(c(0,0), c(dot_x, dot_prior), lwd=1, col="red", lty=2)
-legend(1.2,1.25, legend=c("Prior", "Posterior"),
+points(max_x,dot_x, pch=16, type='p', col='red', cex=1.5)
+points(max_x,dot_prior, pch=16, type='p', col='red', cex=1.5)
+lines(c(max_x,max_x), c(dot_x, dot_prior), lwd=1, col="red", lty=2)
+legend(0.7,1.25, legend=c("Prior at maximun posterior", "Posterior at maximun posterior"),
        col=c("red", "blue4"), lty=1, cex=1.2, lwd=2)
-text(0,0.84,paste(round(SavageDickey,3)), f=2)  
-text(0,0.9,paste("Bayes Factor"),f=2)
+text(0.5,2.8,paste(round(SavageDickey,3)), f=2)  
+text(0.5,2.9,paste("Bayes Factor"),f=2)
 
 
 

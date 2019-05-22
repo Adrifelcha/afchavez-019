@@ -69,7 +69,7 @@ d1 <- din(R_E1, q.matr = Q_E1, rule = "DINA",
 
 write.csv(d1$item, "E1SNPA_itempars_lax.csv")
 write.csv(d1$skill.patt, "E1SNPA_skilpatt_lax.csv")
-write.csv(data.frame(d1$pattern), "E1SNPA_fempostpattern_lax.csv",row.names = F)
+write.csv(data.frame(d1$pattern), "E1SNPA_postpattern_lax.csv",row.names = F)
 
 
 #EJE 2
@@ -78,7 +78,7 @@ d2 <- din(R_E2, q.matr = Q_E2, rule = "DINA",
 
 write.csv(d2$item, "E2MI_itempars_lax.csv")
 write.csv(d2$skill.patt, "E2MI_skilpatt_lax.csv")
-write.csv(data.frame(d2$pattern), "E2MI_minpostpattern_lax.csv", row.names = F)
+write.csv(data.frame(d2$pattern), "E2MI_postpattern_lax.csv", row.names = F)
 
 
 
@@ -88,7 +88,7 @@ d3 <- din(R_E3, q.matr = Q_E3, rule = "DINA",
 
 write.csv(d3$item, "E3FEM_itempars_lax.csv")
 write.csv(d3$skill.patt, "E3FEM_skilpatt_lax.csv")
-write.csv(data.frame(d3$pattern), "E3FEM_spapostpattern_lax.csv",row.names = F)
+write.csv(data.frame(d3$pattern), "E3FEM_postpattern_lax.csv",row.names = F)
 
 ##########################
 

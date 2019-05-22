@@ -78,10 +78,10 @@ model{
     c_B[i] ~ dnorm(muc_B,lambdac_B)
   } 
   #Priors
-  muc_A ~ dnorm(0,1)
-  mud_A ~ dnorm(0,1)
-  muc_B ~ dnorm(0,1)
-  mud_B ~ dnorm(0,1)
+  muc_A ~ dnorm(0,0.7)
+  mud_A ~ dnorm(0,1)T(0,6)
+  muc_B ~ dnorm(0,0.7)
+  mud_B ~ dnorm(0,1)T(0,6)
   lambdac_A ~ dgamma(.001,.001)
   lambdad_A ~ dgamma(.001,.001)
   lambdac_B ~ dgamma(.001,.001)

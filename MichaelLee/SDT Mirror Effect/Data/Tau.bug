@@ -13,11 +13,33 @@ model{
     thetaf_B[i] <- phi(-d_B[i]/2-c_B[i])
     # These Priors over Discriminability and Bias Correspond 
     # to Uniform Priors over the Hit and False Alarm Rates
-    d_A[i] ~ dnorm(0,1)
-    c_A[i] ~ dnorm(0,1)
-    d_B[i] ~ dnorm(0,1)
-    c_B[i] ~ dnorm(0,1)
+    d_A[i] ~ dnorm(0,1)T(0,6)
+    c_A[i] ~ dnorm(0,0.7)
+    d_B[i] ~ dnorm(0,1)T(0,6)
+    c_B[i] ~ dnorm(0,0.7)
     #Differences on dprime
       Tau_H[i] <- thetah_A[i]-thetah_B[i]
       Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
-  }}
+  }
+  #Predictive Priors
+  for (i in 1:k){
+  # Observed counts
+      prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
+      prior_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
+      prior_h_B[i] ~ dbin(Pr_thetah_B[i],s)
+      prior_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      Pr_thetah_A[i] <- phi(Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetaf_A[i] <- phi(-Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetah_B[i] <- phi(Pr_d_B[i]/2-Pr_c_B[i])
+      Pr_thetaf_B[i] <- phi(-Pr_d_B[i]/2-Pr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      Pr_d_A[i] ~ dnorm(0,1)T(0,6)
+      Pr_c_A[i] ~ dnorm(0,0.7)
+      Pr_d_B[i] ~ dnorm(0,1)T(0,6)
+      Pr_c_B[i] ~ dnorm(0,0.7)
+      #Differences on dprime
+      PRIOR_Tau_H[i] <- Pr_thetah_A[i]-Pr_thetah_B[i]
+      PRIOR_Tau_F[i] <- Pr_thetaf_B[i]-Pr_thetaf_A[i]
+      }}

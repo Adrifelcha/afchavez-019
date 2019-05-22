@@ -71,7 +71,7 @@ for (i in 1:k){
       delta ~ dnorm(0,1)
       MuD ~ dnorm(0,1)
       delta_prior ~ dnorm(0,1)
-      MuD_prior ~ dnorm(0,1)}
+      MuD_prior ~ dnorm(0,1)T(0,6)}
       ','0-diff_dprime.bug')
 
 ######################################

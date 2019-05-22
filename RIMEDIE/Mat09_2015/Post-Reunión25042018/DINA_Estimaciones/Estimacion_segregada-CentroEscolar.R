@@ -14,7 +14,6 @@ Base_Nac <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
 Nac <- c(Nac_E1, Nac_E2, Nac_E3)
 
 
-
 Qmat <- read.csv("QMatriz_MAT09_ajustada.csv")    
 Eje1 <- NULL
 Eje2 <- NULL
@@ -48,13 +47,13 @@ Q_E3 <- Qmat[Eje3,23:30]
 #########################################
 ######## Eje 1: SNPA
 
-Matriz_Estimaciones <- matrix(NA,ncol=31,nrow=32)
-Matriz_Estimaciones[nrow(Matriz_Estimaciones),] <- c("Nacional", Nac)
-Num_entidad <- 0
+Matriz_Estimaciones <- matrix(NA,ncol=32,nrow=(length(unique(Base_Nac$ESCUELA))+1))
+Matriz_Estimaciones[nrow(Matriz_Estimaciones),] <- c("Nacional", "Nacional", Nac)
+Num_escuela <- 0
 
-for(a in unique(Base_Nac$NOM_ENT)){
-  Entidad <- NULL
-  Num_entidad <- Num_entidad + 1
+for(a in unique(Base_Nac$ESCUELA)){
+  Escuela <- NULL
+  Num_escuela <- Num_escuela + 1
   num <- 0
   ent <- 0
   E1 <- NULL
@@ -62,9 +61,10 @@ for(a in unique(Base_Nac$NOM_ENT)){
   E3 <- NULL
   for(p in 1:nrow(Base_Nac)){
     num <- num + 1
-    if(Base_Nac$NOM_ENT[p]==a){
+    if(Base_Nac$ESCUELA[p]==a){
       ent <- ent + 1
-      Entidad[ent] <- p 
+      Escuela[ent] <- p 
+      Estado <- as.character(Base_Nac$NOM_ENT[p])
     }else{
       0+0
     }
@@ -73,29 +73,29 @@ for(a in unique(Base_Nac$NOM_ENT)){
   h1 <- 5
   for(i in 1:ncol(Q_E1)){
     h1 <- h1 + 1
-  E1[i] <- mean(Estim_E1[Entidad,h1])}
+  E1[i] <- mean(Estim_E1[Escuela,h1])}
   
   h2 <- 5
   for(i in 1:ncol(Q_E2)){
     h2 <- h2 + 1
-    E2[i] <- mean(Estim_E2[Entidad,h2])}
+    E2[i] <- mean(Estim_E2[Escuela,h2])}
   
   h3 <- 5
   for(i in 1:ncol(Q_E3)){
     h3 <- h3 + 1
-    E3[i] <- mean(Estim_E3[Entidad,h3])}
+    E3[i] <- mean(Estim_E3[Escuela,h3])}
   
   
-  Matriz_Estimaciones[Num_entidad,] <- c(a,E1,E2,E3)
+  Matriz_Estimaciones[Num_escuela,] <- c(Estado,a,E1,E2,E3)
   
   
   print(a)
   print(ent)
-  print(length(Entidad))
+  print(length(Escuela))
 }
 
 #Matriz_Estimaciones
-colnames(Matriz_Estimaciones) <- c("Estado", "SNPA01", "SNPA02", "SNPA03", "SNPA04", "SNPA05", "SNPA06", "SNPA07", "SNPA08", "SNPA09", "SNPA10", "SNPA11", "SNPA12",
+colnames(Matriz_Estimaciones) <- c("Entidad","ID CTT", "SNPA01", "SNPA02", "SNPA03", "SNPA04", "SNPA05", "SNPA06", "SNPA07", "SNPA08", "SNPA09", "SNPA10", "SNPA11", "SNPA12",
                                    "MI01", "MI02", "MI03", "MI04", "MI05", "MI06", "MI07", "MI08", "MI09", "MI10",
                                    "FEM01", "FEM02", "FEM03", "FEM04", "FEM05", "FEM06", "FEM07", "FEM08")
-write.csv(Matriz_Estimaciones, "CuadroEstimac_Nac-y-Estatal_MAT09_ajustes.csv")
+write.csv(Matriz_Estimaciones, "CuadroEstimac_CTT_MAT09_ajustes.csv")

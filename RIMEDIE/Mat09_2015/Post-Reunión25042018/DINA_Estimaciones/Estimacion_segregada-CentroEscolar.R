@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Mat09_2015/Post-Reunión25042018/DINA_Estimaciones")
+setwd("C:/Users/Sandra/Desktop/afchavez-019/RIMEDIE/Mat09_2015/Post-Reunión25042018/DINA_Estimaciones")
 
 Estim_E1 <- read.csv("E1SNPA_postpattern_lax.csv")
 Estim_E2 <- read.csv("E2MI_postpattern_lax.csv")
@@ -47,8 +47,8 @@ Q_E3 <- Qmat[Eje3,23:30]
 #########################################
 ######## Eje 1: SNPA
 
-Matriz_Estimaciones <- matrix(NA,ncol=32,nrow=(length(unique(Base_Nac$ESCUELA))+1))
-Matriz_Estimaciones[nrow(Matriz_Estimaciones),] <- c("Nacional", "Nacional", Nac)
+Matriz_Estimaciones <- matrix(NA,ncol=33,nrow=(length(unique(Base_Nac$ESCUELA))+1))
+Matriz_Estimaciones[nrow(Matriz_Estimaciones),] <- c("Nacional", "Nacional", length(nrow(Estim_E1)), Nac)
 Num_escuela <- 0
 
 for(a in unique(Base_Nac$ESCUELA)){
@@ -86,7 +86,7 @@ for(a in unique(Base_Nac$ESCUELA)){
     E3[i] <- mean(Estim_E3[Escuela,h3])}
   
   
-  Matriz_Estimaciones[Num_escuela,] <- c(Estado,a,E1,E2,E3)
+  Matriz_Estimaciones[Num_escuela,] <- c(Estado,a,length(Escuela),E1,E2,E3)
   
   
   print(a)
@@ -95,7 +95,7 @@ for(a in unique(Base_Nac$ESCUELA)){
 }
 
 #Matriz_Estimaciones
-colnames(Matriz_Estimaciones) <- c("Entidad","ID CTT", "SNPA01", "SNPA02", "SNPA03", "SNPA04", "SNPA05", "SNPA06", "SNPA07", "SNPA08", "SNPA09", "SNPA10", "SNPA11", "SNPA12",
+colnames(Matriz_Estimaciones) <- c("Entidad","ID CTT","Observaciones", "SNPA01", "SNPA02", "SNPA03", "SNPA04", "SNPA05", "SNPA06", "SNPA07", "SNPA08", "SNPA09", "SNPA10", "SNPA11", "SNPA12",
                                    "MI01", "MI02", "MI03", "MI04", "MI05", "MI06", "MI07", "MI08", "MI09", "MI10",
                                    "FEM01", "FEM02", "FEM03", "FEM04", "FEM05", "FEM06", "FEM07", "FEM08")
 write.csv(Matriz_Estimaciones, "CuadroEstimac_CTT_MAT09_ajustes.csv")

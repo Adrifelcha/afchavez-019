@@ -1,4 +1,4 @@
-setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data")
+setwd("C:/Users/Sandra/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data")
 rm(list=ls())
 dir()
 library(R2jags)

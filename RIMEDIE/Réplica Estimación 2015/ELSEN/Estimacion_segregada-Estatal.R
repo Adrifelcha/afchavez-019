@@ -1,16 +1,16 @@
 rm(list=ls())
 setwd("C:/Users/Alejandro/Desktop/afchavez19/RIMEDIE/Réplica Estimación 2015/ELSEN")
 
-Estim_E1 <- read.csv("E1SNPA_postpattern_lax.csv")
-Estim_E2 <- read.csv("E2MI_postpattern_lax.csv")
-Estim_E3 <- read.csv("E3FEM_postpattern_lax.csv")
-Nac_E1 <- read.csv("E1SNPA_skilpatt_lax.csv")
+Estim_E1 <- read.csv("e1_fempostpattern_DINA-Guaner.csv")
+Estim_E2 <- read.csv("e2_minpostpattern_DINA-Guaner.csv")
+Estim_E3 <- read.csv("e3_spapostpattern_DINA-Guaner.csv")
+Nac_E1 <- read.csv("e1_skilpatt_fem_DINA-Guaner.csv")
 Nac_E1 <- as.vector(Nac_E1$skill.prob)
-Nac_E2 <- read.csv("E2MI_skilpatt_lax.csv")
+Nac_E2 <- read.csv("e2_skilpatt_min_DINA-Guaner")
 Nac_E2 <- as.vector(Nac_E2$skill.prob)
-Nac_E3 <- read.csv("E3FEM_skilpatt_lax.csv")
+Nac_E3 <- read.csv("e3_skilpatt_spa_DINA-Guaner.csv")
 Nac_E3 <- as.vector(Nac_E3$skill.prob)
-Base_Nac <- read.csv("PLANEA.09.2015_IDENT_ITEMS.csv")
+Base_Nac <- read.csv("Datos_Nacionales_ELSEN_16500.csv")
 Nac <- c(Nac_E1, Nac_E2, Nac_E3)
 
 

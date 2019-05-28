@@ -294,7 +294,7 @@ Exp <- 1}else{
   ###################################################################################
 
 #Preparamos los datos
-keep_ <- (20000)   #Numero de extracciones a incluir en el Gráfico
+keep_ <- (1000)   #Numero de extracciones a incluir en el Gráfico
 keep <- sample(niter, keep_)    #De las 'niter' extracciones, sacamos 'keep' muestras
 #
 d.FA_a <- density(tetaFA_a)

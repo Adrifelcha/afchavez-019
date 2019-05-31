@@ -14,7 +14,7 @@ library(R2jags)
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
 experimento <- 1
-#####################################################
+###################
 
 if (experimento == 1)    #Una Figura de Ebbinghaus
 {
@@ -102,8 +102,8 @@ parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", "d_B", "c_B", "thetah_B", 
                 "Pr_d_A", "Pr_c_A", "Pr_thetah_A", "Pr_thetaf_A", "Pr_d_B", "Pr_c_B", "Pr_thetah_B", "Pr_thetaf_B",
                 "PRIOR_Tau_H", "PRIOR_Tau_F","prior_h_A", "prior_h_B", "prior_fa_A", "prior_fa_B")
 
-niter <- 100000    #Iteraciones
-burnin <- 1000     #No. de primeros sampleos en ignorarse
+niter <- 500000    #Iteraciones
+burnin <- 50000     #No. de primeros sampleos en ignorarse
 
 #Corremos el modelo
 samples <- jags(data, inits=myinits, parameters,
@@ -294,8 +294,8 @@ Exp <- 1}else{
   ###################################################################################
 
 #Preparamos los datos
-keep_ <- (1000)   #Numero de extracciones a incluir en el Gráfico
-keep <- sample(niter, keep_)    #De las 'niter' extracciones, sacamos 'keep' muestras
+keep_ <- (5000)   #Numero de extracciones a incluir en el Gráfico
+keep <- sample(length(tetaFA_a),keep_)    #De las 'niter' extracciones, sacamos 'keep' muestras
 #
 d.FA_a <- density(tetaFA_a)
 d.FA_b <- density(tetaFA_b)
@@ -322,12 +322,12 @@ soporte_d <- c(0,3)
   soporte_f <- c(0,25)
   par(mar=c(2,2,1,0))
   plot(tetaFA_a[keep],tetaH_a[keep], col="deepskyblue3", xlab="", ylab="", 
-       axes=F,xlim=c(0,0.5), ylim=c(0.5,1))
+       axes=F,xlim=c(0,0.6), ylim=c(0.5,1))
   points(tetaFA_b[keep],tetaH_b[keep], col="darkorchid3")
-  lines(c(0.38, 0.41),c(0.59,0.59), lwd=2, lty=1, col="deepskyblue3")
-  lines(c(0.38, 0.41),c(0.56,0.56), lwd=2, lty=1, col="darkorchid3")
-  text(0.42, 0.59, labels="A Condition", offset=0, cex = 1.1, pos=4)
-  text(0.42, 0.56, labels="B Condition", offset=0, cex = 1.1, pos=4)
+  lines(c(0.48, 0.51),c(0.59,0.59), lwd=2.5, lty=2, col="deepskyblue3")
+  lines(c(0.48, 0.51),c(0.56,0.56), lwd=2.5, lty=2, col="darkorchid3")
+  text(0.52, 0.59, labels="A Condition", offset=0, cex = 1.2, pos=4)
+  text(0.52, 0.56, labels="B Condition", offset=0, cex = 1.2, pos=4)
   box(lty=1)
   
   par(mar=c(2,1,1,4))
@@ -337,41 +337,45 @@ soporte_d <- c(0,3)
   lines(density(tetaH_a[,a])$y,density(tetaH_a[,a])$x, col="deepskyblue3")
   lines(density(tetaH_b[,a])$y,density(tetaH_b[,a])$x, col="darkorchid3")
   axis(4)
-  mtext(expression(paste("Hits")), side=4,line=2.3, cex=0.9, las=0)}
+  mtext(expression(paste("Hits")), side=4,line=2.3, cex=1.3, las=0)}
   box(lty=1)
   
   par(mar=c(6,2,0,0))
-  plot(density(tetaFA_a),zero.line=F ,main="", col="red", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,0.5),ylim=c(0,26))
+  plot(density(tetaFA_a),zero.line=F ,main="", col="white", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,0.6),ylim=c(0,46))
   for(a in 1:k){  
   lines(density(tetaFA_a[,a]), col="deepskyblue3")
   lines(density(tetaFA_b[,a]), col="darkorchid3")
   axis(1, at=c(0, 0.1, 0.2, 0.3, 0.4, 0.5))
-  mtext(expression(paste("False Alarms")), side=1.2,line=2, cex=0.9)}
+  mtext(expression(paste("False Alarms")), side=1.2,line=2, cex=1.3)}
   box(lty=1)
   
   # D' y C
   
   par(mar=c(2,2,1,0))
-  plot(d_a[keep],c_a[keep], col="deepskyblue3", xlab="", ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
+  plot(d_a[keep],c_a[keep], col="deepskyblue3", xlab="", ylab="", axes=F,xlim=c(0,5.5), ylim=c(-1.1,1.1))
   points(d_b[keep],c_b[keep], col="darkorchid3")
-  lines(c(0.2, 0.6),c(0.9,0.9), lwd=2, lty=1, col="deepskyblue3")
-  lines(c(0.2, 0.6),c(0.7,0.7), lwd=2, lty=1, col="darkorchid3")
-  text(0.65, 0.9, labels="A Condition", offset=0, cex = 0.8, pos=4)
-  text(0.65, 0.7, labels="B Condition", offset=0, cex = 0.8, pos=4)
+  lines(c(0.2, 0.45),c(0.9,0.9), lwd=2, lty=1, col="deepskyblue3")
+  lines(c(0.2, 0.45),c(0.7,0.7), lwd=2, lty=1, col="darkorchid3")
+  text(0.5, 0.9, labels="A Condition", offset=0, cex = 1.2, pos=4)
+  text(0.5, 0.7, labels="B Condition", offset=0, cex = 1.2, pos=4)
   box(lty=1)
   
   par(mar=c(2,1,1,4))
-  plot(d.C_a$y, d.C_a$x, xlim=rev(c(0,5)),type='l', col="deepskyblue3", axes=F, xlab="", ylab="",ylim=c(-1,1))
-  lines(d.C_b$y, d.C_b$x, col="darkorchid3")
+  plot(soporte_c, xlim=rev(c(0,5)),type='l', col="white", axes=F, xlab="", ylab="",ylim=c(-1,1))
+  for(a in 1:k){
+  lines(density(c_a[,a])$y, density(c_a[,a])$x, col="darkorchid3")
+  lines(density(c_b[,a])$y, density(c_b[,a])$x, col="deepskyblue3")
   axis(4)
-  mtext(expression(paste("C (Bias)")), side=4,line=2.3, cex=0.9, font=2, las=0)
+  mtext(expression(paste("C (Bias)")), side=4,line=2.4, cex=1.3, las=0)}
   box(lty=1)
   
   par(mar=c(6,2,0,0))
-  plot(density(d_a),zero.line=F ,main="", col="deepskyblue3", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3))
-  lines(density(d_b), col="darkorchid3")
+  plot(density(d_a[,a]),zero.line=F ,main="", col="white", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3))
+  for(a in 1:k){
+  lines(density(d_a[,a]), col="deepskyblue3")
+  lines(density(d_b[,a]), col="darkorchid3")
   axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
-  mtext(expression(paste("D prime")), side=1.2,line=2, cex=0.9, font=2)
+  mtext(expression(paste("D prime")), side=1.2,line=2.5, cex=1.3)}
   box(lty=1)
 
 
@@ -384,50 +388,76 @@ soporte_d <- c(0,3)
 # Posteriores individuales para Tau por sujeto
 # ###################################################################################
 layout(matrix(1:1,ncol=1))
-prior_tau <- rnorm((niter-burnin),0,.1)
+prior_tauH <- as.vector(PPr_tauH)
+prior_tauF <- as.vector(PPr_tauF)
 plot(density(prior_tau), main="Prior Tau ~ Normal(0,0.1)")
 
 layout(matrix(1:2,ncol=1))
-####Un color diferente por sujeto
-coltaufa <- c('chocolate', 'chocolate1', 'chocolate2', 'chocolate3', 'chocolate4', 'firebrick4', 'coral1', 'coral2', 'coral3', 'coral4','darkgoldenrod', 'brown', 'brown4', 'darkgoldenrod3', 'darkgoldenrod4','darkorange','coral4', 'darkorange2', 'darkorange3', 'darkorange4', 'goldenrod3')
-coltauh <- c('darkolivegreen', 'darkolivegreen1', 'darkolivegreen2', 'darkolivegreen3', 'darkolivegreen4', 'darkseagreen', 'darkseagreen1', 'darkseagreen2', 'darkseagreen3', 'darkseagreen4','chartreuse4', 'chartreuse3', 'chartreuse2', 'aquamarine4', 'aquamarine3','aquamarine2','darkgreen', 'forestgreen', 'darkcyan', 'darkgoldenrod4', 'darkkhaki')
 soporte_t<- c(0,35)
-#####Tres colores diferentes por Tau: Ayuda a distinguir los colores sin cargar demasiado la gráfica
 taucolfa <- c('chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2')
 taucolh <- c('darkgreen','forestgreen','chartreuse3', 'darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3')
 
-  par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5,
-      font.lab = 2, cex.axis = 1.3, bty = "n", las=1, cex.main=2)
-  
-  plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), col='white')
-  for(a in 1:k){
-  title(paste("Experiment No.", exp), line=2.2, cex=1)
-  lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
-  lines(density(prior_tau), col="blue", lwd=3)
+
+if (experimento ==1){  
+YLIM <- c(0,30)
+  }else{
+YLIM <- c(0,30)
+}
+
+par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5,
+    font.lab = 2, cex.axis = 1.3, bty = "n", las=1, cex.main=2)
+
+###############################
+#Prior predictive - Tau
+plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
+     ylim=c(0,1.5))
+for(a in 1:k){
+  lines(density(PPr_tauH[,a]), lwd=2, col="deepskyblue3")
   axis(1)
-  abline(v=0, col='black', lty=2, lwd=3)
-  #axis(2, labels=F, at=c(0,24))
-  #mtext("Density", side=2, line = 0, cex=1, las=0)
-  mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
-  mtext("Tau-H", side=1, line = 3, cex=2, font=2)
+  axis(2, labels=F, at=c(0,94))
+  mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
+  mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)}
+mtext(paste("Predictive prior for the differences between F.A rates"), font=2, cex=1.2, side=3, line=0.5)
+mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
-  
-  plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), col='white')
-  for (a in 1:k){
-  lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)
-  }
-  lines(density(prior_tau), col="blue", lwd=3)
-  axis(1) 
-  abline(v=0, col='black', lty=2, lwd=3)
-  #axis(2, labels=F, at=c(0,24))
-  #mtext("Density", side=2, line = 2, cex=1, las=0)
-  mtext("Tau-F", side=1, line = 3, cex=2, font=2)
-  mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
+plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
+     ylim=c(0,1.5))
+for(a in 1:k){
+  lines(density(PPr_tauF[,a]), lwd=2, col="deepskyblue3")
+  axis(1)
+  axis(2, labels=F, at=c(0,94))
+  mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
+  mtext(expression(paste(tau, "F.A")), side=1, line = 2.8, cex=1.8, font=2)}
+mtext(paste("Predictive prior for the differences between Hit rates"), font=2, cex=1.2, side=3, line=0.5)
 
 
+#Posteriors 
+plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), ylim=c(0,21), col='white')
+for(a in 1:k){
+title(paste("Experiment No.", exp), line=2.2, cex=1)
+lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
+lines(density(prior_tauH), col="blue", lwd=3)
+axis(1)
+abline(v=0, col='black', lty=2, lwd=3)
+mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
+mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
+
+plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), col='white')
+for (a in 1:k){
+lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)}
+lines(density(prior_tauF), col="blue", lwd=3)
+axis(1) 
+abline(v=0, col='black', lty=2, lwd=3)
+mtext(expression(paste(tau, "F.A.")), side=1, line = 2.8, cex=1.8, font=2)
+mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
 
 
-############################
+
+
+###########################  
+###########################
+###########################  
+###########################
 # Posterior Densities for individual TauH and TauF
 
 

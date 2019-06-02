@@ -102,8 +102,8 @@ parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", "d_B", "c_B", "thetah_B", 
                 "Pr_d_A", "Pr_c_A", "Pr_thetah_A", "Pr_thetaf_A", "Pr_d_B", "Pr_c_B", "Pr_thetah_B", "Pr_thetaf_B",
                 "PRIOR_Tau_H", "PRIOR_Tau_F","prior_h_A", "prior_h_B", "prior_fa_A", "prior_fa_B")
 
-niter <- 500000    #Iteraciones
-burnin <- 50000     #No. de primeros sampleos en ignorarse
+niter <- 50000    #Iteraciones
+burnin <- 5000     #No. de primeros sampleos en ignorarse
 
 #Corremos el modelo
 samples <- jags(data, inits=myinits, parameters,

@@ -1,5 +1,6 @@
 
 model{
+  #Posterior estimations (based on the data collected)
   for (i in 1:k){
   # Observed counts
     h_A[i] ~ dbin(thetah_A[i],s)
@@ -21,7 +22,7 @@ model{
       Tau_H[i] <- thetah_A[i]-thetah_B[i]
       Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
   }
-  #Predictive Priors
+  #Priors to generate the Prior predictions
   for (i in 1:k){
   # Observed counts
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)

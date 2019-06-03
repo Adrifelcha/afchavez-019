@@ -1,0 +1,23 @@
+
+      model{
+      for (i in 1:k){
+      # Prior predicted counts
+      Predicted_Ha[i] ~ dbin(PPr_thetah_A[i],s)
+      Predicted_Fa[i] ~ dbin(PPr_thetaf_A[i],n)
+      Predicted_Hb[i] ~ dbin(PPr_thetah_B[i],s)
+      Predicted_Fb[i] ~ dbin(PPr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      PPr_thetah_A[i] <- phi(PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetaf_A[i] <- phi(-PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetah_B[i] <- phi(PPr_d_B[i]/2-PPr_c_B[i])
+      PPr_thetaf_B[i] <- phi(-PPr_d_B[i]/2-PPr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      PPr_d_A[i] ~ dnorm(0,1)T(0,6)
+      PPr_c_A[i] ~ dnorm(0,0.7)
+      PPr_d_B[i] ~ dnorm(0,1)T(0,6)
+      PPr_c_B[i] ~ dnorm(0,0.7)
+      #Differences on dprime
+      PPRIOR_Tau_H[i] <- PPr_thetah_A[i]-PPr_thetah_B[i]
+      PPRIOR_Tau_F[i] <- PPr_thetaf_B[i]-PPr_thetaf_A[i]
+      }}

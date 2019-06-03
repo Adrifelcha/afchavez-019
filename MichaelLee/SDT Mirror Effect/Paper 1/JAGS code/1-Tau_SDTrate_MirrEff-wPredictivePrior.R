@@ -5,9 +5,10 @@ library(R2jags)
 ##############################################################
 ##############################################################
 #Diferencias en Hits y Falsas Alarmas
-##############################################################
 #Modelo 1 :  Diferencias entre las Tasas H y FA (parametros TauH y TauF)
+#            contra datos generados usando las priors
 ##############################################################
+
 
 
 
@@ -37,12 +38,14 @@ k <- 20                       #Participantes
 s <- 160       #Ensayos con Señal
 n <- 160       #Ensayos con Ruido
 
-######################################
-######################################
-#Escribimos el modelo
-######################################
+
+############################################################################
+############################################################################
+#Escribimos el modelo Inicial
+############################################################################
 write('
 model{
+  #Posterior estimations (based on the data collected)
   for (i in 1:k){
   # Observed counts
     h_A[i] ~ dbin(thetah_A[i],s)
@@ -64,7 +67,7 @@ model{
       Tau_H[i] <- thetah_A[i]-thetah_B[i]
       Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
   }
-  #Predictive Priors
+  #Priors to generate the Prior predictions
   for (i in 1:k){
   # Observed counts
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
@@ -132,19 +135,117 @@ samples <- jags(data, inits=myinits, parameters,
   
   
   #Prior predictiva
-  PPr_d_a <- samples$BUGSoutput$sims.list$Pr_d_A
-  PPr_d_b <- samples$BUGSoutput$sims.list$Pr_d_B
+  Pr_d_a <- samples$BUGSoutput$sims.list$Pr_d_A
+  Pr_d_b <- samples$BUGSoutput$sims.list$Pr_d_B
   
-  PPr_c_a <- samples$BUGSoutput$sims.list$Pr_c_A
-  PPr_c_b <- samples$BUGSoutput$sims.list$Pr_c_B
+  Pr_c_a <- samples$BUGSoutput$sims.list$Pr_c_A
+  Pr_c_b <- samples$BUGSoutput$sims.list$Pr_c_B
   
-  PPr_tetaH_a <- samples$BUGSoutput$sims.list$Pr_thetah_A
-  PPr_tetaH_b <- samples$BUGSoutput$sims.list$Pr_thetah_B
-  PPr_tetaFA_a <- samples$BUGSoutput$sims.list$Pr_thetaf_A
-  PPr_tetaFA_b <- samples$BUGSoutput$sims.list$Pr_thetaf_B
+  Pr_Ha <- samples$BUGSoutput$sims.list$prior_h_A
+  Pr_Hb <- samples$BUGSoutput$sims.list$prior_h_B
+  Pr_Fa <- samples$BUGSoutput$sims.list$prior_fa_A
+  Pr_Fb <- samples$BUGSoutput$sims.list$prior_fa_B
   
-  PPr_tauH <- samples$BUGSoutput$sims.list$PRIOR_Tau_H
-  PPr_tauF <- samples$BUGSoutput$sims.list$PRIOR_Tau_F
+  
+  Pr_tetaH_a <- samples$BUGSoutput$sims.list$Pr_thetah_A
+  Pr_tetaH_b <- samples$BUGSoutput$sims.list$Pr_thetah_B
+  Pr_tetaFA_a <- samples$BUGSoutput$sims.list$Pr_thetaf_A
+  Pr_tetaFA_b <- samples$BUGSoutput$sims.list$Pr_thetaf_B
+  
+  Pr_tauH <- samples$BUGSoutput$sims.list$PRIOR_Tau_H
+  Pr_tauF <- samples$BUGSoutput$sims.list$PRIOR_Tau_F
+
+Predicted_Ha <- NULL
+Predicted_Hb <- NULL
+Predicted_Fa <- NULL
+Predicted_Fb <- NULL
+
+for(i in 1:k){
+  Predicted_Ha[i] <- round(mean(sample(Pr_Ha[,i],1000)),0)
+  Predicted_Hb[i] <- round(mean(sample(Pr_Hb[,i],1000)),0)
+  Predicted_Fa[i] <- round(mean(sample(Pr_Fa[,i],1000)),0) 
+  Predicted_Fb[i] <- round(mean(sample(Pr_Fb[,i],1000)),0) 
+  }
+  
+
+############################################################################
+############################################################################
+#Escribimos nuevamente el modelo para obtener estimados basados en las Priors
+############################################################################
+write('
+      model{
+      for (i in 1:k){
+      # Prior predicted counts
+      Predicted_Ha[i] ~ dbin(PPr_thetah_A[i],s)
+      Predicted_Fa[i] ~ dbin(PPr_thetaf_A[i],n)
+      Predicted_Hb[i] ~ dbin(PPr_thetah_B[i],s)
+      Predicted_Fb[i] ~ dbin(PPr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      PPr_thetah_A[i] <- phi(PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetaf_A[i] <- phi(-PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetah_B[i] <- phi(PPr_d_B[i]/2-PPr_c_B[i])
+      PPr_thetaf_B[i] <- phi(-PPr_d_B[i]/2-PPr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      PPr_d_A[i] ~ dnorm(0,1)T(0,6)
+      PPr_c_A[i] ~ dnorm(0,0.7)
+      PPr_d_B[i] ~ dnorm(0,1)T(0,6)
+      PPr_c_B[i] ~ dnorm(0,0.7)
+      #Differences on dprime
+      PPRIOR_Tau_H[i] <- PPr_thetah_A[i]-PPr_thetah_B[i]
+      PPRIOR_Tau_F[i] <- PPr_thetaf_B[i]-PPr_thetaf_A[i]
+      }}','Tau_predictive.bug')
+
+######################################
+######################################
+# Definimos los elementos de trabajo
+######################################
+data <- list("Predicted_Ha", "Predicted_Hb", "Predicted_Fa", "Predicted_Fb", "s", "n", "k")                    
+#Los datos que vamos a utilizar para nuestro modelo
+myinits <- list(
+  list(PPr_d_A = rep(0,k), PPr_c_A = rep(0,k), PPr_d_B = rep(0,k), PPr_c_B = rep(0,k)))      
+#Valores iniciales para las extracciones de las cadenas de Markov
+
+#Parámetros monitoreados
+parameters <- c("PPr_d_A", "PPr_c_A", "PPr_thetah_A", "PPr_thetaf_A", "PPr_d_B", "PPr_c_B", "PPr_thetah_B", 
+                "PPr_thetaf_B","PPRIOR_Tau_H", "PPRIOR_Tau_F")
+
+niter <- 100000    #Iteraciones
+burnin <- 5000     #No. de primeros sampleos en ignorarse
+
+#Corremos el modelo
+samples <- jags(data, inits=myinits, parameters,
+                model.file ="Tau_predictive.bug",
+                n.chains=1, n.iter=niter, n.burnin=burnin, n.thin=1)
+
+####################################################################
+# Jalamos los resultados de correr el modelo (Inferencias)
+# a.k.a.:
+#Le ponemos una etiqueta a cada elemento contenido en Samples
+####################################################################
+
+#Prior predictiva
+PPr_d_a <- samples$BUGSoutput$sims.list$PPr_d_A
+PPr_d_b <- samples$BUGSoutput$sims.list$PPr_d_B
+
+PPr_c_a <- samples$BUGSoutput$sims.list$PPr_c_A
+PPr_c_b <- samples$BUGSoutput$sims.list$PPr_c_B
+
+PPr_tetaH_a <- samples$BUGSoutput$sims.list$PPr_thetah_A
+PPr_tetaH_b <- samples$BUGSoutput$sims.list$PPr_thetah_B
+PPr_tetaFA_a <- samples$BUGSoutput$sims.list$PPr_thetaf_A
+PPr_tetaFA_b <- samples$BUGSoutput$sims.list$PPr_thetaf_B
+
+PPr_tauH <- samples$BUGSoutput$sims.list$PPRIOR_Tau_H
+PPr_tauF <- samples$BUGSoutput$sims.list$PPRIOR_Tau_F
+
+
+
+
+
+
+
+
 
 
 ##########################################################
@@ -173,11 +274,32 @@ Exp <- 1}else{
   Exp <- 2
 }
 
+  
+  
+  plot(c(1:20), h_A, col="red", pch=16, cex=1.4, ylim=c(50,160))
+  points(c(1:20),h_B, col="purple", pch=16)
+  points(c(1:20),Predicted_Ha)
+  points(c(1:20),Predicted_Hb)
+  
+  
+  
+  
+  
     
 ###############################
   # DISCRIMINABBILITY (D'):  
-        # Predictive Prior
+         # Prior Distribution
   plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,1), col='white')
+  for(a in 1:k){                                                      
+    lines(density(Pr_d_a[,a]), lwd=2.5, col="deepskyblue3")
+    lines(density(Pr_d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,24))
+    mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
+    mtext("D-prime", side=1, line = 2.5, cex=1, font=2)}
+  mtext(paste("Prior distribution for D' - Experiment No.", Exp), font=2, cex=2, side=3)
+        # Predictive Prior
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,3), col='white')
   for(a in 1:k){                                                      
     lines(density(PPr_d_a[,a]), lwd=2.5, col="deepskyblue3")
     lines(density(PPr_d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
@@ -198,11 +320,23 @@ Exp <- 1}else{
     mtext(paste("Posterior estimates for D' - Experiment No.", Exp), font=2, cex=2, side=3)
     
   
+
+    
 ###############################
   # BIAS (C):   
+         # Prior Distribution
+    plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5), axes=F,
+         ylim=c(0,0.5))
+    for(a in 1:k){
+      axis(1)
+      axis(2, labels=F, at=c(0,24))
+      lines(density(Pr_c_a[,a]), lwd=2.5, col="deepskyblue3")
+      lines(density(Pr_c_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
+      mtext("Prior Density", side=2, line = 2, cex=1.5, las=0)
+      mtext("Bias - C", side=1, line = 2.5, cex=1, font=2)}
+    mtext(paste("Prior distribution for C - Experiment No.", Exp), font=2, cex=2, side=3)
         # Predictive Prior
-  plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5), axes=F,
-       ylim=c(0,0.5))
+  plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5), axes=F)
     for(a in 1:k){
       axis(1)
       axis(2, labels=F, at=c(0,24))
@@ -225,18 +359,30 @@ Exp <- 1}else{
  
   
   ###############################
-    # THETA HITS:    
-          #Predictive Prior
+    # THETA HITS:   
+          #Prior Distribution
   plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.3,1), axes=F,
        ylim=c(0,3))
   for(a in 1:k){
     axis(1)
     axis(2, labels=F, at=c(0,94))
-    lines(density(PPr_tetaH_a[,a]), lwd=2, col="deepskyblue3")
-    lines(density(PPr_tetaH_b[,a]), lwd=2, col="darkorchid3", lty=1)
+    lines(density(Pr_tetaH_a[,a]), lwd=2, col="deepskyblue3")
+    lines(density(Pr_tetaH_b[,a]), lwd=2, col="darkorchid3", lty=1)
     legend(0.4,2, legend=c("A Class", "B Class"),
            col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
-    mtext("Posterior density", 2, line = 2, cex=2.1, las=0)
+    mtext("Prior density", 2, line = 2, cex=2.1, las=0)
+    mtext(expression(paste(theta, "H")), side=1, line = 2.8, cex=2.5, font=2)}
+  mtext(paste("Prior distribution for the Hit rates - Experiment No.", Exp), font=2, cex=2, side=3)
+          #Predictive Prior
+  plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.3,1), axes=F, ylim=c(0,11))
+  for(a in 1:k){
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    lines(density(PPr_tetaH_a[,a]), lwd=2, col="deepskyblue3")
+    lines(density(PPr_tetaH_b[,a]), lwd=2, col="darkorchid3", lty=1)
+    legend(0.35,8, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Predictive Prior density", 2, line = 2, cex=2.1, las=0)
     mtext(expression(paste(theta, "H")), side=1, line = 2.8, cex=2.5, font=2)}
   mtext(paste("Predictive prior for the Hit rates - Experiment No.", Exp), font=2, cex=2, side=3)
           #Posterior Density
@@ -256,17 +402,30 @@ Exp <- 1}else{
   
   ###############################
     # THETA F.A:
-            #Prior predictive
+            #Prior distributions
   plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.7), axes=F,
        ylim=c(0,3))
+  for(a in 1:k){
+    lines(density(Pr_tetaFA_a[,a]), lwd=2, col="deepskyblue3")
+    lines(density(Pr_tetaFA_b[,a]), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.4,2, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Prior density", side=2, line = 2.1, cex=2, las=0)
+    mtext(expression(paste(theta, "F")), side=1, line = 2.8, cex=2.5, font=2)}
+  mtext(paste("Prior distribution for the F.A rates - Experiment No.", Exp), font=2, cex=2, side=3)
+            #Prior predictive
+  plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.7), axes=F,
+       ylim=c(0,11))
   for(a in 1:k){
     lines(density(PPr_tetaFA_a[,a]), lwd=2, col="deepskyblue3")
     lines(density(PPr_tetaFA_b[,a]), lwd=2, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,94))
-    legend(0.4,2, legend=c("A Class", "B Class"),
+    legend(0.1,8, legend=c("A Class", "B Class"),
            col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
-    mtext("Posterior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Predictive prior density", side=2, line = 2.1, cex=2, las=0)
     mtext(expression(paste(theta, "F")), side=1, line = 2.8, cex=2.5, font=2)}
   mtext(paste("Predictive prior for the F.A rates - Experiment No.", Exp), font=2, cex=2, side=3)
             #Posterior density

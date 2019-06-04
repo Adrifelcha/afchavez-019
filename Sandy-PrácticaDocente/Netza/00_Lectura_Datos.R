@@ -9,7 +9,7 @@
 
 ####################################################
 #Cargamos librería de trabajo, las bases y los datos
-setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/CelsaVirgen")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/Netza")
 
 Datos <- read.csv("Respuestas.csv")     #Archivo con las respuestas de los estudiantes
 Datos$NO. <- NULL

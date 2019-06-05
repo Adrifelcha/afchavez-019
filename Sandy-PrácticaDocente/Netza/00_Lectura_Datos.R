@@ -9,7 +9,7 @@
 
 ####################################################
 #Cargamos librería de trabajo, las bases y los datos
-setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/Netza")
+setwd("C:/Users/Adriana/Desktop/afchavez-019/Sandy-PrácticaDocente/Netza")
 
 Datos <- read.csv("Respuestas.csv")     #Archivo con las respuestas de los estudiantes
 Datos$NO. <- NULL
@@ -79,9 +79,9 @@ hist(Score_FA, breaks=seq(-.1,25,by=1), ann=F, axes=F, xlim=c(0,25), col="lightg
      ylim=c(0,8))
 lines(c(1,1),c(0,8),col='black', lty=4,lwd=2) 
 text(7,7.5, paste("Respondieron la Forma A:"), f=2)
-text(7,7.3, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
-text(0.5,4, paste(length(which(is.na(Dicot[,10])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(7,6.5, paste("Promedio: 12.76"), f=2)
+text(7,7.1, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
+text(0.5,4, paste("0 estudiantes no asistieron"), srt=90, f=2)
+text(7,6.5, paste("Promedio: 11.60"), f=2)
 mtext(side=1, text = "Puntuación", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Forma A", line=1.5, cex=2, f=2)
@@ -102,9 +102,9 @@ hist(Score_FB,ann=F, breaks=seq(-0.1,25,1), axes=F, xlim=c(0,25), col="lightgold
      ylim=c(0,8))
 lines(c(0.9,0.9),c(0,8),col='black', lty=4,lwd=2) 
 text(7,7.5, paste("Respondieron la Forma B:"), f=2)
-text(7,7.3, paste(length(which(is.na(Dicot[,45])==FALSE)), " estudiantes en total"), f=2)
-text(0.3,4, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(7,6.5, paste("Promedio: 9.04"), f=2)
+text(7,7.1, paste(length(which(is.na(Dicot[,46])==FALSE)), " estudiantes en total"), f=2)
+text(0.3,4, paste(length(which(is.na(Dicot[,46])==TRUE)), " estudiante no asistió"), srt=90, f=2)
+text(7,6.5, paste("Promedio: 5.92"), f=2)
 mtext(side=1, text = "Puntuación", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Forma B", line=1.5, cex=2, f=2)
@@ -128,21 +128,17 @@ hist(c(Score_FA,Second_FB),ann=F, breaks=seq(-0.1,50,1), axes=F, xlim=c(0,50), c
          lines(c(0,1),c(.25,.25),lwd=2,lty=3, col="black"),lines(c(0,1),c(.375,.375),lwd=2,lty=3, col="black"),
          lines(c(0,1),c(.5,.5),lwd=2,lty=3, col="black"),lines(c(0,1),c(.625,.625),lwd=2,lty=3, col="black"),
          lines(c(0,1),c(.75,.75),lwd=2,lty=3, col="black"),lines(c(0,1),c(.875,.875),lwd=2,lty=3, col="black")))
-lines(c(1.1,1.1),c(0,8),col='black', lty=4,lwd=2) 
 text(45.5, 15, "Forma 2", f=2, col="lightgoldenrod4", cex=2)
 text(5.5, 15, "Forma 1", f=2, col="lightgoldenrod3", cex=2)
 lines(c(25.9,25.9),c(0,8),col='black', lty=1,lwd=3) 
-lines(c(27.1,27.1),c(0,8),col='black', lty=4,lwd=2) 
-text(26.3,3, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
 lines(c(30.1,60),c(120,120),lty=1,lwd=4, col="lightgoldenrod2") 
 lines(c(30.1,0),c(120,120),lty=1,lwd=4, col="lightgoldenrod1") 
-text(10.5,7.5, paste("Respondieron la Forma A:"), f=2)
+text(10.5,7.7, paste("Respondieron la Forma A:"), f=2)
 text(10,7.3, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
-text(10,6, paste("Promedio: 12.76"), f=2)
-text(40,7.5, paste("Respondieron la Forma B:"), f=2)
-text(40,7.3, paste(length(which(is.na(Dicot[,45])==FALSE)), " estudiantes en total"), f=2)
-text(0.3,3, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(40,6, paste("Promedio: 9.04"), f=2)
+text(10,5.5, paste("Promedio: 11.6"), f=2)
+text(40,7.7, paste("Respondieron la Forma B:"), f=2)
+text(40,7.3, paste(length(which(is.na(Dicot[,46])==FALSE)), " estudiantes en total"), f=2)
+text(40,5.5, paste("Promedio: 5.92"), f=2)
 mtext(side=1, text = "Puntuaciones", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Formas A y B", line=1.5, cex=2, f=2)
@@ -171,7 +167,7 @@ for(a in 1:Sujetos){
 mark <- 0
 valor_label <- NULL
 hist(Total_Completo, breaks=seq(0,50,by=5), main="Puntajes totales", ann=F, axes=F, xlim=c(0,50), 
-     col="goldenrod", ylim=c(0,10))
+     col="goldenrod", ylim=c(0,12))
 text(40,30, paste("Respondieron todo el examen:"), f=2)
 text(40,29, paste(length(Total_Completo), " estudiantes en total"), f=2)
 text(8,25, paste("Promedio: ", round(mean(Total_Completo),2)), f=2)

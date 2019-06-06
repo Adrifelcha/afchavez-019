@@ -8,7 +8,7 @@
 #############################################################
 rm(list=ls())                       #Limpiamos variables
 library("CDM")
-setwd("C:/Users/Laboratorio 25/Desktop/afchavez-019/Sandy-PrácticaDocente/CelsaVirgen/DINA Cal-Nacional")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/CelsaVirgen/DINA Cal-Nacional")
 
 
 #Cargamos la base de ELSEN + 127 datos de Sandy SIN CONTAR el reactivo 22 (PMB02)
@@ -54,7 +54,7 @@ write.csv(data.frame(d2$pattern), "e2_minpostpattern_DINA-Guaner.csv", row.names
 
 
 d3 <- din(R_E3, q.matr = Q_E3, rule = "DINA",
-          conv.crit = 0.01, maxit = 500, progress = TRUE)
+          conv.crit = 0.1, maxit = 50, progress = TRUE)
 
 
 write.csv(d3$item, "e3_itempars_spa_DINA-Guaner.csv")

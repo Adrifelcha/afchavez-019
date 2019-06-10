@@ -30,6 +30,7 @@ if (experimento == 2)   # Dos Figuras de Ebbinghaus
   datos <- read.csv(archive)          #Jalamos los datos
 }
 
+
 h_A <- datos$A_H       #Hits(A)
 h_B <- datos$B_H     #Hits(B)
 fa_A <- datos$A_FA        #FA(A)
@@ -37,6 +38,7 @@ fa_B <- datos$B_FA      #FA(B)
 k <- 20                       #Participantes
 s <- 160       #Ensayos con Señal
 n <- 160       #Ensayos con Ruido
+
 
 
 ############################################################################
@@ -47,7 +49,7 @@ write('
 model{
   #Posterior estimations (based on the data collected)
   for (i in 1:k){
-  # Observed counts
+  # Posterior density based on our data
     h_A[i] ~ dbin(thetah_A[i],s)
     fa_A[i] ~ dbin(thetaf_A[i],n)
     h_B[i] ~ dbin(thetah_B[i],s)
@@ -67,9 +69,8 @@ model{
       Tau_H[i] <- thetah_A[i]-thetah_B[i]
       Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
   }
-  #Priors to generate the Prior predictions
+  #Plain priors for drawing prior predictions
   for (i in 1:k){
-  # Observed counts
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
       prior_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
       prior_h_B[i] ~ dbin(Pr_thetah_B[i],s)
@@ -161,10 +162,10 @@ Predicted_Fa <- NULL
 Predicted_Fb <- NULL
 
 for(i in 1:k){
-  Predicted_Ha[i] <- round(mean(sample(Pr_Ha[,i],1000)),0)
-  Predicted_Hb[i] <- round(mean(sample(Pr_Hb[,i],1000)),0)
-  Predicted_Fa[i] <- round(mean(sample(Pr_Fa[,i],1000)),0) 
-  Predicted_Fb[i] <- round(mean(sample(Pr_Fb[,i],1000)),0) 
+  Predicted_Ha[i] <- round(median(density(Pr_Ha[,i])$x[which(density(Pr_Ha[,i])$y==max(density(Pr_Ha[,i])$y))-rbinom(1,10,.5)]),0)
+  Predicted_Hb[i] <- round(median(density(Pr_Hb[,i])$x[which(density(Pr_Hb[,i])$y==max(density(Pr_Hb[,i])$y))-rbinom(1,10,.5)]),0)
+  Predicted_Fa[i] <- round(median(density(Pr_Fa[,i])$x[which(density(Pr_Fa[,i])$y==max(density(Pr_Fa[,i])$y))+rbinom(1,10,.5)]),0)
+  Predicted_Fb[i] <- round(median(density(Pr_Fb[,i])$x[which(density(Pr_Fb[,i])$y==max(density(Pr_Fb[,i])$y))+rbinom(1,10,.5)]),0) 
   }
   
 
@@ -244,10 +245,6 @@ PPr_tauF <- samples$BUGSoutput$sims.list$PPRIOR_Tau_F
 
 
 
-
-
-
-
 ##########################################################
 ##########################################################
 ##########################################################
@@ -274,14 +271,147 @@ Exp <- 1}else{
   Exp <- 2
 }
 
+  ##########################
+  # Predicted vs Observed Total Counts
+  ################################
+  # Total number of Hits
+    plot(c(1:k), h_A, col="white", pch=18, cex=2, ylim=c(80,160),
+       axes=F, xlab="", ylab="")
+  points(c(1:k),Predicted_Ha, col="deepskyblue1", pch=15, cex=3)
+  points(c(1:k),Predicted_Hb, col="mediumorchid1", pch=15, cex=3)
+  points(c(1:k),h_B, col="magenta4", pch=18, cex=2)
+  points(c(1:k),h_A, col="royalblue3", pch=18, cex=2)
+  axis(1,c(1:20),c(1:20))
+  axis(2,seq(80,160,5),seq(80,160,5), line=-1)
+  mtext("Total number of Hits", side=2, line = 2, cex=1.5, las=0)
+  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predicted vs Observed number of Hits - Experiment No.", Exp), font=2, cex=2, side=3)
+  numero <- 0
+  linea <- 1.5
+  for(u in 1:k){
+    numero <- numero + 1
+    if(u<9){
+    lines(c(linea,linea),c(101,160), lty=2)  
+    }else{
+    lines(c(linea,linea),c(80,160), lty=2)}
+    linea <- linea+1
+  }
+  points(1.8,97, col="deepskyblue1", pch=15, cex=3)
+  points(1.8,92, col="mediumorchid1", pch=15, cex=3)
+  points(1.8,87, col="magenta4", pch=18, cex=2)
+  points(1.8,82, col="royalblue3", pch=18, cex=2)
+  text(5.5,97, "Prior prediction for the number of Hits - A Class", f=2)
+  text(5.5,92, "Prior prediction for the number of Hits - B Class", f=2)
+  text(4.5,87, "Observed number of Hits - A Class", f=2)
+  text(4.5,82, "Observed number of Hits - B Class", f=2)
+  
+  # Total number of False Alarms
+  plot(c(1:k), h_A, col="white", pch=18, cex=2, ylim=c(0,80),
+       axes=F, xlab="", ylab="")
+  points(c(1:k),Predicted_Fa, col="deepskyblue1", pch=15, cex=3)
+  points(c(1:k),Predicted_Fb, col="mediumorchid1", pch=15, cex=3)
+  points(c(1:k),fa_B, col="magenta4", pch=18, cex=2.5)
+  points(c(1:k),fa_A, col="royalblue3", pch=18, cex=2)
+  axis(1,c(1:20),c(1:20))
+  axis(2,seq(0,80,5),seq(0,80,5), line=-1)
+  mtext("Total number of False Alarms", side=2, line = 2, cex=1.5, las=0)
+  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predicted vs Observed number of False Alarms - Experiment No.", Exp), font=2, cex=2, side=3)
+  numero <- 0
+  linea <- 1.5
+  for(u in 1:k){
+    numero <- numero + 1
+    if(u>12){
+    lines(c(linea,linea),c(0,60), lty=2)  
+    }else{
+    lines(c(linea,linea),c(0,80), lty=2)}
+    linea <- linea+1
+  }
+  points(12.8,78, col="deepskyblue1", pch=15, cex=3)
+  points(12.8,73, col="mediumorchid1", pch=15, cex=3)
+  points(12.8,68, col="magenta4", pch=18, cex=2)
+  points(12.8,63, col="royalblue3", pch=18, cex=2)
+  text(16.5,78, "Prior prediction for the number of Hits - A Class", f=2)
+  text(16.5,73, "Prior prediction for the number of Hits - B Class", f=2)
+  text(15.5,68, "Observed number of Hits - A Class", f=2)
+  text(15.5,63, "Observed number of Hits - B Class", f=2)
   
   
-  plot(c(1:20), h_A, col="red", pch=16, cex=1.4, ylim=c(50,160))
-  points(c(1:20),h_B, col="purple", pch=16)
-  points(c(1:20),Predicted_Ha)
-  points(c(1:20),Predicted_Hb)
   
+  ##########################
+  # Predicted vs Observed Rates
+  ################################
+  Hrate_A <- h_A/160
+  Hrate_B <- h_B/160
+  Frate_A <- fa_A/160
+  Frate_B <- fa_B/160
   
+  Predicted_HRate_A <- Predicted_Ha/160
+  Predicted_HRate_B <- Predicted_Hb/160
+  Predicted_FRate_A <- Predicted_Fa/160
+  Predicted_FRate_B <- Predicted_Fb/160
+  
+  # Hit Rates
+  plot(c(1:k), Hrate_A, col="white", pch=18, cex=2, ylim=c(.5,1),
+       axes=F, xlab="", ylab="")
+  points(c(1:k),Predicted_HRate_A, col="deepskyblue1", pch=15, cex=3)
+  points(c(1:k),Predicted_HRate_B, col="mediumorchid1", pch=15, cex=3)
+  points(c(1:k),Hrate_B, col="magenta4", pch=18, cex=2)
+  points(c(1:k),Hrate_A, col="royalblue3", pch=18, cex=2)
+  axis(1,c(1:20),c(1:20))
+  axis(2,seq(.5,1,.05),seq(.5,1,.05), line=-1)
+  mtext("Hit Rates", side=2, line = 2, cex=1.5, las=0)
+  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predicted vs Observed Hit Rates - Experiment No.", Exp), font=2, cex=2, side=3)
+  numero <- 0
+  linea <- 1.5
+  for(u in 1:k){
+    numero <- numero + 1
+    if(u<8){
+      lines(c(linea,linea),c(0.62,1), lty=2)  
+    }else{
+      lines(c(linea,linea),c(0.5,1), lty=2)}
+    linea <- linea+1
+  }
+  points(1.8,.6, col="deepskyblue1", pch=15, cex=3)
+  points(1.8,.57, col="mediumorchid1", pch=15, cex=3)
+  points(1.8,.54, col="magenta4", pch=18, cex=2)
+  points(1.8,.51, col="royalblue3", pch=18, cex=2)
+  text(5.1,.6, "Prior prediction for the Hit rates - A Class", f=2)
+  text(5.1,.57, "Prior prediction for the Hit rates - B Class", f=2)
+  text(4.5,.54, "Observed number of Hits - A Class", f=2)
+  text(4.5,.51, "Observed number of Hits - B Class", f=2)
+  
+  # Total number of False Alarms
+  plot(c(1:k), Frate_B, col="white", pch=18, cex=2, ylim=c(0,.5),
+       axes=F, xlab="", ylab="")
+  points(c(1:k),Predicted_FRate_A, col="deepskyblue1", pch=15, cex=3)
+  points(c(1:k),Predicted_FRate_B, col="mediumorchid1", pch=15, cex=3)
+  points(c(1:k),Frate_B, col="magenta4", pch=18, cex=2)
+  points(c(1:k),Frate_A, col="royalblue3", pch=18, cex=2)
+  axis(1,c(1:20),c(1:20))
+  axis(2,seq(0,0.5,.05),seq(0,0.5,.05), line=-1)
+  mtext("False Alarm Rate", side=2, line = 2, cex=1.5, las=0)
+  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predicted vs Observed number of False Alarms - Experiment No.", Exp), font=2, cex=2, side=3)
+  numero <- 0
+  linea <- 1.5
+  for(u in 1:k){
+    numero <- numero + 1
+    if(u>12){
+      lines(c(linea,linea),c(0,0.4), lty=2)  
+    }else{
+      lines(c(linea,linea),c(0,0.5), lty=2)}
+    linea <- linea+1
+  }
+  points(13.8,.49, col="deepskyblue1", pch=15, cex=3)
+  points(13.8,.47, col="mediumorchid1", pch=15, cex=3)
+  points(13.8,.45, col="magenta4", pch=18, cex=2)
+  points(13.8,.43, col="royalblue3", pch=18, cex=2)
+  text(17.1,.49, "Prior prediction for the F.A. rates - A Class", f=2)
+  text(17.1,.47, "Prior prediction for the F.A. rates - B Class", f=2)
+  text(16.5,.45, "Observed number of Hits - A Class", f=2)
+  text(16.5,.43, "Observed number of Hits - B Class", f=2)
   
   
   
@@ -374,7 +504,7 @@ Exp <- 1}else{
     mtext(expression(paste(theta, "H")), side=1, line = 2.8, cex=2.5, font=2)}
   mtext(paste("Prior distribution for the Hit rates - Experiment No.", Exp), font=2, cex=2, side=3)
           #Predictive Prior
-  plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.3,1), axes=F, ylim=c(0,11))
+  plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.3,1), axes=F, ylim=c(0,27))
   for(a in 1:k){
     axis(1)
     axis(2, labels=F, at=c(0,94))
@@ -386,7 +516,8 @@ Exp <- 1}else{
     mtext(expression(paste(theta, "H")), side=1, line = 2.8, cex=2.5, font=2)}
   mtext(paste("Predictive prior for the Hit rates - Experiment No.", Exp), font=2, cex=2, side=3)
           #Posterior Density
-  plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.3,1), axes=F)
+  plot(soporte_h, col="white", main="", cex.main=3, ylab="", xlab="", 
+       xlim=c(0.3,1), axes=F, ylim=c(0,80))
   for(a in 1:k){
   axis(1)
   axis(2, labels=F, at=c(0,94))
@@ -417,7 +548,7 @@ Exp <- 1}else{
   mtext(paste("Prior distribution for the F.A rates - Experiment No.", Exp), font=2, cex=2, side=3)
             #Prior predictive
   plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.7), axes=F,
-       ylim=c(0,11))
+       ylim=c(0,27))
   for(a in 1:k){
     lines(density(PPr_tetaFA_a[,a]), lwd=2, col="deepskyblue3")
     lines(density(PPr_tetaFA_b[,a]), lwd=2, col="darkorchid3", lty=1)
@@ -453,20 +584,9 @@ Exp <- 1}else{
   ###################################################################################
 
 #Preparamos los datos
-keep_ <- (5000)   #Numero de extracciones a incluir en el Gráfico
+keep_ <- (4000)   #Numero de extracciones a incluir en el Gráfico
 keep <- sample(length(tetaFA_a),keep_)    #De las 'niter' extracciones, sacamos 'keep' muestras
 #
-d.FA_a <- density(tetaFA_a)
-d.FA_b <- density(tetaFA_b)
-d.H_a <- density(tetaH_a)
-d.H_b <- density(tetaH_b)
-d.D_a <- density(d_a)
-d.D_b <- density(d_b)
-d.C_a <- density(c_a)
-d.C_b <- density(c_b)
-d.TauH <- density(tauH)
-d.TauF <- density(tauF)
-
 
 layout(matrix(c(1,2,3,0),2,2,byrow=T), width=c(2/3, 1/3), heights=c(2/3,1/3))
 #layout.show()
@@ -476,9 +596,45 @@ if (experimento ==1)
   } 
 
 soporte_d <- c(0,3)
-  soporte_c <- c(0,6)
-  soporte_h <- c(0,62)
-  soporte_f <- c(0,25)
+soporte_c <- c(0,6)
+soporte_h <- c(0,62)
+soporte_f <- c(0,25)
+
+#######################################
+# Theta Hits y Falsas Alarmas
+
+  #PREDICTED
+  par(mar=c(2,2,1,0))
+  plot(PPr_tetaFA_a[keep],PPr_tetaH_a[keep], col="deepskyblue3", pch=16,
+       xlab="", ylab="", axes=F,xlim=c(0,0.6), ylim=c(0.5,1))
+  points(PPr_tetaFA_b[keep],PPr_tetaH_b[keep], col="darkorchid3")
+  lines(c(0.48, 0.51),c(0.59,0.59), lwd=2.5, lty=2, col="deepskyblue3")
+  lines(c(0.48, 0.51),c(0.56,0.56), lwd=2.5, lty=2, col="darkorchid3")
+  text(0.52, 0.59, labels="A Condition", offset=0, cex = 1.2, pos=4)
+  text(0.52, 0.56, labels="B Condition", offset=0, cex = 1.2, pos=4)
+  box(lty=1)
+
+  par(mar=c(2,1,1,4))
+  plot(soporte_h, xlim=rev(c(0,27)),type='l', col="white", axes=F, xlab="", 
+     ylab="",ylim=c(0.5,1))
+  for(a in 1:k){  
+  lines(density(PPr_tetaH_a[,a])$y,density(PPr_tetaH_a[,a])$x, col="deepskyblue3")
+  lines(density(PPr_tetaH_b[,a])$y,density(PPr_tetaH_b[,a])$x, col="darkorchid3")
+  axis(4)
+  mtext(expression(paste("Hits")), side=4,line=2.3, cex=1.3, las=0)}
+box(lty=1)
+
+par(mar=c(6,2,0,0))
+plot(density(PPr_tetaFA_a),zero.line=F ,main="", col="white", ylab="", 
+     xlab="", cex.lab=1.3, axes=F, xlim=c(0,0.6),ylim=c(0,30))
+for(a in 1:k){  
+  lines(density(PPr_tetaFA_a[,a]), col="deepskyblue3")
+  lines(density(PPr_tetaFA_b[,a]), col="darkorchid3")
+  axis(1, at=c(0, 0.1, 0.2, 0.3, 0.4, 0.5))
+  mtext(expression(paste("False Alarms")), side=1.2,line=2, cex=1.3)}
+box(lty=1)
+
+  # OBSERVED
   par(mar=c(2,2,1,0))
   plot(tetaFA_a[keep],tetaH_a[keep], col="deepskyblue3", xlab="", ylab="", 
        axes=F,xlim=c(0,0.6), ylim=c(0.5,1))
@@ -508,8 +664,43 @@ soporte_d <- c(0,3)
   mtext(expression(paste("False Alarms")), side=1.2,line=2, cex=1.3)}
   box(lty=1)
   
+  
+
+  #######################################
   # D' y C
   
+  
+  #Predicted
+  par(mar=c(2,2,1,0))
+  plot(PPr_d_a[keep],PPr_c_a[keep], col="deepskyblue3", xlab="", ylab="", axes=F,xlim=c(0,5.5), ylim=c(-1.1,1.1))
+  points(PPr_d_b[keep],PPr_c_b[keep], col="darkorchid3")
+  lines(c(0.2, 0.45),c(0.9,0.9), lwd=2, lty=1, col="deepskyblue3")
+  lines(c(0.2, 0.45),c(0.7,0.7), lwd=2, lty=1, col="darkorchid3")
+  text(0.5, 0.9, labels="A Condition", offset=0, cex = 1.2, pos=4)
+  text(0.5, 0.7, labels="B Condition", offset=0, cex = 1.2, pos=4)
+  box(lty=1)
+  
+  par(mar=c(2,1,1,4))
+  plot(soporte_c, xlim=rev(c(0,4)),type='l', col="white", axes=F, 
+       xlab="", ylab="",ylim=c(-1,1))
+  for(a in 1:k){
+    lines(density(PPr_c_a[,a])$y, density(PPr_c_a[,a])$x, col="darkorchid3")
+    lines(density(PPr_c_b[,a])$y, density(PPr_c_b[,a])$x, col="deepskyblue3")
+    axis(4)
+    mtext(expression(paste("C (Bias)")), side=4,line=2.4, cex=1.3, las=0)}
+  box(lty=1)
+  
+  par(mar=c(6,2,0,0))
+  plot(density(d_a[,a]),zero.line=F ,main="", col="white", ylab="", xlab="", cex.lab=1.3, 
+       axes=F, xlim=c(0,5),ylim=c(0,2))
+  for(a in 1:k){
+    lines(density(PPr_d_a[,a]), col="deepskyblue3")
+    lines(density(PPr_d_b[,a]), col="darkorchid3")
+    axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
+    mtext(expression(paste("D prime")), side=1.2,line=2.5, cex=1.3)}
+  box(lty=1)
+  
+  #OBSERVED
   par(mar=c(2,2,1,0))
   plot(d_a[keep],c_a[keep], col="deepskyblue3", xlab="", ylab="", axes=F,xlim=c(0,5.5), ylim=c(-1.1,1.1))
   points(d_b[keep],c_b[keep], col="darkorchid3")
@@ -569,7 +760,7 @@ par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5
 ###############################
 #Prior predictive - Tau
 plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
-     ylim=c(0,1.5))
+     ylim=c(0,20))
 for(a in 1:k){
   lines(density(PPr_tauH[,a]), lwd=2, col="deepskyblue3")
   axis(1)
@@ -580,7 +771,7 @@ mtext(paste("Predictive prior for the differences between F.A rates"), font=2, c
 mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
 plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
-     ylim=c(0,1.5))
+     ylim=c(0,20))
 for(a in 1:k){
   lines(density(PPr_tauF[,a]), lwd=2, col="deepskyblue3")
   axis(1)
@@ -595,7 +786,7 @@ plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), ylim=c(0,2
 for(a in 1:k){
 title(paste("Experiment No.", exp), line=2.2, cex=1)
 lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
-lines(density(prior_tauH), col="blue", lwd=3)
+lines(density(PPr_tauH[,a]), col="blue", lwd=3)
 axis(1)
 abline(v=0, col='black', lty=2, lwd=3)
 mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
@@ -604,7 +795,7 @@ mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), col='white')
 for (a in 1:k){
 lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)}
-lines(density(prior_tauF), col="blue", lwd=3)
+lines(density(PPr_tauF[,a]), col="blue", lwd=3)
 axis(1) 
 abline(v=0, col='black', lty=2, lwd=3)
 mtext(expression(paste(tau, "F.A.")), side=1, line = 2.8, cex=1.8, font=2)
@@ -621,12 +812,13 @@ mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2,
 
 
 
-#plotear <- "Tau(Hits)"
-plotear <- "Tau(FA)"
+plotear <- "Tau(Hits)"
+#plotear <- "Tau(FA)"
 
 
 layout(matrix(1:1,ncol=1))
 ifelse(plotear=="Tau(Hits)", datos <- tauH, datos <- tauF)
+ifelse(plotear=="Tau(Hits)", predictive <- PPr_tauF, predictive <- PPr_tauF)
 if(experimento ==1){
   if(plotear=="Tau(Hits)"){
   Leg <- c(4.5,0.3)  
@@ -657,11 +849,11 @@ for(i in 1:ncol(datos)){
   espacio_fin <- numero * length(a)
   y_axis[espacio_init:espacio_fin] <- a
   media_post[i] <- mean(datos[,i])
-  Savage_Dickey_0[i] <- dnorm(0,0,0.1)/dnorm(0,mean(datos[,i]),sd(datos[,i]))
+  Savage_Dickey_0[i] <- dnorm(0,mean(predictive[,i]),sd(predictive[,i]))/dnorm(0,mean(datos[,i]),sd(datos[,i]))
     ifelse(Savage_Dickey_0[i] == 0, color_SD_0[i] <- "black",
          ifelse(Savage_Dickey_0[i] >= 1, color_SD_0[i] <- "cyan4",
                 color_SD_0[i]<- "darkgoldenrod2"))
-  Savage_Dickey_mean[i] <- dnorm(mean(datos[,i]),0,0.1)/dnorm(mean(datos[,i]),mean(datos[,i]),sd(datos[,i]))
+  Savage_Dickey_mean[i] <- dnorm(mean(datos[,i]),mean(predictive[,i]),sd(predictive[,i]))/dnorm(mean(datos[,i]),mean(datos[,i]),sd(datos[,i]))
   ifelse(Savage_Dickey_mean[i] == 0, color_SD_mean[i] <- "black",
          ifelse(Savage_Dickey_mean[i] >= 1, color_SD_mean[i] <- "cyan4",
                 color_SD_mean[i]<- "darkgoldenrod2"))

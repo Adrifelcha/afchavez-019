@@ -15,7 +15,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 1
+experimento <- 2
 #####################################################
 
 if (experimento == 1) {
@@ -57,8 +57,8 @@ for (i in 1:k){
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
       d_A[i] ~ dnorm(mud_A,sigmad_A)
-      c_A[i] ~ dnorm(0,1)
-      c_B[i] ~ dnorm(0,1)
+      c_A[i] ~ dnorm(0,0.7)
+      c_B[i] ~ dnorm(0,0.7)
       d_B[i] ~ dnorm(mud_B,sigmad_B)
       } 
       #Priors
@@ -363,11 +363,11 @@ for(u in 1:20){
   lines(c(linea,linea),c(-0.3,6), lty=2)
   linea <- linea+1
   }
-mtext(side=2, text = "Density", line=2, cex=1.5, srt=90)
+mtext(side=2, text = "D'", line=3, cex=2.1, srt=90)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
 mtext(side=3, paste("Experiment No.", exp), line=0.5, cex=1)
 axis(1,c(1.25:20.25),c(1:20))
 axis(2,seq(0,6,0.5),seq(0,6,0.5), line=-1)
 legend(4,5.5, legend=c("A stimuli", "B stimuli"),
        col=c("deepskyblue3", "darkorchid3"), lty=1, cex=0.8)
-title("Posterior densities of d' estimates per participant", cex=2)
+title("Posterior densities of D' per Class and per Participant", cex=2)

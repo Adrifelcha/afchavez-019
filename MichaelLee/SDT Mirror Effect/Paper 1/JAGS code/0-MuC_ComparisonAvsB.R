@@ -57,8 +57,8 @@ for (i in 1:k){
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
       c_A[i] ~ dnorm(muc_A,sigmac_A)
-      d_A[i] ~ dnorm(0,1)
-      d_B[i] ~ dnorm(0,1)
+      d_A[i] ~ dnorm(0,1)T(0,6)
+      d_B[i] ~ dnorm(0,1)T(0,6)
       c_B[i] ~ dnorm(muc_B,sigmac_B)
       } 
       #Priors

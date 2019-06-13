@@ -77,7 +77,7 @@ model{
     d_B[i] ~ dnorm(mud_B,lambdad_B)
     c_B[i] ~ dnorm(muc_B,lambdac_B)
   } 
-  #Priors
+  #Hierarchical Structure
   muc_A ~ dnorm(0,0.7)
   mud_A ~ dnorm(0,1)T(0,6)
   muc_B ~ dnorm(0,0.7)

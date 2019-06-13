@@ -13,20 +13,20 @@ for (i in 1:k){
       thetaf_B[i] <- phi((-d_B[i]/2)-c_B[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
-      c_A[i] ~ dnorm(muc_A,sigmac_A)
-      d_A[i] ~ dnorm(0,1)
-      d_B[i] ~ dnorm(0,1)
-      c_B[i] ~ dnorm(muc_B,sigmac_B)
+      d_A[i] ~ dnorm(mud_A,sigmad_A)
+      c_A[i] ~ dnorm(0,0.7)
+      c_B[i] ~ dnorm(0,0.7)
+      d_B[i] ~ dnorm(mud_B,sigmad_B)
       } 
       #Priors
-      muc_A <- MuC + delta/2
-      muc_B <- MuC - delta/2
-      lambdac_A ~ dgamma(.001,.001)
-      lambdac_B ~ dgamma(.001,.001)
-      sigmac_A <- 1/sqrt(lambdac_A)
-      sigmac_B <- 1/sqrt(lambdac_B)
-      delta ~ dnorm(0,0.7)
-      MuC ~ dnorm(0,0.7)
-      delta_prior ~ dnorm(0,0.7)
-      MuC_prior ~ dnorm(0,0.7)}
+      mud_A <- MuD + delta/2
+      mud_B <- MuD - delta/2
+      lambdad_A ~ dgamma(.001,.001)
+      lambdad_B ~ dgamma(.001,.001)
+      sigmad_A <- 1/sqrt(lambdad_A)
+      sigmad_B <- 1/sqrt(lambdad_B)
+      delta ~ dnorm(0,1)
+      MuD ~ dnorm(0,1)
+      delta_prior ~ dnorm(0,1)
+      MuD_prior ~ dnorm(0,1)T(0,6)}
       

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=latex 2016.10.25)  3 JUN 2019 18:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=latex 2016.10.25)  12 JUN 2019 17:21
 entering extended mode
 **./DiffTeta_SDT_Deterministic.tex
 (DiffTeta_SDT_Deterministic.tex
@@ -518,7 +518,7 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip70
 \dth@everypar=\toks41
 )
-No file DiffTeta_SDT_Deterministic.aux.
+(DiffTeta_SDT_Deterministic.aux)
 \openout1 = `DiffTeta_SDT_Deterministic.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -533,6 +533,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
@@ -582,12 +583,12 @@ PSTricks: Converting TeX box to EPS.
           With dvips, use -E option.
 (DiffTeta_SDT_Deterministic.aux) ) 
 Here is how much of TeX's memory you used:
- 11241 strings out of 493335
- 196944 string characters out of 3139265
- 354624 words of memory out of 3000000
+ 11243 strings out of 493335
+ 197004 string characters out of 3139265
+ 354626 words of memory out of 3000000
  14572 multiletter control sequences out of 15000+200000
  9330 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,9n,54p,705b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,7n,54p,705b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on DiffTeta_SDT_Deterministic.dvi (1 page, 47536 bytes).
+Output written on DiffTeta_SDT_Deterministic.dvi (1 page, 47464 bytes).

@@ -18,10 +18,8 @@ model{
     c_A[i] ~ dnorm(muc_A,sigmac_A)
     d_B[i] ~ dnorm(mud_B,sigmad_B)
     c_B[i] ~ dnorm(muc_B,sigmac_B)
-    #Differences on dprime
-      Tau_H[i] <- thetah_A[i]-thetah_B[i]
-      Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
-  }
+    Tau_H[i] <- thetah_A[i]-thetah_B[i]
+    Tau_F[i] <- thetaf_B[i]-thetaf_A[i]}
   #Hierarchical Structure
       mud_A <- MuD + delta_D/2
       mud_B <- MuD - delta_D/2
@@ -39,8 +37,6 @@ model{
       sigmac_B <- 1/sqrt(lambdac_B)
       delta_C ~ dnorm(0,0.7)
       MuC ~ dnorm(0,0.7)
-      
-
   #Plain priors for drawing prior predictions
   for (i in 1:k){
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)

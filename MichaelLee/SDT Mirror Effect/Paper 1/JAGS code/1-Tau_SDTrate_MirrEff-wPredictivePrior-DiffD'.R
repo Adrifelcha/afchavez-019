@@ -65,10 +65,8 @@ model{
     c_A[i] ~ dnorm(muc_A,sigmac_A)
     d_B[i] ~ dnorm(mud_B,sigmad_B)
     c_B[i] ~ dnorm(muc_B,sigmac_B)
-    #Differences on dprime
-      Tau_H[i] <- thetah_A[i]-thetah_B[i]
-      Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
-  }
+    Tau_H[i] <- thetah_A[i]-thetah_B[i]
+    Tau_F[i] <- thetaf_B[i]-thetaf_A[i]}
   #Hierarchical Structure
       mud_A <- MuD + delta_D/2
       mud_B <- MuD - delta_D/2
@@ -86,8 +84,6 @@ model{
       sigmac_B <- 1/sqrt(lambdac_B)
       delta_C ~ dnorm(0,0.7)
       MuC ~ dnorm(0,0.7)
-      
-
   #Plain priors for drawing prior predictions
   for (i in 1:k){
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
@@ -133,10 +129,10 @@ model{
 ######################################
 data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")                    #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(lambdad_A = 1,  lambdad_B = 1, delta_D = 0, MuD = 0, 
-       lambdac_A = 1,  lambdac_B = 1, delta_C = 0, MuC = 0, 
-       Pr_lambdad_A = 1,  Pr_lambdad_B = 1, Pr_delta_D = 0, Pr_MuD = 0, 
-       Pr_lambdac_A = 1,  Pr_lambdac_B = 1, Pr_delta_C = 0, Pr_MuC = 0))
+  list(lambdad_A = 0,  lambdad_B = 0, delta_D = 0, MuD = 0, 
+       lambdac_A = 0,  lambdac_B = 0, delta_C = 0, MuC = 0, 
+       Pr_lambdad_A = 0,  Pr_lambdad_B = 0, Pr_delta_D = 0, Pr_MuD = 0, 
+       Pr_lambdac_A = 0,  Pr_lambdac_B = 0, Pr_delta_C = 0, Pr_MuC = 0))
 
 #Parámetros monitoreados
 parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", 

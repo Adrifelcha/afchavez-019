@@ -1,0 +1,81 @@
+
+model{
+  #Posterior estimations (based on the data collected)
+  for (i in 1:k){
+  # Posterior density based on our data
+    h_A[i] ~ dbin(thetah_A[i],s)
+    fa_A[i] ~ dbin(thetaf_A[i],n)
+    h_B[i] ~ dbin(thetah_B[i],s)
+    fa_B[i] ~ dbin(thetaf_B[i],n)
+    # Reparameterization Using Equal-Variance Gaussian SDT
+    thetah_A[i] <- phi(d_A[i]/2-c_A[i])
+    thetaf_A[i] <- phi(-d_A[i]/2-c_A[i])
+    thetah_B[i] <- phi(d_B[i]/2-c_B[i])
+    thetaf_B[i] <- phi(-d_B[i]/2-c_B[i])
+    # These Priors over Discriminability and Bias Correspond 
+    # to Uniform Priors over the Hit and False Alarm Rates
+    d_A[i] ~ dnorm(mud_A,sigmad_A)
+    c_A[i] ~ dnorm(muc_A,sigmac_A)
+    d_B[i] ~ dnorm(mud_B,sigmad_B)
+    c_B[i] ~ dnorm(muc_B,sigmac_B)
+    #Differences on dprime
+      Tau_H[i] <- thetah_A[i]-thetah_B[i]
+      Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
+  }
+  #Hierarchical Structure
+      mud_A <- MuD + delta_D/2
+      mud_B <- MuD - delta_D/2
+      lambdad_A ~ dgamma(.001,.001)
+      lambdad_B ~ dgamma(.001,.001)
+      sigmad_A <- 1/sqrt(lambdad_A)
+      sigmad_B <- 1/sqrt(lambdad_B)
+      delta_D ~ dnorm(0,1)
+      MuD ~ dnorm(0,1)T(0,6)
+      muc_A <- MuC + delta_C/2
+      muc_B <- MuC - delta_C/2
+      lambdac_A ~ dgamma(.001,.001)
+      lambdac_B ~ dgamma(.001,.001)
+      sigmac_A <- 1/sqrt(lambdac_A)
+      sigmac_B <- 1/sqrt(lambdac_B)
+      delta_C ~ dnorm(0,0.7)
+      MuC ~ dnorm(0,0.7)
+      
+
+  #Plain priors for drawing prior predictions
+  for (i in 1:k){
+      prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
+      prior_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
+      prior_h_B[i] ~ dbin(Pr_thetah_B[i],s)
+      prior_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      Pr_thetah_A[i] <- phi(Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetaf_A[i] <- phi(-Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetah_B[i] <- phi(Pr_d_B[i]/2-Pr_c_B[i])
+      Pr_thetaf_B[i] <- phi(-Pr_d_B[i]/2-Pr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      Pr_d_A[i] ~ dnorm(Pr_mud_A,Pr_sigmad_A)
+      Pr_c_A[i] ~ dnorm(Pr_muc_A,Pr_sigmac_A)
+      Pr_d_B[i] ~ dnorm(Pr_mud_B,Pr_sigmad_B)
+      Pr_c_B[i] ~ dnorm(Pr_muc_B,Pr_sigmac_B)
+      #Differences on dprime
+      PRIOR_Tau_H[i] <- Pr_thetah_A[i]-Pr_thetah_B[i]
+      PRIOR_Tau_F[i] <- Pr_thetaf_B[i]-Pr_thetaf_A[i]
+      }
+                  #Hierarchical Structure
+      Pr_mud_A <- Pr_MuD + Pr_delta_D/2
+      Pr_mud_B <- Pr_MuD - Pr_delta_D/2
+      Pr_lambdad_A ~ dgamma(.001,.001)
+      Pr_lambdad_B ~ dgamma(.001,.001)
+      Pr_sigmad_A <- 1/sqrt(Pr_lambdad_A)
+      Pr_sigmad_B <- 1/sqrt(Pr_lambdad_B)
+      Pr_delta_D ~ dnorm(0,1)
+      Pr_MuD ~ dnorm(0,1)T(0,6)
+      Pr_muc_A <- Pr_MuC + Pr_delta_C/2
+      Pr_muc_B <- Pr_MuC - Pr_delta_C/2
+      Pr_lambdac_A ~ dgamma(.001,.001)
+      Pr_lambdac_B ~ dgamma(.001,.001)
+      Pr_sigmac_A <- 1/sqrt(Pr_lambdac_A)
+      Pr_sigmac_B <- 1/sqrt(Pr_lambdac_B)
+      Pr_delta_C ~ dnorm(0,0.7)
+      Pr_MuC ~ dnorm(0,0.7)}

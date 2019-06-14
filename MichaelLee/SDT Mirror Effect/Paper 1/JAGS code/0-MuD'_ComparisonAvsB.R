@@ -15,7 +15,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 2
+experimento <- 1
 #####################################################
 
 if (experimento == 1) {
@@ -69,7 +69,7 @@ for (i in 1:k){
       sigmad_A <- 1/sqrt(lambdad_A)
       sigmad_B <- 1/sqrt(lambdad_B)
       delta ~ dnorm(0,1)
-      MuD ~ dnorm(0,1)
+      MuD ~ dnorm(0,1)T(0,6)
       delta_prior ~ dnorm(0,1)
       MuD_prior ~ dnorm(0,1)T(0,6)}
       ','0-diff_dprime.bug')

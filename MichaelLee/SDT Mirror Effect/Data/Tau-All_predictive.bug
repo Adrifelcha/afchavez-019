@@ -1,0 +1,40 @@
+
+      model{
+      for (i in 1:k){
+      # Prior predicted counts
+      Predicted_Ha[i] ~ dbin(PPr_thetah_A[i],s)
+      Predicted_Fa[i] ~ dbin(PPr_thetaf_A[i],n)
+      Predicted_Hb[i] ~ dbin(PPr_thetah_B[i],s)
+      Predicted_Fb[i] ~ dbin(PPr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      PPr_thetah_A[i] <- phi(PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetaf_A[i] <- phi(-PPr_d_A[i]/2-PPr_c_A[i])
+      PPr_thetah_B[i] <- phi(PPr_d_B[i]/2-PPr_c_B[i])
+      PPr_thetaf_B[i] <- phi(-PPr_d_B[i]/2-PPr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      PPr_d_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_c_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_d_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_c_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      #Differences on dprime
+      PPRIOR_Tau_H[i] <- PPr_thetah_A[i]-PPr_thetah_B[i]
+      PPRIOR_Tau_F[i] <- PPr_thetaf_B[i]-PPr_thetaf_A[i]
+      }
+           #Hierarchical Structure
+      PPr_mud_A <- PPr_MuD + PPr_delta_D/2
+      PPr_mud_B <- PPr_MuD - PPr_delta_D/2
+      PPr_lambdad_A ~ dgamma(.001,.001)
+      PPr_lambdad_B ~ dgamma(.001,.001)
+      PPr_sigmad_A <- 1/sqrt(PPr_lambdad_A)
+      PPr_sigmad_B <- 1/sqrt(PPr_lambdad_B)
+      PPr_delta_D ~ dnorm(0,1)
+      PPr_MuD ~ dnorm(0,1)T(0,6)
+      PPr_muc_A <- Pr_MuC + PPr_delta_C/2
+      PPr_muc_B <- Pr_MuC - PPr_delta_C/2
+      PPr_lambdac_A ~ dgamma(.001,.001)
+      PPr_lambdac_B ~ dgamma(.001,.001)
+      PPr_sigmac_A <- 1/sqrt(PPr_lambdac_A)
+      PPr_sigmac_B <- 1/sqrt(PPr_lambdac_B)
+      PPr_delta_C ~ dnorm(0,0.7)
+      PPr_MuC ~ dnorm(0,0.7)}

@@ -14,7 +14,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 2
+experimento <- 1
 ###################
 
 if (experimento == 1)    #Una Figura de Ebbinghaus
@@ -61,14 +61,33 @@ model{
     thetaf_B[i] <- phi(-d_B[i]/2-c_B[i])
     # These Priors over Discriminability and Bias Correspond 
     # to Uniform Priors over the Hit and False Alarm Rates
-    d_A[i] ~ dnorm(0,1)T(0,6)
-    c_A[i] ~ dnorm(0,0.7)
-    d_B[i] ~ dnorm(0,1)T(0,6)
-    c_B[i] ~ dnorm(0,0.7)
+    d_A[i] ~ dnorm(mud_A,sigmad_A)
+    c_A[i] ~ dnorm(muc_A,sigmac_A)
+    d_B[i] ~ dnorm(mud_B,sigmad_B)
+    c_B[i] ~ dnorm(muc_B,sigmac_B)
     #Differences on dprime
       Tau_H[i] <- thetah_A[i]-thetah_B[i]
       Tau_F[i] <- thetaf_B[i]-thetaf_A[i]
   }
+  #Hierarchical Structure
+      mud_A <- MuD + delta_D/2
+      mud_B <- MuD - delta_D/2
+      lambdad_A ~ dgamma(.001,.001)
+      lambdad_B ~ dgamma(.001,.001)
+      sigmad_A <- 1/sqrt(lambdad_A)
+      sigmad_B <- 1/sqrt(lambdad_B)
+      delta_D ~ dnorm(0,1)
+      MuD ~ dnorm(0,1)T(0,6)
+      muc_A <- MuC + delta_C/2
+      muc_B <- MuC - delta_C/2
+      lambdac_A ~ dgamma(.001,.001)
+      lambdac_B ~ dgamma(.001,.001)
+      sigmac_A <- 1/sqrt(lambdac_A)
+      sigmac_B <- 1/sqrt(lambdac_B)
+      delta_C ~ dnorm(0,0.7)
+      MuC ~ dnorm(0,0.7)
+      
+
   #Plain priors for drawing prior predictions
   for (i in 1:k){
       prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
@@ -82,14 +101,31 @@ model{
       Pr_thetaf_B[i] <- phi(-Pr_d_B[i]/2-Pr_c_B[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
-      Pr_d_A[i] ~ dnorm(0,1)T(0,6)
-      Pr_c_A[i] ~ dnorm(0,0.7)
-      Pr_d_B[i] ~ dnorm(0,1)T(0,6)
-      Pr_c_B[i] ~ dnorm(0,0.7)
+      Pr_d_A[i] ~ dnorm(Pr_mud_A,Pr_sigmad_A)
+      Pr_c_A[i] ~ dnorm(Pr_muc_A,Pr_sigmac_A)
+      Pr_d_B[i] ~ dnorm(Pr_mud_B,Pr_sigmad_B)
+      Pr_c_B[i] ~ dnorm(Pr_muc_B,Pr_sigmac_B)
       #Differences on dprime
       PRIOR_Tau_H[i] <- Pr_thetah_A[i]-Pr_thetah_B[i]
       PRIOR_Tau_F[i] <- Pr_thetaf_B[i]-Pr_thetaf_A[i]
-      }}','Tau.bug')
+      }
+                  #Hierarchical Structure
+      Pr_mud_A <- Pr_MuD + Pr_delta_D/2
+      Pr_mud_B <- Pr_MuD - Pr_delta_D/2
+      Pr_lambdad_A ~ dgamma(.001,.001)
+      Pr_lambdad_B ~ dgamma(.001,.001)
+      Pr_sigmad_A <- 1/sqrt(Pr_lambdad_A)
+      Pr_sigmad_B <- 1/sqrt(Pr_lambdad_B)
+      Pr_delta_D ~ dnorm(0,1)
+      Pr_MuD ~ dnorm(0,1)T(0,6)
+      Pr_muc_A <- Pr_MuC + Pr_delta_C/2
+      Pr_muc_B <- Pr_MuC - Pr_delta_C/2
+      Pr_lambdac_A ~ dgamma(.001,.001)
+      Pr_lambdac_B ~ dgamma(.001,.001)
+      Pr_sigmac_A <- 1/sqrt(Pr_lambdac_A)
+      Pr_sigmac_B <- 1/sqrt(Pr_lambdac_B)
+      Pr_delta_C ~ dnorm(0,0.7)
+      Pr_MuC ~ dnorm(0,0.7)}','Tau-All.bug')
 
 ######################################
 ######################################
@@ -97,21 +133,32 @@ model{
 ######################################
 data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")                    #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(d_A = rep(0,k), c_A = rep(0,k), d_B = rep(0,k), c_B = rep(0,k),
-       Pr_d_A = rep(0,k), Pr_c_A = rep(0,k), Pr_d_B = rep(0,k), Pr_c_B = rep(0,k),
-       prior_h_A = rep(0.5,k), prior_h_B = rep(0.5,k), prior_fa_A = rep(0.5,k),prior_fa_B = rep(0.5,k)))      #Valores iniciales para las extracciones de las cadenas de Markov
+  list(lambdad_A = 1,  lambdad_B = 1, delta_D = 0, MuD = 0, 
+       lambdac_A = 1,  lambdac_B = 1, delta_C = 0, MuC = 0, 
+       Pr_lambdad_A = 1,  Pr_lambdad_B = 1, Pr_delta_D = 0, Pr_MuD = 0, 
+       Pr_lambdac_A = 1,  Pr_lambdac_B = 1, Pr_delta_C = 0, Pr_MuC = 0))
 
 #Parámetros monitoreados
-parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", "d_B", "c_B", "thetah_B", "thetaf_B","Tau_H", "Tau_F",
-                "Pr_d_A", "Pr_c_A", "Pr_thetah_A", "Pr_thetaf_A", "Pr_d_B", "Pr_c_B", "Pr_thetah_B", "Pr_thetaf_B",
-                "PRIOR_Tau_H", "PRIOR_Tau_F","prior_h_A", "prior_h_B", "prior_fa_A", "prior_fa_B")
+parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", 
+                "d_B", "c_B", "thetah_B", "thetaf_B",
+                "Tau_H", "Tau_F",
+                "mud_A", "mud_B","muc_A", "muc_B", 
+                "Pr_d_A", "Pr_c_A", "Pr_thetah_A", "Pr_thetaf_A", 
+                "Pr_d_B", "Pr_c_B", "Pr_thetah_B", "Pr_thetaf_B",
+                "PRIOR_Tau_H", "PRIOR_Tau_F",
+                "Pr_mud_A", "Pr_mud_B","Pr_muc_A", "Pr_muc_B",
+                "prior_h_A", "prior_h_B", "prior_fa_A", "prior_fa_B",
+                "sigmad_A",  "sigmad_B", "delta_D", "MuD", 
+                "sigmac_A",  "sigmac_B", "delta_C", "MuC",
+                "Pr_sigmad_A", "Pr_sigmad_B", "Pr_delta_D", "Pr_MuD", 
+                "Pr_sigmac_A", "Pr_sigmac_B", "Pr_delta_C", "Pr_MuC")
 
 niter <- 50000    #Iteraciones
 burnin <- 5000     #No. de primeros sampleos en ignorarse
 
 #Corremos el modelo
 samples <- jags(data, inits=myinits, parameters,
-                model.file ="Tau.bug",
+                model.file ="Tau-All.bug",
                 n.chains=1, n.iter=niter, n.burnin=burnin, n.thin=1)
 
 ####################################################################
@@ -126,6 +173,18 @@ samples <- jags(data, inits=myinits, parameters,
   c_a <- samples$BUGSoutput$sims.list$c_A
   c_b <- samples$BUGSoutput$sims.list$c_B
   
+  muDA <- samples$BUGSoutput$sims.list$mud_A
+  muDB <- samples$BUGSoutput$sims.list$mud_B
+  
+  muD <- samples$BUGSoutput$sims.list$MuD
+  DeltaD <- samples$BUGSoutput$sims.list$delta_D
+  
+  muCA <- samples$BUGSoutput$sims.list$muc_A
+  muCB <- samples$BUGSoutput$sims.list$muc_B
+  
+  muC <- samples$BUGSoutput$sims.list$MuC
+  DeltaC <- samples$BUGSoutput$sims.list$delta_C
+  
   tetaH_a <- samples$BUGSoutput$sims.list$thetah_A
   tetaH_b <- samples$BUGSoutput$sims.list$thetah_B
   tetaFA_a <- samples$BUGSoutput$sims.list$thetaf_A
@@ -134,13 +193,24 @@ samples <- jags(data, inits=myinits, parameters,
   tauH <- samples$BUGSoutput$sims.list$Tau_H
   tauF <- samples$BUGSoutput$sims.list$Tau_F
   
-  
   #Prior predictiva
   Pr_d_a <- samples$BUGSoutput$sims.list$Pr_d_A
   Pr_d_b <- samples$BUGSoutput$sims.list$Pr_d_B
   
   Pr_c_a <- samples$BUGSoutput$sims.list$Pr_c_A
   Pr_c_b <- samples$BUGSoutput$sims.list$Pr_c_B
+  
+  Pr_muDA <- samples$BUGSoutput$sims.list$Pr_mud_A
+  Pr_muDB <- samples$BUGSoutput$sims.list$Pr_mud_B
+  
+  Pr_muD <- samples$BUGSoutput$sims.list$Pr_MuD
+  Pr_Delta <- samples$BUGSoutput$sims.list$Pr_delta
+  
+  Pr_muCA <- samples$BUGSoutput$sims.list$Pr_muc_A
+  Pr_muCB <- samples$BUGSoutput$sims.list$Pr_muc_B
+  
+  Pr_muC <- samples$BUGSoutput$sims.list$Pr_MuC
+  Pr_Delta <- samples$BUGSoutput$sims.list$Pr_delta
   
   Pr_Ha <- samples$BUGSoutput$sims.list$prior_h_A
   Pr_Hb <- samples$BUGSoutput$sims.list$prior_h_B
@@ -188,14 +258,31 @@ write('
       PPr_thetaf_B[i] <- phi(-PPr_d_B[i]/2-PPr_c_B[i])
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
-      PPr_d_A[i] ~ dnorm(0,1)T(0,6)
-      PPr_c_A[i] ~ dnorm(0,0.7)
-      PPr_d_B[i] ~ dnorm(0,1)T(0,6)
-      PPr_c_B[i] ~ dnorm(0,0.7)
+      PPr_d_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_c_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_d_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_c_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
       #Differences on dprime
       PPRIOR_Tau_H[i] <- PPr_thetah_A[i]-PPr_thetah_B[i]
       PPRIOR_Tau_F[i] <- PPr_thetaf_B[i]-PPr_thetaf_A[i]
-      }}','Tau_predictive.bug')
+      }
+           #Hierarchical Structure
+      PPr_mud_A <- PPr_MuD + PPr_delta_D/2
+      PPr_mud_B <- PPr_MuD - PPr_delta_D/2
+      PPr_lambdad_A ~ dgamma(.001,.001)
+      PPr_lambdad_B ~ dgamma(.001,.001)
+      PPr_sigmad_A <- 1/sqrt(PPr_lambdad_A)
+      PPr_sigmad_B <- 1/sqrt(PPr_lambdad_B)
+      PPr_delta_D ~ dnorm(0,1)
+      PPr_MuD ~ dnorm(0,1)T(0,6)
+      PPr_muc_A <- Pr_MuC + PPr_delta_C/2
+      PPr_muc_B <- Pr_MuC - PPr_delta_C/2
+      PPr_lambdac_A ~ dgamma(.001,.001)
+      PPr_lambdac_B ~ dgamma(.001,.001)
+      PPr_sigmac_A <- 1/sqrt(PPr_lambdac_A)
+      PPr_sigmac_B <- 1/sqrt(PPr_lambdac_B)
+      PPr_delta_C ~ dnorm(0,0.7)
+      PPr_MuC ~ dnorm(0,0.7)}','Tau-All_predictive.bug')
 
 ######################################
 ######################################
@@ -204,19 +291,23 @@ write('
 data <- list("Predicted_Ha", "Predicted_Hb", "Predicted_Fa", "Predicted_Fb", "s", "n", "k")                    
 #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(PPr_d_A = rep(0,k), PPr_c_A = rep(0,k), PPr_d_B = rep(0,k), PPr_c_B = rep(0,k)))      
+  list(PPr_d_A = rep(0,k), PPr_c_A = rep(0,k), PPr_d_B = rep(0,k), 
+       PPr_c_B = rep(0,k), PPr_lambdad_A = 1,  PPr_lambdad_B = 1, 
+       PPr_delta_D = 0, PPr_MuD = 0, PPr_lambdac_A = 1,  PPr_lambdac_B = 1, 
+       PPr_delta_C = 0, PPr_MuC = 0))    
 #Valores iniciales para las extracciones de las cadenas de Markov
 
 #Parámetros monitoreados
-parameters <- c("PPr_d_A", "PPr_c_A", "PPr_thetah_A", "PPr_thetaf_A", "PPr_d_B", "PPr_c_B", "PPr_thetah_B", 
-                "PPr_thetaf_B","PPRIOR_Tau_H", "PPRIOR_Tau_F")
+parameters <- c("PPr_d_A", "PPr_c_A", "PPr_d_B", "PPr_c_B", "PPr_sigmad_A",
+                "PPr_sigmad_B", "PPr_delta_D", "PPr_MuD", "PPr_sigmac_A",  
+                "PPr_sigmac_B", "PPr_delta_C", "PPr_MuC")
 
 niter <- 100000    #Iteraciones
 burnin <- 5000     #No. de primeros sampleos en ignorarse
 
 #Corremos el modelo
 samples <- jags(data, inits=myinits, parameters,
-                model.file ="Tau_predictive.bug",
+                model.file ="Tau-All_predictive.bug",
                 n.chains=1, n.iter=niter, n.burnin=burnin, n.thin=1)
 
 ####################################################################
@@ -231,6 +322,18 @@ PPr_d_b <- samples$BUGSoutput$sims.list$PPr_d_B
 
 PPr_c_a <- samples$BUGSoutput$sims.list$PPr_c_A
 PPr_c_b <- samples$BUGSoutput$sims.list$PPr_c_B
+
+PPr_muDA <- samples$BUGSoutput$sims.list$Pr_mud_A
+PPr_muDB <- samples$BUGSoutput$sims.list$Pr_mud_B
+
+PPr_muD <- samples$BUGSoutput$sims.list$Pr_MuD
+PPr_Delta <- samples$BUGSoutput$sims.list$Pr_delta
+
+PPr_muCA <- samples$BUGSoutput$sims.list$Pr_muc_A
+PPr_muCB <- samples$BUGSoutput$sims.list$Pr_muc_B
+
+PPr_muC <- samples$BUGSoutput$sims.list$Pr_MuC
+PPr_Delta <- samples$BUGSoutput$sims.list$Pr_delta
 
 PPr_tetaH_a <- samples$BUGSoutput$sims.list$PPr_thetah_A
 PPr_tetaH_b <- samples$BUGSoutput$sims.list$PPr_thetah_B
@@ -763,27 +866,28 @@ par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5
 plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
      ylim=c(0,20))
 for(a in 1:k){
-  lines(density(PPr_tauH[,a]), lwd=2, col="deepskyblue3")
+  lines(density(PPr_tauH[,a]), lwd=2, col="deepskyblue3")}
   axis(1)
   axis(2, labels=F, at=c(0,94))
   mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
-  mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)}
+  mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
 mtext(paste("Predictive prior for the differences between F.A rates"), font=2, cex=1.2, side=3, line=0.5)
 mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
 plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
      ylim=c(0,20))
 for(a in 1:k){
-  lines(density(PPr_tauF[,a]), lwd=2, col="deepskyblue3")
+  lines(density(PPr_tauF[,a]), lwd=2, col="deepskyblue3")}
   axis(1)
   axis(2, labels=F, at=c(0,94))
   mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
-  mtext(expression(paste(tau, "F.A")), side=1, line = 2.8, cex=1.8, font=2)}
+  mtext(expression(paste(tau, "F.A")), side=1, line = 2.8, cex=1.8, font=2)
 mtext(paste("Predictive prior for the differences between Hit rates"), font=2, cex=1.2, side=3, line=0.5)
 
 
 #Posteriors 
-plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), ylim=c(0,21), col='white')
+plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), 
+     ylim=c(0,22), col='white')
 for(a in 1:k){
 title(paste("Experiment No.", exp), line=2.2, cex=1)
 lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
@@ -794,7 +898,7 @@ mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, 
 mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), 
-     col='white', ylim=c(0,17))
+     col='white', ylim=c(0,30))
 for (a in 1:k){
 lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)}
 lines(density(PPr_tauF[,a]), col="blue", lwd=3)

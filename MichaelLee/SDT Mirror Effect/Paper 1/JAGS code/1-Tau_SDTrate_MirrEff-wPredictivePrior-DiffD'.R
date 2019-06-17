@@ -129,23 +129,23 @@ model{
 ######################################
 data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")                    #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(lambdad_A = 0,  lambdad_B = 0, delta_D = 0, MuD = 0, 
-       lambdac_A = 0,  lambdac_B = 0, delta_C = 0, MuC = 0, 
-       Pr_lambdad_A = 0,  Pr_lambdad_B = 0, Pr_delta_D = 0, Pr_MuD = 0, 
-       Pr_lambdac_A = 0,  Pr_lambdac_B = 0, Pr_delta_C = 0, Pr_MuC = 0))
+  list(lambdad_A = 1,  lambdad_B = 1, delta_D = 1, MuD = 1, 
+       lambdac_A = 1,  lambdac_B = 1, delta_C = 1, MuC = 1, 
+       Pr_lambdad_A = 1,  Pr_lambdad_B = 1, Pr_delta_D = 1, Pr_MuD = 1, 
+       Pr_lambdac_A = 1,  Pr_lambdac_B = 1, Pr_delta_C = 1, Pr_MuC = 1))
 
 #Parámetros monitoreados
 parameters <- c("d_A", "c_A", "thetah_A", "thetaf_A", 
                 "d_B", "c_B", "thetah_B", "thetaf_B",
                 "Tau_H", "Tau_F",
                 "mud_A", "mud_B","muc_A", "muc_B", 
+                "sigmad_A",  "sigmad_B", "delta_D", "MuD", 
+                "sigmac_A",  "sigmac_B", "delta_C", "MuC",
                 "Pr_d_A", "Pr_c_A", "Pr_thetah_A", "Pr_thetaf_A", 
                 "Pr_d_B", "Pr_c_B", "Pr_thetah_B", "Pr_thetaf_B",
                 "PRIOR_Tau_H", "PRIOR_Tau_F",
                 "Pr_mud_A", "Pr_mud_B","Pr_muc_A", "Pr_muc_B",
                 "prior_h_A", "prior_h_B", "prior_fa_A", "prior_fa_B",
-                "sigmad_A",  "sigmad_B", "delta_D", "MuD", 
-                "sigmac_A",  "sigmac_B", "delta_C", "MuC",
                 "Pr_sigmad_A", "Pr_sigmad_B", "Pr_delta_D", "Pr_MuD", 
                 "Pr_sigmac_A", "Pr_sigmac_B", "Pr_delta_C", "Pr_MuC")
 

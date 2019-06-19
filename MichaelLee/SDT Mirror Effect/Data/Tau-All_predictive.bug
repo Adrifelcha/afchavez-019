@@ -24,16 +24,16 @@
            #Hierarchical Structure
       PPr_mud_A <- PPr_MuD + PPr_delta_D/2
       PPr_mud_B <- PPr_MuD - PPr_delta_D/2
-      PPr_lambdad_A ~ dgamma(.001,.001)
-      PPr_lambdad_B ~ dgamma(.001,.001)
+      PPr_lambdad_A ~ dgamma(.001,.001)T(0.01,5)
+      PPr_lambdad_B ~ dgamma(.001,.001)T(0.01,5)
       PPr_sigmad_A <- 1/sqrt(PPr_lambdad_A)
       PPr_sigmad_B <- 1/sqrt(PPr_lambdad_B)
-      PPr_delta_D ~ dnorm(0,1)
+      PPr_delta_D ~ dnorm(0,1)T(0,6)
       PPr_MuD ~ dnorm(0,1)T(0,6)
-      PPr_muc_A <- Pr_MuC + PPr_delta_C/2
-      PPr_muc_B <- Pr_MuC - PPr_delta_C/2
-      PPr_lambdac_A ~ dgamma(.001,.001)
-      PPr_lambdac_B ~ dgamma(.001,.001)
+      PPr_muc_A <- PPr_MuC + PPr_delta_C/2
+      PPr_muc_B <- PPr_MuC - PPr_delta_C/2
+      PPr_lambdac_A ~ dgamma(.001,.001)T(0.01,5)
+      PPr_lambdac_B ~ dgamma(.001,.001)T(0.01,5)
       PPr_sigmac_A <- 1/sqrt(PPr_lambdac_A)
       PPr_sigmac_B <- 1/sqrt(PPr_lambdac_B)
       PPr_delta_C ~ dnorm(0,0.7)

@@ -27,7 +27,7 @@ model{
       lambdad_B ~ dgamma(.001,.001)
       sigmad_A <- 1/sqrt(lambdad_A)
       sigmad_B <- 1/sqrt(lambdad_B)
-      delta_D ~ dnorm(0,1)
+      delta_D ~ dnorm(0,1)T(0,6)
       MuD ~ dnorm(0,1)T(0,6)
       muc_A <- MuC + delta_C/2
       muc_B <- MuC - delta_C/2
@@ -61,16 +61,16 @@ model{
                   #Hierarchical Structure
       Pr_mud_A <- Pr_MuD + Pr_delta_D/2
       Pr_mud_B <- Pr_MuD - Pr_delta_D/2
-      Pr_lambdad_A ~ dgamma(.001,.001)
-      Pr_lambdad_B ~ dgamma(.001,.001)
+      Pr_lambdad_A ~ dgamma(.001,.001)T(0.01,5)
+      Pr_lambdad_B ~ dgamma(.001,.001)T(0.01,5)
       Pr_sigmad_A <- 1/sqrt(Pr_lambdad_A)
       Pr_sigmad_B <- 1/sqrt(Pr_lambdad_B)
-      Pr_delta_D ~ dnorm(0,1)
+      Pr_delta_D ~ dnorm(0,1)T(0,6)
       Pr_MuD ~ dnorm(0,1)T(0,6)
       Pr_muc_A <- Pr_MuC + Pr_delta_C/2
       Pr_muc_B <- Pr_MuC - Pr_delta_C/2
-      Pr_lambdac_A ~ dgamma(.001,.001)
-      Pr_lambdac_B ~ dgamma(.001,.001)
+      Pr_lambdac_A ~ dgamma(.001,.001)T(0.01,5)
+      Pr_lambdac_B ~ dgamma(.001,.001)T(0.01,5)
       Pr_sigmac_A <- 1/sqrt(Pr_lambdac_A)
       Pr_sigmac_B <- 1/sqrt(Pr_lambdac_B)
       Pr_delta_C ~ dnorm(0,0.7)

@@ -518,38 +518,121 @@ Exp <- 1}else{
   
 #################################################
 ##############################################
-# FIRST PART OF THE MODEL:
-# D' Comarison
+# FIRST PART OF THE MODEL:  D'
+  
 
-  ################
-  # Delta_D
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,1), col='white')
-  for(a in 1:k){                                                      
-    lines(density(Pr_DeltaD[,a]), lwd=2.5, col="deepskyblue3")
+###############################
+  # (Delta_D):  
+               #Prior Distribution
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,1), col='white')
+    lines(density(Pr_DeltaD), lwd=4, col="darkorange")
     axis(1)
     axis(2, labels=F, at=c(0,24))
     mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
-    mtext("Delta for D-prime", side=1, line = 2.5, cex=1, font=2)}
+    mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Prior distribution for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   # Predictive Prior
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,2), col='white')
-  for(a in 1:k){                                                      
-    lines(density(PPr_DeltaD[,a]), lwd=2.5, col="deepskyblue3")
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,1.5), col='white')
+    lines(density(PPr_DeltaD), lwd=4, col="darkorange")
     axis(1)
     axis(2, labels=F, at=c(0,24))
     mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
-    mtext("Delta for D-prime", side=1, line = 2.5, cex=1, font=2)}
-  mtext(paste("Predictive prior for D' - Experiment No.", Exp), font=2, cex=2, side=3)
+    mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predictive prior for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   #Posterior density
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,4), col='white')
-  for(a in 1:k){                                                      
-    lines(density(d_a[,a]), lwd=2.5, col="deepskyblue3")
-    lines(density(d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,1.5), col='white')
+    lines(density(DeltaD), lwd=4, col="darkorange")
     axis(1)
     axis(2, labels=F, at=c(0,24))
     mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
-    mtext("D-prime", side=1, line = 2.5, cex=1, font=2)}
-  mtext(paste("Posterior estimates for D' - Experiment No.", Exp), font=2, cex=2, side=3)
+    mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Posterior estimates for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+###############################
+  # General Mu(D)
+        #Prior Distribution
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,1), col='white')
+  lines(density(Pr_muD), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Prior distribution for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+  # Predictive Prior
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,3), col='white')
+  lines(density(PPr_muD), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predictive prior for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Posterior density
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,3), col='white')
+  lines(density(muD), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Posterior estimates for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+
+  
+
+#################################################
+##############################################
+  # SECOND PART OF THE MODEL:  C
+  
+  
+###############################
+  #(Delta_C):  
+        #Prior Distribution
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,0.5), col='white')
+  lines(density(Pr_DeltaC), lwd=4, col="seagreen4")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Delta-C", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Prior distribution for Delta-C' - Experiment No.", Exp), font=2, cex=2, side=3)
+  # Predictive Prior
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,3), col='white')
+  lines(density(PPr_DeltaC), lwd=4, col="seagreen4")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Delta-C", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predictive prior for Delta-C - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Posterior density
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,3), col='white')
+  lines(density(DeltaC), lwd=4, col="seagreen4")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Delta-C", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Posterior estimates for Delta-C - Experiment No.", Exp), font=2, cex=2, side=3)
+  ###############################
+  #Mu(C)
+        #Prior Distribution
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,0.5), col='white')
+  lines(density(Pr_muC), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Prior distribution for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+  # Predictive Prior
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,1), col='white')
+  lines(density(PPr_muC), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Predictive prior for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Posterior density
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(-3,3), ylim=c(0,6), col='white')
+  lines(density(muC), lwd=4, col="firebrick3")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Posterior estimates for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   
   
   
@@ -557,7 +640,9 @@ Exp <- 1}else{
   
   
   
-    
+  
+  
+  
 ###############################
   # DISCRIMINABBILITY (D'):  
          # Prior Distribution

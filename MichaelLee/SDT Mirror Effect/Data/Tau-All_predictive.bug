@@ -14,9 +14,9 @@
       # These Priors over Discriminability and Bias Correspond 
       # to Uniform Priors over the Hit and False Alarm Rates
       PPr_d_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
-      PPr_c_A[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
-      PPr_d_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
-      PPr_c_B[i] ~ dnorm(PPr_mud_A,PPr_sigmad_A)
+      PPr_c_A[i] ~ dnorm(PPr_muc_A,PPr_sigmac_A)
+      PPr_d_B[i] ~ dnorm(PPr_mud_B,PPr_sigmad_B)
+      PPr_c_B[i] ~ dnorm(PPr_muc_B,PPr_sigmac_B)
       #Differences on dprime
       PPRIOR_Tau_H[i] <- PPr_thetah_A[i]-PPr_thetah_B[i]
       PPRIOR_Tau_F[i] <- PPr_thetaf_B[i]-PPr_thetaf_A[i]

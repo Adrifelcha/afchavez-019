@@ -821,7 +821,7 @@ plotear <- "Tau(Hits)"
 
 layout(matrix(1:1,ncol=1))
 ifelse(plotear=="Tau(Hits)", datos <- tauH, datos <- tauF)
-ifelse(plotear=="Tau(Hits)", predictive <- PPr_tauF, predictive <- PPr_tauF)
+ifelse(plotear=="Tau(Hits)", predictive <- PPr_tauH, predictive <- PPr_tauF)
 if(experimento ==1){
   if(plotear=="Tau(Hits)"){
   Leg <- c(4.5,0.3)  

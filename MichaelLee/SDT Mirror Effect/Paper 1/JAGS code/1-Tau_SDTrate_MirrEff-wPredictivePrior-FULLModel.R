@@ -173,12 +173,16 @@ samples <- jags(data, inits=myinits, parameters,
   
   muDA <- samples$BUGSoutput$sims.list$mud_A
   muDB <- samples$BUGSoutput$sims.list$mud_B
+  SigDA <- samples$BUGSoutput$sims.list$sigmad_A
+  SigDB <- samples$BUGSoutput$sims.list$sigmad_B
   
   muD <- samples$BUGSoutput$sims.list$MuD
   DeltaD <- samples$BUGSoutput$sims.list$delta_D
   
   muCA <- samples$BUGSoutput$sims.list$muc_A
   muCB <- samples$BUGSoutput$sims.list$muc_B
+  SigCA <- samples$BUGSoutput$sims.list$sigmac_A
+  SigCB <- samples$BUGSoutput$sims.list$sigmac_B
   
   muC <- samples$BUGSoutput$sims.list$MuC
   DeltaC <- samples$BUGSoutput$sims.list$delta_C
@@ -200,12 +204,16 @@ samples <- jags(data, inits=myinits, parameters,
   
   Pr_muDA <- samples$BUGSoutput$sims.list$Pr_mud_A
   Pr_muDB <- samples$BUGSoutput$sims.list$Pr_mud_B
+  Pr_SigDA <- samples$BUGSoutput$sims.list$Pr_sigmad_A
+  Pr_SigDB <- samples$BUGSoutput$sims.list$Pr_sigmad_B
   
   Pr_muD <- samples$BUGSoutput$sims.list$Pr_MuD
   Pr_DeltaD <- samples$BUGSoutput$sims.list$Pr_delta_D
   
   Pr_muCA <- samples$BUGSoutput$sims.list$Pr_muc_A
   Pr_muCB <- samples$BUGSoutput$sims.list$Pr_muc_B
+  Pr_SigCA <- samples$BUGSoutput$sims.list$Pr_sigmac_A
+  Pr_SigCB <- samples$BUGSoutput$sims.list$Pr_sigmac_B
   
   Pr_muC <- samples$BUGSoutput$sims.list$Pr_MuC
   Pr_DeltaC <- samples$BUGSoutput$sims.list$Pr_delta_C
@@ -230,10 +238,10 @@ Predicted_Fa <- NULL
 Predicted_Fb <- NULL
 
 for(i in 1:k){
-  Predicted_Ha[i] <- round(median(density(Pr_Ha[,i])$x[which(density(Pr_Ha[,i])$y==max(density(Pr_Ha[,i])$y))-rbinom(1,10,.5)]),0)
-  Predicted_Hb[i] <- round(median(density(Pr_Hb[,i])$x[which(density(Pr_Hb[,i])$y==max(density(Pr_Hb[,i])$y))-rbinom(1,10,.5)]),0)
-  Predicted_Fa[i] <- round(median(density(Pr_Fa[,i])$x[which(density(Pr_Fa[,i])$y==max(density(Pr_Fa[,i])$y))+rbinom(1,10,.5)]),0)
-  Predicted_Fb[i] <- round(median(density(Pr_Fb[,i])$x[which(density(Pr_Fb[,i])$y==max(density(Pr_Fb[,i])$y))+rbinom(1,10,.5)]),0) 
+  Predicted_Ha[i] <- round(median(density(Pr_Ha[,i])$x[which(density(Pr_Ha[,i])$y==max(density(Pr_Ha[,i])$y))-rbinom(1,10,.4)]),0)
+  Predicted_Hb[i] <- round(median(density(Pr_Hb[,i])$x[which(density(Pr_Hb[,i])$y==max(density(Pr_Hb[,i])$y))-rbinom(1,10,.6)]),0)
+  Predicted_Fa[i] <- round(median(density(Pr_Fa[,i])$x[which(density(Pr_Fa[,i])$y==max(density(Pr_Fa[,i])$y))+rbinom(1,10,.4)]),0)
+  Predicted_Fb[i] <- round(median(density(Pr_Fb[,i])$x[which(density(Pr_Fb[,i])$y==max(density(Pr_Fb[,i])$y))+rbinom(1,10,.6)]),0) 
   }
   
 
@@ -327,12 +335,17 @@ PPr_c_b <- samples$BUGSoutput$sims.list$PPr_c_B
 
 PPr_muDA <- samples$BUGSoutput$sims.list$PPr_mud_A
 PPr_muDB <- samples$BUGSoutput$sims.list$PPr_mud_B
+PPr_SigDA <- samples$BUGSoutput$sims.list$PPr_sigmad_A
+PPr_SigDB <- samples$BUGSoutput$sims.list$PPr_sigmad_B
 
 PPr_muD <- samples$BUGSoutput$sims.list$PPr_MuD
 PPr_DeltaD <- samples$BUGSoutput$sims.list$PPr_delta_D
 
 PPr_muCA <- samples$BUGSoutput$sims.list$PPr_muc_A
 PPr_muCB <- samples$BUGSoutput$sims.list$PPr_muc_B
+PPr_SigCA <- samples$BUGSoutput$sims.list$PPr_sigmac_A
+PPr_SigCB <- samples$BUGSoutput$sims.list$PPr_sigmac_B
+
 
 PPr_muC <- samples$BUGSoutput$sims.list$PPr_MuC
 PPr_DeltaC <- samples$BUGSoutput$sims.list$PPr_delta_C
@@ -544,12 +557,22 @@ Exp <- 1}else{
     mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Predictive prior for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   #Posterior density
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,3.5), col='white')
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,3.5), col='white')
     lines(density(DeltaD), lwd=4, col="darkorange")
     axis(1)
     axis(2, labels=F, at=c(0,24))
     mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
     mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
+  mtext(paste("Posterior estimates for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Predictive vs Posterior
+  #Posterior density
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,3.5), col='white')
+  lines(density(DeltaD), lwd=4, col="darkorange")
+  lines(density(PPr_DeltaD), lwd=4, col="indianred")
+  axis(1)
+  axis(2, labels=F, at=c(0,24))
+  mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
+  mtext("Delta-D'", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Posterior estimates for Delta-D' - Experiment No.", Exp), font=2, cex=2, side=3)
 ###############################
   # General Mu(D)
@@ -562,7 +585,8 @@ Exp <- 1}else{
   mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Prior distribution for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   # Predictive Prior
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), ylim=c(0,5), col='white')
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,5), 
+       ylim=c(0,5.5), col='white')
   lines(density(PPr_muD), lwd=4, col="firebrick3")
   axis(1)
   axis(2, labels=F, at=c(0,24))
@@ -570,7 +594,8 @@ Exp <- 1}else{
   mtext("Mu-D'", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Predictive prior for the general Mu-D' - Experiment No.", Exp), font=2, cex=2, side=3)
   #Posterior density
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,5), col='white')
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), 
+       ylim=c(0,5.5), col='white')
   lines(density(muD), lwd=4, col="firebrick3")
   axis(1)
   axis(2, labels=F, at=c(0,24))
@@ -585,15 +610,19 @@ Exp <- 1}else{
     lines(density(Pr_muDB), lwd=4, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(4,.8, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
     mtext("Mu-D' per class", side=1, line = 2.5, cex=1, font=2)
-  mtext(paste("Prior distribution for mean(D') per class   - Experiment No.", Exp), font=2, cex=2, side=3)
+    mtext(paste("Prior distribution for mean(D') per class   - Experiment No.", Exp), font=2, cex=2, side=3)
   # Predictive Prior
   plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,4.5), col='white')
     lines(density(PPr_muDA), lwd=4, col="deepskyblue3")
     lines(density(PPr_muDB), lwd=4, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(4.5,4, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
     mtext("Mu-D' per class", side=1, line = 2.5, cex=1, font=2)
   mtext(paste("Predictive prior for mean(D') per class - Experiment No.", Exp), font=2, cex=2, side=3)
@@ -603,10 +632,13 @@ Exp <- 1}else{
     lines(density(muDB), lwd=4, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(4,4, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
     mtext("Mu-D' per class", side=1, line = 2.5, cex=1, font=2)
-  mtext(paste("Posterior estimates for mean(D') per class - Experiment No.", Exp), font=2, cex=2, side=3)
+    mtext(paste("Posterior estimates for mean(D') per class - Experiment No.", Exp), font=2, cex=2, side=3)
   
+    
   #############################
   # Individual (D'):  
   # Prior Distribution
@@ -616,26 +648,34 @@ Exp <- 1}else{
     lines(density(Pr_d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(4,.8, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Prior density", side=2, line = 2, cex=1.5, las=0)
     mtext("D-prime", side=1, line = 2.5, cex=1, font=2)}
   mtext(paste("Prior distribution for D' - Experiment No.", Exp), font=2, cex=2, side=3)
   # Predictive Prior
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,2), col='white')
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), 
+       ylim=c(0,3), col='white')
   for(a in 1:k){                                                      
     lines(density(PPr_d_a[,a]), lwd=2.5, col="deepskyblue3")
     lines(density(PPr_d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(1,2.5, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Predictive Prior density", side=2, line = 2, cex=1.5, las=0)
     mtext("D-prime", side=1, line = 2.5, cex=1, font=2)}
   mtext(paste("Predictive prior for D' - Experiment No.", Exp), font=2, cex=2, side=3)
   #Posterior density
-  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), ylim=c(0,4), col='white')
+  plot(soporte_d, axes=F, main="", ylab="", xlab="", xlim=c(0,6), 
+       ylim=c(0,3), col='white')
   for(a in 1:k){                                                      
     lines(density(d_a[,a]), lwd=2.5, col="deepskyblue3")
     lines(density(d_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(4,2.7, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Posterior density", side=2, line = 2, cex=1.5, las=0)
     mtext("D-prime", side=1, line = 2.5, cex=1, font=2)}
   mtext(paste("Posterior estimates for D' - Experiment No.", Exp), font=2, cex=2, side=3)
@@ -706,16 +746,20 @@ Exp <- 1}else{
        ylim=c(0,0.5))
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(0.5,0.45, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
     lines(density(Pr_muCA), lwd=4, col="deepskyblue3")
     lines(density(Pr_muCB), lwd=4, col="darkorchid3", lty=1)
     mtext("Prior Density", side=2, line = 2, cex=1.5, las=0)
-    mtext("Bias - C", side=1, line = 2.5, cex=1, font=2)
+    mtext("Bias - C", side=1, line = 2.5, cex=1.5, font=2)
   mtext(paste("Prior distribution for mean(C) per class - Experiment No.", Exp), font=2, cex=2, side=3)
   # Predictive Prior
   plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5),
        axes=F, ylim=c(0,5))
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(0.5,4.5, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
     lines(density(PPr_muCA), lwd=4, col="deepskyblue3")
     lines(density(PPr_muCB), lwd=4, col="darkorchid3", lty=1)
     mtext("Predictive Prior Density", side=2, line = 2, cex=1.5, las=0)
@@ -726,6 +770,8 @@ Exp <- 1}else{
        axes=F, ylim=c(0,5))
     axis(1)
     axis(2, labels=F, at=c(0,24))
+    legend(0.5,4.5, legend=c("A Class  ", "B Class  "),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
     lines(density(muCA), lwd=4, col="deepskyblue3")
     lines(density(muCB), lwd=4, col="darkorchid3", lty=1)
     mtext("Posterior Density", side=2, line = 2, cex=1.5, las=0)
@@ -739,6 +785,8 @@ Exp <- 1}else{
     for(a in 1:k){
       axis(1)
       axis(2, labels=F, at=c(0,24))
+      legend(0.5,.45, legend=c("A Class  ", "B Class  "),
+             col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
       lines(density(Pr_c_a[,a]), lwd=2.5, col="deepskyblue3")
       lines(density(Pr_c_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
       mtext("Prior Density", side=2, line = 2, cex=1.5, las=0)
@@ -746,20 +794,25 @@ Exp <- 1}else{
     mtext(paste("Prior distribution for C - Experiment No.", Exp), font=2, cex=2, side=3)
         # Predictive Prior
   plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5),
-       axes=F, ylim=c(0,4))
+       axes=F, ylim=c(0,5.5))
     for(a in 1:k){
       axis(1)
       axis(2, labels=F, at=c(0,24))
+      legend(0.5,3.5, legend=c("A Class  ", "B Class  "),
+             col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
       lines(density(PPr_c_a[,a]), lwd=2.5, col="deepskyblue3")
       lines(density(PPr_c_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
       mtext("Predictive Prior Density", side=2, line = 2, cex=1.5, las=0)
       mtext("Bias - C", side=1, line = 2.5, cex=1, font=2)}
     mtext(paste("Predictive Priors for C - Experiment No.", Exp), font=2, cex=2, side=3)
         # Posterior density
-  plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5), axes=F)
+  plot(soporte_c, main="", ylab="", xlab="", col='white', xlim=c(-1.5,1.5), axes=F,
+       ylim=c(0,5.5))
   for(a in 1:k){
   axis(1)
   axis(2, labels=F, at=c(0,24))
+  legend(0.7,5, legend=c("A Class  ", "B Class  "),
+         col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.3, lwd=c(2,2,5,5))
   lines(density(c_a[,a]), lwd=2.5, col="deepskyblue3")
   lines(density(c_b[,a]), lwd=2.5, col="darkorchid3", lty=1)
   mtext("Posterior Density", side=2, line = 2, cex=1.5, las=0)
@@ -794,7 +847,7 @@ Exp <- 1}else{
     axis(2, labels=F, at=c(0,94))
     lines(density(PPr_tetaH_a[,a]), lwd=2, col="deepskyblue3")
     lines(density(PPr_tetaH_b[,a]), lwd=2, col="darkorchid3", lty=1)
-    legend(0.35,80, legend=c("A Class", "B Class"),
+    legend(0.4,56, legend=c("A Class", "B Class"),
            col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
     mtext("Predictive Prior density", 2, line = 2, cex=2.1, las=0)
     mtext(expression(paste(theta, "H")), side=1, line = 2.8, cex=2.5, font=2)}
@@ -900,7 +953,7 @@ soporte_f <- c(0,25)
   box(lty=1)
 
   par(mar=c(2,1,1,4))
-  plot(soporte_h, xlim=rev(c(0,40)),type='l', col="white", axes=F, xlab="", 
+  plot(soporte_h, xlim=rev(c(0,45)),type='l', col="white", axes=F, xlab="", 
      ylab="",ylim=c(0.5,1))
   for(a in 1:k){  
   lines(density(PPr_tetaH_a[,a])$y,density(PPr_tetaH_a[,a])$x, col="deepskyblue3")
@@ -911,7 +964,7 @@ box(lty=1)
 
 par(mar=c(6,2,0,0))
 plot(density(PPr_tetaFA_a),zero.line=F ,main="", col="white", ylab="", 
-     xlab="", cex.lab=1.3, axes=F, xlim=c(0,0.6),ylim=c(0,40))
+     xlab="", cex.lab=1.3, axes=F, xlim=c(0,0.6),ylim=c(0,45))
 for(a in 1:k){  
   lines(density(PPr_tetaFA_a[,a]), col="deepskyblue3")
   lines(density(PPr_tetaFA_b[,a]), col="darkorchid3")
@@ -1044,31 +1097,31 @@ par(cex.main = 1.5, mar = c(5, 6, 4, 5) + 0.1, mgp = c(3.5, 1, 0), cex.lab = 1.5
 
 ###############################
 #Prior predictive - Tau
-plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
-     ylim=c(0,20))
+plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-0.5,0.5), axes=F,
+     ylim=c(0,25))
 for(a in 1:k){
   lines(density(PPr_tauH[,a]), lwd=2, col="deepskyblue3")}
   axis(1)
   axis(2, labels=F, at=c(0,94))
   mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
   mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
-mtext(paste("Predictive prior for the differences between F.A rates"), font=2, cex=1.2, side=3, line=0.5)
+mtext(paste("Predictive prior for the differences between Hit rates"), font=2, cex=1.2, side=3, line=0.5)
 mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
-plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-1,1), axes=F,
-     ylim=c(0,20))
+plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(-0.5,0.5), axes=F,
+     ylim=c(0,25))
 for(a in 1:k){
   lines(density(PPr_tauF[,a]), lwd=2, col="deepskyblue3")}
   axis(1)
   axis(2, labels=F, at=c(0,94))
   mtext("Predictive prior density", side=2, line = 1.5, cex=1.2, las=0)
   mtext(expression(paste(tau, "F.A")), side=1, line = 2.8, cex=1.8, font=2)
-mtext(paste("Predictive prior for the differences between Hit rates"), font=2, cex=1.2, side=3, line=0.5)
-
+mtext(paste("Predictive prior for the differences between F.A. rates"), font=2, cex=1.2, side=3, line=0.5)
+mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
 #Posteriors 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), 
-     ylim=c(0,22), col='white')
+     ylim=c(0,24), col='white')
 for(a in 1:k){
 title(paste("Experiment No.", exp), line=2.2, cex=1)
 lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
@@ -1079,7 +1132,7 @@ mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, 
 mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), 
-     col='white', ylim=c(0,30))
+     col='white', ylim=c(0,24))
 for (a in 1:k){
 lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)}
 lines(density(PPr_tauF[,a]), col="blue", lwd=3)
@@ -1099,16 +1152,16 @@ mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2,
 
 
 
-plotear <- "Tau(Hits)"
-#plotear <- "Tau(FA)"
+#plotear <- "Tau(Hits)"
+plotear <- "Tau(FA)"
 
 
 layout(matrix(1:1,ncol=1))
 ifelse(plotear=="Tau(Hits)", datos <- tauH, datos <- tauF)
-ifelse(plotear=="Tau(Hits)", predictive <- PPr_tauF, predictive <- PPr_tauF)
+ifelse(plotear=="Tau(Hits)", predictive <- PPr_tauH, predictive <- PPr_tauF)
 if(experimento ==1){
   if(plotear=="Tau(Hits)"){
-  Leg <- c(4.5,0.3)  
+  Leg <- c(4.5,0.25)  
   Nam <- "Hits"
   }else{
     Leg <- c(3.5,0.35)  
@@ -1166,13 +1219,13 @@ plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
 for(u in 1:20){
   numero <- numero + 1
   points(numero,0, col=color_SD_0[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = expression(paste(tau, "(H)")), line=2.7, cex=2, adj=1)
+mtext(side=2, text = expression(paste(tau, "(FA)")), line=2, cex=2, adj=1)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
 legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
        col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
-title(expression(paste(tau, "(H)", " individual posterior densities; BF at 0")))
+title(expression(paste(tau, "(F.A.)", " individual posterior densities; BF at 0")))
 mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 
@@ -1181,13 +1234,13 @@ plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
 for(u in 1:20){
   numero <- numero + 1
   points(numero,media_post[u], col=color_SD_mean[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = expression(paste(tau, "(H)")), line=2.7, cex=2, adj=1)
+mtext(side=2, text = expression(paste(tau, "(FA)")), line=2, cex=2, adj=1)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
 legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
        col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
-title(expression(paste(tau, "(H)", " individual posterior densities; BF at Mean Value")))
+title(expression(paste(tau, "(F.A.)", " individual posterior densities; BF at Mean Value")))
 mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 

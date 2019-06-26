@@ -84,14 +84,14 @@
 					observedColor=lightgray,
 					%query=true
 					]{tA}}
-           \GM@label[offset=-4mm]{tA}{\huge$\theta^A_{i}$}
+           \GM@label[offset=-4mm]{tA}{\huge$\theta^A_{ij}$}
 
 \rput(7,5){\GM@node[nodeSize=14mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{tB}}
-           \GM@label[offset=-4mm]{tB}{\huge$\theta^B_{i}$}
+           \GM@label[offset=-4mm]{tB}{\huge$\theta^B_{ij}$}
 
 
         
@@ -101,26 +101,26 @@
 					observedColor=lightgray,
 					query=true
 					]{countsA}}
-           \GM@label[offset=-4.5mm]{countsA}{\huge$y^A_{i}$}       
+           \GM@label[offset=-4.5mm]{countsA}{\huge$y^A_{ij}$}       
 
 \rput(7,3){\GM@node[nodeSize=15mm,
 					observed=true,
 					observedColor=lightgray,
 					query=true
 					]{countsB}}
-           \GM@label[offset=-4.5mm]{countsB}{\huge$y^B_{i}$}    
+           \GM@label[offset=-4.5mm]{countsB}{\huge$y^B_{ij}$}    
 
  
 
 
-\rput(3.5,1){\GM@node[nodeSize=13mm,
+\rput(3.5,0.5){\GM@node[nodeSize=13mm,
 					observed=true,
 					observedColor=lightgray,
 					query=true
 					]{nA}}
            \GM@label[offset=-3.5mm]{nA}{\huge$n^A$} 
 
-\rput(7,1){\GM@node[nodeSize=13mm,
+\rput(7,0.5){\GM@node[nodeSize=13mm,
 					observed=true,
 					observedColor=lightgray,
 					query=true
@@ -154,8 +154,8 @@
 % 4. Plates
 %%%%%%%%%%%
 
-\rput(1.4, 0){\GM@plate[plateLabelPos=br]{8.2}{8.4}{\Large$j$ participant}}
-\rput(1.1, -0.5){\GM@plate[plateLabelPos=br]{8.9}{10.8}{\Large$i$ stimuli (signal or noise)}}
+\rput(1.4, 1.9){\GM@plate[plateLabelPos=br]{8.2}{4}{\Large$j$ participant}}
+\rput(1.1, 1.4){\GM@plate[plateLabelPos=br]{8.9}{8.9}{\Large$i$ stimuli (signal or noise)}}
 
 % 5. Model specification
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,15 +178,15 @@
 
 \rput(11.5,5.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^B_{fa} \gets \mu_{fa} + \frac{\delta}{2}$}
 
-\rput(11.5,4.2){\pnode{equation}}\GM@label{equation}{\huge$\sigma^A_{i}, \sigma^B_{i} \sim \mathrm{Uniform}(0,1)$}
+\rput(11.5,4.2){\pnode{equation}}\GM@label{equation}{\huge$\sigma^A_{i}, \sigma^B_{i} \sim \mathrm{Uniform}(0,0.5)$}
 
-\rput(11.5,2.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{i}\sim \mathrm{Gaussian}(\mu^A_{i}, \sigma^A_{i})$}
+\rput(11.5,2.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{ij}\sim \mathrm{Gaussian}(\mu^A_{i}, \sigma^A_{i})$}
 
-\rput(11.5,1.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{i}\sim \mathrm{Gaussian}(\mu^B_{i}, \sigma^B_{i})$}
+\rput(11.5,1.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{ij}\sim \mathrm{Gaussian}(\mu^B_{i}, \sigma^B_{i})$}
 
-\rput(11.5,0.2){\pnode{equation}}\GM@label{equation}{\huge$y^A_{i}\sim \mathrm{Binomial}(\theta^A_{i}, n^A)$}
+\rput(11.5,0.2){\pnode{equation}}\GM@label{equation}{\huge$y^A_{ij}\sim \mathrm{Binomial}(\theta^A_{ij}, n^A)$}
 
-\rput(11.5,-0.8){\pnode{equation}}\GM@label{equation}{\huge$y^B_{i}\sim \mathrm{Binomial}(\theta^B_{i}, n^B)$}
+\rput(11.5,-0.8){\pnode{equation}}\GM@label{equation}{\huge$y^B_{ij}\sim \mathrm{Binomial}(\theta^B_{ij}, n^B)$}
 
 
 

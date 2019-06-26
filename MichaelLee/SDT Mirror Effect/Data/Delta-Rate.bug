@@ -1,0 +1,69 @@
+
+model{
+  #Posterior estimations (based on the data collected)
+  for (i in 1:k){
+  # Posterior density based on our data
+    h_A[i] ~ dbin(thetah_A[i],s)
+    fa_A[i] ~ dbin(thetaf_A[i],n)
+    h_B[i] ~ dbin(thetah_B[i],s)
+    fa_B[i] ~ dbin(thetaf_B[i],n)
+    # Reparameterization Using Equal-Variance Gaussian SDT
+    thetah_A[i] ~ dnorm(muHA,sdHA)
+    thetaf_A[i] ~ dnorm(muFA,sdFA)
+    thetah_B[i] ~ dnorm(muHB,sdHB)
+    thetaf_B[i] ~ dnorm(muFB,sdFB)
+  }
+    lamHA ~ dgamma(.001,.001)T(0.01,0.5)
+    lamFA ~ dgamma(.001,.001)T(0.01,0.5)
+    lamHB ~ dgamma(.001,.001)T(0.01,0.5)
+    lamFB ~ dgamma(.001,.001)T(0.01,0.5)
+    sdHA <- 1/sqrt(lamHA)
+    sdFA <- 1/sqrt(lamFA)
+    sdHB <-1/sqrt(lamHB)
+    sdFB <-1/sqrt(lamFB)
+    muHA <- muH + deltaH/2
+    muFA <- muF - deltaF/2
+    muHB <- muH - deltaH/2
+    muFB <- muF + deltaF/2
+    gamdeltaH ~ dgamma(.001,.001)T(0.5,1)
+    gamdeltaF ~ dgamma(.001,.001)T(0.01,0.49)
+    deltaH <- 1/sqrt(gamdeltaH)
+    deltaF <- 1/sqrt(gamdeltaF)
+    gamuH ~ dgamma(.001,.001)T(0.5,1)
+    gamuF ~ dgamma(.001,.001)T(0.01,0.49)
+    muH <- 1/sqrt(gamuH)
+    muF <- 1/sqrt(gamuH)
+#PRIORS
+for (i in 1:k){
+  # Posterior density based on our data
+    Pr_h_A[i] ~ dbin(Pr_thetah_A[i],s)
+    Pr_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
+    Pr_h_B[i] ~ dbin(Pr_thetah_B[i],s)
+    Pr_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
+    # Reparameterization Using Equal-Variance Gaussian SDT
+    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)
+    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)
+    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)
+    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)
+  }
+    Pr_lamHA ~ dgamma(.001,.001)T(0.01,0.5)
+    Pr_lamFA ~ dgamma(.001,.001)T(0.01,0.5)
+    Pr_lamHB ~ dgamma(.001,.001)T(0.01,0.5)
+    Pr_lamFB ~ dgamma(.001,.001)T(0.01,0.5)
+    Pr_sdHA <- 1/sqrt(Pr_lamHA)
+    Pr_sdFA <- 1/sqrt(Pr_lamFA)
+    Pr_sdHB <-1/sqrt(Pr_lamHB)
+    Pr_sdFB <-1/sqrt(Pr_lamFB)
+    Pr_muHA <- Pr_muH + Pr_deltaH/2
+    Pr_muFA <- Pr_muF - Pr_deltaF/2
+    Pr_muHB <- Pr_muH - Pr_deltaH/2
+    Pr_muFB <- Pr_muF + Pr_deltaF/2
+    Pr_gamdeltaH ~ dgamma(.001,.001)T(0.5,1)
+    Pr_gamdeltaF ~ dgamma(.001,.001)T(0.01,0.49)
+    Pr_deltaH <- 1/sqrt(Pr_gamdeltaH)
+    Pr_deltaF <- 1/sqrt(Pr_gamdeltaF)
+    Pr_gamuH ~ dgamma(.001,.001)T(0.5,1)
+    Pr_gamuF ~ dgamma(.001,.001)T(0.01,0.49)
+    Pr_muH <- 1/sqrt(Pr_gamuH)
+    Pr_muF <- 1/sqrt(Pr_gamuH)
+      }

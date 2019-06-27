@@ -60,26 +60,22 @@ model{
     thetah_B[i] ~ dnorm(muHB,sdHB)
     thetaf_B[i] ~ dnorm(muFB,sdFB)
   }
-    lamHA ~ dgamma(.001,.001)T(0.01,0.5)
-    lamFA ~ dgamma(.001,.001)T(0.01,0.5)
-    lamHB ~ dgamma(.001,.001)T(0.01,0.5)
-    lamFB ~ dgamma(.001,.001)T(0.01,0.5)
-    sdHA <- 1/sqrt(lamHA)
-    sdFA <- 1/sqrt(lamFA)
-    sdHB <-1/sqrt(lamHB)
-    sdFB <-1/sqrt(lamFB)
+    gamFA ~ dgamma(.001,.001)T(0.01,1)
+    gamFB ~ dgamma(.001,.001)T(0.01,1)
+    gamHA ~ dgamma(.001,.001)T(0.01,1)
+    gamHB ~ dgamma(.001,.001)T(0.01,1)
+    sdFA <- 1/sqrt(gamFA)
+    sdFB <- 1/sqrt(gamFB)    
+    sdHA <- 1/sqrt(gamHA)    
+    sdHB <- 1/sqrt(gamHB)    
     muHA <- muH + deltaH/2
     muFA <- muF - deltaF/2
     muHB <- muH - deltaH/2
     muFB <- muF + deltaF/2
-    gamdeltaH ~ dgamma(.001,.001)T(0.5,1)
-    gamdeltaF ~ dgamma(.001,.001)T(0.01,0.49)
-    deltaH <- 1/sqrt(gamdeltaH)
-    deltaF <- 1/sqrt(gamdeltaF)
-    gamuH ~ dgamma(.001,.001)T(0.5,1)
-    gamuF ~ dgamma(.001,.001)T(0.01,0.49)
-    muH <- 1/sqrt(gamuH)
-    muF <- 1/sqrt(gamuH)
+    deltaH ~ dbeta(1,1)T(0.5,1)
+    deltaF ~ dbeta(1,1)T(0,0.5)
+    muH ~ dbeta(1,1)T(0.5,1)
+    muF ~ dbeta(1,1)T(0,0.5)
 #PRIORS
 for (i in 1:k){
   # Posterior density based on our data
@@ -93,26 +89,22 @@ for (i in 1:k){
     Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)
     Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)
   }
-    Pr_lamHA ~ dgamma(.001,.001)T(0.01,0.5)
-    Pr_lamFA ~ dgamma(.001,.001)T(0.01,0.5)
-    Pr_lamHB ~ dgamma(.001,.001)T(0.01,0.5)
-    Pr_lamFB ~ dgamma(.001,.001)T(0.01,0.5)
-    Pr_sdHA <- 1/sqrt(Pr_lamHA)
-    Pr_sdFA <- 1/sqrt(Pr_lamFA)
-    Pr_sdHB <-1/sqrt(Pr_lamHB)
-    Pr_sdFB <-1/sqrt(Pr_lamFB)
+    Pr_gamFA ~ dgamma(.001,.001)T(0.01,1)
+    Pr_gamFB ~ dgamma(.001,.001)T(0.01,1)
+    Pr_gamHA ~ dgamma(.001,.001)T(0.01,1)
+    Pr_gamHB ~ dgamma(.001,.001)T(0.01,1)
+    Pr_sdFA <- 1/sqrt(Pr_gamFA)
+    Pr_sdFB <- 1/sqrt(Pr_gamFB)    
+    Pr_sdHA <- 1/sqrt(Pr_gamHA)    
+    Pr_sdHB <- 1/sqrt(Pr_gamHB) 
     Pr_muHA <- Pr_muH + Pr_deltaH/2
     Pr_muFA <- Pr_muF - Pr_deltaF/2
     Pr_muHB <- Pr_muH - Pr_deltaH/2
     Pr_muFB <- Pr_muF + Pr_deltaF/2
-    Pr_gamdeltaH ~ dgamma(.001,.001)T(0.5,1)
-    Pr_gamdeltaF ~ dgamma(.001,.001)T(0.01,0.49)
-    Pr_deltaH <- 1/sqrt(Pr_gamdeltaH)
-    Pr_deltaF <- 1/sqrt(Pr_gamdeltaF)
-    Pr_gamuH ~ dgamma(.001,.001)T(0.5,1)
-    Pr_gamuF ~ dgamma(.001,.001)T(0.01,0.49)
-    Pr_muH <- 1/sqrt(Pr_gamuH)
-    Pr_muF <- 1/sqrt(Pr_gamuH)
+    Pr_deltaH ~ dbeta(1,1)T(0.5,1)
+    Pr_deltaF ~ dbeta(1,1)T(0,0.5)
+    Pr_muH ~ dbeta(1,1)T(0.5,1)
+    Pr_muF ~ dbeta(1,1)T(0,0.5)
       }','Delta-Rate.bug')
 
 ######################################
@@ -121,13 +113,7 @@ for (i in 1:k){
 ######################################
 data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")                    #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(lamHA = 0.25,lamHB = 0.25,
-       lamFA = 0.25,lamFB = 0.25,
-       gamdeltaH = 0.75,
-       gamdeltaF = 0.25,
-       gamuH = 0.75,
-       gamuF = 0.25))      #Valores iniciales para las extracciones de las cadenas de Markov
-
+  list(deltaH = 0.75, deltaF = 0.25, muH = 0.75,muF = 0.25))      #Valores iniciales para las extracciones de las cadenas de Markov
 
 #Parámetros monitoreados
 parameters <- c("thetah_A", "thetaf_A", "thetah_B", "thetaf_B",
@@ -137,7 +123,8 @@ parameters <- c("thetah_A", "thetaf_A", "thetah_B", "thetaf_B",
                 "deltaH","deltaF",
                 "Pr_deltaH","Pr_deltaF",
                 "muH", "muF",
-                "Pr_muH", "Pr_muF")
+                "Pr_muH", "Pr_muF",
+                "Pr_h_A", " Pr_h_B", " Pr_fa_A", " Pr_fa_B")
 
 
 niter <- 50000    #Iteraciones

@@ -22,7 +22,11 @@ density <- ddirichlet(c(.1,.2,.7), c(1,1,1))
 draws <- rdirichlet(20, c(1,1,1) )
 
 library(extraDistr)
-unif_dis <- rdunif(1000000,1,3)
+unif_dis <- runif(1000000,0,1)
 plot(density(unif_dis), xlim=c(0,5))
+
+
+a <- rbeta(1000000,1,1)
+plot(density(a))
 
 

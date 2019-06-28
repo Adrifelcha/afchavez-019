@@ -1,0 +1,189 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template graphical model %
+% Author: Tom Lodewyckx    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 0. Begin document
+%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[paperwidth=10.5in, paperheight=7in]{geometry}
+\usepackage{pst-all,pstricks,pst-tools}
+\usepackage{com.braju.graphicalmodels}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\catcode`\@=11%
+\pagestyle{empty}
+\begin{document}
+\TeXtoEPS
+\psset{unit=13mm,arrowscale=1.5}
+\SpecialCoor
+
+
+% 1. Grid
+%%%%%%%%%
+
+\begin{pspicture}(2,0)(12,10)
+%\showgrid
+
+
+% 2. Nodes
+%%%%%%%%%%
+
+
+\rput(3.5,7.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{GeneralTheta}}
+				\GM@label[offset=-3.5mm]{GeneralTheta}{\huge$\theta_{ij}$}
+
+\rput(7,7.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{Delta}}
+				\GM@label[offset=-2.5mm]{Delta}{\huge$\delta_{ij}$}
+
+
+\rput(6,9.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{MuB}}
+				\GM@label[offset=-3.5mm]{MuB}{\huge$\mu^B_{i}$}
+
+\rput(8,9.5){\GM@node[nodeSize=15mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{SigmaB}}
+				\GM@label[offset=-3.5mm]{SigmaB}{\huge$\sigma^B_{i}$}
+
+
+
+     
+           
+\rput(3.5,5){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{tA}}
+           \GM@label[offset=-4mm]{tA}{\huge$\theta^A_{ij}$}
+
+\rput(7,5){\GM@node[nodeSize=14mm,
+					%observed=true,
+					observedColor=lightgray,
+					%query=true
+					]{tB}}
+           \GM@label[offset=-4mm]{tB}{\huge$\theta^B_{ij}$}
+
+
+        
+
+\rput(3.5,3){\GM@node[nodeSize=14mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{countsA}}
+           \GM@label[offset=-4.5mm]{countsA}{\huge$y^A_{ij}$}       
+
+\rput(7,3){\GM@node[nodeSize=15mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{countsB}}
+           \GM@label[offset=-4.5mm]{countsB}{\huge$y^B_{ij}$}    
+
+ 
+
+
+\rput(3.5,0.5){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{nA}}
+           \GM@label[offset=-3.5mm]{nA}{\huge$n^A$} 
+
+\rput(7,0.5){\GM@node[nodeSize=13mm,
+					observed=true,
+					observedColor=lightgray,
+					query=true
+					]{nB}}
+           \GM@label[offset=-3.5mm]{nB}{\huge$n^B$}    
+
+
+
+
+ 
+ 
+% 3. Arrows
+%%%%%%%%%%%
+
+\ncline[arrows=->]{GeneralTheta}{tA}
+\ncline[arrows=->]{GeneralTheta}{tB}
+\ncline[arrows=->]{Delta}{tA}
+\ncline[arrows=->]{Delta}{tB}
+
+\ncline[arrows=->]{MuB}{Delta}
+\ncline[arrows=->]{SigmaB}{Delta}
+
+
+\ncline[arrows=->]{tA}{countsA}
+\ncline[arrows=->]{tB}{countsB}
+\ncline[arrows=->]{nA}{countsA}
+\ncline[arrows=->]{nB}{countsB}
+
+% 4. Plates
+%%%%%%%%%%%
+
+\rput(1.4, 1.9){\GM@plate[plateLabelPos=br]{8.2}{6.5}{\Large$j$ participant}}
+\rput(1.1, 1.4){\GM@plate[plateLabelPos=br]{8.9}{8.9}{\Large$i$ stimuli (signal or noise)}}
+
+% 5. Model specification
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\rput(11.5,8.5){\pnode{equation}}\GM@label{equation}{\huge$\epsilon_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
+
+
+\rput(11.5,11.5){\pnode{equation}}\GM@label{equation}{\huge$\mu_{h} \sim \mathrm{Uniform}(0.5,1)$}
+
+\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\mu_{fa} \sim \mathrm{Uniform}(0,0.5)$}
+
+\rput(11.5,9.5){\pnode{equation}}\GM@label{equation}{\huge$\delta \sim \mathrm{Uniform}(0,0.5)$}
+
+
+\rput(11.5,8.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^A_{h} \gets \mu_{h} + \frac{\delta}{2}$}
+
+\rput(11.5,7.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^B_{h} \gets \mu_{h} - \frac{\delta}{2}$}
+
+\rput(11.5,6.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^A_{fa} \gets \mu_{fa} - \frac{\delta}{2}$}
+
+\rput(11.5,5.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^B_{fa} \gets \mu_{fa} + \frac{\delta}{2}$}
+
+\rput(11.5,4.2){\pnode{equation}}\GM@label{equation}{\huge$\sigma^A_{i}, \sigma^B_{i} \sim \mathrm{Uniform}(0,0.5)$}
+
+\rput(11.5,2.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^A_{ij}\sim \mathrm{Gaussian}(\mu^A_{i}, \sigma^A_{i})$}
+
+\rput(11.5,1.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^B_{ij}\sim \mathrm{Gaussian}(\mu^B_{i}, \sigma^B_{i})$}
+
+\rput(11.5,0.2){\pnode{equation}}\GM@label{equation}{\huge$y^A_{ij}\sim \mathrm{Binomial}(\theta^A_{ij}, n^A)$}
+
+\rput(11.5,-0.8){\pnode{equation}}\GM@label{equation}{\huge$y^B_{ij}\sim \mathrm{Binomial}(\theta^B_{ij}, n^B)$}
+
+
+
+
+
+
+
+
+
+
+
+% 6. End document
+%%%%%%%%%%%%%%%%%
+
+\end{pspicture}
+\endTeXtoEPS
+\end{document}

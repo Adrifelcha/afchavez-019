@@ -8,17 +8,46 @@ model{
     h_B[i] ~ dbin(thetah_B[i],s)
     fa_B[i] ~ dbin(thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    thetah_A[i] <- realH[i] + deltaH[i]/2
-    thetaf_A[i] <- realF[i] - deltaF[i]/2
-    thetah_B[i] <- realH[i] - deltaH[i]/2
-    thetaf_B[i] <- realF[i] + deltaF[i]/2
-    realH[i] ~ dbeta(1,1)T(0,0.5)
-    realF[i] ~ dbeta(1,1)T(0,0.5)
-    deltaH[i] ~ dnorm(muH,sdH)
-    deltaF[i] ~ dnorm(muF,sdF)
+    thetah_A[i] ~ dnorm(muHA,sdHA)T(0.5,1)
+    thetaf_A[i] ~ dnorm(muFA,sdFA)T(0,0.5)
+    thetah_B[i] ~ dnorm(muHB,sdHB)T(0.5,1)
+    thetaf_B[i] ~ dnorm(muFB,sdFB)T(0,0.5)
   }
+    sdFA ~ dbeta(1,1)T(0.001,0.5)
+    sdFB ~ dbeta(1,1)T(0.001,0.5)
+    sdHA ~ dbeta(1,1)T(0.001,0.5)
+    sdHB ~ dbeta(1,1)T(0.001,0.5)
+    muHA <- muH + deltaH/2
+    muFA <- muF - deltaF/2
+    muHB <- muH - deltaH/2
+    muFB <- muF + deltaF/2
+    deltaH ~ dbeta(1,1)
+    deltaF ~ dbeta(1,1)
     muH ~ dbeta(1,1)T(0.5,1)
     muF ~ dbeta(1,1)T(0,0.5)
-    sdH ~ dbeta(1,1)T(0.001,.25)
-    sdF ~ dbeta(1,1)T(0.001,.25)
-}
+#PRIORS
+for (i in 1:k){
+  # Posterior density based on our data
+    Pr_h_A[i] ~ dbin(Pr_thetah_A[i],s)
+    Pr_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
+    Pr_h_B[i] ~ dbin(Pr_thetah_B[i],s)
+    Pr_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
+    # Reparameterization Using Equal-Variance Gaussian SDT
+    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)T(0.5,1)
+    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)T(0,0.5)
+    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)T(0.5,1)
+    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)T(0,0.5)
+  }
+    Pr_sdFA ~ dbeta(1,1)T(0.001,0.5)
+    Pr_sdFB ~ dbeta(1,1)T(0.001,0.5)
+    Pr_sdHA ~ dbeta(1,1)T(0.001,0.5)
+    Pr_sdHB ~ dbeta(1,1)T(0.001,0.5)
+    Pr_muHA <- Pr_muH + Pr_deltaH/2
+    Pr_muFA <- Pr_muF - Pr_deltaF/2
+    Pr_muHB <- Pr_muH - Pr_deltaH/2
+    Pr_muFB <- Pr_muF + Pr_deltaF/2
+    Pr_deltaH ~ dbeta(1,1)
+    Pr_deltaF ~ dbeta(1,1)
+    Pr_muH ~ dbeta(1,1)T(0.5,1)
+    Pr_muF ~ dbeta(1,1)T(0,0.5)
+      }

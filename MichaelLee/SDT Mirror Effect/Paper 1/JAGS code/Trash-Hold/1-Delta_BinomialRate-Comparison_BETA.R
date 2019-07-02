@@ -55,10 +55,10 @@ model{
     h_B[i] ~ dbin(thetah_B[i],s)
     fa_B[i] ~ dbin(thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    thetah_A[i] ~ dnorm(muHA,sdHA)
-    thetaf_A[i] ~ dnorm(muFA,sdFA)
-    thetah_B[i] ~ dnorm(muHB,sdHB)
-    thetaf_B[i] ~ dnorm(muFB,sdFB)
+    thetah_A[i] ~ dnorm(muHA,sdHA)T(0,1)
+    thetaf_A[i] ~ dnorm(muFA,sdFA)T(0,1)
+    thetah_B[i] ~ dnorm(muHB,sdHB)T(0,1)
+    thetaf_B[i] ~ dnorm(muFB,sdFB)T(0,1)
   }
     sdFA ~ dbeta(1,1)T(0.001,0.25)
     sdFB ~ dbeta(1,1)T(0.001,0.25)
@@ -68,8 +68,8 @@ model{
     muFA <- muF - deltaF/2
     muHB <- muH - deltaH/2
     muFB <- muF + deltaF/2
-    deltaH ~ dbeta(1,1)T(0,0.5)
-    deltaF ~ dbeta(1,1)T(0,0.5)
+    deltaH ~ dbeta(1,1)
+    deltaF ~ dbeta(1,1)
     muH ~ dbeta(1,1)T(0.5,1)
     muF ~ dbeta(1,1)T(0,0.5)
 #PRIORS
@@ -80,10 +80,10 @@ for (i in 1:k){
     Pr_h_B[i] ~ dbin(Pr_thetah_B[i],s)
     Pr_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)
-    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)
-    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)
-    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)
+    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)T(0,0.5)
+    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)T(0.5,1)
+    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)T(0.5,1)
+    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)T(0.5,1)
   }
     Pr_sdFA ~ dbeta(1,1)T(0.001,0.25)
     Pr_sdFB ~ dbeta(1,1)T(0.001,0.25)

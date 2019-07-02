@@ -45,8 +45,8 @@
 \newlength{\onecolwid}
 \newlength{\twocolwid}
 \newlength{\threecolwid}
-\setlength{\paperwidth}{119cm} % Width 150 cm  [Max 96in - 244 cm]
-\setlength{\paperheight}{88cm} % Heighth 120.22 [Max 48 - 121 m]
+\setlength{\paperwidth}{48in} % Width 150 cm  [Max 96in - 244 cm]
+\setlength{\paperheight}{36in} % Heighth 120.22 [Max 48 - 121 m]
 \setlength{\sepwid}{0.01\paperwidth} % Separation width (white space) between columns
 \setlength{\onecolwid}{0.24\paperwidth} % Width of one column
 \setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
@@ -76,10 +76,10 @@
 \setlength\belowdisplayshortskip{1ex} % White space under equations
 \begin{frame}[t] % The whole poster is enclosed in one beamer frame
 \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north west] at ([shift={(1cm,-1cm)}]current page.north west)
+\node[anchor=north west] at ([shift={(1cm,-2.5cm)}]current page.north west)
     {\includegraphics[width=8cm]{Figures/UNAMiwi.jpg}};
-\node[anchor=north east] at ([shift={(-1cm,-1cm)}]current page.north east)
-    {\includegraphics[width=8.6cm, height=10.1cm]{Figures/Lab25.png}};
+\node[anchor=north east] at ([shift={(-1cm,-2.5cm)}]current page.north east)
+    {\includegraphics[height=9.7cm]{Figures/Lab25.png}};
 \end{tikzpicture}
 
 %----------------------------------------------------------------------------------------
@@ -159,9 +159,7 @@ We found evidence for the Mirror Effect in at least 85\% of our participants: In
 %-----------------------------------------------------------------------------------------
 
 \end{column} % End of the first column
-
 \begin{column}{\sepwid}\end{column} % Empty spacer column
-
 \begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
 
 
@@ -250,16 +248,8 @@ Given the probabilistic nature of the SDT model, it seems like the study of the 
 %----------------------------------------------------------------------------------------
 \setlength{\onecolwid}{0.21\paperwidth}
 \begin{column}{\sepwid}\end{column} % Empty spacer column
-\begin{column}{\onecolwid}\vspace{-2.1in} % The second column within column 2 (column 2.2)
+\begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-
-%Agregamos un espacio para que la columna 2.2 no se encime con el Spoiler
-\setbeamercolor{item}{fg=white}
-\setbeamercolor{item projected}{fg=white,bg=white}
-\begin{itemize}
-\item
-\item
-\end{itemize}
 
 
 
@@ -416,6 +406,8 @@ The perceptual task here presented lacked a pre-experimental phase where partici
 \item Website: \href{www.bouzaslab25.com}{www.bouzaslab25.com}
 \item Email: \href{mailto:adrifelcha@gmail.com}{adrifelcha@gmail.com}
 \end{itemize}
+
+\small{\rmfamily{Thanks to Alexander Etz, J. M. Niño and Manuel Villarreal for their orientation on how to make better plots and more precise models}} \\
 
 
 \end{block}

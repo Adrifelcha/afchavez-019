@@ -8,54 +8,17 @@ model{
     h_B[i] ~ dbin(thetah_B[i],s)
     fa_B[i] ~ dbin(thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    thetah_A[i] ~ dnorm(muHA,sdHA)
-    thetaf_A[i] ~ dnorm(muFA,sdFA)
-    thetah_B[i] ~ dnorm(muHB,sdHB)
-    thetaf_B[i] ~ dnorm(muFB,sdFB)
+    thetah_A[i] <- realH[i] + deltaH[i]/2
+    thetaf_A[i] <- realF[i] - deltaF[i]/2
+    thetah_B[i] <- realH[i] - deltaH[i]/2
+    thetaf_B[i] <- realF[i] + deltaF[i]/2
+    realH[i] ~ dbeta(1,1)T(0,0.5)
+    realF[i] ~ dbeta(1,1)T(0,0.5)
+    deltaH[i] ~ dnorm(muH,sdH)
+    deltaF[i] ~ dnorm(muF,sdF)
   }
-    gamFA ~ dgamma(.001,.001)T(0.01,1)
-    gamFB ~ dgamma(.001,.001)T(0.01,1)
-    gamHA ~ dgamma(.001,.001)T(0.01,1)
-    gamHB ~ dgamma(.001,.001)T(0.01,1)
-    sdFA <- 1/sqrt(gamFA)
-    sdFB <- 1/sqrt(gamFB)    
-    sdHA <- 1/sqrt(gamHA)    
-    sdHB <- 1/sqrt(gamHB)    
-    muHA <- muH + deltaH/2
-    muFA <- muF - deltaF/2
-    muHB <- muH - deltaH/2
-    muFB <- muF + deltaF/2
-    deltaH ~ dbeta(1,1)T(0.5,1)
-    deltaF ~ dbeta(1,1)T(0,0.5)
     muH ~ dbeta(1,1)T(0.5,1)
     muF ~ dbeta(1,1)T(0,0.5)
-#PRIORS
-for (i in 1:k){
-  # Posterior density based on our data
-    Pr_h_A[i] ~ dbin(Pr_thetah_A[i],s)
-    Pr_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
-    Pr_h_B[i] ~ dbin(Pr_thetah_B[i],s)
-    Pr_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
-    # Reparameterization Using Equal-Variance Gaussian SDT
-    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)
-    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)
-    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)
-    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)
-  }
-    Pr_gamFA ~ dgamma(.001,.001)T(0.01,1)
-    Pr_gamFB ~ dgamma(.001,.001)T(0.01,1)
-    Pr_gamHA ~ dgamma(.001,.001)T(0.01,1)
-    Pr_gamHB ~ dgamma(.001,.001)T(0.01,1)
-    Pr_sdFA <- 1/sqrt(Pr_gamFA)
-    Pr_sdFB <- 1/sqrt(Pr_gamFB)    
-    Pr_sdHA <- 1/sqrt(Pr_gamHA)    
-    Pr_sdHB <- 1/sqrt(Pr_gamHB) 
-    Pr_muHA <- Pr_muH + Pr_deltaH/2
-    Pr_muFA <- Pr_muF - Pr_deltaF/2
-    Pr_muHB <- Pr_muH - Pr_deltaH/2
-    Pr_muFB <- Pr_muF + Pr_deltaF/2
-    Pr_deltaH ~ dbeta(1,1)T(0.5,1)
-    Pr_deltaF ~ dbeta(1,1)T(0,0.5)
-    Pr_muH ~ dbeta(1,1)T(0.5,1)
-    Pr_muF ~ dbeta(1,1)T(0,0.5)
-      }
+    sdH ~ dbeta(1,1)T(0.001,.25)
+    sdF ~ dbeta(1,1)T(0.001,.25)
+}

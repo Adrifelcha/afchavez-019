@@ -1,0 +1,9 @@
+You can skip safely the first 27 slides, these are only a reminder of the basis for the rest of the work
+
+1.- I start by presenting a non-informative Hierarchical model, which is supposed to just show the general structure of our data within a SDT framework. I made some small adjustments to the priors being used in this model that can be seen as well in the other models: d' values are constraint to positive values and values closer to 1 for c.
+
+2.- I present the Bayesian model to test the differences between d' on each class of stimuli. Once again, the constriction on d' can be found both in the general Mu-D value and in delta. This way, the model already reflects one of our initial expectations: that d' for the A class should be bigger than d' for the B class stimuli.
+
+3.- To assess the Mirror Effect (FA(A)<FA(B)<H(B)<H(A)) , we present an extension of the standard Bayesian SDT model where two deterministic nodes Tau are added to measure the differences between the Hit and F.A. rates (conceived as Theta parameters in a binomial distribution). As suggested, a prior predictive approximation is used to assess the posterior densities obtained for Tau.
+
+4.- We continue assessing the Mirror Effect, but this time we use a more complete model which specifies the expected differences between the two classes of stimuli being tested (D'(A)>D'(B)) and once again, use a predictive prior approach to assess the Tau posterior estimations by means of a Bayes Factor

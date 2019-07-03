@@ -14,7 +14,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 1
+experimento <- 2
 ###################
 
 if (experimento == 1)    #Una Figura de Ebbinghaus
@@ -55,23 +55,22 @@ model{
     h_B[i] ~ dbin(thetah_B[i],s)
     fa_B[i] ~ dbin(thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    thetah_A[i] ~ dnorm(muHA,sdHA)T(0.5,1)
-    thetaf_A[i] ~ dnorm(muFA,sdFA)T(0,0.5)
-    thetah_B[i] ~ dnorm(muHB,sdHB)T(0.5,1)
-    thetaf_B[i] ~ dnorm(muFB,sdFB)T(0,0.5)
-  }
-    sdFA ~ dbeta(1,1)T(0.001,0.5)
-    sdFB ~ dbeta(1,1)T(0.001,0.5)
-    sdHA ~ dbeta(1,1)T(0.001,0.5)
-    sdHB ~ dbeta(1,1)T(0.001,0.5)
+    thetah_A[i] ~ dnorm(muHA,sdHA)T(0.4,1)
+    thetaf_A[i] ~ dnorm(muFA,sdFA)T(0,0.6)
+    thetah_B[i] ~ dnorm(muHB,sdHB)T(0.4,1)
+    thetaf_B[i] ~ dnorm(muFB,sdFB)T(0,0.6)}
+    sdFA ~ dbeta(1,1)T(0.001,0.4)
+    sdFB ~ dbeta(1,1)T(0.001,0.4)
+    sdHA ~ dbeta(1,1)T(0.001,0.4)
+    sdHB ~ dbeta(1,1)T(0.001,0.4)
     muHA <- muH + deltaH/2
     muFA <- muF - deltaF/2
     muHB <- muH - deltaH/2
     muFB <- muF + deltaF/2
-    deltaH ~ dbeta(1,1)
-    deltaF ~ dbeta(1,1)
-    muH ~ dbeta(1,1)T(0.5,1)
-    muF ~ dbeta(1,1)T(0,0.5)
+    deltaH ~ dbeta(1,1)T(0.001,0.4)
+    deltaF ~ dbeta(1,1)T(0.001,0.4)
+    muH ~ dbeta(1,1)T(0.45,1)
+    muF ~ dbeta(1,1)T(0,0.55)
 #PRIORS
 for (i in 1:k){
   # Posterior density based on our data
@@ -80,23 +79,23 @@ for (i in 1:k){
     Pr_h_B[i] ~ dbin(Pr_thetah_B[i],s)
     Pr_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
     # Reparameterization Using Equal-Variance Gaussian SDT
-    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)T(0.5,1)
-    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)T(0,0.5)
-    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)T(0.5,1)
-    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)T(0,0.5)
+    Pr_thetah_A[i] ~ dnorm(Pr_muHA,Pr_sdHA)T(0.4,1)
+    Pr_thetaf_A[i] ~ dnorm(Pr_muFA,Pr_sdFA)T(0,0.6)
+    Pr_thetah_B[i] ~ dnorm(Pr_muHB,Pr_sdHB)T(0.4,1)
+    Pr_thetaf_B[i] ~ dnorm(Pr_muFB,Pr_sdFB)T(0,0.6)
   }
-    Pr_sdFA ~ dbeta(1,1)T(0.001,0.5)
-    Pr_sdFB ~ dbeta(1,1)T(0.001,0.5)
-    Pr_sdHA ~ dbeta(1,1)T(0.001,0.5)
-    Pr_sdHB ~ dbeta(1,1)T(0.001,0.5)
+    Pr_sdFA ~ dbeta(1,1)T(0.001,0.4)
+    Pr_sdFB ~ dbeta(1,1)T(0.001,0.4)
+    Pr_sdHA ~ dbeta(1,1)T(0.001,0.4)
+    Pr_sdHB ~ dbeta(1,1)T(0.001,0.4)
     Pr_muHA <- Pr_muH + Pr_deltaH/2
     Pr_muFA <- Pr_muF - Pr_deltaF/2
     Pr_muHB <- Pr_muH - Pr_deltaH/2
     Pr_muFB <- Pr_muF + Pr_deltaF/2
-    Pr_deltaH ~ dbeta(1,1)
-    Pr_deltaF ~ dbeta(1,1)
-    Pr_muH ~ dbeta(1,1)T(0.5,1)
-    Pr_muF ~ dbeta(1,1)T(0,0.5)
+    Pr_deltaH ~ dbeta(1,1)T(0.001,0.4)
+    Pr_deltaF ~ dbeta(1,1)T(0.001,0.4)
+    Pr_muH ~ dbeta(1,1)T(0.45,1)
+    Pr_muF ~ dbeta(1,1)T(0,0.55)
       }','Delta-Rate.bug')
 
 ######################################
@@ -105,7 +104,7 @@ for (i in 1:k){
 ######################################
 data <- list("fa_A", "fa_B", "h_B", "h_A", "s", "n", "k")                    #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(deltaH = 0.75, deltaF = 0.25, muH = 0.75,muF = 0.25))      #Valores iniciales para las extracciones de las cadenas de Markov
+  list(muH = 0.75,muF = 0.25))      #Valores iniciales para las extracciones de las cadenas de Markov
 
 #Parámetros monitoreados
 parameters <- c("thetah_A", "thetaf_A", "thetah_B", "thetaf_B",
@@ -119,7 +118,7 @@ parameters <- c("thetah_A", "thetaf_A", "thetah_B", "thetaf_B",
                 "Pr_h_A", " Pr_h_B", " Pr_fa_A", " Pr_fa_B")
 
 
-niter <- 50000    #Iteraciones
+niter <- 500000    #Iteraciones
 burnin <- 5000     #No. de primeros sampleos en ignorarse
 
 #Corremos el modelo
@@ -200,22 +199,22 @@ write('
       Predicted_Hb[i] ~ dbin(PPr_thetah_B[i],s)
       Predicted_Fb[i] ~ dbin(PPr_thetaf_B[i],n)
       # Reparameterization Using Equal-Variance Gaussian SDT
-      PPr_thetah_A[i] ~ dnorm(PPr_muHA,PPr_sdHA)T(0.5,1)
-      PPr_thetaf_A[i] ~ dnorm(PPr_muFA,PPr_sdFA)T(0,0.5)
-      PPr_thetah_B[i] ~ dnorm(PPr_muHB,PPr_sdHB)T(0.5,1)
-      PPr_thetaf_B[i] ~ dnorm(PPr_muFB,PPr_sdFB)T(0,0.5)}
-      PPr_sdFA ~ dbeta(1,1)T(0.001,0.5)
-      PPr_sdFB ~ dbeta(1,1)T(0.001,0.5)
-      PPr_sdHA ~ dbeta(1,1)T(0.001,0.5)
-      PPr_sdHB ~ dbeta(1,1)T(0.001,0.25)
+      PPr_thetah_A[i] ~ dnorm(PPr_muHA,PPr_sdHA)T(0.4,1)
+      PPr_thetaf_A[i] ~ dnorm(PPr_muFA,PPr_sdFA)T(0,0.6)
+      PPr_thetah_B[i] ~ dnorm(PPr_muHB,PPr_sdHB)T(0.4,1)
+      PPr_thetaf_B[i] ~ dnorm(PPr_muFB,PPr_sdFB)T(0,0.6)}
+      PPr_sdFA ~ dbeta(1,1)T(0.001,0.4)
+      PPr_sdFB ~ dbeta(1,1)T(0.001,0.4)
+      PPr_sdHA ~ dbeta(1,1)T(0.001,0.4)
+      PPr_sdHB ~ dbeta(1,1)T(0.001,0.4)
       PPr_muHA <- PPr_muH + PPr_deltaH/2
       PPr_muFA <- PPr_muF - PPr_deltaF/2
       PPr_muHB <- PPr_muH - PPr_deltaH/2
       PPr_muFB <- PPr_muF + PPr_deltaF/2
-      PPr_deltaH ~ dbeta(1,1)
-      PPr_deltaF ~ dbeta(1,1)
-      PPr_muH ~ dbeta(1,1)T(0.5,1)
-      PPr_muF ~ dbeta(1,1)T(0,0.5)}',
+      PPr_deltaH ~ dbeta(1,1)T(0.001,0.4)
+      PPr_deltaF ~ dbeta(1,1)T(0.001,0.4)
+      PPr_muH ~ dbeta(1,1)T(0.45,1)
+      PPr_muF ~ dbeta(1,1)T(0,0.55)}',
       'Rate_predictive.bug')
 
 ######################################
@@ -225,7 +224,7 @@ write('
 data <- list("Predicted_Ha", "Predicted_Hb", "Predicted_Fa", "Predicted_Fb", "s", "n", "k")                    
 #Los datos que vamos a utilizar para nuestro modelo
 myinits <- list(
-  list(PPr_deltaH = 0.75, PPr_deltaF = 0.25, PPr_muH = 0.75, PPr_muF = 0.25))      
+  list(PPr_muH = 0.75, PPr_muF = 0.25))      
 
 #Parámetros monitoreados
 parameters <- c("PPr_thetah_A", "PPr_thetaf_A", "PPr_thetah_B", "PPr_thetaf_B",
@@ -246,7 +245,6 @@ samples <- jags(data, inits=myinits, parameters,
 # a.k.a.:
 #Le ponemos una etiqueta a cada elemento contenido en Samples
 ####################################################################
-
 #Prior predictiva
 PPr_tetaH_a <- samples$BUGSoutput$sims.list$PPr_thetah_A
 PPr_tetaH_b <- samples$BUGSoutput$sims.list$PPr_thetah_B
@@ -285,6 +283,7 @@ Exp <- 1}else{
   soporte_f <- c(0,25)
   Exp <- 2
 }
+
 
   ##########################
   # Predicted vs Observed Total Counts
@@ -350,6 +349,21 @@ Exp <- 1}else{
   text(16.5,73, "Prior prediction for the number of Hits - B Class", f=2)
   text(15.5,68, "Observed number of Hits - A Class", f=2)
   text(15.5,63, "Observed number of Hits - B Class", f=2)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ################################
+  # Estimations
+  ################################
   
   
   ###############################
@@ -439,6 +453,94 @@ Exp <- 1}else{
   
   
   
+  
+  ###############################
+  #  Mu(Hits) PER CLASS OF STIMULI
+  #Prior distributions
+  plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.45,1), axes=F,
+       ylim=c(0,3))
+    lines(density(Pr_muHA), lwd=2, col="deepskyblue3")
+    lines(density(Pr_muHB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.7,2.7, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Prior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(Hit rate)", side=1, line = 2.8, cex=2.5, font=2)
+  mtext(paste("Prior distribution for Mean(Hits) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Prior predictive
+  plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.45,1), axes=F,
+       ylim=c(0,3))
+    lines(density(PPr_muHA), lwd=2, col="deepskyblue3")
+    lines(density(PPr_muHB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.35,20, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Predictive prior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(Hit rate)", side=1, line = 2.8, cex=2.5, font=2)
+    mtext(paste("Prior predictive for Mean(Hits) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+  #Posterior density
+  plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0.45,1), axes=F,
+       ylim=c(0,3))
+    lines(density(muHA), lwd=2, col="deepskyblue3")
+    lines(density(muHB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.35,50, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Posterior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(Hit rate)", side=1, line = 2.8, cex=2.5, font=2)
+    mtext(paste("Posterior distribution for Mean(Hits) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+  
+  
+    
+    
+    ###############################
+    #  Mu(F.A.) PER CLASS OF STIMULI
+    #Prior distributions
+    plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.55), axes=F,
+         ylim=c(0,3))
+    lines(density(Pr_muFA), lwd=2, col="deepskyblue3")
+    lines(density(Pr_muFB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.7,2.7, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Prior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(FA rate)", side=1, line = 2.8, cex=2.5, font=2)
+    mtext(paste("Prior distribution for Mean(FA) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+    #Prior predictive
+    plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.55), axes=F,
+         ylim=c(0,3))
+    lines(density(PPr_muFA), lwd=2, col="deepskyblue3")
+    lines(density(PPr_muFB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.35,20, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Predictive prior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(FA rate)", side=1, line = 2.8, cex=2.5, font=2)
+    mtext(paste("Prior predictive for Mean(FA) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+    #Posterior density
+    plot(soporte_f, col="white", main="", cex.main=3, ylab="", xlab="", xlim=c(0,0.55), axes=F,
+         ylim=c(0,3))
+    lines(density(muFA), lwd=2, col="deepskyblue3")
+    lines(density(muFB), lwd=2, col="darkorchid3", lty=1)
+    axis(1)
+    axis(2, labels=F, at=c(0,94))
+    legend(0.35,50, legend=c("A Class", "B Class"),
+           col=c("dodgerblue2", "darkorchid2","dodgerblue4", "darkorchid4"), lty=1, cex=1.2, lwd=c(2,2,5,5))
+    mtext("Posterior density", side=2, line = 2.1, cex=2, las=0)
+    mtext("Mean(FA rate)", side=1, line = 2.8, cex=2.5, font=2)
+    mtext(paste("Posterior distribution for Mean(FA) per class - Experiment No.", Exp), font=2, cex=2, side=3)
+    
+  
+  
+  
+  
+  
+  
   ########################
   ######### DELTA HITS
   layout(matrix(1:1,ncol=1))
@@ -454,7 +556,7 @@ Exp <- 1}else{
   layout(matrix(1:1,ncol=1))
   plot(density(deltaH), col='blue4', lwd=3.5, ann=F, axes=F, xlim=c(-0.5,2))
   #lines(seq(-100,100,.05), dnorm(seq(-100,100,.05), 0,1), lwd=1, col="darkorchid3")
-  lines(density(prior_delta), lwd=1, col="red")
+  lines(density(Pr_deltaH), lwd=1, col="red")
   axis(1)
   axis(2, line=.5)
   mtext("Density", side=2, line=3.5, cex=1.5, las=0, font=1)

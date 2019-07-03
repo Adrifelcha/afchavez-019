@@ -1,4 +1,4 @@
-setwd("C:/Users/Alejandro/Desktop/afchavez19/MichaelLee/SDT Mirror Effect/Data")
+setwd("C:/Users/Jaime/Desktop/afchavez-019/MichaelLee/SDT Mirror Effect/Data")
 rm(list=ls())
 dir()
 library(R2jags)
@@ -138,6 +138,14 @@ samples <- jags(data, inits=myinits, parameters,
   tetaFA_a <- samples$BUGSoutput$sims.list$thetaf_A
   tetaFA_b <- samples$BUGSoutput$sims.list$thetaf_B
   
+  muHA <- samples$BUGSoutput$sims.list$muHA
+  muHB <- samples$BUGSoutput$sims.list$muHB
+  muFA <- samples$BUGSoutput$sims.list$muFA
+  muFB <- samples$BUGSoutput$sims.list$muFB
+  
+  muH <- samples$BUGSoutput$sims.list$muH
+  muF <- samples$BUGSoutput$sims.list$muF
+  
   deltaH <- samples$BUGSoutput$sims.list$deltaH
   deltaF <- samples$BUGSoutput$sims.list$deltaF
   
@@ -155,8 +163,17 @@ samples <- jags(data, inits=myinits, parameters,
   Pr_tetaFA_b <- samples$BUGSoutput$sims.list$Pr_thetaf_B
   
   Pr_deltaH <- samples$BUGSoutput$sims.list$Pr_deltaH
-  Pr_deltaF <- samples$BUGSoutput$sims.list$Pr_deltaH
+  Pr_deltaF <- samples$BUGSoutput$sims.list$Pr_deltaF
 
+  Pr_muHA <- samples$BUGSoutput$sims.list$Pr_muHA
+  Pr_muHB <- samples$BUGSoutput$sims.list$Pr_muHB
+  Pr_muFA <- samples$BUGSoutput$sims.list$Pr_muFA
+  Pr_muFB <- samples$BUGSoutput$sims.list$Pr_muFB
+  
+  Pr_muH <- samples$BUGSoutput$sims.list$Pr_muH
+  Pr_muF <- samples$BUGSoutput$sims.list$Pr_muF
+  
+  
 Predicted_Ha <- NULL
 Predicted_Hb <- NULL
 Predicted_Fa <- NULL
@@ -236,8 +253,17 @@ PPr_tetaH_b <- samples$BUGSoutput$sims.list$PPr_thetah_B
 PPr_tetaFA_a <- samples$BUGSoutput$sims.list$PPr_thetaf_A
 PPr_tetaFA_b <- samples$BUGSoutput$sims.list$PPr_thetaf_B
 
+PPr_muHA <- samples$BUGSoutput$sims.list$PPr_muHA
+PPr_muHB <- samples$BUGSoutput$sims.list$PPr_muHB
+PPr_muFA <- samples$BUGSoutput$sims.list$PPr_muFA
+PPr_muFB <- samples$BUGSoutput$sims.list$PPr_muFB
+
+PPr_muH <- samples$BUGSoutput$sims.list$PPr_muH
+PPr_muF <- samples$BUGSoutput$sims.list$PPr_muF
 
 
+PPr_deltaH <- samples$BUGSoutput$sims.list$PPr_deltaH
+PPr_deltaF <- samples$BUGSoutput$sims.list$PPr_deltaF
 
 
 
@@ -247,17 +273,9 @@ PPr_tetaFA_b <- samples$BUGSoutput$sims.list$PPr_thetaf_B
 ##########################################################
 ################## DRAWING PLOTS
 ##########################################################
-
-  
-  ###################################################################################
-  # Paneles separados
-  # Las posteriores de los parámetros INDVIDUALES estimados (D'y C; ThetaH y ThetaFA)
-  ###################################################################################
-  
 layout(matrix(1,ncol=1))  #Dos paneles
   soporte_d <- c(0,3)      
   soporte_c <- c(0,6)
-
   
 if (experimento ==1){  
 soporte_h <- c(0,70)
@@ -334,12 +352,6 @@ Exp <- 1}else{
   text(15.5,63, "Observed number of Hits - B Class", f=2)
   
   
-  
-  
-  
-  
-    
-
   ###############################
     # THETA HITS:   
           #Prior Distribution

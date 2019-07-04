@@ -98,18 +98,18 @@
 
 
 
-\rput(1,4.3){\GM@node[nodeSize=17mm,
+\rput(1,5.7){\GM@node[nodeSize=17mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{PiH}}
-           \GM@label[offset=-4.5mm]{PiH}{\huge$\pi^h_{i}$}
-\rput(9.9,4.3){\GM@node[nodeSize=17mm,
+           \GM@label[offset=-4.5mm]{PiH}{\huge$\pi^h_{ij}$}
+\rput(9.9,5.7){\GM@node[nodeSize=17mm,
 					%observed=true,
 					observedColor=lightgray,
 					%query=true
 					]{PiFA}}
-           \GM@label[offset=-4.5mm]{PiFA}{\huge$\pi^f_{i}$}
+           \GM@label[offset=-4.5mm]{PiFA}{\huge$\pi^f_{ij}$}
 
 
 
@@ -128,7 +128,7 @@
 					]{faA}}
            \GM@label[offset=-4.5mm]{faA}{\huge$y^f_{ij}$}    
 
-\rput(5.5,1.2){\GM@node[nodeSize=15mm,
+\rput(5.25,1.2){\GM@node[nodeSize=15mm,
 					%observed=true,
 					observedColor=lightgray,
 					query=true
@@ -187,10 +187,10 @@
 \ncline[arrows=->]{S}{hA}
 \ncline[arrows=->]{S}{hB}
 
-\ncline[arrows=->]{Zeta}{faA}
-\ncline[arrows=->]{Zeta}{faB}
-\ncline[arrows=->]{Zeta}{hA}
-\ncline[arrows=->]{Zeta}{hB}
+\ncline[arrows=->]{Zeta}{TetaFAB}
+\ncline[arrows=->]{Zeta}{TetaFAA}
+\ncline[arrows=->]{Zeta}{TetaHA}
+\ncline[arrows=->]{Zeta}{TetaHB}
 \ncline[arrows=->]{PiFA}{faA}
 \ncline[arrows=->]{PiFA}{faB}
 \ncline[arrows=->]{PiH}{hA}
@@ -200,9 +200,9 @@
 % 4. Plates
 %%%%%%%%%%%
 
-\rput(0.2, 0.5){\GM@plate[plateLabelPos=br]{10.5}{8.5}{\Large$i$ participant}}
+\rput(0.1, 0.5){\GM@plate[plateLabelPos=br]{10.7}{8.5}{\Large$i$ participant}}
 
-\rput(2.1, 2.1){\GM@plate[plateLabelPos=br]{6.6}{9}{\Large$j$ condition}}
+\rput(0.2, 2.1){\GM@plate[plateLabelPos=br]{10.5}{9}{\Large$j$ condition}}
 
 % 5. Model specification
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,33 +213,35 @@
 
 %\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
 
-\rput(11.5,11){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\gets
+\rput(11.5,10.7){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\gets
 \begin{cases}
-\pi^h_{j}		& \mathrm{if}\:\: z_{j}=0 \\
+\pi^h_{ij}		& \mathrm{if}\:\: z_{j}=0 \\
 \theta^h_{ij}	& \mathrm{if}\:\: z_{j}=1  \\ 
 \end{cases}$}
 
-\rput(11.5,9){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\gets
+\rput(11.5,8.7){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\gets
 \begin{cases}
-\pi^f_{j}		& \mathrm{if}\:\: z_{j}=0 \\
+\pi^f_{ij}		& \mathrm{if}\:\: z_{j}=0 \\
 \theta^f_{ij}	& \mathrm{if}\:\: z_{j}=1  \\ 
 \end{cases}$}
 
-\rput(11.5,6.2){\pnode{equation}}\GM@label{equation}{\huge$\pi^h_{i},\pi^f_{i} \sim \mathrm{Beta}\bigl(1,1)$}
+\rput(11.5,7){\pnode{equation}}\GM@label{equation}{\huge$\pi^h_{ij},\pi^f_{i} \sim \mathrm{Beta}(1,1)$}
 
-\rput(11.5,5){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
+\rput(11.5,5.6){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
 
-\rput(11.5,4){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
-
-
-\rput(11.5,2.5){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}\bigl(\mu^d_{j},\sigma^d_{j})$}
-
-\rput(11.5,1.5){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}\bigl(\mu^c_{j},\sigma^c_{j})$}
+\rput(11.5,4.8){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
 
 
-\rput(11.5,0){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{j}, \mu^d_{j}\sim \mathrm{Gaussian}\bigl(0,2)$}
+\rput(11.5,3.4){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}(\mu^d_{j},\sigma^d_{j})$}
 
-\rput(11.5,-1){\pnode{equation}}\GM@label{equation}{\huge$\sigma^c_{j}, \sigma^d_{j}\sim \mathrm{Gamma}\bigl(1,1)$}
+\rput(11.5,2.6){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}(\mu^c_{j},\sigma^c_{j})$}
+
+
+\rput(11.5,1.2){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{j}\sim \mathrm{Gaussian}(0,0.7)$}
+
+\rput(11.5,0.4){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{j}\sim \mathrm{Gaussian}(0,1)_{T(0,6)}$}
+
+\rput(11.5,-0.4){\pnode{equation}}\GM@label{equation}{\huge$\sigma^c_{j}, \sigma^d_{j}\sim \mathrm{Uniform}(0,4)$}
 
 
 % 6. End document

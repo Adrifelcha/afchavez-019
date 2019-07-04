@@ -77,9 +77,9 @@
 \begin{frame}[t] % The whole poster is enclosed in one beamer frame
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north west] at ([shift={(1cm,-2.5cm)}]current page.north west)
-    {\includegraphics[width=8cm]{Figures/UNAMiwi.jpg}};
+    {\includegraphics[width=10.5cm]{Figures/UNAMiwi.jpg}};
 \node[anchor=north east] at ([shift={(-1cm,-2.5cm)}]current page.north east)
-    {\includegraphics[height=9.7cm]{Figures/Lab25.png}};
+    {\includegraphics[height=11cm]{Figures/Lab25.png}};
 \end{tikzpicture}
 
 %----------------------------------------------------------------------------------------
@@ -98,16 +98,16 @@
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10}
 \begin{alertblock}{Introduction}
 
-The Mirror Effect is a well-established empirical result in Recognition Memory: when  subjects' performance is compared between two classes of stimuli, one known to be easier to recognize (A class) than the other (B class), this difference is reflected in the identification of both target and lure stimuli (Glanzer et al., 1993), measured as hit and false alarm rates in a Signal Detection Theory framework.
+The Mirror Effect is a well-established empirical result in Recognition Memory: when  subjects' performance is compared between two classes of stimuli, one known to be easier to recognize (A class) than the other (B class), this difference is reflected in the identification of both target and lure stimuli (Glanzer et al., 1993). The  implied order of the underlying distributions under a SDT framework is what gives these patterns the name of the "Mirror Effect".
 
 \begin{equation}
 FA(A) < FA(B) < Hits(B) < Hits(A)
 \label{eqn:Rates}
 \end{equation}
 
-The  implied order of the underlying distributions under a SDT framework is what gives these patterns the name of the "Mirror Effect".
+
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{Figures/MirrorEffect.png}
+\includegraphics[width=0.4\linewidth]{Figures/MirrorEffect.png}
 \end{figure}
 
 \end{alertblock}
@@ -120,38 +120,44 @@ The  implied order of the underlying distributions under a SDT framework is what
 \setbeamercolor{block alerted title}{fg=white,bg=Plum} % Titulo del Cuadro
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10} % Cuerpo / Contenido del cuadro
 \begin{alertblock}{Method: A perceptual task}
-To assess the generalizability of the Mirror Effect, we designed a merely perceptual task where what is known about the Ebbinghaus illusion (Massaro \& Anderson  1971), is used to construct the two classes of stimuli, A and B:
-
+\textbf{To assess the generalizability of the Mirror Effect}, we designed a perceptual task where  the Ebbinghaus illusion, is used to construct the two classes of stimuli, A and B (Massaro \& Anderson  1971):
 \begin{itemize}
-\item A class ("Easier"): 2 or 3 surrounding circles.
-\item B class ("Hard"): 7 or 8 surrounding circles.
+\item A class ("Easier"): 2 or 3 surrounding circles - Weak illusion
+\item B class ("Hard"): 7 or 8 surrounding circles - Strong illusion
 \end{itemize}
-
-$\quad$
+$\quad$\\
 \setbeamercolor{item}{fg=Purple}
 \setbeamercolor{item projected}{fg=white,bg=Purple}
 \begin{enumerate}
-\item \textbf{Detection Task:} Are the central circles the same size?
+\item \textbf{Detection Task:} Are the central circles the same size?\\
+\textbf{Two experiments:} 
+\begin{itemize}
+\item Experiment 1: Just one Ebbinghaus illusion on screen.
+\item Experiment 2: Both circles were Ebbinghaus illusions.\\
+\end{itemize}
+\begin{center}
 \begin{tabular}{ccc}
-$\qquad$ \includegraphics[width=0.35\linewidth]{Figures/MainTask.png} & \hfill & $\qquad$\includegraphics[width=0.35\linewidth]{Figures/MainTask2.png}
+\includegraphics[width=0.35\linewidth]{Figures/MainTask3.png}
 \end{tabular}
+\end{center}
+$\quad$\\
 \item \textbf{Confidence Rating:} How certain are you of your previous response? (1-3 scale)
 \end{enumerate}
-$\qquad$
-
-\textbf{Two experiments:} 
-
-\begin{itemize}
-\item Experiment 1: Just the right circle was an Ebbinghaus illusion.
-\item Experiment 2: Both circles were constructed as Ebbinghaus illusions.
-\end{itemize}
-$\qquad$
 \end{alertblock}
+
 
 \setbeamercolor{block alerted title}{fg=white,bg=Plum}
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10}
 \begin{alertblock}{Replication of the original data analysis}
-We found evidence for the Mirror Effect in at least 85\% of our participants: In Experiment 1 we had 17/20 in the Yes/No task and 18/20 on their Confidence ratings; 19/20 participants showed the Mirror Effect patterns in Experiment 2, in both tasks). We conducted a step by step replication of the mean-based analysis reported in the literature, we present evidence of the mirror effect outside recognition memory. 
+We found evidence for the Mirror Effect response rates in at least 85\% of our participants: In Experiment 1 we had 17/20 in the Yes/No task and 18/20 on their Confidence ratings; 19/20 participants did in Experiment 2, for both tasks). We conducted a step by step replication of the mean-based analysis reported in the literature (Glanzer $\&$ Adams, 1990), and found that:
+\setbeamercolor{item}{fg=Purple}
+\setbeamercolor{item projected}{fg=white,bg=Purple}
+\begin{enumerate}
+\item Differences among d' are statistically significant \\
+($d'(A) > d'(B)$)
+\item Differences among response rates are significant too ($H(A)>H(B) \& FA(A)<FA(B)$)
+\item Differences among ratings are significant ($H(A)>H(B) \& FA(A)<FA(B)$)
+\end{enumerate}
 \end{alertblock} 
 
 %-----------------------------------------------------------------------------------------
@@ -185,6 +191,45 @@ Given the probabilistic nature of the SDT model, it seems like the study of the 
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{}
 
+\setbeamercolor{item}{fg=Purple}
+\setbeamercolor{item projected}{fg=white,bg=Purple}
+\begin{enumerate}
+\item We apply a Hierarchical SDT model to see our data
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.6\linewidth]{Figures/0_HierarchicalSDT.png}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.47\linewidth]{Figures/0-Exp1.png} & \hfill & \includegraphics[width=0.47\linewidth]{Figures/0-Exp2.png}
+\end{tabular}
+\end{center}
+
+$\qquad$
+
+\item We test the differences across d'
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.68\linewidth]{Figures/1_DiffD.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/1-Exp1_1.pdf} & \hfill & \includegraphics[width=0.45\linewidth]{Figures/1-Exp1_2.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/1-Exp2_1.pdf} & \hfill & \includegraphics[width=0.45\linewidth]{Figures/1-Exp2_2.png}
+\end{tabular}
+\end{center}
+
+
+\end{enumerate}
 \end{alertblock}
 \end{column} % End of column 2.1
 %----------------------------------------------------------------------------------------
@@ -203,49 +248,47 @@ Given the probabilistic nature of the SDT model, it seems like the study of the 
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{}
 
-
+\setbeamercolor{item}{fg=Purple}
+\setbeamercolor{item projected}{fg=white,bg=Purple}
 \begin{enumerate}
-\item D' differences: Are conditions actually different?
-\begin{center}
-\begin{tabular}{ccc}
-\includegraphics[width=0.65\linewidth]{Figures/Delta_DiffD_Model4.pdf}
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{ccc}
-\includegraphics[width=0.45\linewidth]{Figures/Modelo_Delta_MeanDC_1.pdf} & \hfill & \includegraphics[width=0.45\linewidth]{Figures/Modelo_Delta_MeanDC_2.pdf}
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{ccc}
-\includegraphics[width=0.35\linewidth]{Figures/Delta_1.pdf}  $\qquad$ $\qquad$ & \hfill & \includegraphics[width=0.35\linewidth]{Figures/Delta_2.pdf}
-\end{tabular}
-\end{center}
-
-
-
-$\qquad$
-
-
-\item Hit and False Alarm Rate Differences
-\begin{center}
-\begin{tabular}{ccc}
-\includegraphics[width=0.65\linewidth]{Figures/Tau_DiffTeta_Model3.pdf}
-\end{tabular}
-
-
-\begin{tabular}{ccc}
-\includegraphics[width=0.48\linewidth]{Figures/Tau_1.pdf} & \hfill & \includegraphics[width=0.48\linewidth]{Figures/Tau_2.pdf}
-\end{tabular}
-\end{center}
-
-
-
-$\quad$
+\item Are the Hit and F.A. rates different?
 \end{enumerate}
-%Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.8\linewidth]{Figures/3_Taus.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/3-PredictionsH.pdf} & \hfill & \includegraphics[width=0.45\linewidth]{Figures/3-PredictionsF.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/3-Exp1_TauH.pdf}  & \hfill & \includegraphics[width=0.45\linewidth]{Figures/3-Exp1_TauF.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/3-Exp1_BFH0.pdf}  & \hfill & \includegraphics[width=0.45\linewidth]{Figures/3-Exp1_BFF0.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/3-Exp2_TauH.pdf}  & \hfill & \includegraphics[width=0.45\linewidth]{Figures/3-Exp2_TauF.pdf}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.45\linewidth]{Figures/3-Exp2_BFH0.pdf}  & \hfill & \includegraphics[width=0.45\linewidth]{Figures/3-Exp2_BFF0.pdf}
+\end{tabular}
+\end{center}
+
 
 \end{alertblock}
 
@@ -260,7 +303,6 @@ $\quad$
 %----------------------------------------------------------------------------------------
 
 \end{column} % End of column 2.2
-
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
 
 %----------------------------------------------------------------------------------------
@@ -301,12 +343,8 @@ $\quad$
 %\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{Discussion}
 
-The present study is the first to show evidence of the Mirror Effect patterns of response on a SD task that does not involve recognition memory. 
-\setbeamercolor{item}{fg=white}
-\setbeamercolor{item projected}{fg=white,bg=white}
-\begin{itemize}
-\item
-\end{itemize}
+The present study is the first to show evidence of the Mirror Effect patterns of response on a SD task that does not involve recognition memory.\\
+
 The perceptual task here presented lacked a pre-experimental phase where participants had the chance to manipulate how powerful were the illusions elicited in each condition. This suggests that there might be a much more basic principle regulating the Mirror Effect pattern of responses.
 
 \end{alertblock}

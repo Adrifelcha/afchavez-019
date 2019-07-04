@@ -1082,7 +1082,7 @@ plot(density(prior_tau), main="Prior Tau ~ Normal(0,0.1)")
 
 layout(matrix(1:1,ncol=1))
 soporte_t<- c(0,35)
-taucolfa <- c('chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2','chocolate3','firebrick4','goldenrod2')
+taucolfa <- c('gray23','gray33','gray43','gray23','gray33','gray43','gray23','gray33','gray43','gray23','gray33','gray43','gray23','gray33','gray43','gray23','gray33','gray43','gray23','gray33','gray43')
 taucolh <- c('darkgreen','forestgreen','chartreuse3', 'darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3','darkgreen','forestgreen','chartreuse3')
 
 
@@ -1124,20 +1124,25 @@ plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3),
      ylim=c(0,24), col='white')
 for(a in 1:k){
 title(paste("Experiment No.", exp), line=2.2, cex=1)
-lines(density(tauH[,a]), lwd=2.5, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)}
-lines(density(PPr_tauH[,a]), col="blue", lwd=3)
+lines(density(tauH[,a]), lwd=3, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)
+lines(density(PPr_tauH[,a]), col="red", lwd=2, lty=2)}
 axis(1)
 abline(v=0, col='black', lty=2, lwd=3)
+legend(0.15,20, legend=c("Posterior densities", "Prior Predictives"),
+       col=c("forestgreen", "red"), lty=1, cex=1.2, lwd=c(2,2,5,5))
 mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
 mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), 
      col='white', ylim=c(0,24))
 for (a in 1:k){
-lines(density(tauF[,a]), lwd=2.5, col=taucolfa[a], ylab="", main="", xlab="", xlim=c(-0.5,0.5), axes=F)}
-lines(density(PPr_tauF[,a]), col="blue", lwd=3)
+lines(density(tauF[,a]), lwd=3, col=taucolfa[a], ylab="", main="", xlab="", 
+      xlim=c(-0.5,0.5), axes=F)
+lines(density(PPr_tauF[,a]), col="red", lwd=2, lty=2)}
 axis(1) 
 abline(v=0, col='black', lty=2, lwd=3)
+legend(0.2,20, legend=c("Posterior densities", "Prior Predictives"),
+       col=c("gray33", "red"), lty=1, cex=1.2, lwd=c(2,2,5,5))
 mtext(expression(paste(tau, "F.A.")), side=1, line = 2.8, cex=1.8, font=2)
 mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
 
@@ -1219,13 +1224,13 @@ plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
 for(u in 1:20){
   numero <- numero + 1
   points(numero,0, col=color_SD_0[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = expression(paste(tau, "(FA)")), line=2, cex=2, adj=1)
+mtext(side=2, text = expression(paste(tau, "(FA)")), line=2, cex=1.5, adj=1)
 mtext(side=1, text = "Participants", line=2.2, cex=1.5)
 legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
        col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
-title(expression(paste(tau, "(F.A.)", " individual posterior densities; BF at 0")))
+title(expression(paste(tau, "(FA)", " individual posterior densities; BF at 0")))
 mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 

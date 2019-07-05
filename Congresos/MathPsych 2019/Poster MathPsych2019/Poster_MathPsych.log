@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.25)  4 JUL 2019 18:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.25)  5 JUL 2019 15:44
 entering extended mode
 **./Poster_MathPsych.tex
 (Poster_MathPsych.tex
@@ -1636,36 +1636,36 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <12.50194> not available
 <Figures/UNAMiwi.png, id=12, 85.2786pt x 99.2508pt>
 File: Figures/UNAMiwi.png Graphic file (type png)
  <use Figures/UNAMiwi.png>
-Package pdftex.def Info: Figures/UNAMiwi.png used on input line 406.
+Package pdftex.def Info: Figures/UNAMiwi.png used on input line 413.
 (pdftex.def)             Requested size: 241.84842pt x 281.51526pt.
 
 <Figures/Lab25.png, id=14, 532.23843pt x 434.37282pt>
 File: Figures/Lab25.png Graphic file (type png)
  <use Figures/Lab25.png>
-Package pdftex.def Info: Figures/Lab25.png used on input line 406.
+Package pdftex.def Info: Figures/Lab25.png used on input line 413.
 (pdftex.def)             Requested size: 383.51997pt x 312.9803pt.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 406.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 413.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Calculating math sizes for size <28.35> on input line 406.
+LaTeX Font Info:    Calculating math sizes for size <28.35> on input line 413.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <28.35> not available
-(Font)              size <24.88> substituted on input line 406.
+(Font)              size <24.88> substituted on input line 413.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <19.84491> not available
-(Font)              size <20.74> substituted on input line 406.
+(Font)              size <20.74> substituted on input line 413.
 
 <Figures/MirrorEffect.png, id=15, 531.48563pt x 252.945pt>
 File: Figures/MirrorEffect.png Graphic file (type png)
 
 <use Figures/MirrorEffect.png>
-Package pdftex.def Info: Figures/MirrorEffect.png used on input line 406.
+Package pdftex.def Info: Figures/MirrorEffect.png used on input line 413.
 (pdftex.def)             Requested size: 315.95131pt x 150.37099pt.
-LaTeX Font Info:    Try loading font information for TS1+lmss on input line 406
+LaTeX Font Info:    Try loading font information for TS1+lmss on input line 413
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmss.fd"
@@ -1675,146 +1675,146 @@ File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: Figures/MainTask3.png Graphic file (type png)
 
 <use Figures/MainTask3.png>
-Package pdftex.def Info: Figures/MainTask3.png used on input line 406.
+Package pdftex.def Info: Figures/MainTask3.png used on input line 413.
 (pdftex.def)             Requested size: 268.80128pt x 139.21022pt.
 
 <Figures/0_HierarchicalSDT.pdf, id=17, 758.835pt x 505.89pt>
 File: Figures/0_HierarchicalSDT.pdf Graphic file (type pdf)
 
 <use Figures/0_HierarchicalSDT.pdf>
-Package pdftex.def Info: Figures/0_HierarchicalSDT.pdf used on input line 406.
+Package pdftex.def Info: Figures/0_HierarchicalSDT.pdf used on input line 413.
 (pdftex.def)             Requested size: 499.18898pt x 332.8pt.
 
 <Figures/0-Exp1.pdf, id=18, 781.92125pt x 508.90125pt>
 File: Figures/0-Exp1.pdf Graphic file (type pdf)
 
 <use Figures/0-Exp1.pdf>
-Package pdftex.def Info: Figures/0-Exp1.pdf used on input line 406.
+Package pdftex.def Info: Figures/0-Exp1.pdf used on input line 413.
 (pdftex.def)             Requested size: 360.95636pt x 234.92052pt.
 
 <Figures/0-Exp2.pdf, id=19, 781.92125pt x 508.90125pt>
 File: Figures/0-Exp2.pdf Graphic file (type pdf)
 
 <use Figures/0-Exp2.pdf>
-Package pdftex.def Info: Figures/0-Exp2.pdf used on input line 406.
+Package pdftex.def Info: Figures/0-Exp2.pdf used on input line 413.
 (pdftex.def)             Requested size: 360.95636pt x 234.92052pt.
  <Figures/1_DiffD.pdf, id=20, 758.835pt x 505.89pt>
 File: Figures/1_DiffD.pdf Graphic file (type pdf)
 
 <use Figures/1_DiffD.pdf>
-Package pdftex.def Info: Figures/1_DiffD.pdf used on input line 406.
+Package pdftex.def Info: Figures/1_DiffD.pdf used on input line 413.
 (pdftex.def)             Requested size: 537.59085pt x 358.39703pt.
 
 <Figures/1-Exp1_1.pdf, id=21, 781.92125pt x 508.90125pt>
 File: Figures/1-Exp1_1.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp1_1.pdf>
-Package pdftex.def Info: Figures/1-Exp1_1.pdf used on input line 406.
+Package pdftex.def Info: Figures/1-Exp1_1.pdf used on input line 413.
 (pdftex.def)             Requested size: 383.99513pt x 249.91512pt.
 
 <Figures/1-Exp1_2.pdf, id=22, 781.92125pt x 508.90125pt>
 File: Figures/1-Exp1_2.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp1_2.pdf>
-Package pdftex.def Info: Figures/1-Exp1_2.pdf used on input line 406.
+Package pdftex.def Info: Figures/1-Exp1_2.pdf used on input line 413.
 (pdftex.def)             Requested size: 345.59328pt x 224.92671pt.
 
 <Figures/1-Exp2_1.pdf, id=23, 781.92125pt x 508.90125pt>
 File: Figures/1-Exp2_1.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp2_1.pdf>
-Package pdftex.def Info: Figures/1-Exp2_1.pdf used on input line 406.
+Package pdftex.def Info: Figures/1-Exp2_1.pdf used on input line 413.
 (pdftex.def)             Requested size: 383.99513pt x 249.91512pt.
 
 <Figures/1-Exp2_2.pdf, id=24, 781.92125pt x 508.90125pt>
 File: Figures/1-Exp2_2.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp2_2.pdf>
-Package pdftex.def Info: Figures/1-Exp2_2.pdf used on input line 406.
+Package pdftex.def Info: Figures/1-Exp2_2.pdf used on input line 413.
 (pdftex.def)             Requested size: 345.59328pt x 224.92671pt.
  <Figures/3_Taus.pdf, id=25, 758.835pt x 505.89pt>
 File: Figures/3_Taus.pdf Graphic file (type pdf)
 
 <use Figures/3_Taus.pdf>
-Package pdftex.def Info: Figures/3_Taus.pdf used on input line 406.
+Package pdftex.def Info: Figures/3_Taus.pdf used on input line 413.
 (pdftex.def)             Requested size: 617.239pt x 411.49776pt.
 
 <Figures/3-PredictionsH.pdf, id=26, 781.92125pt x 508.90125pt>
 File: Figures/3-PredictionsH.pdf Graphic file (type pdf)
 
 <use Figures/3-PredictionsH.pdf>
-Package pdftex.def Info: Figures/3-PredictionsH.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-PredictionsH.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-PredictionsF.pdf, id=27, 781.92125pt x 508.90125pt>
 File: Figures/3-PredictionsF.pdf Graphic file (type pdf)
 
 <use Figures/3-PredictionsF.pdf>
-Package pdftex.def Info: Figures/3-PredictionsF.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-PredictionsF.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp1_TauH.pdf, id=28, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp1_TauH.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_TauH.pdf>
-Package pdftex.def Info: Figures/3-Exp1_TauH.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp1_TauH.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp1_TauF.pdf, id=29, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp1_TauF.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_TauF.pdf>
-Package pdftex.def Info: Figures/3-Exp1_TauF.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp1_TauF.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp1_BFH0.pdf, id=30, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp1_BFH0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_BFH0.pdf>
-Package pdftex.def Info: Figures/3-Exp1_BFH0.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp1_BFH0.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp1_BFF0.pdf, id=31, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp1_BFF0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_BFF0.pdf>
-Package pdftex.def Info: Figures/3-Exp1_BFF0.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp1_BFF0.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp2_TauH.pdf, id=32, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp2_TauH.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_TauH.pdf>
-Package pdftex.def Info: Figures/3-Exp2_TauH.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp2_TauH.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp2_TauF.pdf, id=33, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp2_TauF.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_TauF.pdf>
-Package pdftex.def Info: Figures/3-Exp2_TauF.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp2_TauF.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp2_BFH0.pdf, id=34, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp2_BFH0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_BFH0.pdf>
-Package pdftex.def Info: Figures/3-Exp2_BFH0.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp2_BFH0.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
 <Figures/3-Exp2_BFF0.pdf, id=35, 781.92125pt x 508.90125pt>
 File: Figures/3-Exp2_BFF0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_BFF0.pdf>
-Package pdftex.def Info: Figures/3-Exp2_BFF0.pdf used on input line 406.
+Package pdftex.def Info: Figures/3-Exp2_BFF0.pdf used on input line 413.
 (pdftex.def)             Requested size: 308.61949pt x 200.86237pt.
 
-Overfull \hbox (846.38474pt too wide) in paragraph at lines 406--406
+Overfull \hbox (846.38474pt too wide) in paragraph at lines 413--413
 [][][][][][][][]  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 406
+Underfull \hbox (badness 10000) detected at line 413
 [][][][][][][][][]
  []
 
@@ -1822,10 +1822,24 @@ Underfull \hbox (badness 10000) detected at line 406
 File: Figures/4_Contaminant.pdf Graphic file (type pdf)
 
 <use Figures/4_Contaminant.pdf>
-Package pdftex.def Info: Figures/4_Contaminant.pdf used on input line 406.
-(pdftex.def)             Requested size: 623.62125pt x 415.75877pt.
+Package pdftex.def Info: Figures/4_Contaminant.pdf used on input line 413.
+(pdftex.def)             Requested size: 582.04395pt x 388.03896pt.
 
-Overfull \hbox (45.53601pt too wide) detected at line 406
+<Figures/4-Exp1_Beta11.pdf, id=41, 781.92125pt x 508.90125pt>
+File: Figures/4-Exp1_Beta11.pdf Graphic file (type pdf)
+
+<use Figures/4-Exp1_Beta11.pdf>
+Package pdftex.def Info: Figures/4-Exp1_Beta11.pdf used on input line 413.
+(pdftex.def)             Requested size: 390.80365pt x 254.34904pt.
+
+<Figures/4-Exp2_Beta11-20.pdf, id=42, 781.92125pt x 508.90125pt>
+File: Figures/4-Exp2_Beta11-20.pdf Graphic file (type pdf)
+
+<use Figures/4-Exp2_Beta11-20.pdf>
+Package pdftex.def Info: Figures/4-Exp2_Beta11-20.pdf used on input line 413.
+(pdftex.def)             Requested size: 390.80365pt x 254.34904pt.
+
+Overfull \hbox (45.53601pt too wide) detected at line 413
 [][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][
 ][] [][][][][][][] [][] [][][][][][][] 
  []
@@ -1899,7 +1913,15 @@ ple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./Figures/3-Exp2_BFF0.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
-> <./Figures/4_Contaminant.pdf>]
+> <./Figures/4_Contaminant.pdf> <./Figures/4-Exp1_Beta11.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/4-Exp1_Beta11.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+> <./Figures/4-Exp2_Beta11-20.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/4-Exp2_Beta11-20.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>]
 \tf@nav=\write6
 \openout6 = `Poster_MathPsych.nav'.
 
@@ -1909,11 +1931,11 @@ ple pdfs with page group included in a single page
 \tf@snm=\write8
 \openout8 = `Poster_MathPsych.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 414.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
  (Poster_MathPsych.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 414.
 Package rerunfilecheck Info: File `Poster_MathPsych.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1921,13 +1943,13 @@ Package rerunfilecheck Info: File `Poster_MathPsych.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.47pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 407.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 414.
  ) 
 Here is how much of TeX's memory you used:
- 23042 strings out of 493334
- 444714 string characters out of 3139239
- 646487 words of memory out of 3000000
- 25959 multiletter control sequences out of 15000+200000
+ 23052 strings out of 493334
+ 445001 string characters out of 3139239
+ 647758 words of memory out of 3000000
+ 25967 multiletter control sequences out of 15000+200000
  81444 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,71p,493b,1972s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1945,9 +1967,9 @@ Files/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /lm/lmss17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Poster_MathPsych.pdf (1 page, 5093892 bytes).
+Output written on Poster_MathPsych.pdf (1 page, 5134078 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
+ 418 PDF objects out of 1000 (max. 8388607)
  4 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

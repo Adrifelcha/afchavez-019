@@ -14,7 +14,7 @@ library(R2jags)
 
 ######################################################
 #Especificamos el Experimento y los Datos a analizar
-experimento <- 1
+experimento <- 2
 ###################
 
 if (experimento == 1)    #Una Figura de Ebbinghaus
@@ -395,15 +395,15 @@ Exp <- 1}else{
   # Total number of Hits
     plot(c(1:k), h_A, col="white", pch=18, cex=2, ylim=c(80,160),
        axes=F, xlab="", ylab="")
-  points(c(1:k),Predicted_Ha, col="deepskyblue1", pch=15, cex=3)
-  points(c(1:k),Predicted_Hb, col="mediumorchid1", pch=15, cex=3)
-  points(c(1:k),h_B, col="magenta4", pch=18, cex=2)
-  points(c(1:k),h_A, col="royalblue3", pch=18, cex=2)
+  points(c(1:k),Predicted_Ha, col="deepskyblue1", pch=15, cex=3.5)
+  points(c(1:k),Predicted_Hb, col="mediumorchid1", pch=15, cex=3.5)
+  points(c(1:k),h_B, col="magenta4", pch=18, cex=3)
+  points(c(1:k),h_A, col="royalblue3", pch=18, cex=3)
   axis(1,c(1:20),c(1:20))
   axis(2,seq(80,160,5),seq(80,160,5), line=-1)
-  mtext("Total number of Hits", side=2, line = 2, cex=1.5, las=0)
-  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
-  mtext(paste("Predicted vs Observed number of Hits - Experiment No.", Exp), font=2, cex=2, side=3)
+  mtext("Hits", side=2, line = 2, cex=2.5, las=0)
+  mtext("Participants", side=1, line = 3, cex=2.5, font=2)
+  mtext(paste("Predicted vs Observed number of Hits", Exp), font=2, cex=3, side=3)
   numero <- 0
   linea <- 1.5
   for(u in 1:k){
@@ -414,45 +414,45 @@ Exp <- 1}else{
     lines(c(linea,linea),c(80,160), lty=2)}
     linea <- linea+1
   }
-  points(1.8,97, col="deepskyblue1", pch=15, cex=3)
-  points(1.8,92, col="mediumorchid1", pch=15, cex=3)
-  points(1.8,87, col="magenta4", pch=18, cex=2)
-  points(1.8,82, col="royalblue3", pch=18, cex=2)
-  text(5.5,97, "Prior prediction for the number of Hits - A Class", f=2)
-  text(5.5,92, "Prior prediction for the number of Hits - B Class", f=2)
-  text(4.5,87, "Observed number of Hits - A Class", f=2)
-  text(4.5,82, "Observed number of Hits - B Class", f=2)
+  points(1.2,97, col="deepskyblue1", pch=15, cex=3)
+  points(1.2,92, col="mediumorchid1", pch=15, cex=3)
+  points(1.2,87, col="magenta4", pch=18, cex=2)
+  points(1.2,82, col="royalblue3", pch=18, cex=2)
+  text(5.5,97, "Prior prediction for the number of Hits - A Class", f=2, cex=1.3)
+  text(5.5,92, "Prior prediction for the number of Hits - B Class", f=2, cex=1.3)
+  text(4.5,87, "Observed number of Hits - A Class", f=2, cex=1.3)
+  text(4.5,82, "Observed number of Hits - B Class", f=2, cex=1.3)
   
   # Total number of False Alarms
-  plot(c(1:k), h_A, col="white", pch=18, cex=2, ylim=c(0,80),
+  plot(c(1:k), h_A, col="white", pch=18, cex=3, ylim=c(0,80),
        axes=F, xlab="", ylab="")
-  points(c(1:k),Predicted_Fa, col="deepskyblue1", pch=15, cex=3)
-  points(c(1:k),Predicted_Fb, col="mediumorchid1", pch=15, cex=3)
-  points(c(1:k),fa_B, col="magenta4", pch=18, cex=2.5)
-  points(c(1:k),fa_A, col="royalblue3", pch=18, cex=2)
+  points(c(1:k),Predicted_Fa, col="deepskyblue1", pch=15, cex=3.5)
+  points(c(1:k),Predicted_Fb, col="mediumorchid1", pch=15, cex=3.5)
+  points(c(1:k),fa_B, col="magenta4", pch=18, cex=3)
+  points(c(1:k),fa_A, col="royalblue3", pch=18, cex=3)
   axis(1,c(1:20),c(1:20))
   axis(2,seq(0,80,5),seq(0,80,5), line=-1)
-  mtext("Total number of False Alarms", side=2, line = 2, cex=1.5, las=0)
-  mtext("Participant", side=1, line = 2.5, cex=1, font=2)
-  mtext(paste("Predicted vs Observed number of False Alarms - Experiment No.", Exp), font=2, cex=2, side=3)
+  mtext("False Alarms", side=2, line = 2, cex=2.5, las=0)
+  mtext("Participants", side=1, line = 3, cex=2.5, font=2)
+  mtext(paste("Predicted vs Observed number of False Alarms", Exp), font=2, cex=3, side=3)
   numero <- 0
   linea <- 1.5
   for(u in 1:k){
     numero <- numero + 1
-    if(u>12){
+    if(u>11){
     lines(c(linea,linea),c(0,60), lty=2)  
     }else{
     lines(c(linea,linea),c(0,80), lty=2)}
     linea <- linea+1
   }
-  points(12.8,78, col="deepskyblue1", pch=15, cex=3)
-  points(12.8,73, col="mediumorchid1", pch=15, cex=3)
-  points(12.8,68, col="magenta4", pch=18, cex=2)
-  points(12.8,63, col="royalblue3", pch=18, cex=2)
-  text(16.5,78, "Prior prediction for the number of Hits - A Class", f=2)
-  text(16.5,73, "Prior prediction for the number of Hits - B Class", f=2)
-  text(15.5,68, "Observed number of Hits - A Class", f=2)
-  text(15.5,63, "Observed number of Hits - B Class", f=2)
+  points(12.2,78, col="deepskyblue1", pch=15, cex=3)
+  points(12.2,73, col="mediumorchid1", pch=15, cex=3)
+  points(12.2,68, col="magenta4", pch=18, cex=2)
+  points(12.2,63, col="royalblue3", pch=18, cex=2)
+  text(16.5,78, "Prior prediction for the number of FA - A Class", f=2, cex=1.3)
+  text(16.5,73, "Prior prediction for the number of FA - B Class", f=2, cex=1.3)
+  text(15.5,68, "Observed number of Hits - A Class", f=2, cex=1.3)
+  text(15.5,63, "Observed number of Hits - B Class", f=2, cex=1.3)
   
   
   
@@ -1121,30 +1121,30 @@ mtext(paste("Experiment No.", Exp), font=2, cex=2, side=3, line=1.8)
 
 #Posteriors 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.15,0.3), 
-     ylim=c(0,24), col='white')
+     ylim=c(0,25.7), col='white')
 for(a in 1:k){
-title(paste("Experiment No.", exp), line=2.2, cex=1)
+mtext(side=2,paste("Experiment No.", exp), line=-2.5, cex=3, srt=90)
 lines(density(tauH[,a]), lwd=3, col=taucolh[a], ylab="", xlab="", xlim=c(-0.5,0.5), axes=F)
 lines(density(PPr_tauH[,a]), col="red", lwd=2, lty=2)}
 axis(1)
 abline(v=0, col='black', lty=2, lwd=3)
 legend(0.15,20, legend=c("Posterior densities", "Prior Predictives"),
-       col=c("forestgreen", "red"), lty=1, cex=1.2, lwd=c(2,2,5,5))
-mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
-mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=1.8, font=2)
+       col=c("forestgreen", "red"), lty=c(1,2), cex=2, lwd=c(4,4))
+#mtext("Differences on Hit Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
+mtext(expression(paste(tau, "Hits")), side=1, line = 2.8, cex=3, font=2)
 
 plot(soporte_t, axes=F, main="", ylab="", xlab="", xlim=c(-0.1,0.35), 
-     col='white', ylim=c(0,24))
+     col='white', ylim=c(0,25.5))
 for (a in 1:k){
 lines(density(tauF[,a]), lwd=3, col=taucolfa[a], ylab="", main="", xlab="", 
       xlim=c(-0.5,0.5), axes=F)
 lines(density(PPr_tauF[,a]), col="red", lwd=2, lty=2)}
 axis(1) 
 abline(v=0, col='black', lty=2, lwd=3)
-legend(0.2,20, legend=c("Posterior densities", "Prior Predictives"),
-       col=c("gray33", "red"), lty=1, cex=1.2, lwd=c(2,2,5,5))
-mtext(expression(paste(tau, "F.A.")), side=1, line = 2.8, cex=1.8, font=2)
-mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
+legend(0.15,25, legend=c("Posterior densities", "Prior Predictives"),
+       col=c("gray33", "red"), lty=1, cex=2, lwd=c(2,2,5,5))
+mtext(expression(paste(tau, "FA")), side=1, line = 2.8, cex=3, font=2)
+#mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2, cex=1.5, font=1)
 
 
 
@@ -1157,8 +1157,8 @@ mtext("Differences on F.A. Rates across classes of stimuli", side=3, line = 0.2,
 
 
 
-#plotear <- "Tau(Hits)"
-plotear <- "Tau(FA)"
+plotear <- "Tau(Hits)"
+#plotear <- "Tau(FA)"
 
 
 layout(matrix(1:1,ncol=1))
@@ -1220,18 +1220,18 @@ for(i in 1:ncol(datos)){
 
 
 numero <- 0
-plot(x_axis, y_axis, ann=F, axes=F,cex=0.9)
+plot(x_axis, y_axis, ann=F, axes=F,cex=1.2)
 for(u in 1:20){
   numero <- numero + 1
-  points(numero,0, col=color_SD_0[u], pch=16, cex=2, type="p")}
-mtext(side=2, text = expression(paste(tau, "(FA)")), line=2, cex=1.5, adj=1)
-mtext(side=1, text = "Participants", line=2.2, cex=1.5)
-legend(Leg[1],Leg[2], legend=c("BF01 < 1", "BF01 => 1"),
-       col=c("darkgoldenrod3", "cyan4"), pch=16, cex=1.2)
+  points(numero,0, col=color_SD_0[u], pch=16, cex=2.5, type="p")}
+mtext(side=2, text = expression(paste(tau, "(H)")), line=2.5, cex=2)
+mtext(side=1, text = "Participants", line=3, cex=2.5)
+legend(1.2,.49, legend=c("BF01 < 1", "BF01 => 1"),
+       col=c("darkgoldenrod3", "cyan4"), pch=16, cex=2)
 axis(1,c(1:20),c(1:20))
 axis(2,seq(-0.2,0.5,0.1),seq(-0.2,0.5,0.1))
-title(expression(paste(tau, "(FA)", " individual posterior densities; BF at 0")))
-mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
+mtext(side=3, expression(paste(tau, "(Hits) Bayes Factor at 0")), cex=3, f=2)
+#mtext(side=3, paste("Experiment No.", exp), line=-0.5,f=2)
 
 
 numero <- 0

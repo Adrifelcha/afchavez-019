@@ -302,28 +302,28 @@ if (experimento ==1)
 {
  # D' y C
   
-  par(mar=c(0.7,1,3,0))
-  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experiment No. 1", cex.main=2, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
+  par(mar=c(0,0.1,5,0))
+  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experiment No. 1", cex.main=3, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
   points(muDB[keep],muCB[keep], col="darkorchid3")
-  lines(c(0.2, 0.6),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
-  lines(c(0.2, 0.6),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
-  text(0.65, 0.9, labels="A Class stimuli", offset=0, cex = 2, pos=4)
-  text(0.65, 0.7, labels="B Class stimuli", offset=0, cex = 2, pos=4)
+  lines(c(0.15, 0.5),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
+  lines(c(0.15, 0.5),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
+  text(0.55, 0.9, labels="A Class stimuli", offset=0, cex = 2.5, pos=4)
+  text(0.55, 0.7, labels="B Class stimuli", offset=0, cex = 2.5, pos=4)
   box(lty=1)
   
-  par(mar=c(0.7,0.5,3,6))
+  par(mar=c(0,0,5,12))
   plot(mu.Ca$y, mu.Ca$x, xlim=rev(c(0,5)),type='l', col="deepskyblue3", axes=F, xlab="", ylab="",ylim=c(-1,1), lwd=2)
   lines(mu.Cb$y, mu.Cb$x, col="darkorchid3", lwd=2)
   
   axis(4)
-  mtext(expression(paste(mu, "C")), side=4,line=5, cex=1.5, font=2, las=0)
+  mtext(expression(paste(mu, "C")), side=4,line=5, cex=2, font=2, las=0)
   box(lty=1)
   
-  par(mar=c(6,1,0,0))
+  par(mar=c(7,2,0,0))
   plot(density(muDA),zero.line=F ,main="", col="deepskyblue3", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3), lwd=2)
   lines(density(muDB), col="darkorchid3", lwd=2)
   axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
-  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=1.5, font=2)
+  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=2, font=2)
   box(lty=1)
 }
 
@@ -332,27 +332,27 @@ if (experimento ==2)
 {
   # D' y C
   
-  par(mar=c(0.7,1,3,0))
-  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experiment No. 2", cex.main=2, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
+  par(mar=c(0,0.1,5,0))
+  plot(muDA[keep],muCA[keep], col="deepskyblue3", xlab="", main="Experiment No. 2", cex.main=3, ylab="", axes=F,xlim=c(0,5), ylim=c(-1,1))
   points(muDB[keep],muCB[keep], col="darkorchid3")
-  lines(c(0.2, 0.6),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
-  lines(c(0.2, 0.6),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
-  text(0.65, 0.9, labels="A Class Stimuli", offset=0, cex = 2, pos=4)
-  text(0.65, 0.7, labels="B Class Stimuli", offset=0, cex = 2, pos=4)
+  lines(c(0.15, 0.5),c(0.9,0.9), lwd=3, lty=1, col="deepskyblue3")
+  lines(c(0.15, 0.5),c(0.7,0.7), lwd=3, lty=1, col="darkorchid3")
+  text(0.55, 0.9, labels="A Class Stimuli", offset=0, cex = 2.5, pos=4)
+  text(0.55, 0.7, labels="B Class Stimuli", offset=0, cex = 2.5, pos=4)
   box(lty=1)
   
-  par(mar=c(0.7,0.5,3,6))
+  par(mar=c(0,0,5,12))
   plot(mu.Ca$y, mu.Ca$x, xlim=rev(c(0,6)),type='l', col="deepskyblue3", axes=F, xlab="", ylab="",ylim=c(-1,1), lwd=2)
   lines(mu.Cb$y, mu.Cb$x, col="darkorchid3", lwd=2)
   axis(4)
-  mtext(expression(paste(mu, "C")), side=4,line=5, cex=1.5, font=2, las=0)
+  mtext(expression(paste(mu, "C")), side=4,line=5, cex=2, font=2, las=0)
   box(lty=1)
   
-  par(mar=c(6,1,0,0))
+  par(mar=c(7,2,0,0))
   plot(density(muDA),zero.line=F ,main="", col="deepskyblue3", ylab="", xlab="", cex.lab=1.3, axes=F, xlim=c(0,5),ylim=c(0,3), lwd=2)
   lines(density(muDB), col="darkorchid3", lwd=2)
   axis(1, at=c(0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4, 4.5, 5))
-  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=1.5, font=2)
+  mtext(expression(paste(mu, "D")), side=1.2,line=4, cex=2, font=2)
   box(lty=1)
 }
 

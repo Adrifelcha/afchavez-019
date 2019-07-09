@@ -252,7 +252,7 @@
 % 4. Plates
 %%%%%%%%%%%
 
-\rput(0.6, 0.7){\GM@plate[plateLabelPos=br]{9.32}{7.1}{\Large$i$ Participant}}
+\rput(0.7, 0.7){\GM@plate[plateLabelPos=br]{9.1}{7.1}{\Large$i$ Participant}}
 
 \rput(2.2, 1.4){\GM@plate[plateLabelPos=br]{6.2}{8.5}{\Large$j$ Condition}}
 
@@ -265,43 +265,44 @@
 
 %\rput(11.5,10.5){\pnode{equation}}\GM@label{equation}{\huge$\vartheta_{i}\sim \mathrm{Lognorm}\bigl(0,1\bigr)$}
 
-\rput(11.5,11.4){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\sim \mathrm{Binomial} (\theta^h_{ij}, s)$}
+\rput(11.2,11.4){\pnode{equation}}\GM@label{equation}{\huge$\mu^c \sim \mathrm{Gaussian}(0,0.7)$}
 
-\rput(11.5,10.65){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\sim \mathrm{Binomial} (\theta^f_{ij}, s)$}
+\rput(11.2,10.74){\pnode{equation}}\GM@label{equation}{\huge$\delta^c \sim \mathrm{Gaussian}(0,0.3)$}
 
+\rput(11.2,9.95){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{A} = \mu^c+\frac{\delta^c}{2}$}
 
-\rput(11.5,9.5){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij}\gets \phi (\frac{1}{2}d_{ij}-c_{ij})$}
-
-\rput(11.5,8.7){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij}\gets \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
-
-
-\rput(11.5,7.56){\pnode{equation}}\GM@label{equation}{\huge$\mu^c \sim \mathrm{Gaussian}(0,0.7)$}
-
-\rput(11.5,6.9){\pnode{equation}}\GM@label{equation}{\huge$\delta^c \sim \mathrm{Gaussian}(0,0.3)$}
-
-\rput(11.5,6.25){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{A} \gets \mu^c+\frac{\delta^c}{2}$}
-
-\rput(11.5,5.55){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{B} \gets \mu^c-\frac{\delta^c}{2}$}
+\rput(11.2,9.15){\pnode{equation}}\GM@label{equation}{\huge$\mu^c_{B} = \mu^c-\frac{\delta^c}{2}$}
 
 
-\rput(11.5,4.4){\pnode{equation}}\GM@label{equation}{\huge$\mu^d \sim \mathrm{Gaussian}(0,1)_{T(0,6)}$}
+\rput(11.2,8.1){\pnode{equation}}\GM@label{equation}{\huge$\mu^d \sim \mathrm{Gaussian}(0,1)_{T(0,6)}$}
 
-\rput(11.5,3.7){\pnode{equation}}\GM@label{equation}{\huge$\delta^d \sim \mathrm{Gaussian}(0,1)_{T(0,6)}$}
+\rput(11.2,7.44){\pnode{equation}}\GM@label{equation}{\huge$\delta^d \sim \mathrm{Gaussian}(0,1)_{T(0,6)}$}
 
-\rput(11.5,3.05){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{A} \gets \mu^c+\frac{\delta^d}{2}$}
+\rput(11.2,6.65){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{A} = \mu^c+\frac{\delta^d}{2}$}
 
-\rput(11.5,2.3){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{B} \gets \mu^c-\frac{\delta^d}{2}$}
+\rput(11.2,5.85){\pnode{equation}}\GM@label{equation}{\huge$\mu^d_{B} = \mu^c-\frac{\delta^d}{2}$}
 
-\rput(11.5,1.35){\pnode{equation}}\GM@label{equation}{\huge$\sigma^c_{j}, \sigma^d_{j}\sim \mathrm{Uniform}(0,5)$}
+\rput(11.2,4.8){\pnode{equation}}\GM@label{equation}{\huge$\sigma^c_{j}, \sigma^d_{j}\sim \mathrm{Uniform}(0,5)$}
 
 
-\rput(11.5,0.5){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}(\mu^d_{j},\sigma^d_{j})$}
+\rput(11.2,3.9){\pnode{equation}}\GM@label{equation}{\huge$d_{ij}\sim \mathrm{Gaussian}(\mu^d_{j},\sigma^d_{j})$}
 
-\rput(11.5,-0.1){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}(\mu^c_{j},\sigma^c_{j})$}
+\rput(11.2,3.2){\pnode{equation}}\GM@label{equation}{\huge$c_{ij}\sim \mathrm{Gaussian}(\mu^c_{j},\sigma^c_{j})$}
 
-\rput(11.5,-1.2){\pnode{equation}}\GM@label{equation}{\huge$\tau^h_{i}\gets \theta^h_{iA}-\theta^h_{iB}$}
 
-\rput(16.2,-1.2){\pnode{equation}}\GM@label{equation}{\huge$\tau^f_{i}\gets \theta^f_{iB}-\theta^f_{iA}$}
+\rput(11.2,2.2){\pnode{equation}}\GM@label{equation}{\huge$y^h_{ij}\sim \mathrm{Binomial} (\theta^h_{ij}, s)$}
+
+\rput(11.2,1.35){\pnode{equation}}\GM@label{equation}{\huge$y^f_{ij}\sim \mathrm{Binomial} (\theta^f_{ij}, s)$}
+
+
+\rput(11.2,0.4){\pnode{equation}}\GM@label{equation}{\huge$\theta^h_{ij} = \phi (\frac{1}{2}d_{ij}-c_{ij})$}
+
+\rput(11.2,-.4){\pnode{equation}}\GM@label{equation}{\huge$\theta^f_{ij} = \phi (-\frac{1}{2}d_{ij}-c_{ij})$}
+
+
+\rput(11.2,-1.2){\pnode{equation}}\GM@label{equation}{\huge$\tau^h_{i} = \theta^h_{iA}-\theta^h_{iB}$}
+
+\rput(16.2,-1.2){\pnode{equation}}\GM@label{equation}{\huge$\tau^f_{i} = \theta^f_{iB}-\theta^f_{iA}$}
 
 % 6. End document
 %%%%%%%%%%%%%%%%%

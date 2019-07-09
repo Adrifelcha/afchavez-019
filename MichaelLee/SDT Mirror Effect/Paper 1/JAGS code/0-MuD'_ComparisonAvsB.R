@@ -233,22 +233,22 @@ layout(matrix(1:1,ncol=1))
   dot_x <- max(density(Delta)$y[which(density(Delta)$x<0.01&density(Delta)$x>-0.01)])
   
   layout(matrix(1:1,ncol=1))
-  plot(density(Delta), col='blue4', lwd=3.5, ann=F, axes=F, xlim=c(-0.5,2))
+  plot(density(Delta), col='blue4', lwd=5, ann=F, axes=F, xlim=c(-0.5,2))
   #lines(seq(-100,100,.05), dnorm(seq(-100,100,.05), 0,1), lwd=1, col="darkorchid3")
-  lines(density(prior_delta), lwd=1, col="red")
+  lines(density(prior_delta), lwd=5, col="red")
   axis(1)
   axis(2, line=.5)
-  mtext("Density", side=2, line=3.5, cex=1.5, las=0, font=1)
-  mtext("Delta", side=1, line=2.5, cex=2)
-  title("Bayes Factor for the prior and posterior densities of Delta", line=2.2, cex=2)
-  mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.5)
+  mtext("Density", side=2, line=3.5, cex=3, las=0, font=1)
+  mtext("Delta", side=1, line=2.5, cex=3)
+  #mtext(side=3, "Bayes Factor for the prior and posterior densities of Delta", line=2.2, cex=3)
+  #mtext(side=3, paste("Experiment No.", exp), cex=1,line=0.5)
   points(0,dot_x, pch=16, type='p', col='red', cex=1.5)
   points(0,dot_prior, pch=16, type='p', col='red', cex=1.5)
   lines(c(0,0), c(dot_x, dot_prior), lwd=1, col="red", lty=2)
   legend(1.2,1.25, legend=c("Prior", "Posterior"),
-         col=c("red", "blue4"), lty=1, cex=1.2, lwd=2)
-  text(0,0.84,paste(round(SavageDickey,3)), f=2)  
-  text(0,0.9,paste("Bayes Factor"),f=2)
+         col=c("red", "blue4"), lty=1, cex=2.5, lwd=4)
+  text(0,0.78,paste(round(SavageDickey,3)), f=2, cex=2.7)  
+  text(0,0.9,paste("Bayes Factor"),f=1, cex=3)
 
 
 
@@ -352,20 +352,20 @@ for(i in 1:ncol(d_b)){
 
 numero <- 0
 linea <- 1.75
-plot(x_axis_a, y_axis_a, ann=F, axes=F,cex=0.5, pch=1, col="deepskyblue3", ylim=c(0,6))
-points(x_axis_b, y_axis_b, col="darkorchid3", pch=1, cex=0.5)
+plot(x_axis_a, y_axis_a, ann=F, axes=F,cex=1.5, pch=1, col="deepskyblue3", ylim=c(0,6))
+points(x_axis_b, y_axis_b, col="darkorchid3", pch=1, cex=1.5)
 for(u in 1:20){
   numero <- numero + 1
-  points(numero,media_post_a[u], col="black", pch=16, cex=1, type="p")
-  points(numero+.5,media_post_b[u], col="black", pch=16, cex=1, type="p")
+  points(numero,media_post_a[u], col="black", pch=16, cex=1.5, type="p")
+  points(numero+.5,media_post_b[u], col="black", pch=16, cex=1.5, type="p")
   lines(c(linea,linea),c(-0.3,6), lty=2)
   linea <- linea+1
   }
-mtext(side=2, text = "D'", line=3, cex=2.1, srt=90)
-mtext(side=1, text = "Participants", line=2.2, cex=1.5)
-mtext(side=3, paste("Experiment No.", exp), line=0.5, cex=1)
+mtext(side=2, text = "d'", line=3, cex=2.7, srt=90)
+mtext(side=1, text = "Participants", line=3, cex=2.5)
+mtext(side=3, paste("Experiment No.", exp), line=0.5, cex=3, f=2)
 axis(1,c(1.25:20.25),c(1:20))
 axis(2,seq(0,6,0.5),seq(0,6,0.5), line=-1)
-legend(4,5.5, legend=c("A stimuli", "B stimuli"),
-       col=c("deepskyblue3", "darkorchid3"), lty=1, cex=0.8)
-title("Posterior densities of D' per Class and per Participant", cex=2)
+legend(4,5.9, legend=c("A class", "B class"),
+       col=c("deepskyblue3", "darkorchid3"), lty=1, cex=2, lwd=3)
+#mtext(side=3,"d' Posterior Densities", cex=3, line=2, f=2)

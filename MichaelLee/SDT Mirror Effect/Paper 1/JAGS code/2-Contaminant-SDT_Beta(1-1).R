@@ -182,11 +182,11 @@ for(u in 1:k){
   lines(c(linea,linea),c(0,1), lty=2)
   linea <- linea+1
 }
-mtext(side=2, text = "Z", line=1.2, cex=2.1, srt=90)
-mtext(side=1, text = "Participants", line=2.2, cex=1.5)
-mtext(side=3, paste("Experiment No.", no), line=0.5, cex=1.5)
+mtext(side=2, text = "Z", line=1.2, cex=2.5)
+mtext(side=1, text = "Participants", line=2.8, cex=2)
+mtext(side=3, paste("Experiment No.", no), line=-.5, cex=3, f=2)
 axis(1,c(1.25:(k+.25)),c(1:k))
 axis(2,seq(0,1,1),c("Pi", "SDT"), line=-1)
 legend(4,5.5, legend=c("A stimuli", "B stimuli"),
        col=c("deepskyblue3", "darkorchid3"), lty=1, cex=0.8)
-mtext(side=3,"Z estimates per Participant", cex=2, line=2)
+#mtext(side=3,"Z estimates per Participant", cex=2, line=2)

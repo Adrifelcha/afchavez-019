@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.25)  9 JUL 2019 15:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.25)  15 JUL 2019 16:21
 entering extended mode
 **./Poster_MathPsych.tex
 (Poster_MathPsych.tex
@@ -1515,8 +1515,8 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 * modes: includehead includefoot 
 * h-part:(L,W,R)=(28.45274pt, 3323.85117pt, 28.45274pt)
 * v-part:(T,H,B)=(0.0pt, 2388.89357pt, 0.0pt)
-* \paperwidth=3468.95999pt
-* \paperheight=2601.71999pt
+* \paperwidth=3414.03519pt
+* \paperheight=2560.75052pt
 * \textwidth=3323.85117pt
 * \textheight=2360.44084pt
 * \oddsidemargin=-43.81725pt
@@ -1645,36 +1645,32 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <12.50194> not available
 <Figures/UNAMiwi.png, id=12, 85.2786pt x 99.2508pt>
 File: Figures/UNAMiwi.png Graphic file (type png)
  <use Figures/UNAMiwi.png>
-Package pdftex.def Info: Figures/UNAMiwi.png used on input line 407.
-(pdftex.def)             Requested size: 241.84842pt x 281.51526pt.
+Package pdftex.def Info: Figures/UNAMiwi.png used on input line 411.
+(pdftex.def)             Requested size: 270.30118pt x 314.69215pt.
 
 <Figures/Lab25.png, id=14, 532.23843pt x 434.37282pt>
 File: Figures/Lab25.png Graphic file (type png)
  <use Figures/Lab25.png>
-Package pdftex.def Info: Figures/Lab25.png used on input line 407.
+Package pdftex.def Info: Figures/Lab25.png used on input line 411.
 (pdftex.def)             Requested size: 383.51997pt x 312.9803pt.
-LaTeX Font Info:    Try loading font information for T1+put on input line 407.
+LaTeX Font Info:    Try loading font information for T1+put on input line 411.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1put.fd"
 File: t1put.fd 2001/06/04 font definitions for T1/put.
 )
-LaTeX Font Info:    Calculating math sizes for size <28.35> on input line 407.
+LaTeX Font Info:    Calculating math sizes for size <29.14> on input line 411.
 
 
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <28.35> not available
-(Font)              size <24.88> substituted on input line 407.
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <29.14> not available
+(Font)              size <24.88> substituted on input line 411.
 
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <19.84491> not available
-(Font)              size <20.74> substituted on input line 407.
-
-<Figures/MirrorEffect.png, id=15, 531.48563pt x 252.945pt>
+<Figures/MirrorEffect.png, id=15, 828.84656pt x 536.75531pt>
 File: Figures/MirrorEffect.png Graphic file (type png)
 
 <use Figures/MirrorEffect.png>
-Package pdftex.def Info: Figures/MirrorEffect.png used on input line 407.
-(pdftex.def)             Requested size: 434.4421pt x 206.76396pt.
-LaTeX Font Info:    Try loading font information for TS1+lmss on input line 407
+Package pdftex.def Info: Figures/MirrorEffect.png used on input line 411.
+(pdftex.def)             Requested size: 310.67848pt x 201.19264pt.
+LaTeX Font Info:    Try loading font information for TS1+lmss on input line 411
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmss.fd"
@@ -1684,55 +1680,55 @@ File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: Figures/MainTask3.png Graphic file (type png)
 
 <use Figures/MainTask3.png>
-Package pdftex.def Info: Figures/MainTask3.png used on input line 407.
-(pdftex.def)             Requested size: 268.80128pt x 139.21022pt.
+Package pdftex.def Info: Figures/MainTask3.png used on input line 411.
+(pdftex.def)             Requested size: 264.18741pt x 136.82222pt.
 
 <Figures/0_HierarchicalSDT.pdf, id=17, 758.835pt x 505.89pt>
 File: Figures/0_HierarchicalSDT.pdf Graphic file (type pdf)
 
 <use Figures/0_HierarchicalSDT.pdf>
-Package pdftex.def Info: Figures/0_HierarchicalSDT.pdf used on input line 407.
-(pdftex.def)             Requested size: 592.41774pt x 394.9554pt.
+Package pdftex.def Info: Figures/0_HierarchicalSDT.pdf used on input line 411.
+(pdftex.def)             Requested size: 582.53105pt x 388.36316pt.
 
 <Figures/0-Exp1.pdf, id=18, 1010.77625pt x 655.44875pt>
 File: Figures/0-Exp1.pdf Graphic file (type pdf)
 
 <use Figures/0-Exp1.pdf>
-Package pdftex.def Info: Figures/0-Exp1.pdf used on input line 407.
-(pdftex.def)             Requested size: 394.94516pt x 256.10405pt.
+Package pdftex.def Info: Figures/0-Exp1.pdf used on input line 411.
+(pdftex.def)             Requested size: 388.35403pt x 251.83348pt.
 
 <Figures/0-Exp2.pdf, id=19, 1010.77625pt x 655.44875pt>
 File: Figures/0-Exp2.pdf Graphic file (type pdf)
 
 <use Figures/0-Exp2.pdf>
-Package pdftex.def Info: Figures/0-Exp2.pdf used on input line 407.
-(pdftex.def)             Requested size: 394.94516pt x 256.10405pt.
+Package pdftex.def Info: Figures/0-Exp2.pdf used on input line 411.
+(pdftex.def)             Requested size: 388.35403pt x 251.83348pt.
 
-Overfull \hbox (11.99998pt too wide) in paragraph at lines 407--407
+Overfull \hbox (11.99998pt too wide) in paragraph at lines 411--411
  [] 
  []
 
 <Figures/1_DiffD.pdf, id=20, 758.835pt x 505.89pt>
 File: Figures/1_DiffD.pdf Graphic file (type pdf)
  <use Figures/1_DiffD.pdf>
-Package pdftex.def Info: Figures/1_DiffD.pdf used on input line 407.
-(pdftex.def)             Requested size: 552.92082pt x 368.61732pt.
+Package pdftex.def Info: Figures/1_DiffD.pdf used on input line 411.
+(pdftex.def)             Requested size: 621.36884pt x 414.25352pt.
 
 <Figures/1-Exp1_1.pdf, id=21, 1010.77625pt x 655.44875pt>
 File: Figures/1-Exp1_1.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp1_1.pdf>
-Package pdftex.def Info: Figures/1-Exp1_1.pdf used on input line 407.
-(pdftex.def)             Requested size: 394.94516pt x 256.10405pt.
+Package pdftex.def Info: Figures/1-Exp1_1.pdf used on input line 411.
+(pdftex.def)             Requested size: 388.35403pt x 251.83348pt.
 
 <Figures/1-Exp1_2.pdf, id=22, 1010.77625pt x 655.44875pt>
 File: Figures/1-Exp1_2.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp1_2.pdf>
-Package pdftex.def Info: Figures/1-Exp1_2.pdf used on input line 407.
-(pdftex.def)             Requested size: 371.24942pt x 240.742pt.
+Package pdftex.def Info: Figures/1-Exp1_2.pdf used on input line 411.
+(pdftex.def)             Requested size: 365.05374pt x 236.72147pt.
 
-Overfull \hbox (12.30424pt too wide) in paragraph at lines 407--407
+Overfull \hbox (12.69969pt too wide) in paragraph at lines 411--411
  [] 
  []
 
@@ -1740,27 +1736,27 @@ Overfull \hbox (12.30424pt too wide) in paragraph at lines 407--407
 File: Figures/1-Exp2_1.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp2_1.pdf>
-Package pdftex.def Info: Figures/1-Exp2_1.pdf used on input line 407.
-(pdftex.def)             Requested size: 394.94516pt x 256.10405pt.
+Package pdftex.def Info: Figures/1-Exp2_1.pdf used on input line 411.
+(pdftex.def)             Requested size: 388.35403pt x 251.83348pt.
 
 <Figures/1-Exp2_2.pdf, id=24, 1010.77625pt x 655.44875pt>
 File: Figures/1-Exp2_2.pdf Graphic file (type pdf)
 
 <use Figures/1-Exp2_2.pdf>
-Package pdftex.def Info: Figures/1-Exp2_2.pdf used on input line 407.
-(pdftex.def)             Requested size: 371.24942pt x 240.742pt.
+Package pdftex.def Info: Figures/1-Exp2_2.pdf used on input line 411.
+(pdftex.def)             Requested size: 365.05374pt x 236.72147pt.
 
-Overfull \hbox (12.30424pt too wide) in paragraph at lines 407--407
+Overfull \hbox (12.69969pt too wide) in paragraph at lines 411--411
  [] 
  []
 
 <Figures/3_Taus.pdf, id=25, 758.835pt x 505.89pt>
 File: Figures/3_Taus.pdf Graphic file (type pdf)
  <use Figures/3_Taus.pdf>
-Package pdftex.def Info: Figures/3_Taus.pdf used on input line 407.
-(pdftex.def)             Requested size: 678.97128pt x 452.6568pt.
+Package pdftex.def Info: Figures/3_Taus.pdf used on input line 411.
+(pdftex.def)             Requested size: 667.55199pt x 445.04561pt.
 
-Overfull \hbox (5.14551pt too wide) in paragraph at lines 407--407
+Overfull \hbox (5.26079pt too wide) in paragraph at lines 411--411
  [] 
  []
 
@@ -1768,31 +1764,31 @@ Overfull \hbox (5.14551pt too wide) in paragraph at lines 407--407
 File: Figures/3-PredictionsH.pdf Graphic file (type pdf)
 
 <use Figures/3-PredictionsH.pdf>
-Package pdftex.def Info: Figures/3-PredictionsH.pdf used on input line 407.
-(pdftex.def)             Requested size: 322.33894pt x 209.02779pt.
+Package pdftex.def Info: Figures/3-PredictionsH.pdf used on input line 411.
+(pdftex.def)             Requested size: 316.91768pt x 205.50731pt.
 
 <Figures/3-PredictionsF.pdf, id=27, 1010.77625pt x 655.44875pt>
 File: Figures/3-PredictionsF.pdf Graphic file (type pdf)
 
 <use Figures/3-PredictionsF.pdf>
-Package pdftex.def Info: Figures/3-PredictionsF.pdf used on input line 407.
-(pdftex.def)             Requested size: 322.33894pt x 209.02779pt.
+Package pdftex.def Info: Figures/3-PredictionsF.pdf used on input line 411.
+(pdftex.def)             Requested size: 316.91768pt x 205.50731pt.
 
 <Figures/3-Exp1_TauH.pdf, id=28, 1010.77625pt x 655.44875pt>
 File: Figures/3-Exp1_TauH.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_TauH.pdf>
-Package pdftex.def Info: Figures/3-Exp1_TauH.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 213.46837pt.
+Package pdftex.def Info: Figures/3-Exp1_TauH.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 209.8779pt.
 
 <Figures/3-Exp1_TauF.pdf, id=29, 1010.77625pt x 655.44875pt>
 File: Figures/3-Exp1_TauF.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_TauF.pdf>
-Package pdftex.def Info: Figures/3-Exp1_TauF.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 213.46837pt.
+Package pdftex.def Info: Figures/3-Exp1_TauF.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 209.8779pt.
 
-Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
+Overfull \hbox (9.02258pt too wide) in paragraph at lines 411--411
  [] 
  []
 
@@ -1800,17 +1796,17 @@ Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
 File: Figures/3-Exp1_BFH0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_BFH0.pdf>
-Package pdftex.def Info: Figures/3-Exp1_BFH0.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 201.6568pt.
+Package pdftex.def Info: Figures/3-Exp1_BFH0.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 198.26636pt.
 
 <Figures/3-Exp1_BFF0.pdf, id=31, 1069.9975pt x 655.44875pt>
 File: Figures/3-Exp1_BFF0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp1_BFF0.pdf>
-Package pdftex.def Info: Figures/3-Exp1_BFF0.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 201.6568pt.
+Package pdftex.def Info: Figures/3-Exp1_BFF0.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 198.26636pt.
 
-Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
+Overfull \hbox (9.02258pt too wide) in paragraph at lines 411--411
  [] 
  []
 
@@ -1818,17 +1814,17 @@ Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
 File: Figures/3-Exp2_TauH.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_TauH.pdf>
-Package pdftex.def Info: Figures/3-Exp2_TauH.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 213.46837pt.
+Package pdftex.def Info: Figures/3-Exp2_TauH.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 209.8779pt.
 
 <Figures/3-Exp2_TauF.pdf, id=33, 1010.77625pt x 655.44875pt>
 File: Figures/3-Exp2_TauF.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_TauF.pdf>
-Package pdftex.def Info: Figures/3-Exp2_TauF.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 213.46837pt.
+Package pdftex.def Info: Figures/3-Exp2_TauF.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 209.8779pt.
 
-Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
+Overfull \hbox (9.02258pt too wide) in paragraph at lines 411--411
  [] 
  []
 
@@ -1836,22 +1832,22 @@ Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
 File: Figures/3-Exp2_BFH0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_BFH0.pdf>
-Package pdftex.def Info: Figures/3-Exp2_BFH0.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 201.6568pt.
+Package pdftex.def Info: Figures/3-Exp2_BFH0.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 198.26636pt.
 
 <Figures/3-Exp2_BFF0.pdf, id=35, 1010.77625pt x 655.44875pt>
 File: Figures/3-Exp2_BFF0.pdf Graphic file (type pdf)
 
 <use Figures/3-Exp2_BFF0.pdf>
-Package pdftex.def Info: Figures/3-Exp2_BFF0.pdf used on input line 407.
-(pdftex.def)             Requested size: 329.19344pt x 213.46837pt.
+Package pdftex.def Info: Figures/3-Exp2_BFF0.pdf used on input line 411.
+(pdftex.def)             Requested size: 323.65689pt x 209.8779pt.
 
-Overfull \hbox (8.5611pt too wide) in paragraph at lines 407--407
+Overfull \hbox (9.02258pt too wide) in paragraph at lines 411--411
  [] 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 407
+Underfull \hbox (badness 10000) detected at line 411
 [][][][][][][][][]
  []
 
@@ -1859,30 +1855,29 @@ Underfull \hbox (badness 10000) detected at line 407
 File: Figures/4_Contaminant.pdf Graphic file (type pdf)
 
 <use Figures/4_Contaminant.pdf>
-Package pdftex.def Info: Figures/4_Contaminant.pdf used on input line 407.
-(pdftex.def)             Requested size: 665.19853pt x 443.47089pt.
+Package pdftex.def Info: Figures/4_Contaminant.pdf used on input line 411.
+(pdftex.def)             Requested size: 572.3553pt x 381.57794pt.
 
 <Figures/4-Exp1_Beta11.pdf, id=37, 781.92125pt x 508.90125pt>
 File: Figures/4-Exp1_Beta11.pdf Graphic file (type pdf)
 
 <use Figures/4-Exp1_Beta11.pdf>
-Package pdftex.def Info: Figures/4-Exp1_Beta11.pdf used on input line 407.
-(pdftex.def)             Requested size: 390.80365pt x 254.34904pt.
+Package pdftex.def Info: Figures/4-Exp1_Beta11.pdf used on input line 411.
+(pdftex.def)             Requested size: 384.29837pt x 250.11702pt.
 
 <Figures/4-Exp2_Beta11-20.pdf, id=38, 781.92125pt x 508.90125pt>
 File: Figures/4-Exp2_Beta11-20.pdf Graphic file (type pdf)
 
 <use Figures/4-Exp2_Beta11-20.pdf>
-Package pdftex.def Info: Figures/4-Exp2_Beta11-20.pdf used on input line 407.
-(pdftex.def)             Requested size: 390.80365pt x 254.34904pt.
+Package pdftex.def Info: Figures/4-Exp2_Beta11-20.pdf used on input line 411.
+(pdftex.def)             Requested size: 384.29837pt x 250.11702pt.
 
-Overfull \hbox (45.53601pt too wide) detected at line 407
-[][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][
-][] [][][][][][][] [][] [][][][][][][] 
+Underfull \hbox (badness 1796) in paragraph at lines 411--411
+[]\T1/put/m/n/30.85 This pro-ject was sup-por-ted by PAPIIT-UNAM (IG100818).
  []
 
 
-Overfull \hbox (88.20334pt too wide) has occurred while \output is active
+Overfull \hbox (33.27853pt too wide) has occurred while \output is active
 []
  []
 
@@ -1968,25 +1963,25 @@ multiple pdfs with page group included in a single page
 \tf@snm=\write8
 \openout8 = `Poster_MathPsych.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 412.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 412.
  (Poster_MathPsych.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 412.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 412.
 Package rerunfilecheck Info: File `Poster_MathPsych.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 3.47pt have occurred.
+(Font)              up to 4.26pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 408.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
  ) 
 Here is how much of TeX's memory you used:
- 23055 strings out of 493334
- 444757 string characters out of 3139239
- 648784 words of memory out of 3000000
- 25961 multiletter control sequences out of 15000+200000
+ 23057 strings out of 493334
+ 444815 string characters out of 3139239
+ 650495 words of memory out of 3000000
+ 25963 multiletter control sequences out of 15000+200000
  103120 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,71p,493b,1830s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2006,7 +2001,7 @@ lm/lmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putb8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on Poster_MathPsych.pdf (1 page, 5089741 bytes).
+Output written on Poster_MathPsych.pdf (1 page, 5060440 bytes).
 PDF statistics:
  396 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)

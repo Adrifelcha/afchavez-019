@@ -45,8 +45,8 @@
 \newlength{\onecolwid}
 \newlength{\twocolwid}
 \newlength{\threecolwid}
-\setlength{\paperwidth}{48in} % Width 150 cm  [Max 96in - 244 cm]
-\setlength{\paperheight}{36in} % Heighth 120.22 [Max 48 - 121 m]
+\setlength{\paperwidth}{47.24in} % Width 150 cm  [Max 96in - 244 cm]
+\setlength{\paperheight}{35.4331in} % Heighth 120.22 [Max 48 - 121 m]
 \setlength{\sepwid}{0.01\paperwidth} % Separation width (white space) between columns
 \setlength{\onecolwid}{0.24\paperwidth} % Width of one column
 \setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
@@ -76,8 +76,8 @@
 \setlength\belowdisplayshortskip{1ex} % White space under equations
 \begin{frame}[t] % The whole poster is enclosed in one beamer frame
 \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north west] at ([shift={(1cm,-2.5cm)}]current page.north west)
-    {\includegraphics[width=8.5cm]{Figures/UNAMiwi.png}};
+\node[anchor=north west] at ([shift={(2cm,-2.5cm)}]current page.north west)
+    {\includegraphics[width=9.5cm]{Figures/UNAMiwi.png}};
 \node[anchor=north east] at ([shift={(-1cm,-2.5cm)}]current page.north east)
     {\includegraphics[height=11cm]{Figures/Lab25.png}};
 \end{tikzpicture}
@@ -92,7 +92,7 @@
 \begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 \begin{column}{\onecolwid} % The first column
-
+\vspace{-2.5cm}
 %jblue % jblue!10
 \setbeamercolor{block alerted title}{fg=white,bg=Plum}
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10}
@@ -106,7 +106,7 @@ FA(A) < FA(B) < Hits(B) < Hits(A)
 
 
 \begin{figure}
-\includegraphics[width=0.55\linewidth]{Figures/MirrorEffect.png}
+\includegraphics[width=0.4\linewidth]{Figures/MirrorEffect.png}
 \end{figure}
 
 \end{alertblock}
@@ -118,8 +118,8 @@ FA(A) < FA(B) < Hits(B) < Hits(A)
 
 \setbeamercolor{block alerted title}{fg=white,bg=Plum} % Titulo del Cuadro
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10} % Cuerpo / Contenido del cuadro
-\begin{alertblock}{Method: A perceptual task}
-\textbf{To assess the generalizability of the mirror effect}, we designed a perceptual task where  the Ebbinghaus illusion is used to construct the two classes of stimuli, A and B (Massaro \& Anderson  1971):
+\begin{alertblock}{Method: A Perceptual Task}
+\textbf{To assess the generalizability of the mirror effect}, we designed a \textbf{perceptual SD-task} (\textit{no study phase included}), where what's known about the Ebbinghaus illusion led to construction of the two classes of stimuli, A and B (Massaro \& Anderson  1971):
 \begin{itemize}
 \item A class (\textit{``easy''}): 2 or 3 surrounding circles - Weak illusion
 \item B class (\textit{``hard''}): 7 or 8 surrounding circles - Strong illusion
@@ -147,14 +147,14 @@ $\quad$\\
 \setbeamercolor{block alerted title}{fg=white,bg=Plum}
 \setbeamercolor{block alerted body}{fg=black,bg=Plum!10}
 \begin{alertblock}{Replicating the Original Data Analysis}
-We found evidence for the mirror effect response rates in at least 85\% of our participants: In Experiment 1 we had 17/20 in the Yes/No task and 18/20 on their Confidence ratings; 19/20 participants did in Experiment 2, for both tasks). We conducted a step by step replication of the mean-based analysis reported in the literature (Glanzer $\&$ Adams, 1990), and found that:
+We conducted a step by step replication of the mean-based analysis reported in the literature (Glanzer $\&$ Adams, 1990), and found that:
 \setbeamercolor{item}{fg=Purple}
 \setbeamercolor{item projected}{fg=white,bg=Purple}
 \begin{enumerate}
 \item Differences among d' are statistically significant \\
 ($d'(A) > d'(B)$)
-\item Differences among response rates are significant too ($H(A)>H(B) \& FA(A)<FA(B)$)
-\item Differences among ratings are significant ($H(A)>H(B) \& FA(A)<FA(B)$)
+\item Differences among response rates are significant too ($H(A)>H(B)$ \& $FA(A)<FA(B)$)
+\item Differences among ratings are significant ($H(A)>H(B)$ \& $FA(A)<FA(B)$)
 \end{enumerate}
 \end{alertblock} 
 
@@ -166,7 +166,7 @@ We found evidence for the mirror effect response rates in at least 85\% of our p
 \end{column} % End of the first column
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 \begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
-
+\vspace{-2.5cm}
 
 %----------------------------------------------------------------------------------------
 % RESULTADOS GENERALES
@@ -175,7 +175,7 @@ We found evidence for the mirror effect response rates in at least 85\% of our p
 \setbeamercolor{block alerted title}{fg=white,bg=MidnightBlue}
 \setbeamercolor{block alerted body}{fg=black,bg=MidnightBlue!10}
 \begin{alertblock}{A Bayesian Approach}
-Given the probabilistic nature of the SDT model, it seems like the study of the Mirror Effect can benefit from the application of Bayesian statistical and cognitive modeling to evaluate the differences observed in the performance of participants across each class of stimuli.
+Given the probabilistic nature of the SDT model, it seems like the study of the mirror effect can benefit from the application of Bayesian statistical and cognitive modeling to evaluate the differences observed in the performance of participants across each class of stimuli.
 \end{alertblock} 
 
 %----------------------------------------------------------------------------------------
@@ -209,11 +209,11 @@ Given the probabilistic nature of the SDT model, it seems like the study of the 
 
 $\qquad$
 \begin{itemize}
-\item We test the differences across d'
+\item We test the differences in d' across classes of stimuli
 \end{itemize}
 \begin{center}
 \begin{tabular}{ccc}
-\includegraphics[width=0.7\linewidth]{Figures/1_DiffD.pdf}
+\includegraphics[width=0.8\linewidth]{Figures/1_DiffD.pdf}
 \end{tabular}
 \end{center}
 
@@ -242,8 +242,6 @@ $\qquad$
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 
-
-
 \setbeamercolor{block alerted title}{fg=white,bg=MidnightBlue} % Change the alert block title colors
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{}
@@ -251,7 +249,7 @@ $\qquad$
 \setbeamercolor{item}{fg=Purple}
 \setbeamercolor{item projected}{fg=white,bg=Purple}
 \begin{itemize}
-\item Are the Hit and FA rates different?\\
+\item Are the Hit and FA rates different across A and B?\\
 \end{itemize}
 \begin{center}
 \begin{tabular}{ccc}
@@ -265,6 +263,8 @@ $\qquad$
 \end{tabular}
 \end{center}
 
+\vspace{1cm}
+
 \begin{center}
 \begin{tabular}{ccc}
 \includegraphics[width=0.48\linewidth]{Figures/3-Exp1_TauH.pdf}  & \hfill & \includegraphics[width=0.48\linewidth]{Figures/3-Exp1_TauF.pdf}
@@ -276,6 +276,8 @@ $\qquad$
 \includegraphics[width=0.48\linewidth]{Figures/3-Exp1_BFH0.pdf}  & \hfill & \includegraphics[width=0.48\linewidth]{Figures/3-Exp1_BFF0.pdf}
 \end{tabular}
 \end{center}
+
+\vspace{0.75cm}
 
 \begin{center}
 \begin{tabular}{ccc}
@@ -330,7 +332,7 @@ $\qquad$
 
 \setlength{\onecolwid}{0.252\paperwidth} % Width of one column
 \begin{column}{\onecolwid} % The third column
-
+\vspace{-2.5cm}
 %----------------------------------------------------------------------------------------
 %   CONCLUSION
 %----------------------------------------------------------------------------------------
@@ -339,10 +341,9 @@ $\qquad$
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Cuerpo
 \begin{alertblock}{Contaminant Model}
 
-
 \begin{center}
 \begin{tabular}{ccc}
-\includegraphics[width=0.8\linewidth]{Figures/4_Contaminant.pdf}
+\includegraphics[width=0.7\linewidth]{Figures/4_Contaminant.pdf}
 \end{tabular}
 \end{center}
 
@@ -363,7 +364,9 @@ $\qquad$
 %\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{Discussion}
 
-The present study showed evidence of the mirror effect patterns of response in a SD task that did not involve recognition memory. The perceptual task here presented lacked a pre-experimental phase where participants had the chance to manipulate how powerful were the illusions elicited in each condition. This suggests that there might be a much more basic principle regulating the Mirror Effect pattern of responses.
+The present study showed evidence of the mirror effect in a SD-task that didn't involve recognition memory. The perceptual task here presented lacked a pre-experimental phase where participants had the chance to change the maginitude of the illusions associated with each class A andB. This suggests that there might be a much more basic principle regulating the mirror effect pattern of responses.\\
+\vspace{0.5cm}
+The application of Bayesian cognitive and statistical modeling allowed us to assess this phenomenon at the individual level, preserving the probabilistic nature assumed by SDT.
 
 \end{alertblock}
 
@@ -390,15 +393,16 @@ The present study showed evidence of the mirror effect patterns of response in a
 %\bibliography{sample}\vspace{0.75in}}
 
 \end{alertblock}
-
+\vspace{-1cm}
 \setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
 \setbeamercolor{item}{fg=white}
 \setbeamercolor{item projected}{fg=white,bg=white}
 \setbeamercolor{block title}{fg=jblue,bg=RoyalBlue!10}
 \setbeamercolor{block body}{fg=black,bg=RoyalBlue!10}
 \begin{block}{Acknowledgments \& Contact Information}
-
-\small{\rmfamily{This project was supported by PAPIIT-UNAM (). Thanks to Alex Etz, J. M. Niño, Manuel Villarreal and José Luis Baroja for their input and help. \textbf{Website:} \href{www.bouzaslab25.com}{www.bouzaslab25.com}.\\
+\vspace{-0.5cm}
+\small{\rmfamily{This project was supported by PAPIIT-UNAM (IG100818). Thanks to Alex Etz, J. M. Niño, Manuel Villarreal and José Luis Baroja for their input and help.\\
+\textbf{Website:} \href{www.bouzaslab25.com}{www.bouzaslab25.com}.\\
 \textbf{Email:} \href{mailto:adrifelcha@gmail.com}{adrifelcha@gmail.com}}} \\
 \end{block}
 

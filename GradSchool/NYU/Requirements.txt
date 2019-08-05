@@ -5,7 +5,13 @@ required to submit a complete application for admission:
 * Online application, 
 * Academic transcripts, 
 * Test scores (GRE and TOEFL), 
-* Letters of recommendation, 
+* 3 Letters of recommendation, 
+     Recommenders should be chosen from people most familiar with your 
+     former studies, research interests, or work, including at least one
+     instructor in the institution you last attended. 
+
+     The Graduate School prefers recommendations from instructors familiar with your work in the field in which you expect to study. If you have been out of school for some time, a letter from an employer or supervisor should be provided. Exception to the policy of three letters of recommendation is as follows: (1) the advanced certificate program in Ergonomics requires two references, but they are not asked to write letters of recommendation.
+
 * A résumé or curriculum vitae, 
 * Statement of Academic Purpose, 
      describe your past and present work as it relates to your intended 

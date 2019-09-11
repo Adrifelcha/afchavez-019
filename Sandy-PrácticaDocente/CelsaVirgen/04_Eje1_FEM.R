@@ -1,13 +1,11 @@
 rm(list=ls())                       #Limpiamos variables
-setwd("C:/Users/Adriana/Desktop/afchavez-019/Sandy-PrácticaDocente/CelsaVirgen/DINA Cal-Nacional")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/ValleBravo/DINA Cal-Nacional")
 
 
 #Base de referencia
 datos <- read.csv("Datos_Nacionales_Sandy.csv")
 #Identificamos el lugar que ocupa cada uno de nuestros sujetos de interés en la matriz Nacional
-Lancaster <- which(datos$ESCUELA=="Lancaster")
-CelsaVirgen <- which(datos$ESCUELA=="Celsa Virgen")
-Netza <- which(datos$ESCUELA=="Netza")
+ValleBravo <- which(datos$ESCUELA=="Valle")
 
 ############# Estimaciones NACIONALES por habilidad  ################################
 #####################################################################################
@@ -28,7 +26,7 @@ parameter_estimation <- read.csv("e1_itempars_fem_DINA-Guaner.csv")     #Just in
 #####################################################################################
 skill_e1 <- NULL
 for(attribute in 1:11){
-  skill_e1[attribute] <- mean(pattern_individual[Netza,attribute])
+  skill_e1[attribute] <- mean(pattern_individual[ValleBravo,attribute])
 }
 
 

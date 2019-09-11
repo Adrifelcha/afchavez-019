@@ -8,7 +8,7 @@
 #############################################################
 rm(list=ls())                       #Limpiamos variables
 library("CDM")
-setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/CelsaVirgen/DINA Cal-Nacional")
+setwd("C:/Users/Alejandro/Desktop/afchavez19/Sandy-PrácticaDocente/ValleBravo/DINA Cal-Nacional")
 
 
 #Cargamos la base de ELSEN + 127 datos de Sandy SIN CONTAR el reactivo 22 (PMB02)

@@ -18,7 +18,6 @@ for (i in 1:k){
       c_B[i] ~ dnorm(0,0.7)
       d_B[i] ~ dnorm(mud_B,sigmad_B)
       } 
-      #Priors
       mud_A <- MuD + delta/2
       mud_B <- MuD - delta/2
       lambdad_A ~ dgamma(.001,.001)
@@ -26,5 +25,33 @@ for (i in 1:k){
       sigmad_A <- 1/sqrt(lambdad_A)
       sigmad_B <- 1/sqrt(lambdad_B)
       delta ~ dnorm(0,1)T(0,6)
-      MuD ~ dnorm(0,1)T(0,6)}
+      MuD ~ dnorm(0,1)T(0,6)
+#####################################      
+#PLAIN PRIORS
+      for (i in 1:k){
+      prior_h_A[i] ~ dbin(Pr_thetah_A[i],s)
+      prior_fa_A[i] ~ dbin(Pr_thetaf_A[i],n)
+      prior_h_B[i] ~ dbin(Pr_thetah_B[i],s)
+      prior_fa_B[i] ~ dbin(Pr_thetaf_B[i],n)
+      # Reparameterization Using Equal-Variance Gaussian SDT
+      Pr_thetah_A[i] <- phi(Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetaf_A[i] <- phi(-Pr_d_A[i]/2-Pr_c_A[i])
+      Pr_thetah_B[i] <- phi(Pr_d_B[i]/2-Pr_c_B[i])
+      Pr_thetaf_B[i] <- phi(-Pr_d_B[i]/2-Pr_c_B[i])
+      # These Priors over Discriminability and Bias Correspond 
+      # to Uniform Priors over the Hit and False Alarm Rates
+      Pr_d_A[i] ~ dnorm(Pr_mud_A,Pr_sigmad_A)
+      Pr_c_A[i] ~ dnorm(0,0.7)
+      Pr_d_B[i] ~ dnorm(Pr_mud_B,Pr_sigmad_B)
+      Pr_c_B[i] ~ dnorm(0,0.7)
+      }
+      #Hierarchical Structure
+      Pr_mud_A <- Pr_MuD + Pr_delta_D/2
+      Pr_mud_B <- Pr_MuD - Pr_delta_D/2
+      Pr_lambdad_A ~ dgamma(.001,.001)T(0.01,5)
+      Pr_lambdad_B ~ dgamma(.001,.001)T(0.01,5)
+      Pr_sigmad_A <- 1/sqrt(Pr_lambdad_A)
+      Pr_sigmad_B <- 1/sqrt(Pr_lambdad_B)
+      Pr_delta_D ~ dnorm(0,1)T(0,6)
+      Pr_MuD ~ dnorm(0,1)T(0,6)}
       

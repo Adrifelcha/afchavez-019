@@ -81,7 +81,7 @@ lines(c(1,1),c(0,8),col='black', lty=4,lwd=2)
 text(7,7.5, paste("Respondieron la Forma A:"), f=2)
 text(7,7.3, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
 text(0.5,4, paste(length(which(is.na(Dicot[,10])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(7,6.5, paste("Promedio: 12.76"), f=2)
+text(7,6.5, paste("Promedio: 15.55"), f=2)
 mtext(side=1, text = "Puntuación", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Forma A", line=1.5, cex=2, f=2)
@@ -104,7 +104,7 @@ lines(c(0.9,0.9),c(0,8),col='black', lty=4,lwd=2)
 text(7,7.5, paste("Respondieron la Forma B:"), f=2)
 text(7,7.3, paste(length(which(is.na(Dicot[,45])==FALSE)), " estudiantes en total"), f=2)
 text(0.3,4, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(7,6.5, paste("Promedio: 9.04"), f=2)
+text(7,6.5, paste("Promedio: 8.05"), f=2)
 mtext(side=1, text = "Puntuación", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Forma B", line=1.5, cex=2, f=2)
@@ -138,11 +138,11 @@ lines(c(30.1,60),c(120,120),lty=1,lwd=4, col="lightgoldenrod2")
 lines(c(30.1,0),c(120,120),lty=1,lwd=4, col="lightgoldenrod1") 
 text(10.5,7.5, paste("Respondieron la Forma A:"), f=2)
 text(10,7.3, paste(length(which(is.na(Dicot[,10])==FALSE)), " estudiantes en total"), f=2)
-text(10,6, paste("Promedio: 12.76"), f=2)
+text(10,6.3, paste("Promedio: 15.55"), f=2)
 text(40,7.5, paste("Respondieron la Forma B:"), f=2)
 text(40,7.3, paste(length(which(is.na(Dicot[,45])==FALSE)), " estudiantes en total"), f=2)
-text(0.3,3, paste(length(which(is.na(Dicot[,45])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
-text(40,6, paste("Promedio: 9.04"), f=2)
+text(0.3,3, paste(length(which(is.na(Dicot[,5])==TRUE)), " estudiantes no asistieron"), srt=90, f=2)
+text(40,6.3, paste("Promedio: 8.05"), f=2)
 mtext(side=1, text = "Puntuaciones", line=2.8, cex=1.3, f=2)
 mtext(side=2, text = "Frecuencia", line=1, cex=1.3, f=2)
 mtext(side=3, text = "Puntuaciones - Formas A y B", line=1.5, cex=2, f=2)
@@ -241,8 +241,11 @@ for(i in 1:length(Rights)){
 
 PRights <- NULL
 for(i in 1:Items){
-  PRights[i] <- ((Rights[i])/Sujetos)*100
-}
+  if(i<27){
+  PRights[i] <- ((Rights[i])/Sujetos)*100}
+  else{
+    PRights[i] <- ((Rights[i])/14)*100}  
+  }
 
 valor_label <- 1.2
 barplot(PRights, col="gray96", ann=F, axes=F, ylim=c(0,100))

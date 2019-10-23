@@ -5,7 +5,7 @@
 
 rm(list=ls())  #Limpiamos el espacio de trabajo
 
-#####Datos a graficar#####
+###Datos a graficar#####
 h<-90  #Numero crudo de Hits
 f<-20   #Numero de Falsas Alarmas
 h_rate<-h/100      #Tasa de Hits relativo al total de Ensayos con Se??al

@@ -1,0 +1,21 @@
+GRUPO,NO.,APELLIDO_NOMBRE,item_1,item_2,item_3,item_4,item_5,item_6,item_7,item_8,item_9,item_10,item_11,item_12,item_13,item_14,item_15,item_16,item_17,item_18,item_19,item_20,item_21,item_22,item_23,item_24,item_25,item_26,item_27,item_28,item_29,item_30,item_31,item_32,item_33,item_34,item_35,item_36,item_37,item_38,item_39,item_40,item_41,item_42,item_43,item_44,item_45,item_46,item_47,item_48,item_49,item_50
+1,1,Albarrán López María Fernanda,B,A,A,C,C,C,D,C,A,A,C,C,C,D,D,A,B,D,A,A,A,D,A,D,D,C,D,A,C,B,C,D,A,D,B,B,C,D,C,B,C,D,A,C,A,A,A,C,D,A
+1,2,Alva Guzmán Santiago,B,A,A,C,C,C,D,C,A,A,C,C,C,D,D,A,B,D,D,B,A,D,A,D,D,C,D,A,C,B,C,D,B,A,B,B,C,D,A,A,B,D,A,C,C,C,A,B,D,A
+1,3,Bestmann Gil Juliane,B,A,A,C,C,C,B,C,A,A,C,C,C,D,B,A,C,C,A,B,C,C,C,NA,A,C,D,A,B,B,C,A,A,A,B,C,C,D,C,B,B,A,A,A,NA,A,A,NA,D,B
+1,4,Caballero Medina Carol,C,B,C,C,C,B,D,C,A,A,C,C,C,A,D,A,B,A,B,A,C,B,C,D,D,C,A,A,C,C,C,B,B,D,B,A,A,A,NA,C,D,B,A,C,C,B,C,B,D,B
+1,5,Calzada de la O Ximena Valeria,B,A,A,C,C,C,D,A,A,A,C,C,D,D,D,A,B,D,A,B,A,D,A,D,C,C,D,A,C,B,C,B,B,D,B,C,C,D,C,D,B,A,A,C,A,A,C,B,D,A
+1,6,Casasola Arias Ana Mónica,B,A,A,B,C,C,D,B,A,A,C,C,C,D,B,A,B,D,D,A,A,C,A,D,D,C,D,C,C,B,D,B,C,C,B,C,A,D,C,A,A,A,A,C,C,B,C,B,D,B
+1,7,Ducos Buenrostro Leilani Kanik,B,A,A,B,C,C,B,A,B,A,C,D,D,C,D,C,A,A,C,A,D,D,B,A,C,D,D,D,C,A,B,D,B,A,B,C,A,C,A,A,D,A,D,A,B,C,A,C,D,D
+1,8,Graf Spaventa Luca,B,A,A,C,C,C,D,C,A,A,C,C,D,D,D,A,B,D,C,B,C,D,A,D,B,C,D,A,C,B,B,B,B,A,A,A,C,D,D,D,D,B,A,A,C,A,A,B,D,A
+1,9,Himmelbauer Burghardt Max,B,A,A,C,C,C,D,C,A,A,C,C,D,D,D,A,B,D,D,A,A,D,A,D,D,C,D,A,C,B,B,A,B,D,B,C,C,D,C,B,C,D,A,C,A,A,D,D,D,A
+1,10,Jaramillo Hernández Fabiola,B,A,A,C,C,C,D,C,A,A,C,C,C,D,A,D,B,D,A,A,A,D,A,D,D,C,D,A,B,B,B,B,C,A,B,C,A,D,C,A,B,D,C,C,A,A,C,B,D,A
+1,11,Lance Ustaran Mateo,B,A,D,C,C,C,D,B,A,A,C,C,C,D,D,A,D,D,D,A,C,A,B,D,D,C,D,A,C,D,C,B,A,A,B,C,A,D,B,B,C,A,D,A,C,A,C,A,B,C
+1,12,López Cienfuegos Kenya Jocelyn,B,A,A,C,C,C,D,B,A,A,C,C,D,D,D,A,B,D,A,A,A,D,A,D,B,C,D,D,D,B,C,A,A,D,A,C,A,C,B,A,A,A,A,A,B,A,C,C,D,A
+1,13,Martínez Olvera Jorge,B,A,B,D,C,C,D,B,A,A,C,A,D,D,D,A,D,D,D,A,C,D,A,D,C,C,D,A,B,A,C,B,C,A,B,C,A,A,A,D,B,D,A,C,B,A,C,A,D,B
+1,14,Miyamoto Klassen Eva,B,A,A,C,C,C,D,B,A,A,C,C,C,D,D,A,B,D,D,A,A,B,A,D,D,C,D,C,C,B,C,B,C,D,B,C,N/A,B,B,B,D,A,C,A,A,D,C,C,D,A
+1,15,Nieto Bautista Nicolás,B,A,A,C,C,C,D,C,A,B,C,C,C,D,D,A,B,C,D,C,D,B,D,B,C,C,D,A,C,D,C,D,A,A,B,C,D,A,A,B,C,A,A,C,A,D,A,C,D,A
+1,16,Ofner Castro Sofia,C,A,A,C,C,C,D,C,A,A,C,C,C,D,D,A,B,D,A,B,A,D,A,D,B,C,D,A,D,B,C,B,B,D,B,C,A,D,C,D,B,A,D,C,A,A,D,B,D,C
+1,17,Osorio Suárez Diego,B,A,A,C,C,C,D,C,A,A,D,C,C,D,D,A,B,D,D,A,A,D,A,D,B,C,D,A,C,B,C,D,C,C,B,C,A,D,C,D,B,A,A,C,A,A,C,C,D,A
+1,18,Saldaña Sarabia Natalia Geraldine,B,A,A,C,C,C,D,C,A,C,C,C,C,D,D,A,B,D,D,B,A,B,A,D,C,C,B,A,C,A,B,B,A,A,B,C,C,C,C,D,A,A,D,C,A,A,C,B,D,B
+1,19,San Pedro Castro Nahum,B,A,A,C,C,C,D,C,A,A,C,C,C,D,D,A,B,D,D,C,A,D,A,D,B,C,D,A,C,B,C,B,B,A,B,B,A,D,D,B,B,D,A,B,A,A,C,B,D,A
+1,20,Savigñon Ramírez Ania,B,A,A,C,C,C,D,C,A,A,C,C,C,D,D,A,B,D,A,A,A,D,A,D,B,C,D,A,C,B,C,B,B,A,B,B,B,D,C,B,B,A,B,D,A,A,C,C,D,A

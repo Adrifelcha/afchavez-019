@@ -1,0 +1,176 @@
+rm(list=ls())
+setwd("C:/Users/Nino/Desktop/TESIS/exp 1/Resultados/Perdidas")
+#Info general del experimento
+num_sujetos <- 18 #subindice i
+pares <- 10       #subindice j
+rep <- 20         #subindice h
+#######Carga datos#######
+data_proba <- NA
+for (i in seq(1:num_sujetos)){ #ciclo para crear cada una de las direcciones
+data_proba[i] <- paste("C:/Users/Nino/Desktop/TESIS/exp 1/Resultados/Perdidas/sujeto",i,'P.csv',sep='')
+}
+sujetos_proba <- lapply(data_proba,read.csv)
+#Toma solo las respuestas 0 y 1 con respecto a los pares de preguntas
+pair_proba <- array(dim=c(num_sujetos,pares,rep))
+for(i in 1:num_sujetos){
+for(j in 1:pares){
+pair_proba[i,j,] <- subset(sujetos_proba[[i]][,7:8],pairP==j)$biggerchosen
+}
+}
+#Genera proporciones de eleccion por la alternativa mas grande (1)
+propo_proba <- array(dim=c(num_sujetos,pares))
+for(i in 1:num_sujetos){
+for(j in 1:pares){
+propo_proba[i,j] <- sum(pair_proba[i,j,])/rep
+}
+}
+##################Colores a utilizar#############
+azul_c <- rgb(20,30,200,maxColorValue = 255,alpha=50)
+azul_o <- rgb(20,30,200,maxColorValue = 255,alpha=200)
+verde <- rgb(154,205,50,maxColorValue = 255,alpha=250)
+tomato <- rgb(255,99,71,maxColorValue = 255,alpha=250)
+tomato_c <- rgb(255,99,71,maxColorValue = 255,alpha=100)
+gris <- rgb(100,100,100,maxColorValue = 255,alpha=50)
+#####Funcion de puntos que los acomoda dependiendo del tipo de par de eleccion
+puntos <- function(data,  #datos a tomar
+coorX, #coordenada X en el plot
+coorY, #coordenada Y en el plot
+tamano #tamano de intervalo entre alternavias
+){
+#condicionales dependiendo del tamano del intervalo
+if(tamano==1){
+x <- seq(coorX,coorX+tamano,0.05)
+}
+if(tamano==2){
+x <- seq(coorX,coorX+tamano,0.1)
+}
+if(tamano==3){
+x <- seq(coorX,coorX+tamano,0.15)
+}
+if(tamano==4){
+x <- seq(coorX,coorX+tamano,0.20)
+}
+y <- rep(coorY,20)
+for(h in 1:rep){
+if(data[h]==1){
+points(x[h],y[h],col=azul_o,pch=20)
+}
+if(data[h]==0){
+points(x[h],y[h],col=tomato,pch=20)
+}
+}
+}
+#####Funcion que coloca las barras indicando solo las preguntas ofrecidad
+choice <- function(ancho,    #tamano de intervalo entre alternativas
+posicion, #donde debe ir la pregunta
+colorset  #color de la barra, el mas claro
+){
+x <- posicion[1]
+y <- posicion[2]
+x1 <- x
+x2 <- x+ancho
+x3 <- x+ancho
+x4 <- x
+y1 <- y
+y2 <- y
+y3 <- y+0.25
+y4 <- y+0.25
+polygon(x=c(x1,x2,x3,x4),y=c(y1,y2,y3,y4),col=colorset,border=NA)  #poligono que genera la barra
+}
+#####Funcion que coloca la proporcion por la recompensa grande en la barra
+choice_bigger <- function(propo,    #barra
+ancho,    #tamano de la barra
+variable, #posicion de en x y y para el plot
+colorset  #color de la barra, generalmente el mas oscuro
+){
+x <- variable[1]
+y <- variable[2]
+x1 <- x
+x2 <- x+propo*ancho
+x3 <- x+propo*ancho
+x4 <- x
+y1 <- y
+y2 <- y
+y3 <- y+0.25
+y4 <- y+0.25
+polygon(x=c(x1,x2,x3,x4),y=c(y1,y2,y3,y4),col=colorset,border=NA)
+}
+#Directorio de trabajo
+setwd("C:/Users/Nino/Desktop/TESIS/exp 1/Resultados/Perdidas")
+#orden de acuerdo a longitud de intervalos entre alternativas
+orden_nuevo <- c(10,8,5,1,
+9,2,6,
+7,3,
+4)
+#coordenadas en x, cada pregunta por posicion
+equis <- c(1,2,3,4,
+1,3,2,
+1,2,
+1)
+#coordenadas en y, cada pregunta por posicion
+ye <- c(0.4,1,0.4,1,
+1.8,3,2.4,
+3.8,4.4,
+5.5)
+#tamano de intervalo
+tam <- c(1,1,1,1,
+2,2,2,
+3,3,
+4)
+#nuevo orden en proporciones
+orden_propo <- propo_proba[,c(10,8,5,1,9,2,6,3,7,4)]
+#############Plot de datos crudos################
+pdf(file='Datos_crudos_perdidas.pdf',width = 6,height = 6) #para hacer el pdf
+par(mar=c(4,2.5,4,3),oma=c(1,1,1,1)) #margenes del plot
+for(i in 1:num_sujetos){
+sujeto1 <- pair_proba[i,,]
+plot(0,type='n',xlim=c(1,5),ylim=c(6,0),axes=F,xlab='',ylab='')
+axis(3,col='white',at=c(1:5),labels=c('448','476','504','532','560'),line=1.8,cex.axis=0.8)
+axis(3,col='white',at=c(1:5),labels=c('.45','.41','.37','.33','.29'),line=1,cex.axis=0.8)
+axis(3,at=c(1,2,3,4,5),labels=c('E','D','C','B','A'),tck=-0.01,cex.axis=0.8)
+mtext(paste('Participante',i),1,col=gris,cex=2)
+for(j in 1:10){
+puntos(sujeto1[orden_nuevo[j],],equis[j],ye[j],tam[j])
+text(equis[j]+(tam[j])*0.5,ye[j]-0.2,paste(orden_nuevo[j]),col=tomato_c)
+}
+}
+dev.off()
+###############Plot de proporciones#############################
+pdf('Proporciones_perdidas.pdf',width = 6,height = 6)
+par(mar=c(4,4,5,4),oma=c(1,1,1,1))
+for(i in 1:num_sujetos){
+sujeto1 <- orden_propo[i,]
+plot(0,type='n',xlim=c(1,5),ylim=c(6,0),axes=F,xlab='',ylab='')
+axis(3,col='white',at=c(1:5),labels=c('448','476','504','532','560'),line=1.8,cex.axis=0.8)
+axis(3,col='white',at=c(1:5),labels=c('.45','.41','.37','.33','.29'),line=1,cex.axis=0.8)
+axis(3,at=c(1,2,3,4,5),labels=c('E','D','C','B','A'),tck=-0.01,cex.axis=0.8)
+mtext(paste('Participante',i),1,col=gris,cex=2)
+for(j in 1:10){
+choice(tam[j],c(equis[j],ye[j]),azul_c)
+choice_bigger(sujeto1[j],tam[j],c(equis[j],ye[j]),azul_o)
+text(equis[j]+(tam[j])*0.5,ye[j]-0.15,paste(orden_nuevo[j]),col=azul_c)
+}
+}
+dev.off()
+val <- array(dim=c(num_sujetos,10))
+for(j in 1:num_sujetos){
+for(k in 1:10){
+val[j,k] <- sum(pair_proba[j,k,])
+}
+}
+val
+val_t<- 20-val
+val_t
+lista <- t(val)
+lista_complementaria<- t(val_t)
+lista_orden <- c(lista[1:10,])
+lista_orden_complementaria <- c(lista_complementaria[1:10,])
+lista_orden2_t <- array(c(lista_orden,lista_orden_complementaria), dim=c(180,2))
+write.table(lista_orden2_t,"C:/Users/Nino/Desktop/TESIS/exp 1/Resultados/Perdidas/datos_organizados.txt",sep='\t',row.names = F)
+propo_proba_complementaria<- 1-propo_proba
+lista_propo <- t(propo_proba)
+lista_propo_complementaria<- t(propo_proba_complementaria)
+lista_orden_propo <- c(lista_propo[1:10,])
+lista_orden_propo_complementaria <- c(lista_propo_complementaria[1:10,])
+lista_orden2_propo <- array(c(lista_orden_propo,lista_orden_propo_complementaria), dim=c(180,2))
+write.table(lista_orden2_propo,"C:/Users/Nino/Desktop/TESIS/exp 1/Resultados/Perdidas/datos_organizados_propo.txt",sep='\t',row.names = F)

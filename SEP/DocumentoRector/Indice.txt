@@ -1,0 +1,53 @@
+
+Figuras
+6= Figura 1. Procesos de diagnóstico y selección del SCMM
+7= Figura 2. Trayectoria de carrera de las Maestras y los Maestros
+14= Figura 3. Cualidades del Sistema de apreciación
+16= Figura 4. Terminología del SISAP para fines de valoración
+19= Figura 5. Funcionalidad del Sistema de apreciación de conocimientos y aptitudes 
+20= Figura 6. Composición del Sistema de apreciación de conocimientos y aptitudes 
+30= Figura 7. Instrumentos del Sistema de apreciación de conocimientos y aptitudes para el proceso de admisión
+33= Figura 8. Instrumentos de apreciación para el proceso de promoción vertical
+37= Figura 9. Instrumentos de apreciación para la Evaluación diagnóstica
+41= Figura 10. Instrumentos de apreciación para la promoción horizontal
+
+10= Tabla 1. Multifactores del Sistema de Carrera para los procesos de selección
+13= Tabla 2. Instrumentos del SISAP en los que se incorpora el contexto
+25= Tabla 3. Herramientas del Sistema de Apreciación de Conocimientos y Aptitudes
+28= Tabla 4. Requisitos y factores por proceso de selección y de evaluación diagnóstica
+33= Tabla 5. Informantes clave para aplicar la encuesta de percepción
+38= Tabla 6. Informantes clave para la encuesta de percepción de la Evaluación diagnóstica
+
+Contenido
+5 = Presentación
+9 = I.	El Sistema de Apreciación de Conocimientos y Actitudes en el marco del Sistema de Carrera de las Maestras y los Maestros 
+10 = 1.	Qué es el Sistema de Apreciación de Conocimientos y Aptitudes y cuáles son sus propósitos
+11= 2.	Referentes del Sistema de Apreciación de Conocimientos y Aptitudes
+13= 3.	Cualidades del Sistema de apreciación
+15= 1.4	Terminología del Sistema de apreciación para fines de medición
+18= 1.5	 La funcionalidad del Sistema de Apreciación de Conocimientos y Aptitudes para el Sistema de Carrera de las Maestras y los Maestros
+20 = 1.6 Composición del Sistema de Apreciación de Conocimientos y Aptitudes
+24= 1.7	Los instrumentos para la apreciación de conocimientos y aptitudes
+27= II.	Mecanismos de diagnóstico y selección de aspirantes en el marco del SGCMM
+28= 2.1 Requisitos y multifactores
+29= 2.2	Etapas del Sistema de Apreciación de Conocimientos y Aptitudes 
+30= 2.2.1 Etapas de valoración de conocimientos y aptitudes del proceso de selección para la admisión
+30= Etapa 1. Curso de habilidades docentes para la Nueva Escuela Mexicana
+31= Etapa 2. Descripción del Instrumento de conocimientos y aptitudes docentes
+32= 2.2.2 Etapas de valoración de conocimientos y aptitudes del proceso de selección para la promoción vertical
+33= Etapa 1. Encuesta de percepción
+35= Etapa 2. Cuestionario de habilidades directivas y de supervisión
+36= Etapa 3. Examen de valoración de conocimientos y aptitudes para la promoción a funciones de dirección y supervisión
+37= 2.2.3 Etapas de valoración de conocimientos y aptitudes del proceso de evaluación diagnóstica
+38= Etapa 1. Encuesta de percepción
+39= Etapa 2. Cuestionario de habilidades socioemocionales
+40= Etapa 3. Instrumento de valoración de conocimientos y aptitudes
+41= 2.2.4 Etapas de valoración de conocimientos y aptitudes del proceso de selección para la promoción horizontal
+41= Etapa 1. Instrumento de conocimientos y aptitudes para la promoción horizontal
+42= Etapa 2. Proyecto de seguimiento del trabajo de los alumnos 
+43= Etapa 3. Entrevistas con comité revisor acerca del seguimiento al trabajo de sus alumnos 
+43= Etapa 4. Cuestionario de habilidades socioemocionales
+44= Etapa 5. Observación de clase realizada por pares externos (solo para docentes y técnicos docentes)
+45= 2.2.4 Etapas de valoración de conocimientos y aptitudes del proceso de selección para el reconocimiento
+46= 2.3 Valoración del cumplimiento de multifactores 
+47= Referencias

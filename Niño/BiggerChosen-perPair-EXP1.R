@@ -9,7 +9,7 @@
 #
 #############################################################
 rm(list=ls())                       #Limpiamos variables
-setwd("C:/Users/Jaime/Desktop/afchavez-019/Niño/Datos/Exp1/Ganancias")
+setwd("C:/Users/asus/Desktop/afchavez-019/Niño/Datos/Exp1/Ganancias")
 
 Participantes <- 0
 for(archive in dir()){

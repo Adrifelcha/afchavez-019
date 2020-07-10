@@ -1,0 +1,98 @@
+INSTRUCCIONES DE IMPRESIÓN DE ADOBE INDESIGN PARA EL INFORME DEL PROVEEDOR DE SERVICIOS
+
+NOMBRE DEL DOCUMENTO: crew final1.indd
+
+FECHA DEL PAQUETE: 06/07/20 21:32
+Fecha de creación: 06/07/20
+Fecha de modificación: 06/07/20
+
+INFORMACIÓN DE CONTACTO
+
+Nombre de la empresa: 
+Contacto: 
+Dirección: 
+
+
+
+
+
+Teléfono: 
+Fax: 
+Correo electrónico: 
+
+INSTRUCCIONES ESPECIALES Y OTRAS NOTAS
+
+
+
+
+
+
+Plugins externos 0
+Objetos no opacos: En la página1
+
+FUENTES
+8 fuente(s) utilizada(s); 1 No disponibles, 0 Incrustado, 0 incompleta(s), 0 protegida(s)
+
+Fuentes empaquetadas
+- Nombre: Minion Pro ExtraBold; Tipo: ???, Estado: No disponibles
+- Nombre: MinionPro-Regular; Tipo: OpenType Type 1, Estado: OK
+- Nombre: WorkSans-Bold; Tipo: TrueType, Estado: OK
+- Nombre: WorkSans-ExtraBold; Tipo: TrueType, Estado: OK
+- Nombre: WorkSans-Light; Tipo: TrueType, Estado: OK
+- Nombre: WorkSans-Medium; Tipo: TrueType, Estado: OK
+- Nombre: WorkSans-Regular; Tipo: TrueType, Estado: OK
+- Nombre: WorkSans-SemiBold; Tipo: TrueType, Estado: OK
+
+
+COLORES Y TINTAS
+4 tinta(s) de cuatricromía; 0 tinta(s) plana(s)
+
+- Nombre y tipo: Cian de cuatricromía; Ángulo: 0.000; Líneas/pulgada: 0.000
+- Nombre y tipo: Magenta de cuatricromía; Ángulo: 0.000; Líneas/pulgada: 0.000
+- Nombre y tipo: Amarillo de cuatricromía; Ángulo: 0.000; Líneas/pulgada: 0.000
+- Nombre y tipo: Negro de cuatricromía; Ángulo: 0.000; Líneas/pulgada: 0.000
+
+
+VÍNCULOS E IMÁGENES
+(Sólo vínculos incrustados y que faltan)
+Vínculos e imágenes: 125 vínculo(s) encontrado(s); 0 modificado(s), 0 No disponibles, 0 inaccesible(s)
+Imágenes: 0 Incrustado, 125 con espacio de color RGB
+
+
+CONFIGURACIÓN DE IMPRESIÓN
+PPD: N/D, (HP DeskJet 2130 series)
+Imprimir en: Impresora
+Número de copias: 1
+Páginas enfrentadas: No
+Páginas pares/impares: Ambas
+Páginas: Todas
+Prueba: No
+Mosaico: Ninguno
+Escala: 100%, 100%
+Posición de la página: Superior izquierda
+Imprimir capas: Capas visibles, imprimibles
+Marcas de impresión: Ninguna
+Sangrado: 0 px, 0 px, 0 px, 0 px
+Color: RGB compuesto
+Modo de reventado: Ninguno
+Enviar datos de la imagen: Submuestreo optimizado
+Sustitución de imagen OPI/DCS: No
+Tamaño de página: 1366 x 768
+Dimensiones del papel: 612 px x 792 px
+Orientación: Apaisado
+Negativo: No
+Modo de volteo: Desactivado
+
+
+LISTA DEL PAQUETE DE ARCHIVOS
+
+1. crew final1.indd; tipo: Documento de Adobe InDesign; tamaño: 17016K
+2. crew final1.idml; tipo: Documento InDesign Markup; tamaño: 3325K
+3. crew final1.pdf; tipo: Documento Adobe Acrobat; tamaño: 1442K
+4. MinionPro-Regular.otf; tipo: Archivo de fuentes; tamaño: 213K
+5. WorkSans-Bold.ttf; tipo: Archivo de fuentes; tamaño: 229K
+6. WorkSans-ExtraBold.ttf; tipo: Archivo de fuentes; tamaño: 229K
+7. WorkSans-Light.ttf; tipo: Archivo de fuentes; tamaño: 229K
+8. WorkSans-Medium.ttf; tipo: Archivo de fuentes; tamaño: 229K
+9. WorkSans-VariableFont_wght.ttf; tipo: Archivo de fuentes; tamaño: 387K
+10. WorkSans-SemiBold.ttf; tipo: Archivo de fuentes; tamaño: 229K

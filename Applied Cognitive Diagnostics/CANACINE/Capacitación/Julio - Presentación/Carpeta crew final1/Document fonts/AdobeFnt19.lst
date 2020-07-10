@@ -1,0 +1,165 @@
+%!Adobe-FontList 1.19
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:MinionPro-Regular
+FamilyName:Minion Pro
+StyleName:Regular
+MenuName:Minion Pro
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Minion Pro
+WritingScript:Roman
+OutlineFileName:\MinionPro-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:218640
+FileModTime:1546367761
+DesignSize:110
+NameArray:0,Mac,4,Minion Pro
+NameArray:0,Win,1,Minion Pro
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-Bold
+FamilyName:Work Sans
+StyleName:Bold
+MenuName:Work Sans
+StyleBits:2
+WeightClass:700
+WidthClass:5
+AngleClass:0
+FullName:Work Sans Bold
+WritingScript:Roman
+OutlineFileName:\WorkSans-Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:235092
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-ExtraBold
+FamilyName:Work Sans
+StyleName:ExtraBold
+MenuName:Work Sans ExtraBold
+StyleBits:0
+WeightClass:800
+WidthClass:5
+AngleClass:0
+FullName:Work Sans ExtraBold
+WritingScript:Roman
+OutlineFileName:\WorkSans-ExtraBold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:235080
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans ExtraBold
+NameArray:0,Win,16,Work Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-Light
+FamilyName:Work Sans
+StyleName:Light
+MenuName:Work Sans Light
+StyleBits:0
+WeightClass:300
+WidthClass:5
+AngleClass:0
+FullName:Work Sans Light
+WritingScript:Roman
+OutlineFileName:\WorkSans-Light.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:234832
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans Light
+NameArray:0,Win,16,Work Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-Medium
+FamilyName:Work Sans
+StyleName:Medium
+MenuName:Work Sans Medium
+StyleBits:0
+WeightClass:500
+WidthClass:5
+AngleClass:0
+FullName:Work Sans Medium
+WritingScript:Roman
+OutlineFileName:\WorkSans-Medium.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:235168
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans Medium
+NameArray:0,Win,16,Work Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-SemiBold
+FamilyName:Work Sans
+StyleName:SemiBold
+MenuName:Work Sans SemiBold
+StyleBits:0
+WeightClass:600
+WidthClass:5
+AngleClass:0
+FullName:Work Sans SemiBold
+WritingScript:Roman
+OutlineFileName:\WorkSans-SemiBold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:235120
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans SemiBold
+NameArray:0,Win,16,Work Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:WorkSans-Regular
+FamilyName:Work Sans
+StyleName:Regular
+MenuName:Work Sans
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Work Sans Regular
+WritingScript:Roman
+OutlineFileName:\WorkSans-VariableFont_wght.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:TrueTypeVariableFont
+FileLength:397124
+FileModTime:1436313600
+NameArray:0,Win,1,Work Sans
+%EndFont
+
